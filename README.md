@@ -1,5 +1,10 @@
 # OOSD-ProjectX
 
-TESTING FILE
+Progetto per il corso Object Oriented Software Design
 
-LOLZ
+Sviluppatori:
+
+Lorenzo Luna
+Matteo Ficorilli
+Lorenzo Collevecchio
+Francesco Giostra
