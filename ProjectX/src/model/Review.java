@@ -1,20 +1,30 @@
 package model;
 
-import java.sql.Date;
+import java.util.Calendar;
 
 public class Review {
-	private Date date;
+	private java.util.Date date;
 	private int idGioco;
 	private String usernameActor;
 	private int vote;
-	private boolean approved = false;
+	private boolean approved;
+	
+	public Review(int idGioco, String usernameActor, int vote) {
+		Calendar today = Calendar.getInstance();
+		today.clear(Calendar.HOUR); today.clear(Calendar.MINUTE); today.clear(Calendar.SECOND);
+		this.date = today.getTime();
+		this.idGioco = idGioco;
+		this.usernameActor = usernameActor;
+		this.vote = vote;
+		this.approved = false;
+	}
 	
 
-	public Date getData() {
+	public java.util.Date getData() {
 		return date;
 	}
 
-	public void setData(Date data) {
+	public void setData(java.util.Date data) {
 		this.date = data;
 	}
 
@@ -58,11 +68,11 @@ public class Review {
 		this.vote = vote;
 	}
 
-	public Date getDate() {
+	public java.util.Date getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(java.util.Date date) {
 		this.date = date;
 	}
 }

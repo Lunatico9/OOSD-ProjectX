@@ -6,8 +6,17 @@ public class Actor {
 	private int level;
 	private int xP;
 	private String name;
-	private String cognome;
+	private String surname;
 	private enum usertype { user, moderator, administrator};
+	
+	public Actor(String user, String pass, String name, String surname ) {
+		this.username = user;
+		this.password = pass;
+		this.name = name;
+		this.surname = surname;
+		this.level = 0;
+		this.xP = 0;
+	}
 	
 	public String getUsername() {
 		return username;
@@ -40,9 +49,9 @@ public class Actor {
 		this.name = name;
 	}
 	public String getCognome() {
-		return cognome;
+		return surname;
 	}
 	public void setCognome(String cognome) {
-		this.cognome = cognome;
+		this.surname = cognome;
 	}
 }
