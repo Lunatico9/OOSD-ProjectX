@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import java.awt.Color;
 
 public class AddReview {
 
@@ -71,6 +72,7 @@ public class AddReview {
 		frmAddReview.getContentPane().add(lblVote);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setBackground(Color.WHITE);
 		comboBox.setFont(new Font("Arial", Font.PLAIN, 20));
 		comboBox.setBounds(86, 327, 70, 28);
 		frmAddReview.getContentPane().add(comboBox);
