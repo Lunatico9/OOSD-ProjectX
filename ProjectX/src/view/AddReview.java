@@ -76,15 +76,7 @@ public class AddReview {
 		comboBox.setFont(new Font("Arial", Font.PLAIN, 20));
 		comboBox.setBounds(86, 327, 70, 28);
 		frmAddReview.getContentPane().add(comboBox);
-		comboBox.addItem(1);
-		comboBox.addItem(2);
-		comboBox.addItem(3);
-		comboBox.addItem(4);
-		comboBox.addItem(5);
-		comboBox.addItem(6);
-		comboBox.addItem(7);
-		comboBox.addItem(8);
-		comboBox.addItem(9);
-		comboBox.addItem(10);
+		for(int i = 1; i < 11 ; i++)
+		comboBox.addItem(i);
 	}
 }
