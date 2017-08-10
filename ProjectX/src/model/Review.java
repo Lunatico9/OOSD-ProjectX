@@ -11,7 +11,6 @@ public class Review {
 	
 	public Review(int idGioco, String usernameActor, int vote) {
 		Calendar today = Calendar.getInstance();
-		today.clear(Calendar.HOUR); today.clear(Calendar.MINUTE); today.clear(Calendar.SECOND);
 		this.date = today.getTime();
 		this.idGioco = idGioco;
 		this.usernameActor = usernameActor;
