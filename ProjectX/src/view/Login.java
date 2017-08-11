@@ -56,30 +56,25 @@ public class Login {
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setForeground(Color.BLACK);
 		lblUsername.setFont(new Font("Arial", Font.PLAIN, 20));
-		lblUsername.setBounds(89, 119, 100, 29);
+		lblUsername.setBounds(89, 150, 100, 29);
 		frmLogin.getContentPane().add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setForeground(Color.BLACK);
 		lblPassword.setFont(new Font("Arial", Font.PLAIN, 20));
-		lblPassword.setBounds(89, 205, 100, 29);
+		lblPassword.setBounds(89, 220, 100, 29);
 		frmLogin.getContentPane().add(lblPassword);
 		
 		textField = new JTextField();
-		textField.setBounds(220, 122, 322, 27);
+		textField.setBounds(220, 150, 322, 27);
 		frmLogin.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(220, 208, 322, 27);
+		passwordField.setBounds(220, 220, 322, 27);
 		frmLogin.getContentPane().add(passwordField);
 		
 		JButton btnAccedi = new JButton("Accedi");
-		btnAccedi.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnAccedi.setText("Molesto");
-			}
-		});
 		btnAccedi.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnAccedi.setBounds(220, 290, 132, 48);
 		frmLogin.getContentPane().add(btnAccedi);
