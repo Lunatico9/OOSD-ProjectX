@@ -11,6 +11,8 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login {
 
@@ -73,6 +75,11 @@ public class Login {
 		frmLogin.getContentPane().add(passwordField);
 		
 		JButton btnAccedi = new JButton("Accedi");
+		btnAccedi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				btnAccedi.setText("Molesto");
+			}
+		});
 		btnAccedi.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnAccedi.setBounds(220, 290, 132, 48);
 		frmLogin.getContentPane().add(btnAccedi);
