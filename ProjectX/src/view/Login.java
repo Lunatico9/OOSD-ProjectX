@@ -7,7 +7,10 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.Color;
+
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 public class Login {
 
@@ -78,5 +81,11 @@ public class Login {
 		btnRegistrati.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnRegistrati.setBounds(410, 290, 132, 48);
 		frmLogin.getContentPane().add(btnRegistrati);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(65, 70, 550, 310);
+		frmLogin.getContentPane().add(panel);
+		panel.setBorder(BorderFactory.createTitledBorder(
+        BorderFactory.createEtchedBorder(), "ACCEDI O REGISTRATI"));
 	}
 }
