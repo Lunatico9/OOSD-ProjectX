@@ -2,7 +2,7 @@ package database;
 import java.sql.*;
 public class DatabaseMySQL {
 	private static String driver = "com.mysql.jdbc.Driver";
-	private static String url = "jdbc:mysql://localhost:3306/Gaming";
+	private static String url = "jdbc:mysql://localhost:3306/gaming";
 	private static String user = "root";
 	private static String psw = "";
 	public static Connection Connection() throws Exception {
@@ -16,7 +16,6 @@ public class DatabaseMySQL {
 				e.printStackTrace();
 				}
 		return con;
-		
 	}
 	
 	public static ResultSet SendQuery(String query) throws Exception {
