@@ -10,13 +10,6 @@ public class DatabaseMySQL {
 		try {
 			Class.forName(driver);
 			con = DriverManager.getConnection (url, user, psw);
-			System.out.println(con);
-			Statement stt = con.createStatement();
-			stt.execute("SELECT * FROM People");
-			ResultSet rst = stt.getResultSet();
-			while(rst.next()) {
-			System.out.println(rst.getString(1));
-			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 			} catch (ClassNotFoundException e) {
@@ -24,5 +17,13 @@ public class DatabaseMySQL {
 				}
 		return con;
 		
+	}
+	
+	public static ResultSet SendQuery(String query) throws Exception {
+		Connection con = Connection();
+		Statement stt = con.createStatement();
+		stt.execute(query);
+		ResultSet rst = stt.getResultSet();
+		return rst;
 	}
 }

@@ -6,7 +6,14 @@ import javax.swing.JList;
 import javax.swing.JScrollBar;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.AbstractListModel;
+import javax.swing.JScrollPane;
+
+import database.DatabaseMySQL;
 
 public class MainUser {
 
@@ -30,27 +37,27 @@ public class MainUser {
 
 	/**
 	 * Create the application.
+	 * @throws Exception 
 	 */
-	public MainUser() {
+	public MainUser() throws Exception {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws Exception 
 	 */
-	private void initialize() {
+	private void initialize() throws Exception {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		JList list = new JList();
-		list.setBounds(59, 42, 212, 149);
-		frame.getContentPane().add(list);
-		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(276, 42, 17, 153);
-		frame.getContentPane().add(scrollBar);
+		ArrayList<String> games = new ArrayList<String>();
+		String query = "SELECT name FROM game";
+		ResultSet rst = DatabaseMySQL.SendQuery(query);
+		while(rst.next()) {
+			games.add(rst.getString(1));
+		}
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
@@ -63,6 +70,26 @@ public class MainUser {
 		});
 		btnLogout.setBounds(307, 227, 101, 23);
 		frame.getContentPane().add(btnLogout);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(46, 38, 245, 153);
+		frame.getContentPane().add(scrollPane);
+		
+		JList list = new JList();
+		scrollPane.setViewportView(list);
+		list.setModel(new AbstractListModel() {
+			ArrayList<String> values = games;
+			public int getSize() {
+				return values.size();
+			}
+			public Object getElementAt(int index) {
+				return values.get(index);
+			}
+		});
+		
+		JButton btnGioca = new JButton("Gioca");
+		btnGioca.setBounds(122, 227, 89, 23);
+		frame.getContentPane().add(btnGioca);
 	}
 
 }
