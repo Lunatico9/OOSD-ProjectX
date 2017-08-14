@@ -11,21 +11,11 @@ import controller.AddGameController;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JList;
-import javax.swing.ListSelectionModel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.AbstractListModel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.sql.*;
+
 
 public class AddGame {
 
@@ -99,7 +89,12 @@ public class AddGame {
 		JButton btnNewButton = new JButton("Aggiungi");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AddGameController.AddGame(textTitle.getText(), (String)comboBoxGenere.getSelectedItem() , txtData.getText());
+				try {
+					AddGameController.AddGame(textTitle.getText(), (String)comboBoxGenere.getSelectedItem() , txtData.getText());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		btnNewButton.setBounds(151, 211, 89, 23);
