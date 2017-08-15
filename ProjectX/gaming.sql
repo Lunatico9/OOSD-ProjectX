@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ago 15, 2017 alle 17:08
+-- Creato il: Ago 15, 2017 alle 18:08
 -- Versione del server: 10.1.25-MariaDB
 -- Versione PHP: 7.1.7
 
@@ -69,10 +69,11 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`idReview`, `text`, `vote`, `approved`) VALUES
-(1, 'Recensione positiva', 0, 0),
-(2, 'Recensione negativa', 0, 1),
-(3, 'Recensione positiva', 0, 0),
-(4, 'Recensione negativa', 0, 1);
+(1, 'Recensione positiva', 7, 0),
+(2, 'Recensione negativa', 4, 1),
+(3, 'Recensione positiva', 9, 0),
+(4, 'Recensione negativa', 5, 1),
+(8, 'Non male questo gioco', 8, 0);
 
 -- --------------------------------------------------------
 
@@ -211,7 +212,7 @@ ALTER TABLE `game`
 -- AUTO_INCREMENT per la tabella `review`
 --
 ALTER TABLE `review`
-  MODIFY `idReview` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idReview` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT per la tabella `timeline`
 --
