@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextPane;
+
+import controller.AddReviewController;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -11,6 +14,8 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AddReview {
 
@@ -53,7 +58,22 @@ public class AddReview {
 		textPane.setBounds(110, 72, 450, 200);
 		frmAddReview.getContentPane().add(textPane);
 		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBackground(Color.WHITE);
+		comboBox.setFont(new Font("Arial", Font.PLAIN, 20));
+		comboBox.setBounds(110, 362, 70, 28);
+		frmAddReview.getContentPane().add(comboBox);
+		
 		JButton btnNewButton = new JButton("Aggiungi");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					AddReviewController.AddReview(textPane.getText(), (int)comboBox.getSelectedItem());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnNewButton.setBounds(298, 352, 132, 48);
 		frmAddReview.getContentPane().add(btnNewButton);
@@ -62,12 +82,6 @@ public class AddReview {
 		btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnNewButton_1.setBounds(470, 352, 132, 48);
 		frmAddReview.getContentPane().add(btnNewButton_1);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBackground(Color.WHITE);
-		comboBox.setFont(new Font("Arial", Font.PLAIN, 20));
-		comboBox.setBounds(110, 362, 70, 28);
-		frmAddReview.getContentPane().add(comboBox);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(65, 38, 537, 269);

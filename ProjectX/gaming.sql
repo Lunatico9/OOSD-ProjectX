@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ago 14, 2017 alle 18:48
+-- Creato il: Ago 15, 2017 alle 17:08
 -- Versione del server: 10.1.25-MariaDB
 -- Versione PHP: 7.1.7
 
@@ -59,19 +59,20 @@ INSERT INTO `game` (`idGame`, `name`, `datadiuscita`, `genere`) VALUES
 
 CREATE TABLE `review` (
   `idReview` int(4) NOT NULL,
-  `Text` varchar(256) NOT NULL,
-  `Approved` tinyint(1) NOT NULL DEFAULT '0'
+  `text` varchar(256) NOT NULL,
+  `vote` int(2) NOT NULL,
+  `approved` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `review`
 --
 
-INSERT INTO `review` (`idReview`, `Text`, `Approved`) VALUES
-(1, 'Recensione positiva', 0),
-(2, 'Recensione negativa', 1),
-(3, 'Recensione positiva', 0),
-(4, 'Recensione negativa', 1);
+INSERT INTO `review` (`idReview`, `text`, `vote`, `approved`) VALUES
+(1, 'Recensione positiva', 0, 0),
+(2, 'Recensione negativa', 0, 1),
+(3, 'Recensione positiva', 0, 0),
+(4, 'Recensione negativa', 0, 1);
 
 -- --------------------------------------------------------
 

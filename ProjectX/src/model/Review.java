@@ -5,15 +5,15 @@ import java.util.Calendar;
 public class Review {
 	private java.util.Date date;
 	private int idGioco;
-	private String usernameActor;
+	private String text;
 	private int vote;
 	private boolean approved;
 	
-	public Review(int idGioco, String usernameActor, int vote) {
+	public Review(String text, int vote) {
 		Calendar today = Calendar.getInstance();
 		this.date = today.getTime();
-		this.idGioco = idGioco;
-		this.usernameActor = usernameActor;
+		this.idGioco = 0;
+		this.text = text;
 		this.vote = vote;
 		this.approved = false;
 	}
@@ -34,15 +34,15 @@ public class Review {
 	public void setIdGioco(int idGioco) {
 		this.idGioco = idGioco;
 	}
-
-	public String getUsernameActor() {
-		return usernameActor;
+	
+	public String getText() {
+		return text;
 	}
 
-	public void setUsernameActor(String usernameActor) {
-		this.usernameActor = usernameActor;
+	public void setText(String text) {
+		this.text = text;
 	}
-
+	
 	public int getVoto() {
 		return vote;
 	}
