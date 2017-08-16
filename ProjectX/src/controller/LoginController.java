@@ -3,6 +3,7 @@ package controller;
 import java.sql.ResultSet;
 
 import database.DatabaseMySQL;
+import view.MainUser;
 
 public class LoginController {
 	public static void Accedi(String username, String password) throws Exception {
@@ -12,6 +13,7 @@ public class LoginController {
         String type = rst.getString("type");
         if("amministratore".equals(type)){
             //redirect to admin page
+        	MainUser.main(null);
        } 
        else if("moderatore".equals(type)){
            //redirect to mod page

@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JTextField;
 
+import controller.LoginController;
 import database.DatabaseMySQL;
 
 import javax.swing.JPasswordField;
@@ -88,7 +89,12 @@ public class Login {
 			    if(username.isEmpty() || password.isEmpty()) {
 			    	JOptionPane.showMessageDialog(null, "Ma sei Mattia che non riesci a inserire il nome utente o la password?");
 			    }
-				//LoginController.Accedi(username, password);
+				try {
+					LoginController.Accedi(username, password);
+				} catch (Exception e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 			    String query = "SELECT username, password, type FROM user WHERE username = '" + username + "' and password = '" + password + "'";
 			    ResultSet rst;
 				try {
