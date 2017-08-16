@@ -3,8 +3,13 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import database.DatabaseMySQL;
+
 import javax.swing.JPasswordField;
 import java.awt.Color;
 
@@ -12,6 +17,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 public class Login {
@@ -75,6 +81,37 @@ public class Login {
 		frmLogin.getContentPane().add(passwordField);
 		
 		JButton btnAccedi = new JButton("Accedi");
+		btnAccedi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String username = textField.getText();
+			    String password = passwordField.getText();
+			    if(username.isEmpty() || password.isEmpty()) {
+			    	JOptionPane.showMessageDialog(null, "Ma sei Mattia che non riesci a inserire il nome utente o la password?");
+			    }
+				//LoginController.Accedi(username, password);
+			    String query = "SELECT username, password, type FROM user WHERE username = '" + username + "' and password = '" + password + "'";
+			    ResultSet rst;
+				try {
+					rst = DatabaseMySQL.SendQuery(query);
+					if(rst.next()) {
+						String type = rst.getString("type");
+					    if("amministratore".equals(type)) {
+					    	//redirect to admin page
+					    	
+					     } 
+					     else if("moderatore".equals(type)) {
+					    	 //redirect to mod page
+					     }      
+					 }
+					 else{
+					      //redirect to user page
+					 }
+				 }
+				 catch (Exception e1) {
+					 // TODO Auto-generated catch block
+					 e1.printStackTrace();
+				 }
+		}});
 		btnAccedi.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnAccedi.setBounds(220, 290, 132, 48);
 		frmLogin.getContentPane().add(btnAccedi);
