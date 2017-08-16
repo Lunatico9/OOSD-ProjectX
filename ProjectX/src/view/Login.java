@@ -94,30 +94,7 @@ public class Login {
 				} catch (Exception e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
-				}
-			    String query = "SELECT username, password, type FROM user WHERE username = '" + username + "' and password = '" + password + "'";
-			    ResultSet rst;
-				try {
-					rst = DatabaseMySQL.SendQuery(query);
-					if(rst.next()) {
-						String type = rst.getString("type");
-					    if("amministratore".equals(type)) {
-					    	//redirect to admin page
-					    	
-					     } 
-					     else if("moderatore".equals(type)) {
-					    	 //redirect to mod page
-					     }      
-					 }
-					 else{
-					      //redirect to user page
-						 MainUser m = new MainUser();
-					 }
-				 }
-				 catch (Exception e1) {
-					 // TODO Auto-generated catch block
-					 e1.printStackTrace();
-				 }
+				}	   
 		}});
 		btnAccedi.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnAccedi.setBounds(220, 290, 132, 48);
