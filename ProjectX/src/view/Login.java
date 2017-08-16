@@ -105,6 +105,7 @@ public class Login {
 					 }
 					 else{
 					      //redirect to user page
+						 MainUser m = new MainUser();
 					 }
 				 }
 				 catch (Exception e1) {
