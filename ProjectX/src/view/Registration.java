@@ -115,7 +115,7 @@ public class Registration {
 		lblConfermaPassword.setBounds(72, 130, 250, 14);
 		panel.add(lblConfermaPassword);
 		
-		JButton btnNewButton_2 = new JButton("Login");
+		JButton btnNewButton_2 = new JButton("Schermata Principale");
 		btnNewButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		btnNewButton_2.setBounds(96, 227, 201, 23);
 		panel.add(btnNewButton_2);
