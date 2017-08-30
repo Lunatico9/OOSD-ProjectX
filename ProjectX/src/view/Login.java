@@ -87,7 +87,7 @@ public class Login {
 				String username = textField.getText();
 			    String password = passwordField.getText();
 			    if(username.isEmpty() || password.isEmpty()) {
-			    	JOptionPane.showMessageDialog(null, "Ma sei Mattia che non riesci a inserire il nome utente o la password?");
+			    	JOptionPane.showMessageDialog(null, "Errore, un campo o entrambi non sono stati riempiti.");
 			    }
 				try {
 					LoginController.Accedi(username, password);
@@ -101,6 +101,12 @@ public class Login {
 		frmLogin.getContentPane().add(btnAccedi);
 		
 		JButton btnRegistrati = new JButton("Registrati");
+		btnRegistrati.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Registration.main(null);
+				frmLogin.setVisible(false);
+			}
+		});
 		btnRegistrati.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnRegistrati.setBounds(410, 290, 132, 48);
 		frmLogin.getContentPane().add(btnRegistrati);
