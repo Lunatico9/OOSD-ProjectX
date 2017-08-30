@@ -17,6 +17,9 @@ import java.awt.event.ActionEvent;
 import java.awt.TextField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import controller.RegistrationController;
+
 import java.awt.Font;
 
 public class Registration {
@@ -25,7 +28,7 @@ public class Registration {
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
 	private JTextField textField;
-
+    
 	/**
 	 * Launch the application.
 	 */
@@ -72,10 +75,26 @@ public class Registration {
 		btnNewButton.setBounds(96, 193, 201, 23);
 		panel.add(btnNewButton);
 		
+		JLabel Valido = new JLabel("");
+		Valido.setBounds(269, 20, 155, 23);
+		panel.add(Valido);		
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		textField.setBounds(72, 51, 250, 20);
+		panel.add(textField);
+		textField.setText("Inserisci Username");
+		textField.setColumns(10);
+		
 		JButton btnNewButton_1 = new JButton("Verifica");
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String username=textField.getText();
+				boolean presente = RegistrationController.verify(username);
+				if(username=="Inserisci Username") Valido.setText("Inserisci Username");
+				else if(presente) Valido.setText("Username non valido");
+				else Valido.setText("Username valido :)");
 			}
 		});
 		btnNewButton_1.setBounds(335, 50, 89, 23);
@@ -90,12 +109,6 @@ public class Registration {
 		passwordField_1.setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		passwordField_1.setBounds(72, 147, 250, 23);
 		panel.add(passwordField_1);
-		
-		textField = new JTextField();
-		textField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
-		textField.setBounds(72, 51, 250, 20);
-		panel.add(textField);
-		textField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Inserisci Username");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 12));
@@ -119,5 +132,7 @@ public class Registration {
 		btnNewButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		btnNewButton_2.setBounds(96, 227, 201, 23);
 		panel.add(btnNewButton_2);
+		
+
 	}
 }
