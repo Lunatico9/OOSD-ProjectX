@@ -66,48 +66,25 @@ public class Registration {
 		Registration.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Registra Account");
-		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnNewButton.setBounds(96, 193, 201, 23);
-		panel.add(btnNewButton);
-		
+	
 		JLabel Valido = new JLabel("");
 		Valido.setBounds(269, 20, 155, 23);
 		panel.add(Valido);		
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
-		textField.setBounds(72, 51, 250, 20);
-		panel.add(textField);
-		textField.setText("Inserisci Username");
-		textField.setColumns(10);
-		
-		JButton btnNewButton_1 = new JButton("Verifica");
-		btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String username=textField.getText();
-				boolean presente = RegistrationController.verify(username);
-				if(username=="Inserisci Username") Valido.setText("Inserisci Username");
-				else if(presente) Valido.setText("Username non valido");
-				else Valido.setText("Username valido :)");
-			}
-		});
-		btnNewButton_1.setBounds(335, 50, 89, 23);
-		panel.add(btnNewButton_1);
+		JLabel campi = new JLabel("");
+		campi.setBounds(307, 193, 114, 33);
+		panel.add(campi);
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		passwordField.setBounds(72, 96, 250, 23);
+		passwordField.setText("Inserisci Password");
 		panel.add(passwordField);
 		
 		passwordField_1 = new JPasswordField();
 		passwordField_1.setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		passwordField_1.setBounds(72, 147, 250, 23);
+		passwordField_1.setText("Conferma Password");
 		panel.add(passwordField_1);
 		
 		JLabel lblNewLabel = new JLabel("Inserisci Username");
@@ -128,10 +105,58 @@ public class Registration {
 		lblConfermaPassword.setBounds(72, 130, 250, 14);
 		panel.add(lblConfermaPassword);
 		
+		textField = new JTextField();
+		textField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		textField.setBounds(72, 51, 250, 20);
+		panel.add(textField);
+		textField.setText("Inserisci Username");
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Registra Account");
+		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String pass1= passwordField.getText();
+				String pass2= passwordField_1.getText();
+				boolean uguale= RegistrationController.pass(pass1, pass2);
+				if (passwordField.getText().equals("Inserisci Password") || passwordField_1.getText().equals("Conferma Password"))
+					campi.setText("Compila i campi");
+				else{
+					if(uguale){
+						RegistrationController.AddUser(textField.getText(), passwordField.getText());
+						campi.setText(textField.getText()+" Registrato");
+					}
+					else{ 
+						campi.setText("Password Diverse"); 
+					}
+				}
+			}
+		});
+		
+		btnNewButton.setBounds(96, 193, 201, 23);
+		panel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Verifica");
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String username=textField.getText();
+				boolean presente = RegistrationController.verify(username);
+				if(username.equals("Inserisci Username")) Valido.setText("Inserisci Username");
+				else{ if(presente) Valido.setText("Username non valido");
+					  else Valido.setText("Username valido :)");
+				}
+			}
+		});
+		btnNewButton_1.setBounds(335, 50, 89, 23);
+		panel.add(btnNewButton_1);
+		
 		JButton btnNewButton_2 = new JButton("Schermata Principale");
 		btnNewButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		btnNewButton_2.setBounds(96, 227, 201, 23);
 		panel.add(btnNewButton_2);
+		
+	
 		
 
 	}
