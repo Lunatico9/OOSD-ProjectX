@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -78,13 +80,11 @@ public class Registration {
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		passwordField.setBounds(72, 96, 250, 23);
-		passwordField.setText("Inserisci Password");
 		panel.add(passwordField);
 		
 		passwordField_1 = new JPasswordField();
 		passwordField_1.setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		passwordField_1.setBounds(72, 147, 250, 23);
-		passwordField_1.setText("Conferma Password");
 		panel.add(passwordField_1);
 		
 		JLabel lblNewLabel = new JLabel("Inserisci Username");
@@ -109,27 +109,33 @@ public class Registration {
 		textField.setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		textField.setBounds(72, 51, 250, 20);
 		panel.add(textField);
-		textField.setText("Inserisci Username");
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Registra Account");
 		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String username= textField.getText();
+				boolean presente = RegistrationController.verify(username);
 				String pass1= passwordField.getText();
 				String pass2= passwordField_1.getText();
 				boolean uguale= RegistrationController.pass(pass1, pass2);
-				if (passwordField.getText().equals("Inserisci Password") || passwordField_1.getText().equals("Conferma Password"))
-					campi.setText("Compila i campi");
+			    if (username.isEmpty() || pass1.isEmpty() || pass2.isEmpty()){ 
+			    	JOptionPane.showMessageDialog(null, "Errore, uno o più campi non sono compilati correttamente o sono vuoti.");}
+			    else{
+			    if (presente)
+					JOptionPane.showMessageDialog(null, "Errore, l'username che stai usando non è disponibile, cambialo e controlla la sua disponibilità con il tasto Verifica");
 				else{
 					if(uguale){
 						RegistrationController.AddUser(textField.getText(), passwordField.getText());
-						campi.setText(textField.getText()+" Registrato");
+						JOptionPane.showMessageDialog(null, "L'utente "+username+" è stato registrato");
+						//Manca l'aggiunta al database dell'utente X
 					}
 					else{ 
-						campi.setText("Password Diverse"); 
+						JOptionPane.showMessageDialog(null, "Errore, le password inserite non corrispondono correggi e riprova");
 					}
 				}
+			    }
 			}
 		});
 		
@@ -142,9 +148,11 @@ public class Registration {
 			public void actionPerformed(ActionEvent e) {
 				String username=textField.getText();
 				boolean presente = RegistrationController.verify(username);
-				if(username.equals("Inserisci Username")) Valido.setText("Inserisci Username");
-				else{ if(presente) Valido.setText("Username non valido");
-					  else Valido.setText("Username valido :)");
+				if(username.isEmpty()){
+					JOptionPane.showMessageDialog(null, "Errore, inserisci un username");;
+				}
+				else{ if(presente) JOptionPane.showMessageDialog(null, "Errore, username non valido");
+					  else JOptionPane.showMessageDialog(null, "Username valido, chiudi questo messaggio e procedi con la registrazione");;
 				}
 			}
 		});
@@ -152,6 +160,12 @@ public class Registration {
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Schermata Principale");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Login.main(null);
+				Registration.setVisible(false);
+			}
+		});
 		btnNewButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		btnNewButton_2.setBounds(96, 227, 201, 23);
 		panel.add(btnNewButton_2);
