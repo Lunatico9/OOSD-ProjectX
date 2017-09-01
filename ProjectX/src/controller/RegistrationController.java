@@ -20,10 +20,11 @@ public class RegistrationController {
 		else return false;
 	}
 	
-	public static void AddUser(String Username, String Password, String Name, String Surname) throws Exception{
+	public static void AddUser(String Username, String Password, String Name, String Surname, String Email) throws Exception{
 		Actor x = new Actor(Username,Password,Name,Surname);
 		String Tipo= "User";
-		String sqlQuery = "INSERT INTO `user` (`username`, `password`, `type` ) VALUES ('" + Username + "', '" + Password + "', '"+ Tipo +"')"; 
+		int IDuser= 15;
+		String sqlQuery = "INSERT INTO `user` (`username`, `password`, `type`,`name`,`surname`,`email`,`idUser` ) VALUES ('" + Username + "', '" + Password + "', '"+ Tipo +"', '"+ Name +"', '"+ Surname +"', '"+ Email +"', '"+ IDuser +"')"; 
 		ResultSet rst = DatabaseMySQL.SendQuery(sqlQuery);
 	}
 }

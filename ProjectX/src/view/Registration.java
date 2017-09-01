@@ -32,6 +32,7 @@ public class Registration {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
     
 	/**
 	 * Launch the application.
@@ -117,7 +118,7 @@ public class Registration {
 		Registra.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		Registra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String username= textField.getText(), name=textField_1.getText(), surname=textField_2.getText();
+				String username= textField.getText(), name=textField_1.getText(), surname=textField_2.getText(), email=textField_3.getText();
 				boolean presente = RegistrationController.verify(username);
 				String pass1= passwordField.getText();
 				String pass2= passwordField_1.getText();
@@ -130,7 +131,7 @@ public class Registration {
 				else{
 					if(uguale){
 						try {
-							RegistrationController.AddUser(username,pass1,name,surname);
+							RegistrationController.AddUser(username,pass1,name,surname,email);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -144,7 +145,7 @@ public class Registration {
 			}
 		});
 		
-		Registra.setBounds(96, 285, 201, 23);
+		Registra.setBounds(96, 318, 201, 23);
 		panel.add(Registra);
 		
 		JButton Verifica = new JButton("Verifica");
@@ -172,7 +173,7 @@ public class Registration {
 			}
 		});
 		SchermataPrincipale.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		SchermataPrincipale.setBounds(96, 325, 201, 23);
+		SchermataPrincipale.setBounds(96, 352, 201, 23);
 		panel.add(SchermataPrincipale);
 		
 		JLabel lblInserisciNome = new JLabel("Inserisci Nome");
@@ -198,5 +199,17 @@ public class Registration {
 		textField_2.setColumns(10);
 		textField_2.setBounds(72, 237, 250, 20);
 		panel.add(textField_2);
+		
+		JLabel lblInserisciEmail = new JLabel("Inserisci Email");
+		lblInserisciEmail.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInserisciEmail.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		lblInserisciEmail.setBounds(72, 268, 250, 14);
+		panel.add(lblInserisciEmail);
+		
+		textField_3 = new JTextField();
+		textField_3.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		textField_3.setColumns(10);
+		textField_3.setBounds(72, 280, 250, 20);
+		panel.add(textField_3);
 	}
 }
