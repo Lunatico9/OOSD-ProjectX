@@ -30,6 +30,8 @@ public class Registration {
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
 	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
     
 	/**
 	 * Launch the application.
@@ -60,7 +62,7 @@ public class Registration {
 	private void initialize() {
 		Registration = new JFrame();
 		Registration.setTitle("Registration");
-		Registration.setBounds(100, 100, 450, 300);
+		Registration.setBounds(100, 100, 450, 425);
 		Registration.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Registration.getContentPane().setLayout(new BoxLayout(Registration.getContentPane(), BoxLayout.X_AXIS));
 		
@@ -111,25 +113,28 @@ public class Registration {
 		panel.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Registra Account");
-		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton Registra = new JButton("Registra Account");
+		Registra.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		Registra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String username= textField.getText();
+				String username= textField.getText(), name=textField_1.getText(), surname=textField_2.getText();
 				boolean presente = RegistrationController.verify(username);
 				String pass1= passwordField.getText();
 				String pass2= passwordField_1.getText();
 				boolean uguale= RegistrationController.pass(pass1, pass2);
-			    if (username.isEmpty() || pass1.isEmpty() || pass2.isEmpty()){ 
+			    if (username.isEmpty() || pass1.isEmpty() || pass2.isEmpty() || name.isEmpty() || surname.isEmpty()){ 
 			    	JOptionPane.showMessageDialog(null, "Errore, uno o più campi non sono compilati correttamente o sono vuoti.");}
 			    else{
 			    if (presente)
 					JOptionPane.showMessageDialog(null, "Errore, l'username che stai usando non è disponibile, cambialo e controlla la sua disponibilità con il tasto Verifica");
 				else{
 					if(uguale){
-						RegistrationController.AddUser(textField.getText(), passwordField.getText());
+						try {
+							RegistrationController.AddUser(username,pass1,name,surname);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 						JOptionPane.showMessageDialog(null, "L'utente "+username+" è stato registrato");
-						//Manca l'aggiunta al database dell'utente X
 					}
 					else{ 
 						JOptionPane.showMessageDialog(null, "Errore, le password inserite non corrispondono correggi e riprova");
@@ -139,12 +144,12 @@ public class Registration {
 			}
 		});
 		
-		btnNewButton.setBounds(96, 193, 201, 23);
-		panel.add(btnNewButton);
+		Registra.setBounds(96, 285, 201, 23);
+		panel.add(Registra);
 		
-		JButton btnNewButton_1 = new JButton("Verifica");
-		btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton Verifica = new JButton("Verifica");
+		Verifica.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		Verifica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username=textField.getText();
 				boolean presente = RegistrationController.verify(username);
@@ -156,22 +161,42 @@ public class Registration {
 				}
 			}
 		});
-		btnNewButton_1.setBounds(335, 50, 89, 23);
-		panel.add(btnNewButton_1);
+		Verifica.setBounds(335, 50, 89, 23);
+		panel.add(Verifica);
 		
-		JButton btnNewButton_2 = new JButton("Schermata Principale");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton SchermataPrincipale = new JButton("Schermata Principale");
+		SchermataPrincipale.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Login.main(null);
 				Registration.setVisible(false);
 			}
 		});
-		btnNewButton_2.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		btnNewButton_2.setBounds(96, 227, 201, 23);
-		panel.add(btnNewButton_2);
+		SchermataPrincipale.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		SchermataPrincipale.setBounds(96, 325, 201, 23);
+		panel.add(SchermataPrincipale);
 		
-	
+		JLabel lblInserisciNome = new JLabel("Inserisci Nome");
+		lblInserisciNome.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInserisciNome.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		lblInserisciNome.setBounds(72, 181, 250, 14);
+		panel.add(lblInserisciNome);
 		
-
+		JLabel lblInserisciCognome = new JLabel("Inserisci Cognome");
+		lblInserisciCognome.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInserisciCognome.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		lblInserisciCognome.setBounds(72, 224, 250, 14);
+		panel.add(lblInserisciCognome);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		textField_1.setColumns(10);
+		textField_1.setBounds(72, 193, 250, 20);
+		panel.add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		textField_2.setColumns(10);
+		textField_2.setBounds(72, 237, 250, 20);
+		panel.add(textField_2);
 	}
 }

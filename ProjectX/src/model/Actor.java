@@ -9,11 +9,11 @@ public class Actor {
 	private String surname;
 	private enum usertype { user, moderator, administrator};
 	
-	public Actor(String user, String pass, String name, String surname ) {
+	public Actor(String user, String pass, String name, String surname) {
 		this.username = user;
 		this.password = pass;
 		this.name = name;
-		this.surname = surname;
+		this.surname= surname;
 		this.level = 0;
 		this.xP = 0;
 	}

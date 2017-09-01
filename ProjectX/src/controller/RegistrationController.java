@@ -1,5 +1,10 @@
 package controller;
 
+import java.sql.ResultSet;
+
+import database.DatabaseMySQL;
+import model.Actor;
+
 public class RegistrationController {
 	
 	public static boolean verify(String username){
@@ -15,7 +20,10 @@ public class RegistrationController {
 		else return false;
 	}
 	
-	public static void AddUser(String Username, String Password){
-		
+	public static void AddUser(String Username, String Password, String Name, String Surname) throws Exception{
+		Actor x = new Actor(Username,Password,Name,Surname);
+		String Tipo= "User";
+		String sqlQuery = "INSERT INTO `user` (`username`, `password`, `type` ) VALUES ('" + Username + "', '" + Password + "', '"+ Tipo +"')"; 
+		ResultSet rst = DatabaseMySQL.SendQuery(sqlQuery);
 	}
 }

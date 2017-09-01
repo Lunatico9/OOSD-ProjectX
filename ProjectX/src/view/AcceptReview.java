@@ -44,24 +44,30 @@ public class AcceptReview {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Rifiuta Review");
-		btnNewButton.setBounds(255, 193, 126, 23);
-		frame.getContentPane().add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Accetta Review");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton Rifiuta = new JButton("Rifiuta Review");
+		Rifiuta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
-		btnNewButton_1.setBounds(46, 193, 138, 23);
-		frame.getContentPane().add(btnNewButton_1);
+		Rifiuta.setBounds(255, 193, 126, 23);
+		frame.getContentPane().add(Rifiuta);
 		
-		JButton btnNewButton_2 = new JButton("Menu");
-		btnNewButton_2.setBounds(173, 227, 89, 23);
-		frame.getContentPane().add(btnNewButton_2);
+		JButton Accetta = new JButton("Accetta Review");
+		Accetta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		Accetta.setBounds(46, 193, 138, 23);
+		frame.getContentPane().add(Accetta);
 		
-		JList list = new JList();
-		list.setBounds(10, 11, 414, 171);
-		frame.getContentPane().add(list);
+		JButton Menù = new JButton("Menù");
+		Menù.setBounds(173, 227, 89, 23);
+		frame.getContentPane().add(Menù);
+		
+		JList listaReview = new JList();
+		listaReview.setBounds(10, 11, 414, 171);
+		frame.getContentPane().add(listaReview);
 	}
 }
