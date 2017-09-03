@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import controller.PlayController;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
  
@@ -36,6 +39,8 @@ public class Play {
 		
 	}
 	public Play(String username2, String game2) {
+		username = username2;
+		game = game2;
 		initialize(username2, game2);
 	}
 
@@ -53,6 +58,12 @@ public class Play {
 		JButton btnNewButton = new JButton("Gioca");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				try {
+					PlayController.Gioca(username);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		btnNewButton.setBounds(117, 92, 203, 66);
