@@ -11,6 +11,7 @@ import model.Actor;
 
 import java.awt.Font;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.border.LineBorder;
@@ -42,8 +43,36 @@ public class PromotionDemotionModerator {
 	 */
 	public PromotionDemotionModerator() throws Exception {
 		initialize();
+		show_user();
 	}
 
+	public ArrayList<Actor> userList() throws Exception {
+		ArrayList<Actor> usersList = new ArrayList<Actor>();
+		try {
+			String query = "SELECT * FROM user";
+			ResultSet rst = DatabaseMySQL.SendQuery(query);
+			Actor user;
+			while(rst.next()) {
+				user = new Actor(rst.getString("username"), rst.getString("type"));
+				usersList.add(user);
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return usersList;
+	}
+	
+	public void show_user() throws Exception {
+		ArrayList<Actor> list = userList();
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		Object[] row = new Object[2];
+		for (int i = 0; i < list.size(); i++) {
+			row[0] = list.get(i).getUsername();
+			row[1] = list.get(i).getType();
+			model.addRow(row);
+		}
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -52,12 +81,6 @@ public class PromotionDemotionModerator {
 		frame.setBounds(100, 100, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		ArrayList<String> users = new ArrayList<String>();
-		String query = "SELECT username FROM user";
-		ResultSet rst = DatabaseMySQL.SendQuery(query);
-		while(rst.next()) {
-			users.add(rst.getString(1));
-		}
 		
 		table = new JTable();
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -75,7 +98,7 @@ public class PromotionDemotionModerator {
 				{null, null},
 			},
 			new String[] {
-				"Username", "Type"
+				"username", "type"
 			}
 		));
 		table.setFont(new Font("Arial", Font.PLAIN, 20));
