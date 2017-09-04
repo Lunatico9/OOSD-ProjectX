@@ -18,7 +18,7 @@ import database.DatabaseMySQL;
 public class MainUser {
 
 	private JFrame frame;
-
+	private String username;
 	/**
 	 * Launch the application.
 	 */
@@ -88,6 +88,13 @@ public class MainUser {
 		});
 		
 		JButton btnGioca = new JButton("Gioca");
+		btnGioca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String game = (String) list.getSelectedValue();
+				Play.main(username, game );
+				frame.dispose();
+			}
+		});
 		btnGioca.setBounds(122, 227, 89, 23);
 		frame.getContentPane().add(btnGioca);
 	}
