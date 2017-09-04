@@ -91,7 +91,7 @@ public class MainUser {
 		btnGioca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String game = (String) list.getSelectedValue();
-				Play.main(username, game );
+				Play.main(username, game);
 				frame.dispose();
 			}
 		});

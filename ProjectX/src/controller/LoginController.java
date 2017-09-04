@@ -11,11 +11,11 @@ public class LoginController {
     ResultSet rst = DatabaseMySQL.SendQuery(query);
     if(rst.next()) {
     	String type = rst.getString("type");
-        if("amministratore".equals(type)) {
+        if("moderatore".equals(type)) {
             //redirect to admin page
         	MainUser.main(null);
         } 
-        else if("moderatore".equals(type)) {
+        else if("giocatore".equals(type)) {
            //redirect to mod page
            MainUser.main(null);
         }
