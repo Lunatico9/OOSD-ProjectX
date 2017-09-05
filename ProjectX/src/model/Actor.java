@@ -8,6 +8,7 @@ public class Actor {
 	private String name;
 	private String surname;
 	private enum usertype { user, moderator, administrator};
+	private String type;
 	
 	public Actor(String user, String pass, String name, String surname) {
 		this.username = user;
@@ -16,6 +17,11 @@ public class Actor {
 		this.surname= surname;
 		this.level = 0;
 		this.xP = 0;
+	}
+	
+	public Actor(String user, String type) {
+		this.username = user;
+		this.type = type;
 	}
 	
 	public String getUsername() {
@@ -53,5 +59,11 @@ public class Actor {
 	}
 	public void setCognome(String cognome) {
 		this.surname = cognome;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 }
