@@ -89,12 +89,15 @@ public class Login {
 			    if(username.isEmpty() || password.isEmpty()) {
 			    	JOptionPane.showMessageDialog(null, "Errore, un campo o entrambi non sono stati riempiti.");
 			    }
-				try {
-					LoginController.Accedi(username, password);
-				} catch (Exception e2) {
+			    else {
+			    	try {
+			    		LoginController.Accedi(username, password);
+			    		frmLogin.setVisible(false);
+			    	} catch (Exception e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
-				}	   
+				}
+			    }
 		}});
 		btnAccedi.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnAccedi.setBounds(220, 290, 132, 48);
