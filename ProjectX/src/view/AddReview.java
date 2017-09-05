@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextPane;
 
 import controller.AddReviewController;
+import database.DatabaseMySQL;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -15,20 +16,23 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 public class AddReview {
 
 	private JFrame frmAddReview;
+	private int username;
+	private int game;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String username, String game) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AddReview window = new AddReview();
+					AddReview window = new AddReview(username, game);
 					window.frmAddReview.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,16 +43,28 @@ public class AddReview {
 
 	/**
 	 * Create the application.
+	 * @throws Exception 
 	 */
-	public AddReview() {
-		initialize();
+	public AddReview(String username, String name) throws Exception {
+		initialize(username, name);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws Exception 
 	 */
-	private void initialize() {
-		frmAddReview = new JFrame();
+	private void initialize(String username, String name) throws Exception {
+		String query = "";
+		String querygame ="";
+		ResultSet rstgame = DatabaseMySQL.SendQuery(querygame);
+		ResultSet rst = DatabaseMySQL.SendQuery(query);
+		if(rst.next())
+			this.username = rst.getInt(1);
+		if(rstgame.next())
+			this.game = rstgame.getInt(1);
+		System.out.println(game);
+		
+		
 		frmAddReview.setTitle("Add review");
 		frmAddReview.setBounds(100, 100, 700, 500);
 		frmAddReview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

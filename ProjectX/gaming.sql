@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Set 05, 2017 alle 12:24
+-- Creato il: Set 05, 2017 alle 15:57
 -- Versione del server: 10.1.26-MariaDB
 -- Versione PHP: 7.1.8
 
@@ -62,18 +62,20 @@ CREATE TABLE `review` (
   `idReview` int(4) NOT NULL,
   `Text` varchar(256) NOT NULL,
   `Approved` tinyint(1) NOT NULL DEFAULT '0',
-  `Game_idGame` int(4) NOT NULL
+  `Game_idGame` int(4) NOT NULL,
+  `user_iduser` int(6) NOT NULL,
+  `vote` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `review`
 --
 
-INSERT INTO `review` (`idReview`, `Text`, `Approved`, `Game_idGame`) VALUES
-(1, 'Mi è piaciuto ma mi ha tolto troppo tempo per preparare la Eramo perciò lo boccio.', 1, 9),
-(2, 'Mia mamma mi ha detto che è troppo violento ma non capisce niente, mi sono fomentato. Bellissimo.', 1, 3),
-(3, 'Mi ha ricordato la mia infanzia ma al gamestop mi hanno dissanguato, adesso lo odio.', 1, 2),
-(4, 'Sn un hacker1!!!11!!!!', 0, 10);
+INSERT INTO `review` (`idReview`, `Text`, `Approved`, `Game_idGame`, `user_iduser`, `vote`) VALUES
+(1, 'Mi è piaciuto ma mi ha tolto troppo tempo per preparare la Eramo perciò lo boccio.', 1, 9, 1, 5),
+(2, 'Mia mamma mi ha detto che è troppo violento ma non capisce niente, mi sono fomentato. Bellissimo.', 1, 3, 4, 8),
+(3, 'Mi ha ricordato la mia infanzia ma al gamestop mi hanno dissanguato, adesso lo odio.', 1, 2, 6, 4),
+(4, 'Sn un hacker1!!!11!!!!', 0, 10, 2, 9);
 
 -- --------------------------------------------------------
 
@@ -110,8 +112,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`idUser`, `name`, `surname`, `email`, `username`, `password`, `type`) VALUES
 (1, 'Lorenzo', 'Collevecchio', 'lorenzocollevecchio@outlook.com', 'Coll', '1234', 'moderatore'),
-(2, 'Francesco', 'Giostra', 'francescogiostra@outlook.com', 'Gios', '1234', 'giocatore'),
-(3, 'Matteo', 'Ficorilli', 'matteoficorilli@outlook.com', 'Fico', '1234', 'giocatore'),
+(2, 'Francesco', 'Giostra', 'francescogiostra@outlook.com', 'Gios', '1234', 'moderatore'),
+(3, 'Matteo', 'Ficorilli', 'matteoficorilli@outlook.com', 'Fico', '1234', 'moderatore'),
 (4, 'Lorenzo', 'Luna', 'lorenzoluna@outlook.com', 'Luna', '1234', 'giocatore'),
 (5, 'Elisa', 'Coccia', 'elisacoccia@outlook.com', 'Cocc', '1234', 'giocatore'),
 (6, 'Filippo', 'Cristofaro', 'filippocristofaro@outlook.com', 'Cris', '1234', 'giocatore'),
@@ -123,50 +125,6 @@ INSERT INTO `user` (`idUser`, `name`, `surname`, `email`, `username`, `password`
 (12, 'Claudia', 'Stella', 'claudiastella@outlook.com', 'Stel', '1234', 'giocatore'),
 (13, 'Paola', 'Masiello', 'paolamasiello@outlook.com', 'Masi', '1234', 'giocatore'),
 (14, 'Stefano', 'Pisciella', 'stefanopisciella@outlook.com', 'Pisc', '1234', 'giocatore');
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `user_game`
---
-
-CREATE TABLE `user_game` (
-  `experiencepoints` int(10) NOT NULL DEFAULT '0',
-  `User_idUser` int(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dump dei dati per la tabella `user_game`
---
-
-INSERT INTO `user_game` (`experiencepoints`, `User_idUser`) VALUES
-(50, 1),
-(20, 2),
-(30, 3),
-(40, 4);
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `vote`
---
-
-CREATE TABLE `vote` (
-  `idVote` int(10) NOT NULL,
-  `vote` int(1) NOT NULL,
-  `Game_idGame` int(4) NOT NULL,
-  `User_idUser` int(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dump dei dati per la tabella `vote`
---
-
-INSERT INTO `vote` (`idVote`, `vote`, `Game_idGame`, `User_idUser`) VALUES
-(1, 4, 9, 1),
-(2, 3, 10, 2),
-(3, 5, 2, 3),
-(4, 3, 3, 4);
 
 --
 -- Indici per le tabelle scaricate
@@ -199,20 +157,6 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`idUser`);
 
 --
--- Indici per le tabelle `user_game`
---
-ALTER TABLE `user_game`
-  ADD KEY `fk_User_game_User1_idx` (`User_idUser`);
-
---
--- Indici per le tabelle `vote`
---
-ALTER TABLE `vote`
-  ADD PRIMARY KEY (`idVote`,`Game_idGame`,`User_idUser`),
-  ADD KEY `fk_Vote_Game1_idx` (`Game_idGame`),
-  ADD KEY `fk_Vote_User1_idx` (`User_idUser`);
-
---
 -- AUTO_INCREMENT per le tabelle scaricate
 --
 
@@ -226,11 +170,6 @@ ALTER TABLE `timeline`
 --
 ALTER TABLE `user`
   MODIFY `idUser` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
---
--- AUTO_INCREMENT per la tabella `vote`
---
-ALTER TABLE `vote`
-  MODIFY `idVote` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Limiti per le tabelle scaricate
 --
@@ -246,19 +185,6 @@ ALTER TABLE `review`
 --
 ALTER TABLE `timeline`
   ADD CONSTRAINT `fk_Timeline_User1` FOREIGN KEY (`User_idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limiti per la tabella `user_game`
---
-ALTER TABLE `user_game`
-  ADD CONSTRAINT `fk_User_game_User1` FOREIGN KEY (`User_idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limiti per la tabella `vote`
---
-ALTER TABLE `vote`
-  ADD CONSTRAINT `fk_Vote_Game1` FOREIGN KEY (`Game_idGame`) REFERENCES `game` (`idGame`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Vote_User1` FOREIGN KEY (`User_idUser`) REFERENCES `user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
