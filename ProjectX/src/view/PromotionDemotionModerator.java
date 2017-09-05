@@ -17,11 +17,15 @@ import java.util.ArrayList;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class PromotionDemotionModerator {
 
 	private JFrame frame;
 	private JTable table;
+	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -85,7 +89,7 @@ public class PromotionDemotionModerator {
 		frame.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(155, 98, 300, 229);
+		scrollPane.setBounds(303, 80, 300, 229);
 		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
@@ -100,6 +104,20 @@ public class PromotionDemotionModerator {
 			}
 		));
 		table.setFont(new Font("Arial", Font.PLAIN, 16));
+		
+		textField = new JTextField();
+		textField.setBounds(51, 85, 116, 22);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(51, 140, 116, 22);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		
+		JButton btnUpdate = new JButton("Update");
+		btnUpdate.setBounds(54, 367, 97, 25);
+		frame.getContentPane().add(btnUpdate);
 		show_user();
 	}
 }
