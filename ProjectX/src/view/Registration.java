@@ -123,15 +123,28 @@ public class Registration {
 				boolean presente;
 				String pass1= passwordField.getText();
 				String pass2= passwordField_1.getText();
+				
+				try {
+					if(username.isEmpty()){
+						JOptionPane.showMessageDialog(null, "Errore, inserisci un username");;
+					}
+					else{
+						presente = RegistrationController.verify(username);
+						if(presente) JOptionPane.showMessageDialog(null, "Errore, username non valido");
+						}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
 				try {
 					presente = RegistrationController.verify(username);
 					boolean uguale= RegistrationController.pass(pass1, pass2);
-				    if (username.isEmpty() || pass1.isEmpty() || pass2.isEmpty() || name.isEmpty() || surname.isEmpty() || !email.contains("@") || !email.contains(".")){ 
+				    if (pass1.isEmpty() || pass2.isEmpty() || name.isEmpty() || surname.isEmpty() || !email.contains("@") || !email.contains(".")){ 
 				    	JOptionPane.showMessageDialog(null, "Errore, uno o più campi non sono compilati correttamente o sono vuoti.");
 				    	}
 				    else{
 				    if (presente)
-						JOptionPane.showMessageDialog(null, "Errore, l'username che stai usando non è disponibile o non è stato verificato, verifica la sua disponibilità con il tasto Verifica");
+						;
 					else{
 						if(uguale){
 							try {
@@ -153,29 +166,6 @@ public class Registration {
 		
 		Registra.setBounds(96, 318, 201, 23);
 		panel.add(Registra);
-		
-		JButton Verifica = new JButton("Verifica");
-		Verifica.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		Verifica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String username=textField.getText();
-				boolean presente;
-				try {
-					if(username.isEmpty()){
-						JOptionPane.showMessageDialog(null, "Errore, inserisci un username");;
-					}
-					else{
-						presente = RegistrationController.verify(username);
-						if(presente) JOptionPane.showMessageDialog(null, "Errore, username non valido");
-						else {JOptionPane.showMessageDialog(null, "Username valido, chiudi questo messaggio e procedi con la registrazione");}
-					}
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
-		Verifica.setBounds(335, 50, 89, 23);
-		panel.add(Verifica);
 		
 		JButton SchermataPrincipale = new JButton("Schermata Principale");
 		SchermataPrincipale.addActionListener(new ActionListener() {
