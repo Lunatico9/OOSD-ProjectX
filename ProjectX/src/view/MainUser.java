@@ -14,6 +14,7 @@ import javax.swing.AbstractListModel;
 import javax.swing.JScrollPane;
 
 import database.DatabaseMySQL;
+import javax.swing.JMenuItem;
 
 public class MainUser {
 
@@ -59,18 +60,6 @@ public class MainUser {
 			games.add(rst.getString(1));
 		}
 		
-		JButton btnLogout = new JButton("Logout");
-		btnLogout.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Login logout = new Login();
-				logout.main(null);
-				frame.setVisible(false);
-				frame.dispose();
-			}
-		});
-		btnLogout.setBounds(307, 227, 101, 23);
-		frame.getContentPane().add(btnLogout);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(46, 38, 245, 153);
 		frame.getContentPane().add(scrollPane);
@@ -97,6 +86,29 @@ public class MainUser {
 		});
 		btnGioca.setBounds(122, 227, 89, 23);
 		frame.getContentPane().add(btnGioca);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Esci");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				String type = "user";
+				if(type.equals("user"))
+					MainUser.main(null);
+				else
+					System.out.println("z");
+			}
+		});
+		mntmNewMenuItem.setBounds(0, 0, 70, 22);
+		frame.getContentPane().add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Login.main(null);
+				frame.dispose();
+			}
+		});
+		mntmNewMenuItem_1.setBounds(69, 0, 81, 22);
+		frame.getContentPane().add(mntmNewMenuItem_1);
 	}
-
 }

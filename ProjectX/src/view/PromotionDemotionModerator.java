@@ -68,10 +68,10 @@ public class PromotionDemotionModerator {
 		ArrayList<Actor> list = userList();
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		Object[] row = new Object[2];
+		model.setRowCount(0);
 		for (int i = 0; i < list.size(); i++) {
 			row[0] = list.get(i).getUsername();
 			row[1] = list.get(i).getType();
-			model.setRowCount(i);
 			model.addRow(row);		
 		}
 	}
@@ -85,7 +85,7 @@ public class PromotionDemotionModerator {
 		frame.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(155, 98, 300, 224);
+		scrollPane.setBounds(155, 98, 300, 229);
 		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
@@ -93,19 +93,7 @@ public class PromotionDemotionModerator {
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
+				
 			},
 			new String[] {
 				"username", "type"
