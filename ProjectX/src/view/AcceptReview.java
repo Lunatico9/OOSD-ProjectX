@@ -26,7 +26,7 @@ import java.awt.Font;
 public class AcceptReview {
 	
 	private String review;
-	private int vote;
+	private int vote,id,idgioco,idutente;
 	private JFrame frame;
 
 	/**
@@ -63,58 +63,73 @@ public class AcceptReview {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		//COMMENTO
 		JLabel label = new JLabel("");
 		label.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		String query= "Select text From review WHERE approved=0";
-		ResultSet rst= DatabaseMySQL.SendQuery(query);
+		String queryTOT= "Select text, idReview, Game_idGame, user_iduser, vote From review WHERE approved=0";
+		ResultSet rst= DatabaseMySQL.SendQuery(queryTOT);
 		if(rst.next()){
-		review= rst.getString(1);
+		review= rst.getString("text");
+		id=rst.getInt("idReview");
+		vote=rst.getInt("vote");
+		idgioco=rst.getInt("Game_idGame");
+		idutente=rst.getInt("user_iduser");
 		}
 		else label.setText("Non ci sono review in attesa");
 		label.setText(review);
 		label.setBounds(10, 26, 414, 159);
 		frame.getContentPane().add(label);
 		
+		//VOTO
 		JLabel lblVoto = new JLabel("");
 		lblVoto.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVoto.setBounds(334, 149, 90, 37);
-		String query1= "Select vote FROM review WHERE approved=0 AND text='"+review+"'";
-		ResultSet rst1= DatabaseMySQL.SendQuery(query1);
-		if(rst1.next()){
-			vote= rst1.getInt(1);
-		}
 		lblVoto.setText("Voto:"+ vote);
 		frame.getContentPane().add(lblVoto);
 		
+		//UTENTE
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		String Nome="SELECT username FROM user WHERE idUser='"+idutente+"'";
+		ResultSet nome= DatabaseMySQL.SendQuery(Nome);
+		nome.next();
+		lblNewLabel.setText("Recensione di: " + nome.getString(1) );
+		lblNewLabel.setBounds(212, 26, 212, 23);
+		frame.getContentPane().add(lblNewLabel);
 		
+		//GIOCO
+		JLabel label_1 = new JLabel("");
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		String GIOCO="SELECT name FROM game WHERE idGame='"+idgioco+"'";
+		ResultSet gioco= DatabaseMySQL.SendQuery(GIOCO);
+		gioco.next();
+		label_1.setText("Gioco: " + gioco.getString(1));
+		label_1.setBounds(10, 26, 174, 28);
+		frame.getContentPane().add(label_1);
 		
+		//RIFIUTA
 		JButton Rifiuta = new JButton("Rifiuta Review");
 		Rifiuta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+								
 			}
 		});
 		Rifiuta.setBounds(255, 193, 126, 23);
 		frame.getContentPane().add(Rifiuta);
 		
+		//ACCETTA
 		JButton Accetta = new JButton("Accetta Review");
 		Accetta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String text=label.getText(), query="SELECT idReview FROM review WHERE text='"+text+"' AND vote='"+vote+"' AND approved='0'";
-				ResultSet rst, rst1, rst2;
+				String text=label.getText();
+				int ID=id;
+				int voto=vote;
+				int gioco=idgioco;
+				int user=idutente;
 				try {
-					rst = DatabaseMySQL.SendQuery(query);
-					if(rst.next()){
-						String query1="SELECT text FROM review WHERE idReview="+rst.getInt(1)+"", query2="SELECT vote FROM review WHERE idReview="+rst.getInt(1)+"";
-						rst1= DatabaseMySQL.SendQuery(query1);
-						rst2= DatabaseMySQL.SendQuery(query2);
-						if(rst1.next() && rst2.next()){
-							AcceptReviewController.Accetta(rst.getInt(1),rst1.getString(1),rst2.getInt(1));
-						}
-					}
-				}
-					catch (Exception e) {
+					AcceptReviewController.Accetta(ID, text, gioco, user, voto);				
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -122,9 +137,10 @@ public class AcceptReview {
 		Accetta.setBounds(46, 193, 138, 23);
 		frame.getContentPane().add(Accetta);
 		
+		//MENU
 		JButton Menù = new JButton("Menù");
 		Menù.setBounds(173, 227, 89, 23);
 		frame.getContentPane().add(Menù);	
-		
+
 	}
 }
