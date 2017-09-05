@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
+import javax.swing.JComboBox;
+import javax.swing.JTextPane;
 
 public class AcceptReview {
 
@@ -66,8 +68,6 @@ public class AcceptReview {
 		Menù.setBounds(173, 227, 89, 23);
 		frame.getContentPane().add(Menù);
 		
-		JList listaReview = new JList();
-		listaReview.setBounds(10, 11, 414, 171);
-		frame.getContentPane().add(listaReview);
+		
 	}
 }
