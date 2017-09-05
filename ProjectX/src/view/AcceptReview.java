@@ -25,6 +25,7 @@ import java.awt.Font;
 
 public class AcceptReview {
 	
+	private boolean x;
 	private String review;
 	private int vote,id,idgioco,idutente;
 	private JFrame frame;
@@ -64,9 +65,9 @@ public class AcceptReview {
 		frame.getContentPane().setLayout(null);
 		
 		//COMMENTO
-		JLabel label = new JLabel("");
-		label.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		label.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel Commento = new JLabel("");
+		Commento.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		Commento.setHorizontalAlignment(SwingConstants.CENTER);
 		String queryTOT= "Select text, idReview, Game_idGame, user_iduser, vote From review WHERE approved=0";
 		ResultSet rst= DatabaseMySQL.SendQuery(queryTOT);
 		if(rst.next()){
@@ -75,38 +76,45 @@ public class AcceptReview {
 		vote=rst.getInt("vote");
 		idgioco=rst.getInt("Game_idGame");
 		idutente=rst.getInt("user_iduser");
+		Commento.setText(review);
+		x=true;
 		}
-		else label.setText("Non ci sono review in attesa");
-		label.setText(review);
-		label.setBounds(10, 26, 414, 159);
-		frame.getContentPane().add(label);
+		else Commento.setText("Non ci sono recensioni da confermare");
+		Commento.setBounds(10, 26, 414, 159);
+		frame.getContentPane().add(Commento);
 		
 		//VOTO
-		JLabel lblVoto = new JLabel("");
-		lblVoto.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVoto.setBounds(334, 149, 90, 37);
-		lblVoto.setText("Voto:"+ vote);
-		frame.getContentPane().add(lblVoto);
+		JLabel Voto = new JLabel("");
+		Voto.setHorizontalAlignment(SwingConstants.CENTER);
+		Voto.setBounds(334, 149, 90, 37);
+		Voto.setText("Voto:"+ vote);
+		frame.getContentPane().add(Voto);
 		
 		//UTENTE
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel Utente = new JLabel("");
+		Utente.setHorizontalAlignment(SwingConstants.CENTER);
+		if(x){
 		String Nome="SELECT username FROM user WHERE idUser='"+idutente+"'";
 		ResultSet nome= DatabaseMySQL.SendQuery(Nome);
 		nome.next();
-		lblNewLabel.setText("Recensione di: " + nome.getString(1) );
-		lblNewLabel.setBounds(212, 26, 212, 23);
-		frame.getContentPane().add(lblNewLabel);
+		Utente.setText("Recensione di: " + nome.getString(1) );
+		}
+		else Utente.setText("Recensione di: ");
+		Utente.setBounds(212, 26, 212, 23);
+		frame.getContentPane().add(Utente);
 		
 		//GIOCO
-		JLabel label_1 = new JLabel("");
-		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel Gioco = new JLabel("");
+		Gioco.setHorizontalAlignment(SwingConstants.CENTER);
+		if(x){
 		String GIOCO="SELECT name FROM game WHERE idGame='"+idgioco+"'";
 		ResultSet gioco= DatabaseMySQL.SendQuery(GIOCO);
 		gioco.next();
-		label_1.setText("Gioco: " + gioco.getString(1));
-		label_1.setBounds(10, 26, 174, 28);
-		frame.getContentPane().add(label_1);
+		Gioco.setText("Gioco: " + gioco.getString(1));
+		}
+		else Gioco.setText("Gioco: ");
+		Gioco.setBounds(10, 26, 174, 28);
+		frame.getContentPane().add(Gioco);
 		
 		//RIFIUTA
 		JButton Rifiuta = new JButton("Rifiuta Review");
@@ -122,13 +130,36 @@ public class AcceptReview {
 		JButton Accetta = new JButton("Accetta Review");
 		Accetta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String text=label.getText();
+				String text=Commento.getText();
 				int ID=id;
 				int voto=vote;
 				int gioco=idgioco;
 				int user=idutente;
 				try {
-					AcceptReviewController.Accetta(ID, text, gioco, user, voto);				
+					AcceptReviewController.Accetta(ID, text, gioco, user, voto);
+					if(rst.next()){
+						review= rst.getString("text");
+						id=rst.getInt("idReview");
+						vote=rst.getInt("vote");
+						idgioco=rst.getInt("Game_idGame");
+						idutente=rst.getInt("user_iduser");
+						Commento.setText(rst.getString("text"));
+						String GIOCO="SELECT name FROM game WHERE idGame='"+idgioco+"'";
+						ResultSet gioco2= DatabaseMySQL.SendQuery(GIOCO);
+						gioco2.next();
+						Gioco.setText("Gioco: " + gioco2.getString(1));
+						Voto.setText("Voto:"+ vote);
+						String Nome="SELECT username FROM user WHERE idUser='"+idutente+"'";
+						ResultSet nome= DatabaseMySQL.SendQuery(Nome);
+						nome.next();
+						Utente.setText("Recensione di: " + nome.getString(1));
+					}
+					else{
+						Commento.setText("Non ci sono recensioni da confermare");
+						Gioco.setText("Gioco: ");
+						Utente.setText("Recensione di ");
+						Voto.setText("Voto: ");
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
