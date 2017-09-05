@@ -87,12 +87,14 @@ public class AcceptReview {
 		JButton Accetta = new JButton("Accetta Review");
 		Accetta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String text=label.getText(), query="SELECT idReview FROM review WHERE text="+text+"";
-				ResultSet rst;
+				String text=label.getText(), query="SELECT idReview FROM review WHERE text="+text+"", query1="SELECT text FROM review WHERE text="+text+"", query2="SELECT vote FROM review WHERE text="+text+"";
+				ResultSet rst, rst1,rst2;
 				try {
 					rst = DatabaseMySQL.SendQuery(query);
-					if(rst.next()){
-						AcceptReviewController.Accetta(rst.getInt(1));
+					rst1= DatabaseMySQL.SendQuery(query1);
+					rst2= DatabaseMySQL.SendQuery(query2);
+					if(rst.next() && rst1.next() && rst2.next()){
+						AcceptReviewController.Accetta(rst.getInt(1),rst1.getString(1),rst2.getInt(1));
 						}
 					}
 					catch (Exception e) {
