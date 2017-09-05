@@ -26,6 +26,7 @@ import java.awt.Font;
 public class AcceptReview {
 	
 	private String review;
+	private int vote;
 	private JFrame frame;
 
 	/**
@@ -75,6 +76,17 @@ public class AcceptReview {
 		label.setBounds(10, 26, 414, 159);
 		frame.getContentPane().add(label);
 		
+		JLabel lblVoto = new JLabel("");
+		lblVoto.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVoto.setBounds(334, 149, 90, 37);
+		String query1= "Select vote FROM review WHERE approved=0 AND text='"+review+"'";
+		ResultSet rst1= DatabaseMySQL.SendQuery(query1);
+		if(rst1.next()){
+			vote= rst1.getInt(1);
+		}
+		lblVoto.setText("Voto:"+ vote);
+		frame.getContentPane().add(lblVoto);
+		
 		JButton Rifiuta = new JButton("Rifiuta Review");
 		Rifiuta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -87,16 +99,19 @@ public class AcceptReview {
 		JButton Accetta = new JButton("Accetta Review");
 		Accetta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String text=label.getText(), query="SELECT idReview FROM review WHERE text="+text+"", query1="SELECT text FROM review WHERE text="+text+"", query2="SELECT vote FROM review WHERE text="+text+"";
-				ResultSet rst, rst1,rst2;
+				String text=label.getText(), query="SELECT idReview FROM review WHERE text='"+text+"' AND vote='"+vote+"' AND approved='0'";
+				ResultSet rst, rst1, rst2;
 				try {
 					rst = DatabaseMySQL.SendQuery(query);
-					rst1= DatabaseMySQL.SendQuery(query1);
-					rst2= DatabaseMySQL.SendQuery(query2);
-					if(rst.next() && rst1.next() && rst2.next()){
-						AcceptReviewController.Accetta(rst.getInt(1),rst1.getString(1),rst2.getInt(1));
+					if(rst.next()){
+						String query1="SELECT text FROM review WHERE idReview="+rst.getInt(1)+"", query2="SELECT vote FROM review WHERE idReview="+rst.getInt(1)+"";
+						rst1= DatabaseMySQL.SendQuery(query1);
+						rst2= DatabaseMySQL.SendQuery(query2);
+						if(rst1.next() && rst2.next()){
+							AcceptReviewController.Accetta(rst.getInt(1),rst1.getString(1),rst2.getInt(1));
 						}
 					}
+				}
 					catch (Exception e) {
 					e.printStackTrace();
 				}
