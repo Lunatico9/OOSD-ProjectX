@@ -87,6 +87,8 @@ public class AcceptReview {
 		lblVoto.setText("Voto:"+ vote);
 		frame.getContentPane().add(lblVoto);
 		
+		
+		
 		JButton Rifiuta = new JButton("Rifiuta Review");
 		Rifiuta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
