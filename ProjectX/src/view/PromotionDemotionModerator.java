@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import javax.swing.JScrollPane;
 
 public class PromotionDemotionModerator {
 
@@ -70,7 +71,7 @@ public class PromotionDemotionModerator {
 		for (int i = 0; i < list.size(); i++) {
 			row[0] = list.get(i).getUsername();
 			row[1] = list.get(i).getType();
-			model.removeRow(i);
+			model.setRowCount(i);
 			model.addRow(row);		
 		}
 	}
@@ -83,7 +84,12 @@ public class PromotionDemotionModerator {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(155, 98, 300, 224);
+		frame.getContentPane().add(scrollPane);
+		
 		table = new JTable();
+		scrollPane.setViewportView(table);
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -107,8 +113,6 @@ public class PromotionDemotionModerator {
 			}
 		));
 		table.setFont(new Font("Arial", Font.PLAIN, 16));
-		table.setBounds(155, 98, 300, 224);
-		frame.getContentPane().add(table);
 		show_user();
 	}
 }
