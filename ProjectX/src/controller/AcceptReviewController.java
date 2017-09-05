@@ -7,7 +7,7 @@ import database.DatabaseMySQL;
 public class AcceptReviewController {
 	
 	public static void Accetta(int idReview, String text, int vote) throws Exception{
-		String query= "SELECT  FROM review WHERE idReview='"+idReview+"' text='"+text+"' AND vote='"+vote+"' ";
+		String query= "SELECT idReview FROM review WHERE idReview='"+idReview+"' text='"+text+"' AND vote='"+vote+"' ";
 		ResultSet rst= DatabaseMySQL.SendQuery(query);
 		if(rst.next()){
 		}
