@@ -43,7 +43,7 @@ public class PromotionDemotionModerator {
 	 */
 	public PromotionDemotionModerator() throws Exception {
 		initialize();
-		show_user();
+		
 	}
 
 	public ArrayList<Actor> userList() throws Exception {
@@ -70,7 +70,8 @@ public class PromotionDemotionModerator {
 		for (int i = 0; i < list.size(); i++) {
 			row[0] = list.get(i).getUsername();
 			row[1] = list.get(i).getType();
-			model.addRow(row);
+			model.removeRow(i);
+			model.addRow(row);		
 		}
 	}
 	/**
@@ -96,13 +97,18 @@ public class PromotionDemotionModerator {
 				{null, null},
 				{null, null},
 				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
 			},
 			new String[] {
 				"username", "type"
 			}
 		));
 		table.setFont(new Font("Arial", Font.PLAIN, 20));
-		table.setBounds(174, 109, 200, 160);
+		table.setBounds(155, 98, 200, 224);
 		frame.getContentPane().add(table);
+		show_user();
 	}
 }
