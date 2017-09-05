@@ -90,7 +90,6 @@ public class PromotionDemotionModerator {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		table.setBorder(new LineBorder(new Color(0, 0, 0)));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null},
