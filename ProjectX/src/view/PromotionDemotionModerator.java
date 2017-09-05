@@ -21,6 +21,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PromotionDemotionModerator {
 
@@ -28,6 +30,7 @@ public class PromotionDemotionModerator {
 	private JTable table;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JButton btnUpdate;
 
 	/**
 	 * Launch the application.
@@ -74,10 +77,10 @@ public class PromotionDemotionModerator {
 		ArrayList<Actor> list = userList();
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		Object[] row = new Object[2];
-		model.setRowCount(0);
 		for (int i = 0; i < list.size(); i++) {
 			row[0] = list.get(i).getUsername();
 			row[1] = list.get(i).getType();
+			model.setRowCount(i);
 			model.addRow(row);		
 		}
 	}
@@ -91,24 +94,36 @@ public class PromotionDemotionModerator {
 		frame.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				int a = table.getSelectedRow();
-				DefaultTableModel model = (DefaultTableModel) table.getModel();
-				textField.setText(model.getValueAt(a,1).toString());
-				textField.setText(model.getValueAt(a,2).toString());
-			}
-		});
-		scrollPane.setBounds(301, 101, 300, 229);
+		scrollPane.setBounds(297, 94, 300, 224);
 		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int a = table.getSelectedRow();
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				textField.setText(model.getValueAt(a,0).toString());
+				textField_1.setText(model.getValueAt(a,1).toString());
+			}
+		});
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null},
-				
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
 			},
 			new String[] {
 				"username", "type"
@@ -117,17 +132,28 @@ public class PromotionDemotionModerator {
 		table.setFont(new Font("Arial", Font.PLAIN, 16));
 		
 		textField = new JTextField();
-		textField.setBounds(51, 85, 116, 22);
+		textField.setBounds(48, 99, 116, 22);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(51, 164, 116, 22);
+		textField_1.setBounds(48, 161, 116, 22);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 		
-		JButton btnUpdate = new JButton("Update");
-		btnUpdate.setBounds(54, 367, 97, 25);
+		btnUpdate = new JButton("Update");
+		btnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String query = "UPDATE 'user' SET 'username' = '" + textField.getText() + "', 'type' = '" + textField_1.getText() + "'";
+			    try {
+					ResultSet rst = DatabaseMySQL.SendQuery(query);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		btnUpdate.setBounds(56, 380, 97, 25);
 		frame.getContentPane().add(btnUpdate);
 		show_user();
 	}
