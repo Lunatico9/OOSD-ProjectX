@@ -19,6 +19,8 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PromotionDemotionModerator {
 
@@ -89,7 +91,16 @@ public class PromotionDemotionModerator {
 		frame.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(303, 80, 300, 229);
+		scrollPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				int a = table.getSelectedRow();
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				textField.setText(model.getValueAt(a,1).toString());
+				textField.setText(model.getValueAt(a,2).toString());
+			}
+		});
+		scrollPane.setBounds(301, 101, 300, 229);
 		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
@@ -111,7 +122,7 @@ public class PromotionDemotionModerator {
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(51, 140, 116, 22);
+		textField_1.setBounds(51, 164, 116, 22);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 		
