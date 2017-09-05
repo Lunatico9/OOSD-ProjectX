@@ -125,8 +125,11 @@ public class AcceptReview {
 				String text=label.getText();
 				int ID=id;
 				int voto=vote;
+				int gioco=idgioco;
+				int user=idutente;
 				try {
-					AcceptReviewController.Accetta(ID, text, voto);
+					AcceptReviewController.Accetta(ID, text, gioco, user, voto);
+					
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

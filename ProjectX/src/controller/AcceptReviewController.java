@@ -6,13 +6,10 @@ import database.DatabaseMySQL;
 
 public class AcceptReviewController {
 	
-	public static void Accetta(int idReview, String text, int vote) throws Exception{
-		String query= "SELECT idReview FROM review WHERE idReview='"+idReview+"' text='"+text+"' AND vote='"+vote+"' ";
-		ResultSet rst= DatabaseMySQL.SendQuery(query);
-		if(rst.next()){
-		}
-		String query2= "INSERT INTO review (idReview, text, vote, approved) VALUES ('"+idReview+"', '"+text+"', '"+vote+"', '1')";
-		ResultSet rst2= DatabaseMySQL.SendQuery(query2);
+	public static void Accetta(int idReview, String text, int game, int user, int vote) throws Exception{
+		String elimina= "DELETE FROM review WHERE idReview='"+idReview+"'";
+		ResultSet delete= DatabaseMySQL.SendQuery(elimina);
+		String aggiungi= "INSERT INTO review (idReview, text, approved, Game_idGame, user_iduser, vote) VALUES ('"+idReview+"', '"+text+"', '1', '"+game+"','"+user+"','"+vote+"')";
+		ResultSet add=DatabaseMySQL.SendQuery(aggiungi);
 	}
-
 }
