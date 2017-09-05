@@ -110,5 +110,15 @@ public class MainUser {
 		});
 		mntmNewMenuItem_1.setBounds(69, 0, 81, 22);
 		frame.getContentPane().add(mntmNewMenuItem_1);
+		
+		JButton btnNewButton = new JButton("Recensisci");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				AddReview.main(username, list.getSelectedValue().toString());
+			}
+		});
+		btnNewButton.setBounds(227, 227, 89, 23);
+		frame.getContentPane().add(btnNewButton);
 	}
 }
