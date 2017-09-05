@@ -25,7 +25,7 @@ import controller.RegistrationController;
 import java.awt.Font;
 
 public class Registration {
-
+	
 	private JFrame Registration;
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
@@ -61,6 +61,7 @@ public class Registration {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		Registration = new JFrame();
 		Registration.setTitle("Registration");
 		Registration.setBounds(100, 100, 450, 425);
@@ -113,57 +114,58 @@ public class Registration {
 		textField.setBounds(72, 51, 250, 20);
 		panel.add(textField);
 		textField.setColumns(10);
-		
+
 		JButton Registra = new JButton("Registra Account");
 		Registra.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		Registra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String username= textField.getText(), name=textField_1.getText(), surname=textField_2.getText(), email=textField_3.getText();
-				boolean presente = RegistrationController.verify(username);
+				boolean presente;
 				String pass1= passwordField.getText();
 				String pass2= passwordField_1.getText();
-				boolean uguale= RegistrationController.pass(pass1, pass2);
-			    if (username.isEmpty() || pass1.isEmpty() || pass2.isEmpty() || name.isEmpty() || surname.isEmpty()){ 
-			    	JOptionPane.showMessageDialog(null, "Errore, uno o più campi non sono compilati correttamente o sono vuoti.");}
-			    else{
-			    if (presente)
-					JOptionPane.showMessageDialog(null, "Errore, l'username che stai usando non è disponibile, cambialo e controlla la sua disponibilità con il tasto Verifica");
-				else{
-					if(uguale){
-						try {
-							RegistrationController.AddUser(username,pass1,name,surname,email);
-						} catch (Exception e) {
-							e.printStackTrace();
+				
+				try {
+					if(username.isEmpty()){
+						JOptionPane.showMessageDialog(null, "Errore, inserisci un username");;
+					}
+					else{
+						presente = RegistrationController.verify(username);
+						if(presente) JOptionPane.showMessageDialog(null, "Errore, username non valido");
 						}
-						JOptionPane.showMessageDialog(null, "L'utente "+username+" è stato registrato");
-					}
-					else{ 
-						JOptionPane.showMessageDialog(null, "Errore, le password inserite non corrispondono correggi e riprova");
-					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
 				}
-			    }
+				
+				try {
+					presente = RegistrationController.verify(username);
+					boolean uguale= RegistrationController.pass(pass1, pass2);
+				    if (pass1.isEmpty() || pass2.isEmpty() || name.isEmpty() || surname.isEmpty() || !email.contains("@") || !email.contains(".")){ 
+				    	JOptionPane.showMessageDialog(null, "Errore, uno o più campi non sono compilati correttamente o sono vuoti.");
+				    	}
+				    else{
+				    if (presente)
+						;
+					else{
+						if(uguale){
+							try {
+								RegistrationController.AddUser(username,pass1,name,surname,email);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}	
+						}
+						else{ 
+							JOptionPane.showMessageDialog(null, "Errore, le password inserite non corrispondono correggi e riprova");
+						}
+					}
+				    }
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		
 		Registra.setBounds(96, 318, 201, 23);
 		panel.add(Registra);
-		
-		JButton Verifica = new JButton("Verifica");
-		Verifica.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		Verifica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String username=textField.getText();
-				boolean presente = RegistrationController.verify(username);
-				if(username.isEmpty()){
-					JOptionPane.showMessageDialog(null, "Errore, inserisci un username");;
-				}
-				else{ if(presente) JOptionPane.showMessageDialog(null, "Errore, username non valido");
-					  else JOptionPane.showMessageDialog(null, "Username valido, chiudi questo messaggio e procedi con la registrazione");;
-				}
-			}
-		});
-		Verifica.setBounds(335, 50, 89, 23);
-		panel.add(Verifica);
 		
 		JButton SchermataPrincipale = new JButton("Schermata Principale");
 		SchermataPrincipale.addActionListener(new ActionListener() {
