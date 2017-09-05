@@ -106,8 +106,8 @@ public class PromotionDemotionModerator {
 				"username", "type"
 			}
 		));
-		table.setFont(new Font("Arial", Font.PLAIN, 20));
-		table.setBounds(155, 98, 200, 224);
+		table.setFont(new Font("Arial", Font.PLAIN, 16));
+		table.setBounds(155, 98, 300, 224);
 		frame.getContentPane().add(table);
 		show_user();
 	}
