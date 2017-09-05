@@ -128,10 +128,8 @@ public class AcceptReview {
 				int gioco=idgioco;
 				int user=idutente;
 				try {
-					AcceptReviewController.Accetta(ID, text, gioco, user, voto);
-					
+					AcceptReviewController.Accetta(ID, text, gioco, user, voto);				
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
