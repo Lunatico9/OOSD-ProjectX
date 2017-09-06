@@ -18,11 +18,14 @@ import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class PromotionDemotionModerator {
 
@@ -31,6 +34,7 @@ public class PromotionDemotionModerator {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JButton btnUpdate;
+	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -89,12 +93,13 @@ public class PromotionDemotionModerator {
 	 */
 	private void initialize() throws Exception {
 		frame = new JFrame();
+		frame.setTitle("Promotion or demotion");
 		frame.setBounds(100, 100, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(297, 94, 300, 224);
+		scrollPane.setBounds(323, 98, 300, 224);
 		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
@@ -126,22 +131,23 @@ public class PromotionDemotionModerator {
 				{null, null},
 			},
 			new String[] {
-				"username", "type"
+				"Username", "Type"
 			}
 		));
 		table.setFont(new Font("Arial", Font.PLAIN, 16));
 		
 		textField = new JTextField();
-		textField.setBounds(48, 99, 116, 22);
+		textField.setBounds(72, 158, 163, 27);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(48, 161, 116, 22);
+		textField_1.setBounds(72, 251, 163, 27);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 		
 		btnUpdate = new JButton("Update");
+		btnUpdate.setFont(new Font("Arial", Font.PLAIN, 18));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 					String query = "UPDATE user SET type = '" + textField_1.getText() + "' WHERE username = '" + textField.getText() + "'";
@@ -156,8 +162,29 @@ public class PromotionDemotionModerator {
 				}
 			}
 		});
-		btnUpdate.setBounds(56, 380, 97, 25);
+		btnUpdate.setBounds(39, 381, 132, 48);
 		frame.getContentPane().add(btnUpdate);
+		
+		JButton btnModeratore = new JButton("Main");
+		btnModeratore.setFont(new Font("Arial", Font.PLAIN, 18));
+		btnModeratore.setBounds(509, 381, 132, 48);
+		frame.getContentPane().add(btnModeratore);
+		
+		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblUsername.setBounds(72, 116, 100, 29);
+		frame.getContentPane().add(lblUsername);
+		
+		JLabel lblType = new JLabel("Type");
+		lblType.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblType.setBounds(72, 213, 100, 29);
+		frame.getContentPane().add(lblType);
+		
+		panel = new JPanel();
+		panel.setBounds(38, 63, 605, 293);
+		frame.getContentPane().add(panel);
+		panel.setBorder(BorderFactory.createTitledBorder(
+		BorderFactory.createEtchedBorder(), "PROMUOVI O DEGRADA"));
 		show_user();
 	}
 }
