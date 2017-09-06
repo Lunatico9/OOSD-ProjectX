@@ -146,7 +146,7 @@ public class PromotionDemotionModerator {
 			public void actionPerformed(ActionEvent arg0) {
 					String query = "UPDATE user SET type = '" + textField_1.getText() + "' WHERE username = '" + textField.getText() + "'";
 			    try {
-			    	int a = table.getSelectedRow();
+			    	String a = textField_1.getText();
 			    	int i= table.getSelectedRow();
 			    	table.getModel().setValueAt(a, i, 1);
 					ResultSet rst = DatabaseMySQL.SendQuery(query);
