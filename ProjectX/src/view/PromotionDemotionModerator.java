@@ -95,7 +95,6 @@ public class PromotionDemotionModerator {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(297, 94, 300, 224);
-		scrollPane.setBounds(301, 101, 300, 229);
 		frame.getContentPane().add(scrollPane);
 		
 		table = new JTable();
@@ -155,16 +154,6 @@ public class PromotionDemotionModerator {
 			}
 		});
 		btnUpdate.setBounds(56, 380, 97, 25);
-		JButton btnUpdate = new JButton("Update");
-		btnUpdate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				int a = table.getSelectedRow();
-				DefaultTableModel model = (DefaultTableModel) table.getModel();
-				textField.setText(model.getValueAt(a,1).toString());
-				textField_1.setText(model.getValueAt(a,2).toString());
-			}
-		});
-		btnUpdate.setBounds(54, 367, 97, 25);
 		frame.getContentPane().add(btnUpdate);
 		show_user();
 	}
