@@ -21,6 +21,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PromotionDemotionModerator {
 
@@ -91,15 +93,6 @@ public class PromotionDemotionModerator {
 		frame.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				int a = table.getSelectedRow();
-				DefaultTableModel model = (DefaultTableModel) table.getModel();
-				textField.setText(model.getValueAt(a,1).toString());
-				textField.setText(model.getValueAt(a,2).toString());
-			}
-		});
 		scrollPane.setBounds(301, 101, 300, 229);
 		frame.getContentPane().add(scrollPane);
 		
@@ -127,6 +120,14 @@ public class PromotionDemotionModerator {
 		textField_1.setColumns(10);
 		
 		JButton btnUpdate = new JButton("Update");
+		btnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int a = table.getSelectedRow();
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+				textField.setText(model.getValueAt(a,1).toString());
+				textField.setText(model.getValueAt(a,2).toString());
+			}
+		});
 		btnUpdate.setBounds(54, 367, 97, 25);
 		frame.getContentPane().add(btnUpdate);
 		show_user();
