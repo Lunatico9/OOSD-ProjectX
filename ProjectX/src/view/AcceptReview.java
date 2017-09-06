@@ -64,6 +64,39 @@ public class AcceptReview {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		//VOTO
+		JLabel Voto = new JLabel("");
+		Voto.setHorizontalAlignment(SwingConstants.CENTER);
+		Voto.setBounds(334, 149, 90, 37);
+		Voto.setText("Voto:"+ vote);
+		frame.getContentPane().add(Voto);
+				
+		//UTENTE
+		JLabel Utente = new JLabel("");
+		Utente.setHorizontalAlignment(SwingConstants.CENTER);
+		if(x){
+			String Nome="SELECT username FROM user WHERE idUser='"+idutente+"'";
+			ResultSet nome= DatabaseMySQL.SendQuery(Nome);
+			nome.next();
+			Utente.setText("Recensione di: " + nome.getString(1) );
+			}
+		else Utente.setText("Recensione di: ");
+		Utente.setBounds(212, 26, 212, 23);
+		frame.getContentPane().add(Utente);
+				
+		//GIOCO
+		JLabel Gioco = new JLabel("");
+		Gioco.setHorizontalAlignment(SwingConstants.CENTER);
+		if(x){
+			String GIOCO="SELECT name FROM game WHERE idGame='"+idgioco+"'";
+			ResultSet gioco= DatabaseMySQL.SendQuery(GIOCO);
+			gioco.next();
+			Gioco.setText("Gioco: " + gioco.getString(1));
+		}
+		else Gioco.setText("Gioco: ");
+		Gioco.setBounds(10, 26, 174, 28);
+		frame.getContentPane().add(Gioco);
+		
 		//COMMENTO
 		JLabel Commento = new JLabel("");
 		Commento.setFont(new Font("Times New Roman", Font.PLAIN, 12));
@@ -79,42 +112,14 @@ public class AcceptReview {
 		Commento.setText(review);
 		x=true;
 		}
-		else Commento.setText("Non ci sono recensioni da confermare");
+		else{ 
+			Commento.setText("Non ci sono recensioni da confermare");
+			Gioco.setText("Gioco: ");
+			Utente.setText("Recensione di: ");
+			Voto.setText("Voto: ");
+		}
 		Commento.setBounds(10, 26, 414, 159);
 		frame.getContentPane().add(Commento);
-		
-		//VOTO
-		JLabel Voto = new JLabel("");
-		Voto.setHorizontalAlignment(SwingConstants.CENTER);
-		Voto.setBounds(334, 149, 90, 37);
-		Voto.setText("Voto:"+ vote);
-		frame.getContentPane().add(Voto);
-		
-		//UTENTE
-		JLabel Utente = new JLabel("");
-		Utente.setHorizontalAlignment(SwingConstants.CENTER);
-		if(x){
-		String Nome="SELECT username FROM user WHERE idUser='"+idutente+"'";
-		ResultSet nome= DatabaseMySQL.SendQuery(Nome);
-		nome.next();
-		Utente.setText("Recensione di: " + nome.getString(1) );
-		}
-		else Utente.setText("Recensione di: ");
-		Utente.setBounds(212, 26, 212, 23);
-		frame.getContentPane().add(Utente);
-		
-		//GIOCO
-		JLabel Gioco = new JLabel("");
-		Gioco.setHorizontalAlignment(SwingConstants.CENTER);
-		if(x){
-		String GIOCO="SELECT name FROM game WHERE idGame='"+idgioco+"'";
-		ResultSet gioco= DatabaseMySQL.SendQuery(GIOCO);
-		gioco.next();
-		Gioco.setText("Gioco: " + gioco.getString(1));
-		}
-		else Gioco.setText("Gioco: ");
-		Gioco.setBounds(10, 26, 174, 28);
-		frame.getContentPane().add(Gioco);
 		
 		//RIFIUTA
 		JButton Rifiuta = new JButton("Rifiuta Review");
@@ -147,7 +152,7 @@ public class AcceptReview {
 					else{
 						Commento.setText("Non ci sono recensioni da confermare");
 						Gioco.setText("Gioco: ");
-						Utente.setText("Recensione di ");
+						Utente.setText("Recensione di: ");
 						Voto.setText("Voto: ");
 					}
 				}
@@ -190,7 +195,7 @@ public class AcceptReview {
 					else{
 						Commento.setText("Non ci sono recensioni da confermare");
 						Gioco.setText("Gioco: ");
-						Utente.setText("Recensione di ");
+						Utente.setText("Recensione di: ");
 						Voto.setText("Voto: ");
 					}
 				} catch (Exception e) {
