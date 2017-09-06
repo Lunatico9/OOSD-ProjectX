@@ -10,4 +10,9 @@ public class AcceptReviewController {
 		String aggiungi= "UPDATE `review` SET `Approved` = '1' WHERE idReview = '"+idReview+"'";
 		ResultSet add=DatabaseMySQL.SendQuery(aggiungi);
 	}
+	
+	public static void Rifiuta(int idReview, String text, int game, int user, int vote) throws Exception{
+		String nega= "UPDATE `review` SET `Approved` = '2' WHERE idReview = '"+idReview+"'";
+		ResultSet add=DatabaseMySQL.SendQuery(nega);
+	}
 }

@@ -120,7 +120,40 @@ public class AcceptReview {
 		JButton Rifiuta = new JButton("Rifiuta Review");
 		Rifiuta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-								
+				String text=Commento.getText();
+				int ID=id;
+				int voto=vote;
+				int gioco=idgioco;
+				int user=idutente;
+				try {
+					AcceptReviewController.Rifiuta(ID, text, gioco, user, voto);
+					if(rst.next()){
+						review= rst.getString("text");
+						id=rst.getInt("idReview");
+						vote=rst.getInt("vote");
+						idgioco=rst.getInt("Game_idGame");
+						idutente=rst.getInt("user_iduser");
+						Commento.setText(rst.getString("text"));
+						String GIOCO="SELECT name FROM game WHERE idGame='"+idgioco+"'";
+						ResultSet gioco2= DatabaseMySQL.SendQuery(GIOCO);
+						gioco2.next();
+						Gioco.setText("Gioco: " + gioco2.getString(1));
+						Voto.setText("Voto:"+ vote);
+						String Nome="SELECT username FROM user WHERE idUser='"+idutente+"'";
+						ResultSet nome= DatabaseMySQL.SendQuery(Nome);
+						nome.next();
+						Utente.setText("Recensione di: " + nome.getString(1));
+					}
+					else{
+						Commento.setText("Non ci sono recensioni da confermare");
+						Gioco.setText("Gioco: ");
+						Utente.setText("Recensione di ");
+						Voto.setText("Voto: ");
+					}
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}				
 			}
 		});
 		Rifiuta.setBounds(255, 193, 126, 23);
