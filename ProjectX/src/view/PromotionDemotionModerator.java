@@ -144,7 +144,7 @@ public class PromotionDemotionModerator {
 		btnUpdate = new JButton("Update");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String query = "UPDATE 'user' SET 'username' = '" + textField.getText() + "', 'type' = '" + textField_1.getText() + "'";
+				String query = "UPDATE user SET username = '" + textField.getText() + "', type = '" + textField_1.getText() + "'";
 			    try {
 					ResultSet rst = DatabaseMySQL.SendQuery(query);
 				} catch (Exception e) {
