@@ -104,12 +104,12 @@ public class PromotionDemotionModerator {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel.setBounds(71, 158, 100, 29);
+		lblNewLabel.setBounds(71, 177, 100, 29);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(72, 253, 100, 29);
+		lblNewLabel_1.setBounds(71, 266, 100, 29);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		table = new JTable();
@@ -179,12 +179,12 @@ public class PromotionDemotionModerator {
 		
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setFont(new Font("Arial", Font.PLAIN, 18));
-		lblUsername.setBounds(72, 116, 100, 29);
+		lblUsername.setBounds(71, 137, 100, 29);
 		frame.getContentPane().add(lblUsername);
 		
 		JLabel lblType = new JLabel("Type");
 		lblType.setFont(new Font("Arial", Font.PLAIN, 18));
-		lblType.setBounds(72, 213, 100, 29);
+		lblType.setBounds(71, 229, 100, 29);
 		frame.getContentPane().add(lblType);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
@@ -201,6 +201,8 @@ public class PromotionDemotionModerator {
 		panel = new JPanel();
 		panel.setBounds(38, 63, 605, 293);
 		frame.getContentPane().add(panel);
+		panel.setBorder(BorderFactory.createTitledBorder(
+		BorderFactory.createEtchedBorder(), "PROMUOVI O DEGRADA"));
 		show_user();
 	}
 }
