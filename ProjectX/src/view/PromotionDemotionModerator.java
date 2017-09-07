@@ -25,6 +25,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 public class PromotionDemotionModerator {
@@ -178,11 +179,6 @@ public class PromotionDemotionModerator {
 		btnUpdate.setBounds(39, 381, 132, 48);
 		frame.getContentPane().add(btnUpdate);
 		
-		JButton btnModeratore = new JButton("Main");
-		btnModeratore.setFont(new Font("Arial", Font.PLAIN, 18));
-		btnModeratore.setBounds(509, 381, 132, 48);
-		frame.getContentPane().add(btnModeratore);
-		
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setFont(new Font("Arial", Font.PLAIN, 18));
 		lblUsername.setBounds(72, 116, 100, 29);
@@ -192,6 +188,17 @@ public class PromotionDemotionModerator {
 		lblType.setFont(new Font("Arial", Font.PLAIN, 18));
 		lblType.setBounds(72, 213, 100, 29);
 		frame.getContentPane().add(lblType);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
+		mntmNewMenuItem_1.setFont(new Font("Arial", Font.PLAIN, 20));
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Login.main(null);
+				frame.dispose();
+			}
+		});
+		mntmNewMenuItem_1.setBounds(511, 381, 132, 48);
+		frame.getContentPane().add(mntmNewMenuItem_1);
 		
 		panel = new JPanel();
 		panel.setBounds(38, 63, 605, 293);
