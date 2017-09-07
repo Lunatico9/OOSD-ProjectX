@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Set 05, 2017 alle 15:57
+-- Creato il: Set 07, 2017 alle 22:09
 -- Versione del server: 10.1.26-MariaDB
 -- Versione PHP: 7.1.8
 
@@ -103,28 +103,29 @@ CREATE TABLE `user` (
   `email` varchar(40) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `type` varchar(14) NOT NULL DEFAULT 'giocatore'
+  `type` varchar(14) NOT NULL DEFAULT 'giocatore',
+  `exp` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `user`
 --
 
-INSERT INTO `user` (`idUser`, `name`, `surname`, `email`, `username`, `password`, `type`) VALUES
-(1, 'Lorenzo', 'Collevecchio', 'lorenzocollevecchio@outlook.com', 'Coll', '1234', 'moderatore'),
-(2, 'Francesco', 'Giostra', 'francescogiostra@outlook.com', 'Gios', '1234', 'moderatore'),
-(3, 'Matteo', 'Ficorilli', 'matteoficorilli@outlook.com', 'Fico', '1234', 'moderatore'),
-(4, 'Lorenzo', 'Luna', 'lorenzoluna@outlook.com', 'Luna', '1234', 'giocatore'),
-(5, 'Elisa', 'Coccia', 'elisacoccia@outlook.com', 'Cocc', '1234', 'giocatore'),
-(6, 'Filippo', 'Cristofaro', 'filippocristofaro@outlook.com', 'Cris', '1234', 'giocatore'),
-(7, 'Erika', 'Olivieri', 'erikaolivieri@outlook.com', 'Oliv', '1234', 'giocatore'),
-(8, 'Valeria', 'Falone', 'valeriafalone@outlook.com', 'Falo', '1234', 'giocatore'),
-(9, 'Daniela', 'Fascioli', 'danielafascioli@outlook.com', 'Fasc', '1234', 'giocatore'),
-(10, 'Fabio', 'Capitanio', 'fabiocapitanio@outlook.com', 'Capi', '1234', 'giocatore'),
-(11, 'Antonio', 'Corsi', 'antoniocorsi@outlook.com', 'Cors', '1234', 'giocatore'),
-(12, 'Claudia', 'Stella', 'claudiastella@outlook.com', 'Stel', '1234', 'giocatore'),
-(13, 'Paola', 'Masiello', 'paolamasiello@outlook.com', 'Masi', '1234', 'giocatore'),
-(14, 'Stefano', 'Pisciella', 'stefanopisciella@outlook.com', 'Pisc', '1234', 'giocatore');
+INSERT INTO `user` (`idUser`, `name`, `surname`, `email`, `username`, `password`, `type`, `exp`) VALUES
+(1, 'Lorenzo', 'Collevecchio', 'lorenzocollevecchio@outlook.com', 'Coll', '1234', 'moderatore', 0),
+(2, 'Francesco', 'Giostra', 'francescogiostra@outlook.com', 'Gios', '1234', 'moderatore', 0),
+(3, 'Matteo', 'Ficorilli', 'matteoficorilli@outlook.com', 'Fico', '1234', 'moderatore', 0),
+(4, 'Lorenzo', 'Luna', 'lorenzoluna@outlook.com', 'Luna', '1234', 'giocatore', 0),
+(5, 'Elisa', 'Coccia', 'elisacoccia@outlook.com', 'Cocc', '1234', 'giocatore', 0),
+(6, 'Filippo', 'Cristofaro', 'filippocristofaro@outlook.com', 'Cris', '1234', 'giocatore', 0),
+(7, 'Erika', 'Olivieri', 'erikaolivieri@outlook.com', 'Oliv', '1234', 'giocatore', 0),
+(8, 'Valeria', 'Falone', 'valeriafalone@outlook.com', 'Falo', '1234', 'giocatore', 0),
+(9, 'Daniela', 'Fascioli', 'danielafascioli@outlook.com', 'Fasc', '1234', 'giocatore', 0),
+(10, 'Fabio', 'Capitanio', 'fabiocapitanio@outlook.com', 'Capi', '1234', 'giocatore', 0),
+(11, 'Antonio', 'Corsi', 'antoniocorsi@outlook.com', 'Cors', '1234', 'giocatore', 0),
+(12, 'Claudia', 'Stella', 'claudiastella@outlook.com', 'Stel', '1234', 'giocatore', 0),
+(13, 'Paola', 'Masiello', 'paolamasiello@outlook.com', 'Masi', '1234', 'giocatore', 0),
+(14, 'Stefano', 'Pisciella', 'stefanopisciella@outlook.com', 'Pisc', '1234', 'giocatore', 0);
 
 --
 -- Indici per le tabelle scaricate

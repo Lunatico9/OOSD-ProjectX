@@ -6,8 +6,6 @@ import database.DatabaseMySQL;
 
 public class PlayController {
 	public static void Gioca(String username) throws Exception {
-		username = "Fico";
-		
 		String query2 = "UPDATE user SET exp = exp + 50 WHERE username = '" + username + "'";
 		ResultSet rst =DatabaseMySQL.SendQuery(query2); 
 		String query = "SELECT exp FROM user  WHERE username = '" + username + "'";
@@ -15,6 +13,5 @@ public class PlayController {
 		if (rst.next())
 			System.out.println(rst.getInt(1));
 	}
-	
 	}
 
