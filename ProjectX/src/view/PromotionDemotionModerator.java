@@ -207,6 +207,17 @@ public class PromotionDemotionModerator {
 		frame.getContentPane().add(panel);
 		panel.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createEtchedBorder(), "PROMUOVI O DEGRADA"));
+		
+		JButton btnMen = new JButton("Men\u00F9");
+		btnMen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainModerator.main(null);
+				frame.dispose();
+			}
+		});
+		btnMen.setFont(new Font("Arial", Font.PLAIN, 18));
+		btnMen.setBounds(183, 381, 132, 48);
+		frame.getContentPane().add(btnMen);
 		show_user();
 	}
 }
