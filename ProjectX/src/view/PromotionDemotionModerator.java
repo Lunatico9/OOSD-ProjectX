@@ -32,8 +32,6 @@ public class PromotionDemotionModerator {
 
 	private JFrame frame;
 	private JTable table;
-	private JTextField textField;
-	private JTextField textField_1;
 	private JButton btnUpdate;
 	private JPanel panel;
 	private String usernameSelected;
@@ -104,15 +102,25 @@ public class PromotionDemotionModerator {
 		scrollPane.setBounds(323, 98, 300, 224);
 		frame.getContentPane().add(scrollPane);
 		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNewLabel.setBounds(71, 158, 100, 29);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNewLabel_1.setBounds(72, 253, 100, 29);
+		frame.getContentPane().add(lblNewLabel_1);
+		
 		table = new JTable();
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int a = table.getSelectedRow();
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
-				textField.setText(model.getValueAt(a,0).toString());
-				textField_1.setText(model.getValueAt(a,1).toString());
-				usernameSelected = textField.getText();
+				lblNewLabel.setText(model.getValueAt(a,0).toString());
+				lblNewLabel_1.setText(model.getValueAt(a,1).toString());
+				usernameSelected = lblNewLabel.getText();
 			}
 		});
 		scrollPane.setViewportView(table);
@@ -139,16 +147,6 @@ public class PromotionDemotionModerator {
 		));
 		table.setFont(new Font("Arial", Font.PLAIN, 16));
 		
-		textField = new JTextField();
-		textField.setBounds(72, 158, 163, 27);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(72, 251, 163, 27);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
-		
 		btnUpdate = new JButton("Update");
 		btnUpdate.setFont(new Font("Arial", Font.PLAIN, 18));
 		btnUpdate.addActionListener(new ActionListener() {
@@ -156,14 +154,14 @@ public class PromotionDemotionModerator {
 					String m = "moderatore";
 					String b = "giocatore";
 					String query;
-					if (textField_1.getText().equals(m)) {
+					if (lblNewLabel_1.getText().equals(m)) {
 						 query = "UPDATE user SET type = '" + b + "' WHERE username = '" + usernameSelected + "'";
 					}
 					else {
 						 query = "UPDATE user SET type = '" + m + "' WHERE username = '" + usernameSelected + "'";
 					}
 			    try {
-			    	String a = textField_1.getText();
+			    	String a = lblNewLabel_1.getText();
 			    	int i= table.getSelectedRow();
 			    	if(a.equals(m))
 			    	table.getModel().setValueAt(b, i, 1);
@@ -203,8 +201,6 @@ public class PromotionDemotionModerator {
 		panel = new JPanel();
 		panel.setBounds(38, 63, 605, 293);
 		frame.getContentPane().add(panel);
-		panel.setBorder(BorderFactory.createTitledBorder(
-		BorderFactory.createEtchedBorder(), "PROMUOVI O DEGRADA"));
 		show_user();
 	}
 }
