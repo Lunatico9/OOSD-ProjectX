@@ -164,10 +164,14 @@ public class PromotionDemotionModerator {
 			    try {
 			    	String a = textField_1.getText();
 			    	int i= table.getSelectedRow();
-			    	if(a.equals(m))
+			    	if(a.equals(m)) {
 			    	table.getModel().setValueAt(b, i, 1);
-			    	else
-			    		table.getModel().setValueAt(m, i, 1);
+			    	textField_1.setText(b);
+			    	}
+			    	else {
+			    	table.getModel().setValueAt(m, i, 1);
+			    	textField_1.setText(m);
+			    	}
 					ResultSet rst = DatabaseMySQL.SendQuery(query);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
