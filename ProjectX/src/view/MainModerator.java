@@ -10,15 +10,16 @@ import java.awt.event.ActionEvent;
 public class MainModerator {
 
 	private JFrame frame;
+	private String username;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String username) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainModerator window = new MainModerator();
+					MainModerator window = new MainModerator(username);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,8 +31,9 @@ public class MainModerator {
 	/**
 	 * Create the application.
 	 */
-	public MainModerator() {
+	public MainModerator(String username) {
 		initialize();
+		this.username = username;
 	}
 
 	/**

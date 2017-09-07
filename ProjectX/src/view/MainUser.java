@@ -23,11 +23,11 @@ public class MainUser {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String username) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainUser window = new MainUser();
+					MainUser window = new MainUser(username);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +40,8 @@ public class MainUser {
 	 * Create the application.
 	 * @throws Exception 
 	 */
-	public MainUser() throws Exception {
+	public MainUser(String username) throws Exception {
+		this.username = username;
 		initialize();
 	}
 
