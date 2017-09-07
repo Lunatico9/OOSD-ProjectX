@@ -35,6 +35,7 @@ public class PromotionDemotionModerator {
 	private JTextField textField_1;
 	private JButton btnUpdate;
 	private JPanel panel;
+	private String usernameSelected;
 
 	/**
 	 * Launch the application.
@@ -110,6 +111,7 @@ public class PromotionDemotionModerator {
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				textField.setText(model.getValueAt(a,0).toString());
 				textField_1.setText(model.getValueAt(a,1).toString());
+				usernameSelected = textField.getText();
 			}
 		});
 		scrollPane.setViewportView(table);
@@ -154,15 +156,18 @@ public class PromotionDemotionModerator {
 					String b = "giocatore";
 					String query;
 					if (textField_1.getText().equals(m)) {
-						 query = "UPDATE user SET type = '" + textField_1.getText() + "' WHERE username = '" + m + "'";
+						 query = "UPDATE user SET type = '" + b + "' WHERE username = '" + usernameSelected + "'";
 					}
 					else {
-						 query = "UPDATE user SET type = '" + textField_1.getText() + "' WHERE username = '" + b + "'";
+						 query = "UPDATE user SET type = '" + m + "' WHERE username = '" + usernameSelected + "'";
 					}
 			    try {
 			    	String a = textField_1.getText();
 			    	int i= table.getSelectedRow();
-			    	table.getModel().setValueAt(a, i, 1);
+			    	if(a.equals(m))
+			    	table.getModel().setValueAt(b, i, 1);
+			    	else
+			    		table.getModel().setValueAt(m, i, 1);
 					ResultSet rst = DatabaseMySQL.SendQuery(query);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
