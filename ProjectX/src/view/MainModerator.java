@@ -11,7 +11,6 @@ public class MainModerator {
 
 	private JFrame frame;
 	private String username;
-
 	/**
 	 * Launch the application.
 	 */
