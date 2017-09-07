@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JTextPane;
@@ -25,11 +26,11 @@ import java.awt.Font;
 
 public class AcceptReview {
 	
-	private boolean x;
-	private String review;
+	private boolean x=false;
+	private String review, nomegioco, nomeutente;
 	private int vote,id,idgioco,idutente;
 	private JFrame frame;
-
+	 
 	/**
 	 * Launch the application.
 	 */
@@ -64,11 +65,25 @@ public class AcceptReview {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		String queryTOTALE= "Select text, idReview, Game_idGame, user_iduser, vote From review WHERE approved=0";
+		ResultSet result= DatabaseMySQL.SendQuery(queryTOTALE);
+		if(result.next()){
+			x=true;
+			review=result.getString("text");
+			id=result.getInt("idReview");
+			vote=result.getInt("vote");
+			idgioco=result.getInt("Game_idGame");
+			idutente=result.getInt("user_iduser");
+		}
+		
 		//VOTO
 		JLabel Voto = new JLabel("");
 		Voto.setHorizontalAlignment(SwingConstants.CENTER);
 		Voto.setBounds(334, 149, 90, 37);
+		if(x){
 		Voto.setText("Voto:"+ vote);
+		}
+		else Voto.setText("Voto:");
 		frame.getContentPane().add(Voto);
 				
 		//UTENTE
@@ -77,8 +92,10 @@ public class AcceptReview {
 		if(x){
 			String Nome="SELECT username FROM user WHERE idUser='"+idutente+"'";
 			ResultSet nome= DatabaseMySQL.SendQuery(Nome);
-			nome.next();
-			Utente.setText("Recensione di: " + nome.getString(1) );
+			if(nome.next()){
+				nomeutente=nome.getString(1);
+				Utente.setText("Recensione di: " + nome.getString(1) );
+			 }
 			}
 		else Utente.setText("Recensione di: ");
 		Utente.setBounds(212, 26, 212, 23);
@@ -90,8 +107,9 @@ public class AcceptReview {
 		if(x){
 			String GIOCO="SELECT name FROM game WHERE idGame='"+idgioco+"'";
 			ResultSet gioco= DatabaseMySQL.SendQuery(GIOCO);
-			gioco.next();
-			Gioco.setText("Gioco: " + gioco.getString(1));
+			if(gioco.next()){
+			nomegioco= gioco.getString(1);
+			}
 		}
 		else Gioco.setText("Gioco: ");
 		Gioco.setBounds(10, 26, 174, 28);
@@ -110,7 +128,9 @@ public class AcceptReview {
 		idgioco=rst.getInt("Game_idGame");
 		idutente=rst.getInt("user_iduser");
 		Commento.setText(review);
-		x=true;
+		Gioco.setText("Gioco:" + nomegioco);
+		Utente.setText("Recensione di:" + nomeutente);
+		Voto.setText("Voto:" + vote);
 		}
 		else{ 
 			Commento.setText("Non ci sono recensioni da confermare");
@@ -208,8 +228,37 @@ public class AcceptReview {
 		
 		//MENU
 		JButton Menù = new JButton("Menù");
+		Menù.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainModerator.main(null);
+				frame.setVisible(false);
+			}
+		});
 		Menù.setBounds(173, 227, 89, 23);
 		frame.getContentPane().add(Menù);	
-
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Menu");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				String type = "user";
+				if(type.equals("user"))
+					MainUser.main(null);
+				else
+					System.out.println("z");
+			}
+		});
+		mntmNewMenuItem.setBounds(0, 0, 70, 22);
+		frame.getContentPane().add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Login.main(null);
+				frame.dispose();
+			}
+		});
+		mntmNewMenuItem_1.setBounds(69, 0, 81, 22);
+		frame.getContentPane().add(mntmNewMenuItem_1);
 	}
 }
