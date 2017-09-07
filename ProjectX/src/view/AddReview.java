@@ -64,7 +64,7 @@ public class AddReview {
 			this.game = rstgame.getInt(1);
 		System.out.println(game);
 		
-		
+		frmAddReview = new JFrame();
 		frmAddReview.setTitle("Add review");
 		frmAddReview.setBounds(100, 100, 700, 500);
 		frmAddReview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
