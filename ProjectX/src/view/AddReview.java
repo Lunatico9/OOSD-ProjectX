@@ -54,8 +54,8 @@ public class AddReview {
 	 * @throws Exception 
 	 */
 	private void initialize(String username, String name) throws Exception {
-		String query = "";
-		String querygame ="";
+		String query = "SELECT idUser FROM user WHERE username = username";
+		String querygame ="SELECT idGame FROM game WHERE name = name";
 		ResultSet rstgame = DatabaseMySQL.SendQuery(querygame);
 		ResultSet rst = DatabaseMySQL.SendQuery(query);
 		if(rst.next())
