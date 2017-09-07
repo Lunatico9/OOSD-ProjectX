@@ -3,6 +3,7 @@ package controller;
 import java.sql.ResultSet;
 
 import database.DatabaseMySQL;
+import view.MainModerator;
 import view.MainUser;
 
 public class LoginController {
@@ -13,11 +14,11 @@ public class LoginController {
     	String type = rst.getString("type");
         if("moderatore".equals(type)) {
             //redirect to admin page
-        	MainUser.main(null);
+        	MainModerator.main(username);
         } 
         else if("giocatore".equals(type)) {
            //redirect to mod page
-           MainUser.main(null);
+           MainUser.main(username);
         }
         else {
         	//redirect to user page
