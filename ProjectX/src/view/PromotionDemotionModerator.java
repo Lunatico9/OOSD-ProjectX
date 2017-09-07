@@ -152,11 +152,12 @@ public class PromotionDemotionModerator {
 			public void actionPerformed(ActionEvent arg0) {
 					String m = "moderatore";
 					String b = "giocatore";
+					String query;
 					if (textField_1.getText().equals(m)) {
-						String query = "UPDATE user SET type = '" + textField_1.getText() + "' WHERE username = '" + m + "'";
+						 query = "UPDATE user SET type = '" + textField_1.getText() + "' WHERE username = '" + m + "'";
 					}
 					else {
-						String query = "UPDATE user SET type = '" + textField_1.getText() + "' WHERE username = '" + b + "'";
+						 query = "UPDATE user SET type = '" + textField_1.getText() + "' WHERE username = '" + b + "'";
 					}
 			    try {
 			    	String a = textField_1.getText();

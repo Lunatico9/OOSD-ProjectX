@@ -74,6 +74,11 @@ public class Play {
 		frame.getContentPane().add(lblStaiGiocandoA);
 		
 		JButton btnEsci = new JButton("Esci");
+		btnEsci.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainUser.main(username);
+			}
+		});
 		btnEsci.setBounds(0, 238, 89, 23);
 		frame.getContentPane().add(btnEsci);
 	}
