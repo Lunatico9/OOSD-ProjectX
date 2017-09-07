@@ -150,7 +150,14 @@ public class PromotionDemotionModerator {
 		btnUpdate.setFont(new Font("Arial", Font.PLAIN, 18));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-					String query = "UPDATE user SET type = '" + textField_1.getText() + "' WHERE username = '" + textField.getText() + "'";
+					String m = "moderatore";
+					String b = "giocatore";
+					if (textField_1.getText().equals(m)) {
+						String query = "UPDATE user SET type = '" + textField_1.getText() + "' WHERE username = '" + m + "'";
+					}
+					else {
+						String query = "UPDATE user SET type = '" + textField_1.getText() + "' WHERE username = '" + b + "'";
+					}
 			    try {
 			    	String a = textField_1.getText();
 			    	int i= table.getSelectedRow();
