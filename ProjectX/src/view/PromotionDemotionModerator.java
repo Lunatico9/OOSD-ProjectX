@@ -165,11 +165,11 @@ public class PromotionDemotionModerator {
 			    	int i= table.getSelectedRow();
 			    	if(a.equals(m)) {
 			    	table.getModel().setValueAt(b, i, 1);
-			    	textField_1.setText(b);
+			    	lblNewLabel_1.setText(b);
 			    	}
 			    	else {
 			    	table.getModel().setValueAt(m, i, 1);
-			    	textField_1.setText(m);
+			    	lblNewLabel_1.setText(m);
 			    	}
 					ResultSet rst = DatabaseMySQL.SendQuery(query);
 				} catch (Exception e) {
