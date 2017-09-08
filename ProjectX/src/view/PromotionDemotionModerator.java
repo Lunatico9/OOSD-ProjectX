@@ -102,14 +102,14 @@ public class PromotionDemotionModerator {
 		scrollPane.setBounds(323, 98, 300, 224);
 		frame.getContentPane().add(scrollPane);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("Clicca una cella della tabella");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel.setBounds(71, 177, 100, 29);
+		lblNewLabel.setBounds(71, 177, 196, 29);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel("Clicca una cella della tabella");
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(71, 266, 100, 29);
+		lblNewLabel_1.setBounds(71, 266, 196, 29);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		table = new JTable();
@@ -199,7 +199,7 @@ public class PromotionDemotionModerator {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(511, 381, 132, 48);
+		mntmNewMenuItem_1.setBounds(39, 13, 132, 48);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 		
 		panel = new JPanel();
