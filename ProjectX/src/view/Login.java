@@ -91,8 +91,15 @@ public class Login {
 			    }
 			    else {
 			    	try {
+			    		String queryuser= "Select username, password From user WHERE username='"+username+"' AND password='"+password+"'";
+			    		ResultSet USER = DatabaseMySQL.SendQuery(queryuser);
+			    		if(USER.next()){
 			    		LoginController.Accedi(username, password);
 			    		frmLogin.setVisible(false);
+			    		}
+			    		else{
+			    			JOptionPane.showMessageDialog(null, "Errore, username o password errati");
+			    		}
 			    	} catch (Exception e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
