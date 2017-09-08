@@ -67,6 +67,7 @@ public class MainModerator {
 		JButton btnUtilizzaAccountCome = new JButton("Utilizza account come utente");
 		btnUtilizzaAccountCome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
 				MainUser.main(null);
 			}
 		});
