@@ -98,7 +98,7 @@ public class Login {
 			    		frmLogin.setVisible(false);
 			    		}
 			    		else{
-			    			JOptionPane.showMessageDialog(null, "Errore, username o password errati");
+			    			JOptionPane.showMessageDialog(null, "Errore, username o password errati.");
 			    		}
 			    	} catch (Exception e2) {
 					// TODO Auto-generated catch block
