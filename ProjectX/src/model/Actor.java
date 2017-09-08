@@ -7,7 +7,7 @@ public class Actor {
 	private int xP;
 	private String name;
 	private String surname;
-	private enum usertype { user, moderator, administrator};
+	private enum usertype { user, moderator};
 	private String type;
 	
 	public Actor(String user, String pass, String name, String surname) {

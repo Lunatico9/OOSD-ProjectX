@@ -30,15 +30,17 @@ public class AcceptReview {
 	private String review, nomegioco, nomeutente;
 	private int vote,id,idgioco,idutente;
 	private JFrame frame;
+	private String username;
+	
 	 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String username) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AcceptReview window = new AcceptReview();
+					AcceptReview window = new AcceptReview(username);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +53,8 @@ public class AcceptReview {
 	 * Create the application.
 	 * @throws Exception 
 	 */
-	public AcceptReview() throws Exception {
+	public AcceptReview(String username) throws Exception {
+		this.username = username;
 		initialize();
 	}
 
@@ -243,10 +246,8 @@ public class AcceptReview {
 				frame.dispose();
 				String type = "user";
 				if(type.equals("user"))
-					MainUser.main(null);
-				else
-					System.out.println("z");
-			}
+					MainUser.main(username ,type);
+		}
 		});
 		mntmNewMenuItem.setBounds(0, 0, 70, 22);
 		frame.getContentPane().add(mntmNewMenuItem);

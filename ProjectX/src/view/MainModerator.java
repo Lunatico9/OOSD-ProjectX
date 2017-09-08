@@ -11,6 +11,7 @@ public class MainModerator {
 
 	private JFrame frame;
 	private String username;
+	private String type = "moderatore";
 	/**
 	 * Launch the application.
 	 */
@@ -68,7 +69,7 @@ public class MainModerator {
 		btnUtilizzaAccountCome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				MainUser.main(null);
+				MainUser.main(username, type);
 			}
 		});
 		btnUtilizzaAccountCome.setBounds(41, 121, 198, 36);

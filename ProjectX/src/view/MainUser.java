@@ -20,14 +20,15 @@ public class MainUser {
 
 	private JFrame frame;
 	private String username;
+	private String type;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String username) {
+	public static void main(String username, String type) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainUser window = new MainUser(username);
+					MainUser window = new MainUser(username, type);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,8 +41,9 @@ public class MainUser {
 	 * Create the application.
 	 * @throws Exception 
 	 */
-	public MainUser(String username) throws Exception {
+	public MainUser(String username, String type) throws Exception {
 		this.username = username;
+		this.type = type;
 		initialize();
 	}
 
@@ -81,26 +83,13 @@ public class MainUser {
 		btnGioca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String game = (String) list.getSelectedValue();
-				Play.main(username, game);
+				Play.main(username, game, type);
 				frame.dispose();
 			}
 		});
 		btnGioca.setBounds(122, 227, 89, 23);
 		frame.getContentPane().add(btnGioca);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Esci");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
-				String type = "user";
-				if(type.equals("user"))
-					MainUser.main(null);
-				else
-					System.out.println("z");
-			}
-		});
-		mntmNewMenuItem.setBounds(0, 0, 70, 22);
-		frame.getContentPane().add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
@@ -109,7 +98,7 @@ public class MainUser {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(69, 0, 81, 22);
+		mntmNewMenuItem_1.setBounds(0, 0, 72, 22);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 		
 		JButton btnNewButton = new JButton("Recensisci");
@@ -121,5 +110,19 @@ public class MainUser {
 		});
 		btnNewButton.setBounds(227, 227, 89, 23);
 		frame.getContentPane().add(btnNewButton);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Funzioni moderatore ");
+		mntmNewMenuItem.setVisible(false);
+		String a = "moderatore";
+		if(type.equals(a))
+			mntmNewMenuItem.setVisible(true);
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				MainModerator.main(username);
+			}
+		});
+		mntmNewMenuItem.setBounds(82, 0, 144, 22);
+		frame.getContentPane().add(mntmNewMenuItem);
 	}
 }

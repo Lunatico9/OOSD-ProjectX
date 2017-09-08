@@ -16,14 +16,8 @@ public class LoginController {
             //redirect to admin page
         	MainModerator.main(username);
         } 
-        else if("giocatore".equals(type)) {
-           //redirect to mod page
-           MainUser.main(username);
-        }
-        else {
-        	//redirect to user page
-			MainUser.main(null);
-			}
+        else
+           MainUser.main(username, type);
         }
 	}
 }

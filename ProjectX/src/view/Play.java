@@ -16,6 +16,7 @@ public class Play {
 	private JFrame frame;
 	private String username;
 	private String game;
+	private String type;
 
 	/**
 	 * Create the application.
@@ -25,11 +26,11 @@ public class Play {
 	 * 
 	 */
 	
-	public static void main(String username2, String game2) {
+	public static void main(String username2, String game2, String type2) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Play window = new Play(username2, game2);
+					Play window = new Play(username2, game2, type2);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,9 +39,10 @@ public class Play {
 		});
 		
 	}
-	public Play(String username2, String game2) {
+	public Play(String username2, String game2, String type2) {
 		username = username2;
 		game = game2;
+		type = type2;
 		initialize(username2, game2);
 	}
 
@@ -77,7 +79,7 @@ public class Play {
 		JButton btnEsci = new JButton("Esci");
 		btnEsci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainUser.main(username);
+				MainUser.main(username,type);
 			}
 		});
 		btnEsci.setBounds(0, 238, 89, 23);
