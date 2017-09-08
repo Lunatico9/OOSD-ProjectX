@@ -229,24 +229,13 @@ public class AcceptReview {
 		Accetta.setBounds(46, 193, 138, 23);
 		frame.getContentPane().add(Accetta);
 		
-		//MENU
-		JButton Menù = new JButton("Menù");
-		Menù.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				MainModerator.main(null);
-				frame.setVisible(false);
-			}
-		});
-		Menù.setBounds(173, 227, 89, 23);
-		frame.getContentPane().add(Menù);	
-		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Menu");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				String type = "user";
 				if(type.equals("user"))
-					MainUser.main(username ,type);
+					MainModerator.main(username);
 		}
 		});
 		mntmNewMenuItem.setBounds(0, 0, 70, 22);
