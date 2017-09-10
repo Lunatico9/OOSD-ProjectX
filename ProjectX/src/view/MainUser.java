@@ -54,7 +54,7 @@ public class MainUser {
 	 */
 	private void initialize() throws Exception {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 577, 311);
+		frame.setBounds(100, 100, 577, 320);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		ArrayList<String> games = new ArrayList<String>();
