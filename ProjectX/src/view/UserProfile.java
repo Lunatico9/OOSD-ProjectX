@@ -16,7 +16,7 @@ public class UserProfile {
 
 	private JFrame frame;
 	private String username, Nome, Cognome, Password, Email;
-
+	private int EXP, Lvl;
 	/**
 	 * Launch the application.
 	 */
@@ -51,7 +51,7 @@ public class UserProfile {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		String query= "Select name, surname, email, password FROM user WHERE username='"+username+"'";
+		String query= "Select name, surname, email, password FROM user WHERE username='"+username+"'"; //da aggiungere ,exp sul Select
 		ResultSet rst;
 		
 		try {
@@ -61,7 +61,7 @@ public class UserProfile {
 				 Cognome= rst.getString("surname");
 				 Email = rst.getString("email");
 				 Password= rst.getString("password");
-				 System.out.println(Nome);
+				 //EXP=rst.getInt(exp);
 			}
 		} 
 		catch (Exception e) {
@@ -125,11 +125,42 @@ public class UserProfile {
 		
 		JLabel label_3 = new JLabel("New label");
 		label_3.setFont(new Font("Arial", Font.PLAIN, 16));
+		label_3.setText("Lvl");
 		label_3.setBounds(540, 106, 100, 29);
 		frame.getContentPane().add(label_3);
 		
 		JLabel label_4 = new JLabel("New label");
 		label_4.setFont(new Font("Arial", Font.PLAIN, 16));
+		if(Lvl==1){
+			label_4.setText(EXP+"/100");
+		}
+		if(Lvl==2){
+			label_4.setText(EXP+"/300");	
+		}
+		if(Lvl==3){
+			label_4.setText(EXP+"/600");
+		}
+		if(Lvl==4){
+			label_4.setText(EXP+"/1000");
+		}
+		if(Lvl==5){
+			label_4.setText(EXP+"/1500");
+		}
+		if(Lvl==6){
+			label_4.setText(EXP+"/2100");
+		}
+		if(Lvl==7){
+			label_4.setText(EXP+"/2800");
+		}
+		if(Lvl==8){
+			label_4.setText(EXP+"/3600");
+		}
+		if(Lvl==9){
+			label_4.setText(EXP+"/4500");
+		}
+		if(Lvl==10){
+			label_4.setText("Livello massimo raggiunto");
+		}
 		label_4.setBounds(540, 136, 100, 29);
 		frame.getContentPane().add(label_4);
 		
