@@ -54,7 +54,7 @@ public class MainUser {
 	 */
 	private void initialize() throws Exception {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		ArrayList<String> games = new ArrayList<String>();
@@ -65,7 +65,7 @@ public class MainUser {
 		}
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(46, 38, 245, 153);
+		scrollPane.setBounds(46, 38, 500, 200);
 		frame.getContentPane().add(scrollPane);
 		
 		JList list = new JList();
@@ -88,7 +88,7 @@ public class MainUser {
 				frame.dispose();
 			}
 		});
-		btnGioca.setBounds(122, 227, 89, 23);
+		btnGioca.setBounds(46, 394, 89, 23);
 		frame.getContentPane().add(btnGioca);
 		
 		
@@ -109,7 +109,7 @@ public class MainUser {
 				AddReview.main(username, list.getSelectedValue().toString());
 			}
 		});
-		btnNewButton.setBounds(227, 227, 89, 23);
+		btnNewButton.setBounds(211, 394, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Funzioni moderatore ");
@@ -133,7 +133,7 @@ public class MainUser {
 				frame.setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(301, 168, 123, 23);
+		btnNewButton_1.setBounds(441, 394, 123, 23);
 		frame.getContentPane().add(btnNewButton_1);
 	}
 }

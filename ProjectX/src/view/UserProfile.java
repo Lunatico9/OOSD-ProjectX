@@ -118,5 +118,10 @@ public class UserProfile {
 		frame.getContentPane().add(panel_1);
 		panel_1.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createEtchedBorder(), "GAMING"));
+		
+		JLabel lblTimeline = new JLabel("Timeline");
+		lblTimeline.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblTimeline.setBounds(40, 260, 100, 29);
+		frame.getContentPane().add(lblTimeline);
 	}
 }
