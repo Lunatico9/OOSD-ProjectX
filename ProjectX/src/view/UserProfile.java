@@ -6,12 +6,16 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.sql.ResultSet;
+
 import javax.swing.JPanel;
+
+import database.DatabaseMySQL;
 
 public class UserProfile {
 
 	private JFrame frame;
-	private String username;
+	private String username, Nome, Cognome, Password, Email;
 
 	/**
 	 * Launch the application.
@@ -47,6 +51,24 @@ public class UserProfile {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		String query= "Select name, surname, email, password FROM user WHERE username='"+username+"'";
+		ResultSet rst;
+		
+		try {
+			rst = DatabaseMySQL.SendQuery(query);
+			if(rst.next()){
+				 Nome= rst.getString("name");
+				 Cognome= rst.getString("surname");
+				 Email = rst.getString("email");
+				 Password= rst.getString("password");
+				 System.out.println(Nome);
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblNome.setBounds(54, 106, 100, 29);
@@ -79,21 +101,25 @@ public class UserProfile {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNewLabel.setText(Nome);
 		lblNewLabel.setBounds(166, 106, 100, 29);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel label = new JLabel("New label");
 		label.setFont(new Font("Arial", Font.PLAIN, 16));
+		label.setText(Cognome);
 		label.setBounds(166, 136, 100, 29);
 		frame.getContentPane().add(label);
 		
 		JLabel label_1 = new JLabel("New label");
 		label_1.setFont(new Font("Arial", Font.PLAIN, 16));
+		label_1.setText(Email);
 		label_1.setBounds(166, 164, 100, 29);
 		frame.getContentPane().add(label_1);
 		
 		JLabel label_2 = new JLabel("New label");
 		label_2.setFont(new Font("Arial", Font.PLAIN, 16));
+		label_2.setText(Password);
 		label_2.setBounds(166, 193, 100, 29);
 		frame.getContentPane().add(label_2);
 		
