@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractListModel;
 import javax.swing.JScrollPane;
 
+import controller.MainUserController;
 import database.DatabaseMySQL;
 import javax.swing.JMenuItem;
 
@@ -124,5 +125,15 @@ public class MainUser {
 		});
 		mntmNewMenuItem.setBounds(82, 0, 144, 22);
 		frame.getContentPane().add(mntmNewMenuItem);
+		
+		JButton btnNewButton_1 = new JButton("Profilo Personale");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainUserController.Profilo(username);
+				frame.setVisible(false);
+			}
+		});
+		btnNewButton_1.setBounds(301, 168, 123, 23);
+		frame.getContentPane().add(btnNewButton_1);
 	}
 }
