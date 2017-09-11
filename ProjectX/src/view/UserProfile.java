@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 public class UserProfile {
 
 	private JFrame frame;
-	private String username, Nome, Cognome, Password, Email;
+	private String username, Nome, Cognome, Password, Email, UserId;
 	private int EXP, Lvl;
 	/**
 	 * Launch the application.
@@ -52,17 +52,18 @@ public class UserProfile {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		String query= "Select name, surname, email, password FROM user WHERE username='"+username+"'"; //da aggiungere ,exp sul Select
+		String query= "Select idUser, name, surname, email, password, exp FROM user WHERE username='"+username+"'"; 
 		ResultSet rst;
 		
 		try {
 			rst = DatabaseMySQL.SendQuery(query);
 			if(rst.next()){
+				 UserId=rst.getString("idUser");
 				 Nome= rst.getString("name");
 				 Cognome= rst.getString("surname");
 				 Email = rst.getString("email");
 				 Password= rst.getString("password");
-				 //EXP=rst.getInt(exp);
+				 EXP=rst.getInt("exp");
 			}
 		} 
 		catch (Exception e) {

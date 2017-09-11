@@ -61,7 +61,6 @@ public class Play {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					frame.dispose();
 					PlayController.Gioca(username);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
@@ -79,6 +78,7 @@ public class Play {
 		JButton btnEsci = new JButton("Esci");
 		btnEsci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
 				MainUser.main(username,type);
 			}
 		});
