@@ -16,8 +16,8 @@ import javax.swing.SwingConstants;
 public class UserProfile {
 
 	private JFrame frame;
-	private String username, Nome, Cognome, Password, Email, UserId;
-	private int EXP, Lvl;
+	private String username, Nome, Cognome, Password, Email, UserId, Lvl;
+	private int EXP;
 	/**
 	 * Launch the application.
 	 */
@@ -52,7 +52,7 @@ public class UserProfile {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		String query= "Select idUser, name, surname, email, password, exp FROM user WHERE username='"+username+"'"; 
+		String query= "Select idUser, name, surname, email, password, exp, level FROM user WHERE username='"+username+"'"; 
 		ResultSet rst;
 		
 		try {
@@ -64,6 +64,7 @@ public class UserProfile {
 				 Email = rst.getString("email");
 				 Password= rst.getString("password");
 				 EXP=rst.getInt("exp");
+				 Lvl=rst.getString("level");
 			}
 		} 
 		catch (Exception e) {
@@ -132,41 +133,41 @@ public class UserProfile {
 		JLabel label_3 = new JLabel("Livello");
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setFont(new Font("Arial", Font.PLAIN, 16));
-		label_3.setText("Lvl");
+		label_3.setText(Lvl);
 		label_3.setBounds(510, 288, 110, 29);
 		frame.getContentPane().add(label_3);
 		
 		JLabel label_4 = new JLabel("Punti esperienza");
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
 		label_4.setFont(new Font("Arial", Font.PLAIN, 16));
-		if(Lvl==1){
+		if(Lvl.equals("1")){
 			label_4.setText(EXP+"/100");
 		}
-		if(Lvl==2){
+		if(Lvl.equals("2")){
 			label_4.setText(EXP+"/300");
 		}
-		if(Lvl==3){
+		if(Lvl.equals("3")){
 			label_4.setText(EXP+"/600");
 		}
-		if(Lvl==4){
+		if(Lvl.equals("4")){
 			label_4.setText(EXP+"/1000");
 		}
-		if(Lvl==5){
+		if(Lvl.equals("5")){
 			label_4.setText(EXP+"/1500");
 		}
-		if(Lvl==6){
+		if(Lvl.equals("6")){
 			label_4.setText(EXP+"/2100");
 		}
-		if(Lvl==7){
+		if(Lvl.equals("7")){
 			label_4.setText(EXP+"/2800");
 		}
-		if(Lvl==8){
+		if(Lvl.equals("8")){
 			label_4.setText(EXP+"/3600");
 		}
-		if(Lvl==9){
+		if(Lvl.equals("9")){
 			label_4.setText(EXP+"/4500");
 		}
-		if(Lvl==10){
+		if(Lvl.equals("10")){
 			label_4.setText("Livello massimo raggiunto");
 		}
 		label_4.setBounds(510, 318, 110, 29);
