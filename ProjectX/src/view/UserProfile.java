@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import javax.swing.JPanel;
 
 import database.DatabaseMySQL;
+import javax.swing.SwingConstants;
 
 public class UserProfile {
 
@@ -91,45 +92,51 @@ public class UserProfile {
 		
 		JLabel lblLivello = new JLabel("Livello");
 		lblLivello.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblLivello.setBounds(395, 106, 100, 29);
+		lblLivello.setBounds(384, 288, 100, 29);
 		frame.getContentPane().add(lblLivello);
 		
 		JLabel lblPuntiEsperienza = new JLabel("Punti esperienza");
 		lblPuntiEsperienza.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblPuntiEsperienza.setBounds(395, 136, 116, 29);
+		lblPuntiEsperienza.setBounds(384, 318, 116, 29);
 		frame.getContentPane().add(lblPuntiEsperienza);
 		
 		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblNewLabel.setText(Nome);
-		lblNewLabel.setBounds(166, 106, 100, 29);
+		lblNewLabel.setBounds(166, 106, 292, 29);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel label = new JLabel("New label");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Arial", Font.PLAIN, 16));
 		label.setText(Cognome);
-		label.setBounds(166, 136, 100, 29);
+		label.setBounds(166, 136, 292, 29);
 		frame.getContentPane().add(label);
 		
 		JLabel label_1 = new JLabel("New label");
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_1.setText(Email);
-		label_1.setBounds(166, 164, 100, 29);
+		label_1.setBounds(166, 164, 292, 29);
 		frame.getContentPane().add(label_1);
 		
 		JLabel label_2 = new JLabel("New label");
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_2.setText(Password);
-		label_2.setBounds(166, 193, 100, 29);
+		label_2.setBounds(166, 193, 292, 29);
 		frame.getContentPane().add(label_2);
 		
 		JLabel label_3 = new JLabel("New label");
+		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_3.setText("Lvl");
-		label_3.setBounds(540, 106, 100, 29);
+		label_3.setBounds(510, 288, 110, 29);
 		frame.getContentPane().add(label_3);
 		
 		JLabel label_4 = new JLabel("New label");
+		label_4.setHorizontalAlignment(SwingConstants.CENTER);
 		label_4.setFont(new Font("Arial", Font.PLAIN, 16));
 		if(Lvl==1){
 			label_4.setText(EXP+"/100");
@@ -161,17 +168,17 @@ public class UserProfile {
 		if(Lvl==10){
 			label_4.setText("Livello massimo raggiunto");
 		}
-		label_4.setBounds(540, 136, 100, 29);
+		label_4.setBounds(510, 318, 110, 29);
 		frame.getContentPane().add(label_4);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(40, 91, 255, 145);
+		panel.setBounds(40, 91, 432, 145);
 		frame.getContentPane().add(panel);
 		panel.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createEtchedBorder(), "ANAGRAFICA"));
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(380, 91, 255, 145);
+		panel_1.setBounds(369, 273, 255, 145);
 		frame.getContentPane().add(panel_1);
 		panel_1.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createEtchedBorder(), "GAMING"));
