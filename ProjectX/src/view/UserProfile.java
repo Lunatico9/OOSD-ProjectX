@@ -5,7 +5,11 @@ import java.awt.EventQueue;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
 import javax.swing.JPanel;
@@ -189,5 +193,29 @@ public class UserProfile {
 		lblTimeline.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblTimeline.setBounds(40, 260, 100, 29);
 		frame.getContentPane().add(lblTimeline);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Menu");
+		mntmNewMenuItem.setFont(new Font("Arial", Font.PLAIN, 18));
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				String type = "user";
+				if(type.equals("user"))
+					MainUser.main(username, type);
+		}
+		});
+		mntmNewMenuItem.setBounds(6, 13, 78, 37);
+		frame.getContentPane().add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
+		mntmNewMenuItem_1.setFont(new Font("Arial", Font.PLAIN, 18));
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Login.main(null);
+				frame.dispose();
+			}
+		});
+		mntmNewMenuItem_1.setBounds(90, 13, 100, 37);
+		frame.getContentPane().add(mntmNewMenuItem_1);
 	}
 }
