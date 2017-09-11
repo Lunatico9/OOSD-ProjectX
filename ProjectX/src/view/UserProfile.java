@@ -100,49 +100,49 @@ public class UserProfile {
 		lblPuntiEsperienza.setBounds(384, 318, 116, 29);
 		frame.getContentPane().add(lblPuntiEsperienza);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("Nome");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblNewLabel.setText(Nome);
 		lblNewLabel.setBounds(166, 106, 292, 29);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel label = new JLabel("New label");
+		JLabel label = new JLabel("Cognome");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Arial", Font.PLAIN, 16));
 		label.setText(Cognome);
 		label.setBounds(166, 136, 292, 29);
 		frame.getContentPane().add(label);
 		
-		JLabel label_1 = new JLabel("New label");
+		JLabel label_1 = new JLabel("Email");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_1.setText(Email);
 		label_1.setBounds(166, 164, 292, 29);
 		frame.getContentPane().add(label_1);
 		
-		JLabel label_2 = new JLabel("New label");
+		JLabel label_2 = new JLabel("Password");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_2.setText(Password);
 		label_2.setBounds(166, 193, 292, 29);
 		frame.getContentPane().add(label_2);
 		
-		JLabel label_3 = new JLabel("New label");
+		JLabel label_3 = new JLabel("Livello");
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_3.setText("Lvl");
 		label_3.setBounds(510, 288, 110, 29);
 		frame.getContentPane().add(label_3);
 		
-		JLabel label_4 = new JLabel("New label");
+		JLabel label_4 = new JLabel("Punti esperienza");
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
 		label_4.setFont(new Font("Arial", Font.PLAIN, 16));
 		if(Lvl==1){
 			label_4.setText(EXP+"/100");
 		}
 		if(Lvl==2){
-			label_4.setText(EXP+"/300");	
+			label_4.setText(EXP+"/300");
 		}
 		if(Lvl==3){
 			label_4.setText(EXP+"/600");
