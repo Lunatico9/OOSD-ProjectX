@@ -199,6 +199,7 @@ public class PromotionDemotionModerator {
 		show_user();
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Menu");
+		mntmNewMenuItem.setFont(new Font("Arial", Font.PLAIN, 18));
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
@@ -207,17 +208,18 @@ public class PromotionDemotionModerator {
 					MainModerator.main(null);
 		}
 		});
-		mntmNewMenuItem.setBounds(0, 0, 70, 22);
+		mntmNewMenuItem.setBounds(6, 13, 78, 37);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
+		mntmNewMenuItem_1.setFont(new Font("Arial", Font.PLAIN, 18));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login.main(null);
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(69, 0, 81, 22);
+		mntmNewMenuItem_1.setBounds(90, 13, 100, 37);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 	}
 }
