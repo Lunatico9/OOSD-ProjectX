@@ -22,6 +22,7 @@ import java.awt.event.ActionEvent;
 public class AddReview {
 
 	private JFrame frmAddReview;
+	private String type;
 	private int username;
 	private int game;
 
@@ -54,12 +55,13 @@ public class AddReview {
 	 * @throws Exception 
 	 */
 	private void initialize(String username, String name) throws Exception {
-		String query = "SELECT idUser FROM user WHERE username = username";
+		String query = "SELECT idUser, type FROM user WHERE username = username";
 		String querygame ="SELECT idGame FROM game WHERE name = name";
 		ResultSet rstgame = DatabaseMySQL.SendQuery(querygame);
 		ResultSet rst = DatabaseMySQL.SendQuery(query);
 		if(rst.next())
 			this.username = rst.getInt(1);
+			type=rst.getString("type");
 		if(rstgame.next())
 			this.game = rstgame.getInt(1);
 		System.out.println(game);
@@ -95,6 +97,12 @@ public class AddReview {
 		frmAddReview.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Annulla");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmAddReview.dispose();
+				AddReviewController.Annulla(username,type);
+			}
+		});
 		btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnNewButton_1.setBounds(470, 352, 132, 48);
 		frmAddReview.getContentPane().add(btnNewButton_1);

@@ -20,16 +20,16 @@ import javax.swing.SwingConstants;
 public class UserProfile {
 
 	private JFrame frame;
-	private String username, Nome, Cognome, Password, Email, UserId, Lvl;
+	private String type, username, Nome, Cognome, Password, Email, UserId, Lvl;
 	private int EXP;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String username) {
+	public static void main(String username, String type) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UserProfile window = new UserProfile(username);
+					UserProfile window = new UserProfile(username, type);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,8 +41,9 @@ public class UserProfile {
 	/**
 	 * Create the application.
 	 */
-	public UserProfile(String username) {
+	public UserProfile(String username, String type) {
 		this.username = username;
+		this.type=type;
 		initialize();
 	}
 
@@ -199,9 +200,7 @@ public class UserProfile {
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				String type = "user";
-				if(type.equals("user"))
-					MainUser.main(username, type);
+				MainUser.main(username, type);
 		}
 		});
 		mntmNewMenuItem.setBounds(6, 13, 78, 37);

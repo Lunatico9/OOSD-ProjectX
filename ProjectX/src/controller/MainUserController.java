@@ -4,8 +4,8 @@ import view.UserProfile;
 
 public class MainUserController {
 	
-	public static void Profilo(String username){
-		UserProfile.main(username);
+	public static void Profilo(String username, String type){
+		UserProfile.main(username, type);
 	}
 	
 }

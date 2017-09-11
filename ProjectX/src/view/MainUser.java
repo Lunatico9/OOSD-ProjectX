@@ -129,7 +129,7 @@ public class MainUser {
 		JButton btnNewButton_1 = new JButton("Profilo Personale");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainUserController.Profilo(username);
+				MainUserController.Profilo(username, type);
 				frame.setVisible(false);
 			}
 		});
