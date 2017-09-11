@@ -13,15 +13,20 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import database.DatabaseMySQL;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JTable;
+import javax.swing.JList;
 
 public class UserProfile {
 
 	private JFrame frame;
 	private String type, username, Nome, Cognome, Password, Email, UserId, Lvl;
 	private int EXP;
+	private JTable table;
 	/**
 	 * Launch the application.
 	 */
@@ -79,67 +84,67 @@ public class UserProfile {
 		
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNome.setBounds(54, 106, 100, 29);
+		lblNome.setBounds(39, 106, 100, 29);
 		frame.getContentPane().add(lblNome);
 		
 		JLabel lblCognome = new JLabel("Cognome");
 		lblCognome.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblCognome.setBounds(54, 136, 100, 29);
+		lblCognome.setBounds(39, 136, 100, 29);
 		frame.getContentPane().add(lblCognome);
 		
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblEmail.setBounds(54, 164, 100, 29);
+		lblEmail.setBounds(39, 164, 100, 29);
 		frame.getContentPane().add(lblEmail);
 		
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblPassword.setBounds(54, 193, 100, 29);
+		lblPassword.setBounds(39, 193, 100, 29);
 		frame.getContentPane().add(lblPassword);
 		
 		JLabel lblLivello = new JLabel("Livello");
 		lblLivello.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblLivello.setBounds(384, 288, 100, 29);
+		lblLivello.setBounds(418, 106, 100, 29);
 		frame.getContentPane().add(lblLivello);
 		
 		JLabel lblPuntiEsperienza = new JLabel("Punti esperienza");
 		lblPuntiEsperienza.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblPuntiEsperienza.setBounds(384, 318, 116, 29);
+		lblPuntiEsperienza.setBounds(418, 136, 116, 29);
 		frame.getContentPane().add(lblPuntiEsperienza);
 		
 		JLabel lblNewLabel = new JLabel("Nome");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblNewLabel.setText(Nome);
-		lblNewLabel.setBounds(166, 106, 292, 29);
+		lblNewLabel.setBounds(151, 106, 220, 29);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel label = new JLabel("Cognome");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Arial", Font.PLAIN, 16));
 		label.setText(Cognome);
-		label.setBounds(166, 136, 292, 29);
+		label.setBounds(151, 136, 220, 29);
 		frame.getContentPane().add(label);
 		
 		JLabel label_1 = new JLabel("Email");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_1.setText(Email);
-		label_1.setBounds(166, 164, 292, 29);
+		label_1.setBounds(151, 164, 220, 29);
 		frame.getContentPane().add(label_1);
 		
 		JLabel label_2 = new JLabel("Password");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_2.setText(Password);
-		label_2.setBounds(166, 193, 292, 29);
+		label_2.setBounds(151, 193, 220, 29);
 		frame.getContentPane().add(label_2);
 		
 		JLabel label_3 = new JLabel("Livello");
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_3.setText(Lvl);
-		label_3.setBounds(510, 288, 110, 29);
+		label_3.setBounds(544, 106, 110, 29);
 		frame.getContentPane().add(label_3);
 		
 		JLabel label_4 = new JLabel("Punti esperienza");
@@ -175,25 +180,54 @@ public class UserProfile {
 		if(Lvl.equals("10")){
 			label_4.setText("Livello massimo raggiunto");
 		}
-		label_4.setBounds(510, 318, 110, 29);
+		label_4.setBounds(544, 136, 110, 29);
 		frame.getContentPane().add(label_4);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(40, 91, 432, 145);
+		panel.setBounds(25, 91, 366, 145);
 		frame.getContentPane().add(panel);
 		panel.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createEtchedBorder(), "ANAGRAFICA"));
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(369, 273, 255, 145);
+		panel_1.setBounds(403, 91, 255, 145);
 		frame.getContentPane().add(panel_1);
 		panel_1.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createEtchedBorder(), "GAMING"));
 		
 		JLabel lblTimeline = new JLabel("Timeline");
-		lblTimeline.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblTimeline.setBounds(40, 260, 100, 29);
+		lblTimeline.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblTimeline.setBounds(27, 254, 100, 29);
 		frame.getContentPane().add(lblTimeline);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(27, 300, 300, 140);
+		frame.getContentPane().add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+			},
+			new String[] {
+				"Date", "Award"
+			}
+		));
+		table.setFont(new Font("Arial", Font.PLAIN, 16));
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Menu");
 		mntmNewMenuItem.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -203,7 +237,7 @@ public class UserProfile {
 				MainUser.main(username, type);
 		}
 		});
-		mntmNewMenuItem.setBounds(6, 13, 78, 37);
+		mntmNewMenuItem.setBounds(-7, 41, 100, 37);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
@@ -214,7 +248,7 @@ public class UserProfile {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(90, 13, 100, 37);
+		mntmNewMenuItem_1.setBounds(90, 41, 100, 37);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 	}
 }
