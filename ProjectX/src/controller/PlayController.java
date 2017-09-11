@@ -1,6 +1,7 @@
 package controller;
 
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.swing.JOptionPane;
@@ -11,8 +12,8 @@ public class PlayController {
 	
 	public static void Gioca(String username) throws Exception {
 		Calendar today= Calendar.getInstance();
-		java.util.Date data;
-		data=today.getTime();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		String data= formatter.format(today.getTime());
 		String query2 = "UPDATE user SET exp = exp + 50 WHERE username = '" + username + "'";
 		ResultSet rst =DatabaseMySQL.SendQuery(query2); 
 		String query = "SELECT exp, idUser FROM user  WHERE username = '" + username + "'", qdu, qdu2;
@@ -33,7 +34,7 @@ public class PlayController {
 			String controllo="SELECT MAX(idTimeline) FROM timeline";
 			ResultSet result= DatabaseMySQL.SendQuery(controllo);
 			if(result.next()){
-				IDtime=result.getInt("idTimeline")+1;
+				IDtime=result.getInt(1)+1;
 			}
 			if(exp==100||exp==300||exp==600||exp==1000||exp==1500||exp==2100||exp==2800||exp==3600||exp==4500){
 				if(exp==100){
