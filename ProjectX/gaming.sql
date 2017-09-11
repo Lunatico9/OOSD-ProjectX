@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Set 11, 2017 alle 12:50
--- Versione del server: 10.1.26-MariaDB
--- Versione PHP: 7.1.8
+-- Creato il: Set 11, 2017 alle 16:41
+-- Versione del server: 10.1.25-MariaDB
+-- Versione PHP: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -86,10 +86,17 @@ INSERT INTO `review` (`idReview`, `Text`, `Approved`, `Game_idGame`, `user_iduse
 
 CREATE TABLE `timeline` (
   `idTimeline` int(10) NOT NULL,
-  `level` int(10) NOT NULL,
-  `data` date NOT NULL,
+  `Premio` tinytext NOT NULL,
+  `data` tinytext NOT NULL,
   `User_idUser` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `timeline`
+--
+
+INSERT INTO `timeline` (`idTimeline`, `Premio`, `data`, `User_idUser`) VALUES
+(1, 'Premio di Benvenuto Lvl.1', '2017-09-09', 1);
 
 -- --------------------------------------------------------
 
@@ -114,7 +121,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`idUser`, `name`, `surname`, `email`, `username`, `password`, `type`, `exp`, `level`) VALUES
-(1, 'Lorenzo', 'Collevecchio', 'lorenzocollevecchio@outlook.com', 'Coll', '1234', 'moderatore', 0, 1),
+(1, 'Lorenzo', 'Collevecchio', 'lorenzocollevecchio@outlook.com', 'Coll', '1234', 'moderatore', 600, 4),
 (2, 'Francesco', 'Giostra', 'francescogiostra@outlook.com', 'Gios', '1234', 'moderatore', 0, 1),
 (3, 'Matteo', 'Ficorilli', 'matteoficorilli@outlook.com', 'Fico', '1234', 'moderatore', 0, 1),
 (4, 'Lorenzo', 'Luna', 'lorenzoluna@outlook.com', 'Luna', '1234', 'moderatore', 0, 1),
@@ -172,7 +179,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT per la tabella `timeline`
 --
 ALTER TABLE `timeline`
-  MODIFY `idTimeline` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `idTimeline` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT per la tabella `user`
 --

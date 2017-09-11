@@ -104,5 +104,4 @@ public class PlayController {
 			else JOptionPane.showMessageDialog(null, "Hai giocato per un ora e ti sono stati aggiunti 50 punti exp!");
 		}
 	}
-	}
-
+}
