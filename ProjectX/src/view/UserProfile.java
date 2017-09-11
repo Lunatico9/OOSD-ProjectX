@@ -38,8 +38,8 @@ public class UserProfile {
 	 * Create the application.
 	 */
 	public UserProfile(String username) {
-		initialize();
 		this.username = username;
+		initialize();
 	}
 
 	/**
