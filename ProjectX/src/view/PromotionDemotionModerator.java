@@ -178,7 +178,7 @@ public class PromotionDemotionModerator {
 				}
 			}
 		});
-		btnUpdate.setBounds(39, 381, 132, 48);
+		btnUpdate.setBounds(509, 378, 132, 48);
 		frame.getContentPane().add(btnUpdate);
 		
 		JLabel lblUsername = new JLabel("Username");
@@ -191,33 +191,33 @@ public class PromotionDemotionModerator {
 		lblType.setBounds(71, 229, 100, 29);
 		frame.getContentPane().add(lblType);
 		
+		panel = new JPanel();
+		panel.setBounds(38, 63, 605, 293);
+		frame.getContentPane().add(panel);
+		panel.setBorder(BorderFactory.createTitledBorder(
+		BorderFactory.createEtchedBorder(), "PROMUOVI O DEGRADA"));
+		show_user();
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Menu");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.dispose();
+				String type = "user";
+				if(type.equals("user"))
+					MainModerator.main(null);
+		}
+		});
+		mntmNewMenuItem.setBounds(0, 0, 70, 22);
+		frame.getContentPane().add(mntmNewMenuItem);
+		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
-		mntmNewMenuItem_1.setFont(new Font("Arial", Font.PLAIN, 20));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login.main(null);
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(39, 13, 132, 48);
+		mntmNewMenuItem_1.setBounds(69, 0, 81, 22);
 		frame.getContentPane().add(mntmNewMenuItem_1);
-		
-		panel = new JPanel();
-		panel.setBounds(38, 63, 605, 293);
-		frame.getContentPane().add(panel);
-		panel.setBorder(BorderFactory.createTitledBorder(
-		BorderFactory.createEtchedBorder(), "PROMUOVI O DEGRADA"));
-		
-		JButton btnMen = new JButton("Men\u00F9");
-		btnMen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MainModerator.main(null);
-				frame.dispose();
-			}
-		});
-		btnMen.setFont(new Font("Arial", Font.PLAIN, 18));
-		btnMen.setBounds(183, 381, 132, 48);
-		frame.getContentPane().add(btnMen);
-		show_user();
 	}
 }
