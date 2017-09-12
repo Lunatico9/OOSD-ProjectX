@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Set 11, 2017 alle 16:41
+-- Creato il: Set 12, 2017 alle 03:36
 -- Versione del server: 10.1.25-MariaDB
 -- Versione PHP: 7.1.7
 
@@ -49,8 +49,7 @@ INSERT INTO `game` (`idGame`, `name`, `points`) VALUES
 (8, 'Mass Effect: Andromeda', 10),
 (9, 'Dark Souls III', 10),
 (10, 'Watch Dogs', 10),
-(13, '', 10),
-(15, 'faf', 10);
+(11, 'Fallout 3', 10);
 
 -- --------------------------------------------------------
 
@@ -96,7 +95,20 @@ CREATE TABLE `timeline` (
 --
 
 INSERT INTO `timeline` (`idTimeline`, `Premio`, `data`, `User_idUser`) VALUES
-(1, 'Premio di Benvenuto Lvl.1', '2017-09-09', 1);
+(1, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 1),
+(2, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 2),
+(3, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 3),
+(4, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 4),
+(5, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 5),
+(6, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 6),
+(7, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 7),
+(8, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 8),
+(9, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 9),
+(10, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 10),
+(11, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 11),
+(12, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 12),
+(13, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 13),
+(14, 'Premio di Benvenuto Lvl.1', '09/09/2017-09:09:15', 14);
 
 -- --------------------------------------------------------
 
@@ -121,7 +133,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`idUser`, `name`, `surname`, `email`, `username`, `password`, `type`, `exp`, `level`) VALUES
-(1, 'Lorenzo', 'Collevecchio', 'lorenzocollevecchio@outlook.com', 'Coll', '1234', 'moderatore', 600, 4),
+(1, 'Lorenzo', 'Collevecchio', 'lorenzocollevecchio@outlook.com', 'Coll', '1234', 'moderatore', 0, 1),
 (2, 'Francesco', 'Giostra', 'francescogiostra@outlook.com', 'Gios', '1234', 'moderatore', 0, 1),
 (3, 'Matteo', 'Ficorilli', 'matteoficorilli@outlook.com', 'Fico', '1234', 'moderatore', 0, 1),
 (4, 'Lorenzo', 'Luna', 'lorenzoluna@outlook.com', 'Luna', '1234', 'moderatore', 0, 1),
@@ -179,12 +191,12 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT per la tabella `timeline`
 --
 ALTER TABLE `timeline`
-  MODIFY `idTimeline` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idTimeline` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT per la tabella `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idUser` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- Limiti per le tabelle scaricate
 --
