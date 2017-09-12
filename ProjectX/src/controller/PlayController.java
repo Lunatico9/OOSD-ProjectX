@@ -12,7 +12,7 @@ public class PlayController {
 	
 	public static void Gioca(String username) throws Exception {
 		Calendar today= Calendar.getInstance();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy-hh:mm:ss");
 		String data= formatter.format(today.getTime());
 		String query2 = "UPDATE user SET exp = exp + 50 WHERE username = '" + username + "'";
 		ResultSet rst =DatabaseMySQL.SendQuery(query2); 

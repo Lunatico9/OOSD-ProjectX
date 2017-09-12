@@ -33,7 +33,7 @@ public class RegistrationController {
 		int exp= 0, level=1;
 		int IDuser=1, IDtime=1;
 		Calendar today=Calendar.getInstance();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy-hh:mm:ss");
 		String data= formatter.format(today.getTime());
 		String Premio1="Premio di Benvenuto Lvl.1";
 		String query= "SELECT MAX(idUser) FROM user";
