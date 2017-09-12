@@ -116,28 +116,28 @@ public class UserProfile {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblNewLabel.setText(Nome);
-		lblNewLabel.setBounds(151, 106, 220, 29);
+		lblNewLabel.setBounds(151, 106, 237, 29);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel label = new JLabel("Cognome");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Arial", Font.PLAIN, 16));
 		label.setText(Cognome);
-		label.setBounds(151, 136, 220, 29);
+		label.setBounds(151, 136, 237, 29);
 		frame.getContentPane().add(label);
 		
 		JLabel label_1 = new JLabel("Email");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_1.setText(Email);
-		label_1.setBounds(151, 164, 220, 29);
+		label_1.setBounds(108, 164, 280, 29);
 		frame.getContentPane().add(label_1);
 		
 		JLabel label_2 = new JLabel("Password");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_2.setText(Password);
-		label_2.setBounds(151, 193, 220, 29);
+		label_2.setBounds(151, 193, 237, 29);
 		frame.getContentPane().add(label_2);
 		
 		JLabel label_3 = new JLabel("Livello");
@@ -147,7 +147,7 @@ public class UserProfile {
 		label_3.setBounds(544, 106, 110, 29);
 		frame.getContentPane().add(label_3);
 		
-		JLabel label_4 = new JLabel("Punti esperienza");
+		JLabel label_4 = new JLabel("");
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
 		label_4.setFont(new Font("Arial", Font.PLAIN, 16));
 		if(Lvl.equals("1")){
@@ -184,7 +184,7 @@ public class UserProfile {
 		frame.getContentPane().add(label_4);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(25, 91, 366, 145);
+		panel.setBounds(25, 91, 372, 145);
 		frame.getContentPane().add(panel);
 		panel.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createEtchedBorder(), "ANAGRAFICA"));
@@ -201,27 +201,76 @@ public class UserProfile {
 		frame.getContentPane().add(lblTimeline);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(27, 300, 300, 140);
+		scrollPane.setBounds(27, 300, 437, 140);
 		frame.getContentPane().add(scrollPane);
+		String riga1="",riga2="",riga3="",riga4="",riga5="",riga6="",riga7="",riga8="",riga9="",riga10="";
+		String riga11="",riga12="",riga13="",riga14="",riga15="",riga16="",riga17="",riga18="",riga19="",riga20="";
+		try {
+			String query2="Select data,Premio From timeline Where User_idUser='"+UserId+"' Order By idTimeline";
+			ResultSet rs= DatabaseMySQL.SendQuery(query2);
+			int i=1;
+			while (rs.next()){
+				if(i==1){
+					riga1=rs.getString("data");
+					riga11=rs.getString("Premio");
+				}
+				if(i==2){
+					riga2=rs.getString("data");
+					riga12=rs.getString("Premio");
+				}
+				if(i==3){
+					riga3=rs.getString("data");
+					riga13=rs.getString("Premio");
+				}
+				if(i==4){
+					riga4=rs.getString("data");
+					riga14=rs.getString("Premio");
+				}
+				if(i==5){
+					riga5=rs.getString("data");
+					riga15=rs.getString("Premio");
+				}
+				if(i==6){
+					riga6=rs.getString("data");
+					riga16=rs.getString("Premio");
+				}
+				if(i==7){
+					riga7=rs.getString("data");
+					riga17=rs.getString("Premio");
+				}
+				if(i==8){
+					riga8=rs.getString("data");
+					riga18=rs.getString("Premio");
+				}
+				if(i==9){
+					riga9=rs.getString("data");
+					riga19=rs.getString("Premio");
+				}
+				if(i==10){
+					riga10=rs.getString("data");
+					riga20=rs.getString("Premio");
+				}
+				i++;
+			}
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
+				{riga1, riga11},
+				{riga2, riga12},
+				{riga3, riga13},
+				{riga4, riga14},
+				{riga5, riga15},
+				{riga6, riga16},
+				{riga7, riga17},
+				{riga8, riga18},
+				{riga9, riga19},
+				{riga10, riga20},
 			},
 			new String[] {
 				"Date", "Award"
