@@ -59,7 +59,7 @@ public class MainModerator {
 		btnGestisciNuoveRecensioni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				AcceptReview.main(null);
+				AcceptReview.main(username);
 			}
 		});
 		btnGestisciNuoveRecensioni.setBounds(41, 74, 198, 36);

@@ -84,67 +84,67 @@ public class UserProfile {
 		
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNome.setBounds(39, 106, 100, 29);
+		lblNome.setBounds(35, 62, 100, 29);
 		frame.getContentPane().add(lblNome);
 		
 		JLabel lblCognome = new JLabel("Cognome");
 		lblCognome.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblCognome.setBounds(39, 136, 100, 29);
+		lblCognome.setBounds(35, 92, 100, 29);
 		frame.getContentPane().add(lblCognome);
 		
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblEmail.setBounds(39, 164, 100, 29);
+		lblEmail.setBounds(35, 120, 100, 29);
 		frame.getContentPane().add(lblEmail);
 		
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblPassword.setBounds(39, 193, 100, 29);
+		lblPassword.setBounds(35, 149, 100, 29);
 		frame.getContentPane().add(lblPassword);
 		
 		JLabel lblLivello = new JLabel("Livello");
 		lblLivello.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblLivello.setBounds(418, 106, 100, 29);
+		lblLivello.setBounds(420, 62, 100, 29);
 		frame.getContentPane().add(lblLivello);
 		
 		JLabel lblPuntiEsperienza = new JLabel("Punti esperienza");
 		lblPuntiEsperienza.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblPuntiEsperienza.setBounds(418, 136, 116, 29);
+		lblPuntiEsperienza.setBounds(420, 92, 116, 29);
 		frame.getContentPane().add(lblPuntiEsperienza);
 		
 		JLabel lblNewLabel = new JLabel("Nome");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblNewLabel.setText(Nome);
-		lblNewLabel.setBounds(151, 106, 237, 29);
+		lblNewLabel.setBounds(147, 62, 237, 29);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel label = new JLabel("Cognome");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Arial", Font.PLAIN, 16));
 		label.setText(Cognome);
-		label.setBounds(151, 136, 237, 29);
+		label.setBounds(147, 92, 237, 29);
 		frame.getContentPane().add(label);
 		
 		JLabel label_1 = new JLabel("Email");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_1.setText(Email);
-		label_1.setBounds(108, 164, 280, 29);
+		label_1.setBounds(104, 120, 280, 29);
 		frame.getContentPane().add(label_1);
 		
 		JLabel label_2 = new JLabel("Password");
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_2.setText(Password);
-		label_2.setBounds(151, 193, 237, 29);
+		label_2.setBounds(147, 149, 237, 29);
 		frame.getContentPane().add(label_2);
 		
 		JLabel label_3 = new JLabel("Livello");
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setFont(new Font("Arial", Font.PLAIN, 16));
 		label_3.setText(Lvl);
-		label_3.setBounds(544, 106, 110, 29);
+		label_3.setBounds(546, 62, 110, 29);
 		frame.getContentPane().add(label_3);
 		
 		JLabel label_4 = new JLabel("");
@@ -180,28 +180,28 @@ public class UserProfile {
 		if(Lvl.equals("10")){
 			label_4.setText("Livello massimo raggiunto");
 		}
-		label_4.setBounds(544, 136, 110, 29);
+		label_4.setBounds(546, 92, 110, 29);
 		frame.getContentPane().add(label_4);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(25, 91, 372, 145);
+		panel.setBounds(21, 47, 372, 145);
 		frame.getContentPane().add(panel);
 		panel.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createEtchedBorder(), "ANAGRAFICA"));
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(403, 91, 255, 145);
+		panel_1.setBounds(405, 47, 255, 145);
 		frame.getContentPane().add(panel_1);
 		panel_1.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createEtchedBorder(), "GAMING"));
 		
 		JLabel lblTimeline = new JLabel("Timeline");
 		lblTimeline.setFont(new Font("Arial", Font.PLAIN, 18));
-		lblTimeline.setBounds(27, 254, 100, 29);
+		lblTimeline.setBounds(31, 203, 100, 29);
 		frame.getContentPane().add(lblTimeline);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(27, 300, 437, 140);
+		scrollPane.setBounds(28, 243, 437, 140);
 		frame.getContentPane().add(scrollPane);
 		String riga1="",riga2="",riga3="",riga4="",riga5="",riga6="",riga7="",riga8="",riga9="",riga10="";
 		String riga11="",riga12="",riga13="",riga14="",riga15="",riga16="",riga17="",riga18="",riga19="",riga20="";
@@ -286,7 +286,7 @@ public class UserProfile {
 				MainUser.main(username, type);
 		}
 		});
-		mntmNewMenuItem.setBounds(-7, 41, 100, 37);
+		mntmNewMenuItem.setBounds(0, 0, 93, 22);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
@@ -297,7 +297,7 @@ public class UserProfile {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(90, 41, 100, 37);
+		mntmNewMenuItem_1.setBounds(86, 0, 110, 22);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 	}
 }
