@@ -24,8 +24,8 @@ import javax.swing.JList;
 public class UserProfile {
 
 	private JFrame frame;
-	private String type, username, Nome, Cognome, Password, Email, UserId, Lvl;
-	private int EXP;
+	private String type, username, Nome, Cognome, Password, Email, UserId;
+	private int EXP,lvl;
 	private JTable table;
 	/**
 	 * Launch the application.
@@ -74,7 +74,7 @@ public class UserProfile {
 				 Email = rst.getString("email");
 				 Password= rst.getString("password");
 				 EXP=rst.getInt("exp");
-				 Lvl=rst.getString("level");
+				 lvl=rst.getInt("level");
 			}
 		} 
 		catch (Exception e) {
@@ -143,43 +143,18 @@ public class UserProfile {
 		JLabel label_3 = new JLabel("Livello");
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setFont(new Font("Arial", Font.PLAIN, 16));
-		label_3.setText(Lvl);
+		label_3.setText("" + lvl);
 		label_3.setBounds(546, 62, 110, 29);
 		frame.getContentPane().add(label_3);
 		
 		JLabel label_4 = new JLabel("");
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
 		label_4.setFont(new Font("Arial", Font.PLAIN, 16));
-		if(Lvl.equals("1")){
-			label_4.setText(EXP+"/100");
-		}
-		if(Lvl.equals("2")){
-			label_4.setText(EXP+"/300");
-		}
-		if(Lvl.equals("3")){
-			label_4.setText(EXP+"/600");
-		}
-		if(Lvl.equals("4")){
-			label_4.setText(EXP+"/1000");
-		}
-		if(Lvl.equals("5")){
-			label_4.setText(EXP+"/1500");
-		}
-		if(Lvl.equals("6")){
-			label_4.setText(EXP+"/2100");
-		}
-		if(Lvl.equals("7")){
-			label_4.setText(EXP+"/2800");
-		}
-		if(Lvl.equals("8")){
-			label_4.setText(EXP+"/3600");
-		}
-		if(Lvl.equals("9")){
-			label_4.setText(EXP+"/4500");
-		}
-		if(Lvl.equals("10")){
-			label_4.setText("Livello massimo raggiunto");
-		}
+		
+		int[] x = {100, 300, 600, 1000, 1500, 2100, 2800, 3600, 4500, 5500, 6600, 7800, 9100, 10500, 12000, 13600, 15300, 17100, 19000, 21000, 23100, 25300, 27600, 30000, 32500, 35100, 37800, 40600, 43500, 46500, 49600, 52800, 56100, 59500, 63000, 66600, 70300, 74100, 78000, 82000, 86100, 90300, 94600, 99000, 103500, 108100, 112800, 117600, 122500, 127500, 132600, 137800, 143100, 148500, 154000, 159600, 165300, 171100, 177000, 183000, 189100, 195300, 201600, 208000, 214500, 221100, 227800, 234600, 241500, 248500, 255600, 262800, 270100, 277500, 285000, 292600, 300300, 308100, 316000, 324000, 332100, 340300, 348600, 357000, 365500, 374100, 382800, 391600, 400500, 409500, 418600, 427800, 437100, 446500, 456000, 465600, 475300, 485100, 495000, 505000};
+			int j = lvl - 1;
+			label_4.setText(EXP + "/" + x[j]);
+		
 		label_4.setBounds(546, 92, 110, 29);
 		frame.getContentPane().add(label_4);
 		
@@ -208,7 +183,7 @@ public class UserProfile {
 		try {
 			String query2="Select data,Premio From timeline Where User_idUser='"+UserId+"' Order By idTimeline";
 			ResultSet rs= DatabaseMySQL.SendQuery(query2);
-			int i=1;
+			int i =1;
 			while (rs.next()){
 				if(i==1){
 					riga1=rs.getString("data");

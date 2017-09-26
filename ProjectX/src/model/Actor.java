@@ -1,13 +1,13 @@
 package model;
 
 public class Actor {
-	private static String username;
-	private static String password;
-	private static int level;
-	private static int exp;
-	private static String name;
-	private static String surname;
-	private static String type;
+	private  String username;
+	private  String password;
+	private  int level;
+	private  int exp;
+	private  String name;
+	private  String surname;
+	private  String type;
 	
 	public Actor(String user, String pass, String nome, String cognome, int lvl, int XP, String tipo) {
 		username = user;
