@@ -1,5 +1,7 @@
 package database;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 public class DatabaseMySQL {
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost:3306/gaming";
@@ -30,6 +32,39 @@ public class DatabaseMySQL {
 		String sqlQuery = "SELECT username FROM user WHERE username='"+ username + "'";
 		ResultSet rst= DatabaseMySQL.SendQuery(sqlQuery);
 		return rst;
-		
 	}
+	
+	public static ResultSet maxUser() throws Exception {
+		String query= "SELECT MAX(idUser) FROM user";
+		ResultSet result= DatabaseMySQL.SendQuery(query);
+		return result;
+	}
+	
+	public static ResultSet maxTimeline() throws Exception {
+		String timeline= "SELECT MAX(idTimeline) FROM timeline";
+		ResultSet pr= DatabaseMySQL.SendQuery(timeline);
+		return pr;
+	}
+	
+	public static ResultSet AddUser(String Username, String Password, String Name, String Surname, String Email, int level, int exp, String tipo) throws Exception {
+		String Tipo= "User";
+		int IDuser=1;
+		String sqlQuery = "INSERT INTO `user` (`username`, `password`, `type`,`name`,`surname`,`email`,`idUser`,`exp`,`level` ) VALUES ('" + Username + "', '" + Password + "', '"+ Tipo +"', '"+ Name +"', '"+ Surname +"', '"+ Email +"', '"+ IDuser +"', '"+exp+"','"+level+"')";
+		ResultSet rst = DatabaseMySQL.SendQuery(sqlQuery);
+		return rst;
+	}
+	
+	public static ResultSet insertTimeline() throws Exception {
+		int IDuser=1, IDtime=1;
+		Calendar today=Calendar.getInstance();
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy-hh:mm:ss");
+		String data= formatter.format(today.getTime());
+		String Premio1="Premio di Benvenuto Lvl.1";
+		String time= "INSERT INTO timeline (idTimeline, Premio, data, User_idUser) VALUES ('"+IDtime+"','"+Premio1+"','"+data+"','"+IDuser+"')";
+		ResultSet rst2=DatabaseMySQL.SendQuery(time);
+		return rst2;
+	}
+	
+	//end RegistrationController
+	
 }
