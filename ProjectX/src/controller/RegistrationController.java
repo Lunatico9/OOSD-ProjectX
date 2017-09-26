@@ -27,10 +27,9 @@ public class RegistrationController {
 		else return false;
 	}
 	
-	public static void AddUser(String Username, String Password, String Name, String Surname, String Email) throws Exception{
-		Actor x = new Actor(Username,Password,Name,Surname);
+	public static void AddUser(String Username, String Password, String Name, String Surname, String Email, int level, int exp, String tipo) throws Exception{
+		Actor x = new Actor(Username,Password,Name,Surname, level, exp, tipo);
 		String Tipo= "User";
-		int exp= 0, level=1;
 		int IDuser=1, IDtime=1;
 		Calendar today=Calendar.getInstance();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy-hh:mm:ss");
