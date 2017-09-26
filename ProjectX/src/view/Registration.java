@@ -148,7 +148,9 @@ public class Registration {
 					else{
 						if(uguale){
 							try {
-								RegistrationController.AddUser(username,pass1,name,surname,email);
+								int level = 1, exp = 0;
+								String type = "giocatore";
+								RegistrationController.AddUser(username,pass1,name,surname,email, level, exp, type);
 							} catch (Exception e) {
 								e.printStackTrace();
 							}	
