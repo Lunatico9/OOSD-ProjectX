@@ -205,7 +205,7 @@ public class PromotionDemotionModerator {
 				frame.dispose();
 				String type = "user";
 				if(type.equals("user"))
-					MainModerator.main(null);
+					MainModerator.main(usernameSelected);
 		}
 		});
 		mntmNewMenuItem.setBounds(6, 13, 78, 37);

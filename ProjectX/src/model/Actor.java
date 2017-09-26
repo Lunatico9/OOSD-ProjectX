@@ -1,22 +1,22 @@
 package model;
 
 public class Actor {
-	private String username;
-	private String password;
-	private int level;
-	private int xP;
-	private String name;
-	private String surname;
-	private enum usertype { user, moderator};
-	private String type;
+	private static String username;
+	private static String password;
+	private static int level;
+	private static int exp;
+	private static String name;
+	private static String surname;
+	private static String type;
 	
-	public Actor(String user, String pass, String name, String surname) {
-		this.username = user;
-		this.password = pass;
-		this.name = name;
-		this.surname= surname;
-		this.level = 0;
-		this.xP = 0;
+	public Actor(String user, String pass, String nome, String cognome, int lvl, int XP, String tipo) {
+		username = user;
+		password = pass;
+		name = nome;
+		surname= cognome;
+		level = lvl;
+		exp = XP;
+		type= tipo;
 	}
 	
 	public Actor(String user, String type) {
@@ -27,43 +27,43 @@ public class Actor {
 	public String getUsername() {
 		return username;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String user) {
+		username = user;
 	}
 	public String getPassword() {
 		return password;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(String pass) {
+		password = pass;
 	}
 	public int getLevel() {
 		return level;
 	}
-	public void setLevel(int level) {
-		this.level = level;
+	public void setLevel(int lvl) {
+		level = lvl;
 	}
-	public int getxP() {
-		return xP;
+	public int getExp() {
+		return exp;
 	}
-	public void setxP(int xP) {
-		this.xP = xP;
+	public void setExp(int XP) {
+		exp = XP;
 	}
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String nome) {
+		name = nome;
 	}
 	public String getCognome() {
 		return surname;
 	}
 	public void setCognome(String cognome) {
-		this.surname = cognome;
+		surname = cognome;
 	}
 	public String getType() {
 		return type;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setType(String tipo) {
+		type = tipo;
 	}
 }
