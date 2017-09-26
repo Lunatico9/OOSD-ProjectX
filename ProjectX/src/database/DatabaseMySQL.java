@@ -25,4 +25,11 @@ public class DatabaseMySQL {
 		ResultSet rst = stt.getResultSet();
 		return rst;
 	}
+	
+	public static ResultSet verify(String username) throws Exception {
+		String sqlQuery = "SELECT username FROM user WHERE username='"+ username + "'";
+		ResultSet rst= DatabaseMySQL.SendQuery(sqlQuery);
+		return rst;
+		
+	}
 }
