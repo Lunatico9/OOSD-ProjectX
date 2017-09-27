@@ -105,8 +105,11 @@ public class MainUser {
 		JButton btnNewButton = new JButton("Recensisci");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				if(!list.isSelectionEmpty()) {
 				frame.dispose();
 				AddReview.main(username, list.getSelectedValue().toString());
+				}
 			}
 		});
 		btnNewButton.setBounds(245, 249, 89, 23);
