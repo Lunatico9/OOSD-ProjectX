@@ -123,7 +123,7 @@ public class AcceptReview {
 		JLabel Commento = new JLabel("");
 		Commento.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		Commento.setHorizontalAlignment(SwingConstants.CENTER);
-		String queryTOT= "Select text, idReview, Game_idGame, user_iduser, vote From review WHERE approved=0";
+		String queryTOT= "SELECT * FROM review WHERE approved=0";
 		ResultSet rst= DatabaseMySQL.SendQuery(queryTOT);
 		if(rst.next()){
 		review= rst.getString("text");

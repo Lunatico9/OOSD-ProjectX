@@ -16,9 +16,9 @@ public class PlayController {
 		Calendar today= Calendar.getInstance();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy-hh:mm:ss");
 		String data= formatter.format(today.getTime());
-		String query2 = "UPDATE user SET exp = exp + 50 WHERE username = '" + user + "'";
+		String query2 = "UPDATE user SET exp = exp + 50 WHERE username = '" + user.getUsername() + "'";
 		ResultSet rst =DatabaseMySQL.SendQuery(query2); 
-		String query = "SELECT exp, idUser FROM user  WHERE username = '" + user + "'", qdu, qdu2;
+		String query = "SELECT exp, idUser FROM user  WHERE username = '" + user.getUsername() + "'", qdu, qdu2;
 		List<Integer> soglie = new ArrayList<Integer>(100);
 		soglie.add(0,100);
 		for(int i = 1; i < 100; i++) {
@@ -41,7 +41,7 @@ public class PlayController {
 			if(soglie.contains(exp)) {
 				int i = soglie.indexOf(exp);
 				String Premio = "Premio lv." + (i + 2);
-					qdu="UPDATE user SET level=" + (i + 2) + " WHERE username = '" + user + "'";
+					qdu="UPDATE user SET level=" + (i + 2) + " WHERE username = '" + user.getUsername() + "'";
 					DatabaseMySQL.SendQuery(qdu);
 					qdu2="INSERT INTO timeline (idTimeline, Premio, data, User_idUser) VALUES ('"+IDtime+"','"+Premio+"','"+data+"','"+id+"')";
 					DatabaseMySQL.SendQuery(qdu2);

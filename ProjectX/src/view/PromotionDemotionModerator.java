@@ -57,6 +57,7 @@ public class PromotionDemotionModerator {
 	 * Create the application.
 	 */
 	public PromotionDemotionModerator(Actor user) throws Exception {
+		this.user = user;
 		initialize(user);
 		
 	}

@@ -71,7 +71,7 @@ public class Play {
 		btnNewButton.setBounds(117, 92, 203, 66);
 		frame.getContentPane().add(btnNewButton);
 		
-		JLabel lblStaiGiocandoA = new JLabel("Stai giocando a " + game);
+		JLabel lblStaiGiocandoA = new JLabel("Stai giocando a " + game.getName());
 		lblStaiGiocandoA.setBounds(59, 39, 343, 23);
 		frame.getContentPane().add(lblStaiGiocandoA);
 		

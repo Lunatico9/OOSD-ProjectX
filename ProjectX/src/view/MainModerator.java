@@ -52,7 +52,7 @@ public class MainModerator {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				PromotionDemotionModerator.main(null);
+				PromotionDemotionModerator.main(user);
 			}
 		});
 		btnNewButton.setBounds(41, 27, 198, 36);

@@ -8,7 +8,7 @@ public class Review {
 	private int idUser;
 	
 	public Review(String text, int vote, int idGioco, int approved, int idUser) {
-		this.setIdUser(idUser);
+		this.idUser = idUser;
 		this.idGioco = idGioco;
 		this.text = text;
 		this.vote = vote;

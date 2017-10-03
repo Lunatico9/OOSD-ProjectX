@@ -9,7 +9,7 @@ import view.MainUser;
 
 public class AddReviewController {
 	public static void AddReview(Review review) throws Exception {
-		String sqlQuery = "INSERT INTO `review` (`text`, `vote`) VALUES ('" + review.getText() + "', '" + review.getVote() + "')";
+		String sqlQuery = "INSERT INTO `review` (`Text`,`Approved` ,`Game_idGame`, `user_iduser`, `vote`) VALUES ('" + review.getText() + "', '" + review.isApproved() + "', '" + review.getIdGioco() + "', '" + review.getIdUser() + "', '" + review.getVote() + "')";
 		ResultSet rst = DatabaseMySQL.SendQuery(sqlQuery);	
 	}
 	
