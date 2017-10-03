@@ -83,9 +83,11 @@ public class MainUser {
 		JButton btnGioca = new JButton("Gioca");
 		btnGioca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(!list.isSelectionEmpty()) {
 				String game = (String) list.getSelectedValue();
 				Play.main(username, game, type);
 				frame.dispose();
+				}
 			}
 		});
 		btnGioca.setBounds(82, 249, 89, 23);
