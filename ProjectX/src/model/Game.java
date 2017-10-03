@@ -1,21 +1,14 @@
 package model;
 
-import java.sql.Date;
-
 public class Game {
 	private int id;
 	private String name;
 	private float average;
-	private int votes;
-	private String dataDiUscita;
-	private String genere;
 	
-	public Game(String name, String dataDiUscita, String genere) {
-		this.id = 0;
+	public Game(int id,String name, float average) {
+		this.id= id;
 		this.name = name;
-		this.average = 0;
-		this.setVotes(0);
-		this.setGenere(genere);
+		this.average = average;
 	}
 	public String getName() {
 		return name;
@@ -26,8 +19,8 @@ public class Game {
 	public float getMedia() {
 		return average;
 	}
-	public void setMedia(float media) {
-		this.average = media;
+	public void setMedia(float average) {
+		this.average = average;
 	}
 	public int getId() {
 		return id;
@@ -35,22 +28,5 @@ public class Game {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getVotes() {
-		return votes;
-	}
-	public void setVotes(int votes) {
-		this.votes = votes;
-	}
-	public String getDataDiUscita() {
-		return dataDiUscita;
-	}
-	public void setDataDiUscita(String dataDiUscita) {
-		this.dataDiUscita = dataDiUscita;
-	}
-	public String getGenere() {
-		return genere;
-	}
-	public void setGenere(String genere) {
-		this.genere = genere;
-	}
+	
 }

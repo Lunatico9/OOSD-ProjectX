@@ -2,21 +2,21 @@ package model;
 
 public class Actor {
 	private  String username;
-	private  String password;
+	private  String password = null;
 	private  int level;
 	private  int exp;
 	private  String name;
 	private  String surname;
 	private  String type;
 	
-	public Actor(String user, String pass, String nome, String cognome, int lvl, int XP, String tipo) {
-		username = user;
-		password = pass;
-		name = nome;
-		surname= cognome;
-		level = lvl;
-		exp = XP;
-		type= tipo;
+	public Actor(String username, String password, String name, String surname, int lvl, int exp, String type) {
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.surname= surname;
+		this.level = level;
+		this.exp = exp;
+		this.type= type;
 	}
 	
 	public Actor(String user, String type) {
