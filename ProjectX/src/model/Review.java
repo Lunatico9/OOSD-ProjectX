@@ -4,10 +4,10 @@ public class Review {
 	private int idGioco;
 	private String text;
 	private int vote;
-	private boolean approved;
+	private int approved;
 	private int idUser;
 	
-	public Review(String text, int vote, int idGioco, boolean approved, int idUser) {
+	public Review(String text, int vote, int idGioco, int approved, int idUser) {
 		this.setIdUser(idUser);
 		this.idGioco = idGioco;
 		this.text = text;
@@ -31,19 +31,12 @@ public class Review {
 		this.text = text;
 	}
 	
-	public int getVoto() {
-		return vote;
-	}
 
-	public void setVoto(int voto) {
-		this.vote = voto;
-	}
-
-	public boolean isApproved() {
+	public int isApproved() {
 		return approved;
 	}
 
-	public void setApproved(boolean approved) {
+	public void setApproved(int approved) {
 		this.approved = approved;
 	}
 

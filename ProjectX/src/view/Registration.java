@@ -137,15 +137,14 @@ public class Registration {
 				}
 				
 				try {
-					presente = RegistrationController.verify(username);
+					
 					boolean uguale= RegistrationController.pass(pass1, pass2);
 				    if (pass1.isEmpty() || pass2.isEmpty() || name.isEmpty() || surname.isEmpty() || !email.contains("@") || !email.contains(".")){ 
 				    	JOptionPane.showMessageDialog(null, "Errore, uno o più campi non sono compilati correttamente o sono vuoti.");
 				    	}
 				    else{
-				    if (presente)
-						;
-					else{
+				    	presente = RegistrationController.verify(username);
+				    if (!presente)
 						if(uguale){
 							try {
 								int level = 1, exp = 0;
@@ -160,7 +159,7 @@ public class Registration {
 						}
 					}
 				    }
-				} catch (Exception e1) {
+				 catch (Exception e1) {
 					e1.printStackTrace();
 				}
 			}

@@ -15,21 +15,23 @@ import javax.swing.JScrollPane;
 
 import controller.MainUserController;
 import database.DatabaseMySQL;
+import model.Actor;
+import model.Game;
+
 import javax.swing.JMenuItem;
 
 public class MainUser {
 
 	private JFrame frame;
-	private String username;
-	private String type;
+	private Actor user;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String username, String type) {
+	public static void main(Actor user) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainUser window = new MainUser(username, type);
+					MainUser window = new MainUser(user);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,9 +44,8 @@ public class MainUser {
 	 * Create the application.
 	 * @throws Exception 
 	 */
-	public MainUser(String username, String type) throws Exception {
-		this.username = username;
-		this.type = type;
+	public MainUser(Actor user) throws Exception {
+		this.user = user;
 		initialize();
 	}
 
@@ -57,11 +58,14 @@ public class MainUser {
 		frame.setBounds(100, 100, 577, 320);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		ArrayList<Game> gamesObject = new ArrayList<Game>();
 		ArrayList<String> games = new ArrayList<String>();
-		String query = "SELECT name FROM game";
+		String query = "SELECT * FROM game";
 		ResultSet rst = DatabaseMySQL.SendQuery(query);
 		while(rst.next()) {
-			games.add(rst.getString(1));
+			Game a = new Game(rst.getInt("idGame"), rst.getString("name"), 0);
+			gamesObject.add(a);
+			games.add(rst.getString("name"));
 		}
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -84,9 +88,13 @@ public class MainUser {
 		btnGioca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!list.isSelectionEmpty()) {
-				String game = (String) list.getSelectedValue();
-				Play.main(username, game, type);
-				frame.dispose();
+				String gioco = (String) list.getSelectedValue();
+				for (Game game : gamesObject) {
+					if(game.getName().equals(gioco)) {
+					Play.main(user, game);
+					frame.dispose();
+					}
+				}
 				}
 			}
 		});
@@ -109,8 +117,13 @@ public class MainUser {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(!list.isSelectionEmpty()) {
-				frame.dispose();
-				AddReview.main(username, list.getSelectedValue().toString());
+					String gioco = (String) list.getSelectedValue();
+					for (Game game : gamesObject) {
+						if(game.getName().equals(gioco)) {
+							frame.dispose();
+							AddReview.main(user, game);
+						}
+					}
 				}
 			}
 		});
@@ -119,13 +132,12 @@ public class MainUser {
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Funzioni moderatore ");
 		mntmNewMenuItem.setVisible(false);
-		String a = "moderatore";
-		if(type.equals(a))
+		if(user.getType().equals("moderatore"))
 			mntmNewMenuItem.setVisible(true);
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				MainModerator.main(username);
+				MainModerator.main(user);
 			}
 		});
 		mntmNewMenuItem.setBounds(82, 0, 144, 22);
@@ -134,7 +146,7 @@ public class MainUser {
 		JButton btnNewButton_1 = new JButton("Profilo Personale");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainUserController.Profilo(username, type);
+				MainUserController.Profilo(user);
 				frame.setVisible(false);
 			}
 		});

@@ -27,8 +27,7 @@ public class RegistrationController {
 		else return false;
 	}
 	
-	public static void AddUser(String Username, String Password, String Name, String Surname, String Email, int level, int exp, String tipo) throws Exception{
-		Actor x = new Actor(Username,Password,Name,Surname, level, exp, tipo);
+	public static void AddUser(String username, String pass1, String name, String surname, String email, int level, int exp, String type) throws Exception{
 		String Tipo= "User";
 		int IDuser=1, IDtime=1;
 		Calendar today=Calendar.getInstance();
@@ -46,9 +45,9 @@ public class RegistrationController {
 		 IDuser=result.getInt(1)+1;
 		}
 		String time= "INSERT INTO timeline (idTimeline, Premio, data, User_idUser) VALUES ('"+IDtime+"','"+Premio1+"','"+data+"','"+IDuser+"')";
-		String sqlQuery = "INSERT INTO `user` (`username`, `password`, `type`,`name`,`surname`,`email`,`idUser`,`exp`,`level` ) VALUES ('" + Username + "', '" + Password + "', '"+ Tipo +"', '"+ Name +"', '"+ Surname +"', '"+ Email +"', '"+ IDuser +"', '"+exp+"','"+level+"')";
+		String sqlQuery = "INSERT INTO `user` (`username`, `password`, `type`,`name`,`surname`,`email`,`idUser`,`exp`,`level` ) VALUES ('" + username + "', '" + pass1 + "', '"+ Tipo +"', '"+ name +"', '"+ surname +"', '"+ email +"', '"+ IDuser +"', '"+exp+"','"+level+"')";
 		ResultSet rst = DatabaseMySQL.SendQuery(sqlQuery);
 		ResultSet rst2=DatabaseMySQL.SendQuery(time);
-		JOptionPane.showMessageDialog(null, "L'utente "+Username+" è stato registrato");
+		JOptionPane.showMessageDialog(null, "L'utente "+username+" è stato registrato");
 		}
 	}

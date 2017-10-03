@@ -1,11 +1,12 @@
 package controller;
 
+import model.Actor;
 import view.UserProfile;
 
 public class MainUserController {
 	
-	public static void Profilo(String username, String type){
-		UserProfile.main(username, type);
+	public static void Profilo(Actor user){
+		UserProfile.main(user);
 	}
 	
 }

@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 
 import controller.LoginController;
 import database.DatabaseMySQL;
+import model.Actor;
 
 import javax.swing.JPasswordField;
 import java.awt.Color;
@@ -91,10 +92,12 @@ public class Login {
 			    }
 			    else {
 			    	try {
-			    		String queryuser= "Select username, password From user WHERE username='"+username+"' AND password='"+password+"'";
-			    		ResultSet USER = DatabaseMySQL.SendQuery(queryuser);
-			    		if(USER.next()){
-			    		LoginController.Accedi(username, password);
+			    		String queryuser= "Select * From user WHERE username='"+username+"' AND password='"+password+"'";
+			    		ResultSet User = DatabaseMySQL.SendQuery(queryuser);
+			    		if(User.next()){
+			    			Actor user = new Actor(User.getInt("idUser"),User.getString("username"),User.getString("password"), User.getString("name"),User.getString("surname"), User.getString("email"), User.getInt("level"), User.getInt("exp"), User.getString("type"));
+			    			
+			    		LoginController.Accedi(user);
 			    		frmLogin.setVisible(false);
 			    		}
 			    		else{

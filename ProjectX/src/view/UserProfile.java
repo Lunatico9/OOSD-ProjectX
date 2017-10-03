@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import database.DatabaseMySQL;
+import model.Actor;
+
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,17 +30,16 @@ import javax.swing.JButton;
 public class UserProfile {
 
 	private JFrame frame;
-	private String type, username, Nome, Cognome, Password, Email, UserId;
-	private int EXP,lvl;
 	private JTable table;
+	private Actor user;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String username, String type) {
+	public static void main(Actor user) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UserProfile window = new UserProfile(username, type);
+					UserProfile window = new UserProfile(user);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,9 +51,8 @@ public class UserProfile {
 	/**
 	 * Create the application.
 	 */
-	public UserProfile(String username, String type) {
-		this.username = username;
-		this.type=type;
+	public UserProfile(Actor user) {
+		this.user = user;
 		initialize();
 	}
 
@@ -66,27 +66,9 @@ public class UserProfile {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		String query= "Select idUser, name, surname, email, password, exp, level FROM user WHERE username='"+username+"'"; 
-		ResultSet rst;
-		
-		try {
-			rst = DatabaseMySQL.SendQuery(query);
-			if(rst.next()){
-				 UserId=rst.getString("idUser");
-				 Nome= rst.getString("name");
-				 Cognome= rst.getString("surname");
-				 Email = rst.getString("email");
-				 Password= rst.getString("password");
-				 EXP=rst.getInt("exp");
-				 lvl=rst.getInt("level");
-			}
-		} 
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 		int[] x = {100, 300, 600, 1000, 1500, 2100, 2800, 3600, 4500, 5500, 6600, 7800, 9100, 10500, 12000, 13600, 15300, 17100, 19000, 21000, 23100, 25300, 27600, 30000, 32500, 35100, 37800, 40600, 43500, 46500, 49600, 52800, 56100, 59500, 63000, 66600, 70300, 74100, 78000, 82000, 86100, 90300, 94600, 99000, 103500, 108100, 112800, 117600, 122500, 127500, 132600, 137800, 143100, 148500, 154000, 159600, 165300, 171100, 177000, 183000, 189100, 195300, 201600, 208000, 214500, 221100, 227800, 234600, 241500, 248500, 255600, 262800, 270100, 277500, 285000, 292600, 300300, 308100, 316000, 324000, 332100, 340300, 348600, 357000, 365500, 374100, 382800, 391600, 400500, 409500, 418600, 427800, 437100, 446500, 456000, 465600, 475300, 485100, 495000, 505000};
-			int j = lvl - 1;
+			
+			int j = user.getLevel() - 1;
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(21, 47, 372, 145);
@@ -98,7 +80,7 @@ public class UserProfile {
 		JButton btnNewButton = new JButton("Modifica Password");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				UserProfileController.CambiaPassword(username);
+				UserProfileController.CambiaPassword(user);
 			}
 		});
 		btnNewButton.setBounds(109, 111, 142, 23);
@@ -114,7 +96,7 @@ public class UserProfile {
 		panel.add(label_1);
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		label_1.setText(Email);
+		label_1.setText(user.getEmail());
 		
 		JLabel lblCognome = new JLabel("Cognome");
 		lblCognome.setBounds(10, 50, 100, 29);
@@ -126,7 +108,7 @@ public class UserProfile {
 		panel.add(label);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Arial", Font.PLAIN, 16));
-		label.setText(Cognome);
+		label.setText(user.getCognome());
 		
 		
 		JLabel lblNome = new JLabel("Nome");
@@ -139,7 +121,7 @@ public class UserProfile {
 		panel.add(lblNewLabel);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel.setText(Nome);
+		lblNewLabel.setText(user.getName());
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(405, 47, 255, 145);
@@ -158,14 +140,14 @@ public class UserProfile {
 		panel_1.add(label_4);
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
 		label_4.setFont(new Font("Arial", Font.PLAIN, 16));
-		label_4.setText(EXP + "/" + x[j]);
+		label_4.setText(user.getExp() + "/" + x[j]);
 		
 		JLabel label_3 = new JLabel("Livello");
 		label_3.setBounds(73, 38, 110, 29);
 		panel_1.add(label_3);
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setFont(new Font("Arial", Font.PLAIN, 16));
-		label_3.setText("" + lvl);
+		label_3.setText("" + user.getLevel());
 		
 		JLabel lblLivello = new JLabel("Livello");
 		lblLivello.setHorizontalAlignment(SwingConstants.CENTER);
@@ -184,7 +166,7 @@ public class UserProfile {
 		String riga1="",riga2="",riga3="",riga4="",riga5="",riga6="",riga7="",riga8="",riga9="",riga10="";
 		String riga11="",riga12="",riga13="",riga14="",riga15="",riga16="",riga17="",riga18="",riga19="",riga20="";
 		try {
-			String query2="Select data,Premio From timeline Where User_idUser='"+UserId+"' Order By idTimeline";
+			String query2="Select data,Premio From timeline Where User_idUser='"+ user.getId() +"' Order By idTimeline";
 			ResultSet rs= DatabaseMySQL.SendQuery(query2);
 			int i =1;
 			while (rs.next()){
@@ -261,7 +243,7 @@ public class UserProfile {
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				MainUser.main(username, type);
+				MainUser.main(user);
 		}
 		});
 		mntmNewMenuItem.setBounds(0, 0, 93, 22);

@@ -7,6 +7,9 @@ import javax.swing.JTextPane;
 
 import controller.AddReviewController;
 import database.DatabaseMySQL;
+import model.Actor;
+import model.Game;
+import model.Review;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -21,19 +24,18 @@ import java.awt.event.ActionEvent;
 
 public class AddReview {
 
+	private Actor user;
+	private Game game;
 	private JFrame frmAddReview;
-	private String type;
-	private int username;
-	private int game;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String username, String game) {
+	public static void main(Actor user, Game game) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AddReview window = new AddReview(username, game);
+					AddReview window = new AddReview(user, game);
 					window.frmAddReview.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,25 +48,18 @@ public class AddReview {
 	 * Create the application.
 	 * @throws Exception 
 	 */
-	public AddReview(String username, String name) throws Exception {
-		initialize(username, name);
+	public AddReview(Actor user, Game game) throws Exception {
+		this.user = user;
+		this.game = game;
+		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 * @throws Exception 
 	 */
-	private void initialize(String username, String name) throws Exception {
-		String query = "SELECT idUser, type FROM user WHERE username = username";
+	private void initialize() throws Exception {
 		String querygame ="SELECT idGame FROM game WHERE name = name";
-		ResultSet rstgame = DatabaseMySQL.SendQuery(querygame);
-		ResultSet rst = DatabaseMySQL.SendQuery(query);
-		if(rst.next())
-			this.username = rst.getInt(1);
-			type=rst.getString("type");
-		if(rstgame.next())
-			this.game = rstgame.getInt(1);
-		System.out.println(game);
 		
 		frmAddReview = new JFrame();
 		frmAddReview.setTitle("Add review");
@@ -85,8 +80,10 @@ public class AddReview {
 		JButton btnNewButton = new JButton("Aggiungi");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				Review review = new Review(textPane.getText(),(int)comboBox.getSelectedItem(), game.getId(), 0 , user.getId());
 				try {
-					AddReviewController.AddReview(textPane.getText(), (int)comboBox.getSelectedItem());
+					AddReviewController.AddReview(review);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -100,7 +97,7 @@ public class AddReview {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmAddReview.dispose();
-				AddReviewController.Annulla(username,type);
+				AddReviewController.Annulla(user);
 			}
 		});
 		btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -110,8 +107,7 @@ public class AddReview {
 		JPanel panel = new JPanel();
 		panel.setBounds(65, 38, 537, 269);
 		frmAddReview.getContentPane().add(panel);
-		panel.setBorder(BorderFactory.createTitledBorder(
-		BorderFactory.createEtchedBorder(), "RECENSIONE"));
+		panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "RECENSIONE"));
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(65, 339, 158, 68);

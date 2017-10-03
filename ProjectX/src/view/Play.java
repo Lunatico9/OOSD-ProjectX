@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import controller.PlayController;
+import model.Actor;
+import model.Game;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -14,9 +16,8 @@ import java.awt.event.ActionEvent;
 public class Play {
 
 	private JFrame frame;
-	private String username;
-	private String game;
-	private String type;
+	private Actor user;
+	private Game game;
 
 	/**
 	 * Create the application.
@@ -26,11 +27,11 @@ public class Play {
 	 * 
 	 */
 	
-	public static void main(String username2, String game2, String type2) {
+	public static void main(Actor user, Game game) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Play window = new Play(username2, game2, type2);
+					Play window = new Play(user, game);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,19 +40,18 @@ public class Play {
 		});
 		
 	}
-	public Play(String username2, String game2, String type2) {
-		username = username2;
-		game = game2;
-		type = type2;
-		initialize(username2, game2);
+	public Play(Actor user, Game game) {
+		this.user = user;
+		this.game = game;
+		initialize(user, game);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
-	 * @param game2 
-	 * @param username2 
+	 * @param game 
+	 * @param user 
 	 */
-	private void initialize(String username2, String game2) {
+	private void initialize(Actor user, Game game) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +61,7 @@ public class Play {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					PlayController.Gioca(username);
+					PlayController.Gioca(user);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -71,7 +71,7 @@ public class Play {
 		btnNewButton.setBounds(117, 92, 203, 66);
 		frame.getContentPane().add(btnNewButton);
 		
-		JLabel lblStaiGiocandoA = new JLabel("Stai giocando a " + game2);
+		JLabel lblStaiGiocandoA = new JLabel("Stai giocando a " + game);
 		lblStaiGiocandoA.setBounds(59, 39, 343, 23);
 		frame.getContentPane().add(lblStaiGiocandoA);
 		
@@ -79,7 +79,7 @@ public class Play {
 		btnEsci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				MainUser.main(username,type);
+				MainUser.main(user);
 			}
 		});
 		btnEsci.setBounds(0, 238, 89, 23);

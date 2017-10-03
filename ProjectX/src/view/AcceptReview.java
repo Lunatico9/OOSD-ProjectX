@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTextPane;
 
 import database.DatabaseMySQL;
+import model.Actor;
 
 import javax.swing.JTable;
 import javax.swing.JLabel;
@@ -30,17 +31,17 @@ public class AcceptReview {
 	private String review, nomegioco, nomeutente;
 	private int vote,id,idgioco,idutente;
 	private JFrame frame;
-	private String username;
+	private Actor user;
 	
 	 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String username) {
+	public static void main(Actor user) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AcceptReview window = new AcceptReview(username);
+					AcceptReview window = new AcceptReview(user);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,8 +54,8 @@ public class AcceptReview {
 	 * Create the application.
 	 * @throws Exception 
 	 */
-	public AcceptReview(String username) throws Exception {
-		this.username = username;
+	public AcceptReview(Actor user) throws Exception {
+		this.user = user;
 		initialize();
 	}
 
@@ -235,7 +236,7 @@ public class AcceptReview {
 				frame.dispose();
 				String type = "user";
 				if(type.equals("user"))
-					MainModerator.main(username);
+					MainModerator.main(user);
 		}
 		});
 		mntmNewMenuItem.setBounds(0, 0, 70, 22);

@@ -34,16 +34,17 @@ public class PromotionDemotionModerator {
 	private JTable table;
 	private JButton btnUpdate;
 	private JPanel panel;
+	private Actor user;
 	private String usernameSelected;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(Actor user) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PromotionDemotionModerator window = new PromotionDemotionModerator();
+					PromotionDemotionModerator window = new PromotionDemotionModerator(user);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,8 +56,8 @@ public class PromotionDemotionModerator {
 	/**
 	 * Create the application.
 	 */
-	public PromotionDemotionModerator() throws Exception {
-		initialize();
+	public PromotionDemotionModerator(Actor user) throws Exception {
+		initialize(user);
 		
 	}
 
@@ -91,7 +92,7 @@ public class PromotionDemotionModerator {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() throws Exception {
+	private void initialize(Actor user) throws Exception {
 		frame = new JFrame();
 		frame.setTitle("Promotion or demotion");
 		frame.setBounds(100, 100, 700, 500);
@@ -203,9 +204,7 @@ public class PromotionDemotionModerator {
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				String type = "user";
-				if(type.equals("user"))
-					MainModerator.main(usernameSelected);
+				MainModerator.main(user);
 		}
 		});
 		mntmNewMenuItem.setBounds(6, 13, 78, 37);

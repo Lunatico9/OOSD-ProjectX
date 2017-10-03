@@ -65,6 +65,4 @@ public class DatabaseMySQL {
 		return rst2;
 	}
 	
-	//end RegistrationController
-	
 }

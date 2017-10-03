@@ -3,6 +3,9 @@ package view;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
+import model.Actor;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -10,16 +13,16 @@ import java.awt.event.ActionEvent;
 public class MainModerator {
 
 	private JFrame frame;
-	private String username;
+	private Actor user;
 	private String type = "moderatore";
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String username) {
+	public static void main(Actor user) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainModerator window = new MainModerator(username);
+					MainModerator window = new MainModerator(user);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,9 +34,9 @@ public class MainModerator {
 	/**
 	 * Create the application.
 	 */
-	public MainModerator(String username) {
+	public MainModerator(Actor user) {
+		this.user = user;
 		initialize();
-		this.username = username;
 	}
 
 	/**
@@ -59,7 +62,7 @@ public class MainModerator {
 		btnGestisciNuoveRecensioni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				AcceptReview.main(username);
+				AcceptReview.main(user);
 			}
 		});
 		btnGestisciNuoveRecensioni.setBounds(41, 74, 198, 36);
@@ -69,7 +72,7 @@ public class MainModerator {
 		btnUtilizzaAccountCome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				MainUser.main(username, type);
+				MainUser.main(user);
 			}
 		});
 		btnUtilizzaAccountCome.setBounds(41, 121, 198, 36);

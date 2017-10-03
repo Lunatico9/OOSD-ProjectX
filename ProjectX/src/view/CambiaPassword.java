@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import controller.CambiaPasswordController;
+import model.Actor;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -19,15 +20,15 @@ public class CambiaPassword {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private String user;
+	private Actor user;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String username) {
+	public static void main(Actor user) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CambiaPassword window = new CambiaPassword(username);
+					CambiaPassword window = new CambiaPassword(user);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,8 +40,8 @@ public class CambiaPassword {
 	/**
 	 * Create the application.
 	 */
-	public CambiaPassword(String username) {
-		user=username;
+	public CambiaPassword(Actor user) {
+		this.user=user;
 		initialize();
 	}
 

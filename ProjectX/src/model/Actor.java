@@ -1,19 +1,23 @@
 package model;
 
 public class Actor {
+	private  int id;
 	private  String username;
 	private  String password = null;
 	private  int level;
 	private  int exp;
+	private  String email;
 	private  String name;
 	private  String surname;
 	private  String type;
 	
-	public Actor(String username, String password, String name, String surname, int lvl, int exp, String type) {
+	public Actor(int id,String username, String password, String name, String surname, String email, int level, int exp, String type) {
+		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.surname= surname;
+		this.setEmail(email);
 		this.level = level;
 		this.exp = exp;
 		this.type= type;
@@ -65,5 +69,21 @@ public class Actor {
 	}
 	public void setType(String tipo) {
 		type = tipo;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

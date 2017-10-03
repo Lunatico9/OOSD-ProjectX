@@ -8,16 +8,17 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import database.DatabaseMySQL;
+import model.Actor;
 
 public class PlayController {
 	
-	public static void Gioca(String username) throws Exception {
+	public static void Gioca(Actor user) throws Exception {
 		Calendar today= Calendar.getInstance();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy-hh:mm:ss");
 		String data= formatter.format(today.getTime());
-		String query2 = "UPDATE user SET exp = exp + 50 WHERE username = '" + username + "'";
+		String query2 = "UPDATE user SET exp = exp + 50 WHERE username = '" + user + "'";
 		ResultSet rst =DatabaseMySQL.SendQuery(query2); 
-		String query = "SELECT exp, idUser FROM user  WHERE username = '" + username + "'", qdu, qdu2;
+		String query = "SELECT exp, idUser FROM user  WHERE username = '" + user + "'", qdu, qdu2;
 		List<Integer> soglie = new ArrayList<Integer>(100);
 		soglie.add(0,100);
 		for(int i = 1; i < 100; i++) {
@@ -40,7 +41,7 @@ public class PlayController {
 			if(soglie.contains(exp)) {
 				int i = soglie.indexOf(exp);
 				String Premio = "Premio lv." + (i + 2);
-					qdu="UPDATE user SET level=" + (i + 2) + " WHERE username = '" + username + "'";
+					qdu="UPDATE user SET level=" + (i + 2) + " WHERE username = '" + user + "'";
 					DatabaseMySQL.SendQuery(qdu);
 					qdu2="INSERT INTO timeline (idTimeline, Premio, data, User_idUser) VALUES ('"+IDtime+"','"+Premio+"','"+data+"','"+id+"')";
 					DatabaseMySQL.SendQuery(qdu2);
@@ -49,4 +50,5 @@ public class PlayController {
 		else JOptionPane.showMessageDialog(null, "Hai giocato per un ora e ti sono stati aggiunti 50 punti exp!");
 		}
 	}
+
 }
