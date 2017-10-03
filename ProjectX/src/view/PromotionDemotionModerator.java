@@ -68,10 +68,12 @@ public class PromotionDemotionModerator {
 		try {
 			String query = "SELECT * FROM user";
 			ResultSet rst = DatabaseMySQL.SendQuery(query);
-			Actor user;
+			Actor user1;
 			while(rst.next()) {
-				user = new Actor(rst.getString("username"), rst.getString("type"));
-				usersList.add(user);
+				user1 = new Actor(rst.getString("username"), rst.getString("type"));
+				if(!(rst.getString("username").equals(user.getUsername()))){
+				usersList.add(user1);
+				}
 			}
 		}
 		catch(SQLException e) {
