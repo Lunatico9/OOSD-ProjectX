@@ -19,6 +19,7 @@ import model.Actor;
 import model.Game;
 
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 public class MainUser {
 
@@ -88,14 +89,15 @@ public class MainUser {
 		btnGioca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!list.isSelectionEmpty()) {
-				String gioco = (String) list.getSelectedValue();
-				for (Game game : gamesObject) {
-					if(game.getName().equals(gioco)) {
-					Play.main(user, game);
-					frame.dispose();
+					String gioco = (String) list.getSelectedValue();
+					for (Game game : gamesObject) {
+						if(game.getName().equals(gioco)) {
+							Play.main(user, game);
+							frame.dispose();
+						}
 					}
 				}
-				}
+				else JOptionPane.showMessageDialog(null, "Seleziona un gioco dalla lista!");
 			}
 		});
 		btnGioca.setBounds(82, 249, 89, 23);
@@ -115,14 +117,23 @@ public class MainUser {
 		JButton btnNewButton = new JButton("Recensisci");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				if(list.isSelectionEmpty()){
+					JOptionPane.showMessageDialog(null, "Seleziona un gioco dalla lista!");	
+				}
 				if(!list.isSelectionEmpty()) {
 					String gioco = (String) list.getSelectedValue();
-					for (Game game : gamesObject) {
-						if(game.getName().equals(gioco)) {
-							frame.dispose();
-							AddReview.main(user, game);
+					try {
+						if(!MainUserController.Recensisci(user,gioco)){
+						for (Game game : gamesObject) {
+							if(game.getName().equals(gioco)) {
+								frame.dispose();
+								AddReview.main(user, game);
+							}
 						}
+						}
+					}
+					catch (Exception e1) {
+						e1.printStackTrace();
 					}
 				}
 			}

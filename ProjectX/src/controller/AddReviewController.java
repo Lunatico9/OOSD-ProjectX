@@ -9,7 +9,13 @@ import view.MainUser;
 
 public class AddReviewController {
 	public static void AddReview(Review review) throws Exception {
-		String sqlQuery = "INSERT INTO `review` (`Text`,`Approved` ,`Game_idGame`, `user_iduser`, `vote`) VALUES ('" + review.getText() + "', '" + review.isApproved() + "', '" + review.getIdGioco() + "', '" + review.getIdUser() + "', '" + review.getVote() + "')";
+		String QueryID = "SELECT MAX(idReview) FROM review";
+		ResultSet id= DatabaseMySQL.SendQuery(QueryID);
+		int ID=0;
+		if(id.next()){
+			 ID=id.getInt(1)+1;
+		}
+		String sqlQuery = "INSERT INTO `review` (`idReview`,`Text`,`Approved` ,`Game_idGame`, `user_iduser`, `vote`) VALUES ('" + ID + "','" + review.getText() + "', '" + review.isApproved() + "', '" + review.getIdGioco() + "', '" + review.getIdUser() + "', '" + review.getVote() + "')";
 		ResultSet rst = DatabaseMySQL.SendQuery(sqlQuery);	
 	}
 	
