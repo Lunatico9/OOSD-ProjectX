@@ -27,6 +27,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
 
 public class PromotionDemotionModerator {
 
@@ -114,7 +115,8 @@ public class PromotionDemotionModerator {
 		lblNewLabel_1.setBounds(71, 266, 196, 29);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		table = new JTable();
+		table = new JTable() {public boolean isCellEditable(int rowIndex, int mColIndex) {return false; }};
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -153,29 +155,26 @@ public class PromotionDemotionModerator {
 		btnUpdate.setFont(new Font("Arial", Font.PLAIN, 18));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-					String m = "moderatore";
-					String b = "giocatore";
 					String query;
-					if (lblNewLabel_1.getText().equals(m)) {
-						 query = "UPDATE user SET type = '" + b + "' WHERE username = '" + usernameSelected + "'";
+					if (lblNewLabel_1.getText().equals("moderatore")) {
+						 query = "UPDATE user SET type = '" + "giocatore" + "' WHERE username = '" + usernameSelected + "'";
 					}
 					else {
-						 query = "UPDATE user SET type = '" + m + "' WHERE username = '" + usernameSelected + "'";
+						 query = "UPDATE user SET type = '" + "moderatore" + "' WHERE username = '" + usernameSelected + "'";
 					}
 			    try {
 			    	String a = lblNewLabel_1.getText();
 			    	int i= table.getSelectedRow();
-			    	if(a.equals(m)) {
-			    	table.getModel().setValueAt(b, i, 1);
-			    	lblNewLabel_1.setText(b);
+			    	if(a.equals("moderatore")) {
+			    	table.getModel().setValueAt("giocatore", i, 1);
+			    	lblNewLabel_1.setText("giocatore");
 			    	}
 			    	else {
-			    	table.getModel().setValueAt(m, i, 1);
-			    	lblNewLabel_1.setText(m);
+			    	table.getModel().setValueAt("moderatore", i, 1);
+			    	lblNewLabel_1.setText("moderatore");
 			    	}
 					ResultSet rst = DatabaseMySQL.SendQuery(query);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

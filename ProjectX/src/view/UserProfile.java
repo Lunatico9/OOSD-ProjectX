@@ -11,6 +11,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -50,16 +52,33 @@ public class UserProfile {
 
 	/**
 	 * Create the application.
+	 * @throws Exception 
 	 */
-	public UserProfile(Actor user) {
+	public UserProfile(Actor user) throws Exception {
 		this.user = user;
 		initialize();
 	}
 
+	public ArrayList<String[]> AwardsList() throws Exception {
+		ArrayList<String[]> AwardsList = new ArrayList<String[]>();
+		try {
+			String query = "SELECT * FROM timeline WHERE User_idUser = '" + user.getId() + "'";
+			ResultSet rst = DatabaseMySQL.SendQuery(query);
+			while(rst.next()) {
+				String[] premio = {rst.getString(3),rst.getString(2)};
+				AwardsList.add(premio);
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return AwardsList;
+	}
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws Exception 
 	 */
-	private void initialize() {
+	private void initialize() throws Exception {
 		frame = new JFrame();
 		frame.setTitle("User profile");
 		frame.setBounds(100, 100, 700, 500);
@@ -163,80 +182,47 @@ public class UserProfile {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(28, 243, 437, 140);
 		frame.getContentPane().add(scrollPane);
-		String riga1="",riga2="",riga3="",riga4="",riga5="",riga6="",riga7="",riga8="",riga9="",riga10="";
-		String riga11="",riga12="",riga13="",riga14="",riga15="",riga16="",riga17="",riga18="",riga19="",riga20="";
 		try {
-			String query2="Select data,Premio From timeline Where User_idUser='"+ user.getId() +"' Order By idTimeline";
+			String query2="Select * From timeline Where User_idUser='"+ user.getId() +"' Order By idTimeline";
 			ResultSet rs= DatabaseMySQL.SendQuery(query2);
-			int i =1;
-			while (rs.next()){
-				if(i==1){
-					riga1=rs.getString("data");
-					riga11=rs.getString("Premio");
-				}
-				if(i==2){
-					riga2=rs.getString("data");
-					riga12=rs.getString("Premio");
-				}
-				if(i==3){
-					riga3=rs.getString("data");
-					riga13=rs.getString("Premio");
-				}
-				if(i==4){
-					riga4=rs.getString("data");
-					riga14=rs.getString("Premio");
-				}
-				if(i==5){
-					riga5=rs.getString("data");
-					riga15=rs.getString("Premio");
-				}
-				if(i==6){
-					riga6=rs.getString("data");
-					riga16=rs.getString("Premio");
-				}
-				if(i==7){
-					riga7=rs.getString("data");
-					riga17=rs.getString("Premio");
-				}
-				if(i==8){
-					riga8=rs.getString("data");
-					riga18=rs.getString("Premio");
-				}
-				if(i==9){
-					riga9=rs.getString("data");
-					riga19=rs.getString("Premio");
-				}
-				if(i==10){
-					riga10=rs.getString("data");
-					riga20=rs.getString("Premio");
-				}
-				i++;
-			}
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		table = new JTable();
+		table = new JTable(){public boolean isCellEditable(int rowIndex, int mColIndex) {return false; }};
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{riga1, riga11},
-				{riga2, riga12},
-				{riga3, riga13},
-				{riga4, riga14},
-				{riga5, riga15},
-				{riga6, riga16},
-				{riga7, riga17},
-				{riga8, riga18},
-				{riga9, riga19},
-				{riga10, riga20},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
 			},
 			new String[] {
 				"Date", "Award"
 			}
 		));
 		table.setFont(new Font("Arial", Font.PLAIN, 16));
+		while (rs.next()){
+			ArrayList<String[]> list = AwardsList();
+			DefaultTableModel model = (DefaultTableModel) table.getModel();
+			Object[] row = new Object[2];
+			for (int j1 = 0; j1 < list.size(); j1++) {
+				row[0] = list.get(j1)[0];
+				row[1] = list.get(j1)[1];
+				model.setRowCount(j1);
+				model.addRow(row);	
+			}
+		}	
+	}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+	
+		
+		
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Menu");
 		mntmNewMenuItem.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -259,5 +245,6 @@ public class UserProfile {
 		});
 		mntmNewMenuItem_1.setBounds(86, 0, 110, 22);
 		frame.getContentPane().add(mntmNewMenuItem_1);
+		
 	}
-}
+	}
