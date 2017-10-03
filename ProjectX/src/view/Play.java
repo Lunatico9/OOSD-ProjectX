@@ -43,7 +43,7 @@ public class Play {
 	public Play(Actor user, Game game) {
 		this.user = user;
 		this.game = game;
-		initialize(user, game);
+		initialize();
 	}
 
 	/**
@@ -51,7 +51,7 @@ public class Play {
 	 * @param game 
 	 * @param user 
 	 */
-	private void initialize(Actor user, Game game) {
+	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +61,8 @@ public class Play {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					PlayController.Gioca(user);
+					
+					user = PlayController.Gioca(user);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

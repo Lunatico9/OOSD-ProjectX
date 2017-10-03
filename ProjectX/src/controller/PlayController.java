@@ -12,11 +12,12 @@ import model.Actor;
 
 public class PlayController {
 	
-	public static void Gioca(Actor user) throws Exception {
+	public static Actor Gioca(Actor user) throws Exception {
 		Calendar today= Calendar.getInstance();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy-hh:mm:ss");
 		String data= formatter.format(today.getTime());
 		String query2 = "UPDATE user SET exp = exp + 50 WHERE username = '" + user.getUsername() + "'";
+		user.setExp(user.getExp()+50);
 		ResultSet rst =DatabaseMySQL.SendQuery(query2); 
 		String query = "SELECT exp, idUser FROM user  WHERE username = '" + user.getUsername() + "'", qdu, qdu2;
 		List<Integer> soglie = new ArrayList<Integer>(100);
@@ -46,9 +47,15 @@ public class PlayController {
 					qdu2="INSERT INTO timeline (idTimeline, Premio, data, User_idUser) VALUES ('"+IDtime+"','"+Premio+"','"+data+"','"+id+"')";
 					DatabaseMySQL.SendQuery(qdu2);
 					JOptionPane.showMessageDialog(null, "Congratulazioni sei salito al Livello " + (i + 2) + "!");
+					user.setLevel(user.getLevel()+1);
+					
 			}
-		else JOptionPane.showMessageDialog(null, "Hai giocato per un ora e ti sono stati aggiunti 50 punti exp!");
+		else { 
+			JOptionPane.showMessageDialog(null, "Hai giocato per un ora e ti sono stati aggiunti 50 punti exp!");
+			
+			}
 		}
+		return user;
 	}
 
 }

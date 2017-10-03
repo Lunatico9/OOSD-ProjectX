@@ -87,7 +87,7 @@ public class CambiaPassword {
 		JButton btnCambiaPassword = new JButton("Cambia Password");
 		btnCambiaPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					CambiaPasswordController.Modify(user,textField.getText(),textField_1.getText(),textField_2.getText());
+					user.setPassword(CambiaPasswordController.Modify(user,textField.getText(),textField_1.getText(),textField_2.getText()));
 			}
 		});
 		btnCambiaPassword.setBounds(285, 213, 117, 23);
