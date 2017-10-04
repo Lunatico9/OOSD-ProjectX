@@ -89,6 +89,8 @@ public class AddReview {
 				Review review = new Review(textPane.getText(),(int)comboBox.getSelectedItem(), game.getId(), 0 , user.getId());
 				try {
 					AddReviewController.AddReview(review);
+					MainUser.main(user);
+					frmAddReview.dispose();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
