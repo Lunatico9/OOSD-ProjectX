@@ -38,7 +38,7 @@ public class MainUser {
 	private JFrame frame;
 	private Actor user;
 	private ResultSet rst0, rstM, rst2 ;
-	private int Media, Count;
+	private int Media=0, Count=0, num=0;
 	/**
 	 * Launch the application.
 	 */
@@ -85,7 +85,6 @@ public class MainUser {
 		
 		//Recensione
 		JLabel lblNewLabel = new JLabel("");
-
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(46, 328, 500, 156);
 		frame.getContentPane().add(lblNewLabel);
@@ -111,9 +110,81 @@ public class MainUser {
 		scrollPane.setBounds(46, 38, 500, 200);
 		frame.getContentPane().add(scrollPane);
 		
+		JButton btnRecensioneSuccessiva = new JButton("Recensione Successiva");
+		
+		JButton btnNewButton_2 = new JButton("Recensione Precedente");
+		if(num==0) btnNewButton_2.setVisible(false);
+		else btnNewButton_2.setVisible(true);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					num=num-1;
+					btnRecensioneSuccessiva.setVisible(true);
+					if(num==1) btnNewButton_2.setVisible(false);
+					else btnNewButton_2.setVisible(true);
+					if(rst0.previous()){
+						String query2= "Select username From user WHERE idUser='"+rst0.getString("user_iduser") +"'";
+						rst2 = DatabaseMySQL.SendQuery(query2);
+						lblNewLabel.setText(rst0.getString("text"));
+						lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
+						if(rst2.next())
+						lblNewLabel_1.setText("Recensione di: "+ rst2.getString("username"));
+						}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} 
+		});
+		btnNewButton_2.setBounds(46, 491, 175, 23);
+		frame.getContentPane().add(btnNewButton_2);
+		
+		//Recensione Successiva
+		if(Count<=num){
+			btnRecensioneSuccessiva.setVisible(false);
+		}
+		else btnRecensioneSuccessiva.setVisible(true);
+		btnRecensioneSuccessiva.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					num=num+1;
+					btnNewButton_2.setVisible(true);
+					if(Count>num){
+						btnRecensioneSuccessiva.setVisible(true);
+					}
+					else btnRecensioneSuccessiva.setVisible(false);
+					if(num<=Count){
+					if(rst0.next()){
+						String query2= "Select username From user WHERE idUser='"+rst0.getString("user_iduser") +"'";
+						ResultSet rst2= DatabaseMySQL.SendQuery(query2);
+						rst2.next();
+						lblNewLabel.setText(rst0.getString("text"));
+						lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
+						lblNewLabel_1.setText("Recensione di: "+ rst2.getString("username"));		
+					}
+					}
+					if(Count==num){
+						btnRecensioneSuccessiva.setVisible(false);
+					}
+					else btnRecensioneSuccessiva.setVisible(true);
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+			}	
+		});
+		btnRecensioneSuccessiva.setBounds(371, 491, 175, 23);
+		frame.getContentPane().add(btnRecensioneSuccessiva);
+	
+		
 		JList list = new JList();
 		list.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
+				num=1;
+				Media=0;
+				Count=0;
 				for (Game game : gamesObject){
 					String gioco = (String) list.getSelectedValue();
 					if(game.getName().equals(gioco)) {
@@ -127,17 +198,16 @@ public class MainUser {
 						}
 					}
 				}
-
-				Count=0;
-				Media=0;
 				try {
 					while(rstM.next()){
-						Media += rstM.getInt("vote");
+						Media = Media + rstM.getInt("vote");
+						System.out.println(Media);
 						Count=Count+1;
+						System.out.println(Count);
 					}
 					if(Count != 0){
-					Media /=  Count;
-					lblNewLabel_3.setText("Media Voto: "+Media);
+						Media /=  Count;
+						lblNewLabel_3.setText("Media Voto: "+Media);
 					}
 				}
 				catch (SQLException e) {
@@ -158,12 +228,18 @@ public class MainUser {
 							lblNewLabel_1.setText("");
 							lblNewLabel_3.setText("");
 						}
-					} catch (Exception e) {
+					} 
+					catch (Exception e) {
 						e.printStackTrace();
-						}
 					}
-			});
-	
+					
+			if(Count>num){
+				btnRecensioneSuccessiva.setVisible(true);
+			}
+			else btnRecensioneSuccessiva.setVisible(false);
+			}
+		});
+
 		scrollPane.setViewportView(list);
 		list.setModel(new AbstractListModel() {
 			ArrayList<String> values = games;
@@ -259,56 +335,5 @@ public class MainUser {
 		});
 		btnNewButton_1.setBounds(416, 249, 123, 23);
 		frame.getContentPane().add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("Recensione Precedente");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(!list.isSelectionEmpty()) {
-				try {
-					if(rst0.previous()){
-						String query2= "Select username From user WHERE idUser='"+rst0.getString("user_iduser") +"'";
-						rst2 = DatabaseMySQL.SendQuery(query2);
-						lblNewLabel.setText(rst0.getString("text"));
-						lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
-						if(rst2.next())
-						lblNewLabel_1.setText("Recensione di: "+ rst2.getString("username"));
-						}
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			} 
-				else JOptionPane.showMessageDialog(null,"Nessun gioco selezionato");
-			}
-		});
-		
-		btnNewButton_2.setBounds(46, 491, 175, 23);
-		frame.getContentPane().add(btnNewButton_2);
-		
-		JButton btnRecensioneSuccessiva = new JButton("Recensione Successiva");
-		btnRecensioneSuccessiva.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(!list.isSelectionEmpty()) {
-				try {
-					if(rst0.next()){
-						String query2= "Select username From user WHERE idUser='"+rst0.getString("user_iduser") +"'";
-						ResultSet rst2= DatabaseMySQL.SendQuery(query2);
-						rst2.next();
-						lblNewLabel.setText(rst0.getString("text"));
-						lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
-						lblNewLabel_1.setText("Recensione di: "+ rst2.getString("username"));		
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-				else JOptionPane.showMessageDialog(null,"Nessun gioco selezionato");
-			}
-	
-		});
-		btnRecensioneSuccessiva.setBounds(371, 491, 175, 23);
-		frame.getContentPane().add(btnRecensioneSuccessiva);
-	}
+ }
 }
