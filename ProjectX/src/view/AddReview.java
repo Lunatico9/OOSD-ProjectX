@@ -21,6 +21,9 @@ import javax.swing.JPanel;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.JScrollPane;
 
 public class AddReview {
 
@@ -69,15 +72,17 @@ public class AddReview {
 		
 		JTextPane textPane = new JTextPane();
 		textPane.setBounds(110, 72, 450, 200);
+		textPane.setContentType("text/html");
 		frmAddReview.getContentPane().add(textPane);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(110, 362, 70, 28);
 		comboBox.setBackground(Color.WHITE);
 		comboBox.setFont(new Font("Arial", Font.PLAIN, 20));
-		comboBox.setBounds(110, 362, 70, 28);
 		frmAddReview.getContentPane().add(comboBox);
 		
 		JButton btnNewButton = new JButton("Aggiungi");
+		btnNewButton.setBounds(298, 352, 132, 48);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -90,10 +95,10 @@ public class AddReview {
 			}
 		});
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 20));
-		btnNewButton.setBounds(298, 352, 132, 48);
 		frmAddReview.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Annulla");
+		btnNewButton_1.setBounds(470, 352, 132, 48);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmAddReview.dispose();
@@ -101,13 +106,13 @@ public class AddReview {
 			}
 		});
 		btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 20));
-		btnNewButton_1.setBounds(470, 352, 132, 48);
 		frmAddReview.getContentPane().add(btnNewButton_1);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(65, 38, 537, 269);
 		frmAddReview.getContentPane().add(panel);
 		panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "RECENSIONE"));
+		panel.setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(65, 339, 158, 68);

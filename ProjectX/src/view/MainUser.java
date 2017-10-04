@@ -26,12 +26,18 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.SwingConstants;
 import java.awt.Dimension;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class MainUser {
 
 	private JFrame frame;
 	private Actor user;
-	private ResultSet rst0, rstM ;
+	private ResultSet rst0, rstM, rst2 ;
 	private int Media, Count;
 	/**
 	 * Launch the application.
@@ -168,6 +174,12 @@ public class MainUser {
 				return values.get(index);
 			}
 		});
+		list.addKeyListener(new KeyAdapter(){
+			  public void keyPressed(KeyEvent ke){
+			    if(ke.getKeyCode() == KeyEvent.VK_DOWN || ke.getKeyCode() == KeyEvent.VK_UP)
+			    {
+			      ke.consume();
+			    }}});
 		
 		JButton btnGioca = new JButton("Gioca");
 		btnGioca.addActionListener(new ActionListener() {
@@ -251,21 +263,24 @@ public class MainUser {
 		JButton btnNewButton_2 = new JButton("Recensione Precedente");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(!list.isSelectionEmpty()) {
 				try {
 					if(rst0.previous()){
 						String query2= "Select username From user WHERE idUser='"+rst0.getString("user_iduser") +"'";
-						ResultSet rst2= DatabaseMySQL.SendQuery(query2);
-						if(rst2.previous()){
+						rst2 = DatabaseMySQL.SendQuery(query2);
 						lblNewLabel.setText(rst0.getString("text"));
 						lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
+						if(rst2.next())
 						lblNewLabel_1.setText("Recensione di: "+ rst2.getString("username"));
 						}
-					}
+					
 				} catch (SQLException e) {
 					e.printStackTrace();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			} 
+				else JOptionPane.showMessageDialog(null,"Nessun gioco selezionato");
 			}
 		});
 		
@@ -275,6 +290,7 @@ public class MainUser {
 		JButton btnRecensioneSuccessiva = new JButton("Recensione Successiva");
 		btnRecensioneSuccessiva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(!list.isSelectionEmpty()) {
 				try {
 					if(rst0.next()){
 						String query2= "Select username From user WHERE idUser='"+rst0.getString("user_iduser") +"'";
@@ -288,6 +304,9 @@ public class MainUser {
 					e.printStackTrace();
 				}
 			}
+				else JOptionPane.showMessageDialog(null,"Nessun gioco selezionato");
+			}
+	
 		});
 		btnRecensioneSuccessiva.setBounds(371, 491, 175, 23);
 		frame.getContentPane().add(btnRecensioneSuccessiva);
