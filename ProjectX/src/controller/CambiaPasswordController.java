@@ -2,6 +2,8 @@ package controller;
 
 import java.sql.ResultSet;
 
+import javax.swing.JFrame;
+
 import database.DatabaseMySQL;
 import model.Actor;
 
