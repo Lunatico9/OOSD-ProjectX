@@ -7,6 +7,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -20,11 +21,18 @@ import model.Game;
 
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.SwingConstants;
+import java.awt.Dimension;
 
 public class MainUser {
 
 	private JFrame frame;
 	private Actor user;
+	private ResultSet rst0, rstM ;
+	private int Media, Count;
 	/**
 	 * Launch the application.
 	 */
@@ -56,7 +64,7 @@ public class MainUser {
 	 */
 	private void initialize() throws Exception {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 577, 320);
+		frame.setBounds(100, 100, 577, 564);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		ArrayList<Game> gamesObject = new ArrayList<Game>();
@@ -69,11 +77,87 @@ public class MainUser {
 			games.add(rst.getString("name"));
 		}
 		
+		//Recensione
+		JLabel lblNewLabel = new JLabel("");
+
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(46, 328, 500, 156);
+		frame.getContentPane().add(lblNewLabel);
+				
+		//Recensito da:
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(46, 283, 185, 33);
+		frame.getContentPane().add(lblNewLabel_1);
+			
+		//Voto
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBounds(290, 283, 237, 33);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		//Media
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setBounds(416, 0, 131, 33);
+		frame.getContentPane().add(lblNewLabel_3);
+				
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(46, 38, 500, 200);
 		frame.getContentPane().add(scrollPane);
 		
 		JList list = new JList();
+		list.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				for (Game game : gamesObject){
+					String gioco = (String) list.getSelectedValue();
+					if(game.getName().equals(gioco)) {
+						String query12="SELECT * From review Where'"+ game.getId()  + "'=Game_idGame AND Approved=1 ORDER BY idReview";
+						try {
+							rst0= DatabaseMySQL.SendQuery(query12);
+							rstM= DatabaseMySQL.SendQuery(query12);
+							}
+						catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}
+
+				Count=0;
+				Media=0;
+				try {
+					while(rstM.next()){
+						Media += rstM.getInt("vote");
+						Count=Count+1;
+					}
+					if(Count != 0){
+					Media /=  Count;
+					lblNewLabel_3.setText("Media Voto: "+Media);
+					}
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+					try {
+						if(rst0.next()){
+							String query2= "Select username From user WHERE idUser='"+rst0.getString("user_iduser") +"'";
+							ResultSet rst2= DatabaseMySQL.SendQuery(query2);
+							rst2.next();
+							lblNewLabel.setText(rst0.getString("text"));
+							lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
+							lblNewLabel_1.setText("Recensione di:"+ rst2.getString("username"));
+						}
+						else{
+							lblNewLabel.setText("Questo gioco non è ancora stato recensito!");
+							lblNewLabel_2.setText("");
+							lblNewLabel_1.setText("");
+							lblNewLabel_3.setText("");
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+						}
+					}
+			});
+	
 		scrollPane.setViewportView(list);
 		list.setModel(new AbstractListModel() {
 			ArrayList<String> values = games;
@@ -163,5 +247,49 @@ public class MainUser {
 		});
 		btnNewButton_1.setBounds(416, 249, 123, 23);
 		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Recensione Precedente");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					if(rst0.previous()){
+						String query2= "Select username From user WHERE idUser='"+rst0.getString("user_iduser") +"'";
+						ResultSet rst2= DatabaseMySQL.SendQuery(query2);
+						if(rst2.previous()){
+						lblNewLabel.setText(rst0.getString("text"));
+						lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
+						lblNewLabel_1.setText("Recensione di: "+ rst2.getString("username"));
+						}
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		btnNewButton_2.setBounds(46, 491, 175, 23);
+		frame.getContentPane().add(btnNewButton_2);
+		
+		JButton btnRecensioneSuccessiva = new JButton("Recensione Successiva");
+		btnRecensioneSuccessiva.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					if(rst0.next()){
+						String query2= "Select username From user WHERE idUser='"+rst0.getString("user_iduser") +"'";
+						ResultSet rst2= DatabaseMySQL.SendQuery(query2);
+						rst2.next();
+						lblNewLabel.setText(rst0.getString("text"));
+						lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
+						lblNewLabel_1.setText("Recensione di: "+ rst2.getString("username"));		
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		btnRecensioneSuccessiva.setBounds(371, 491, 175, 23);
+		frame.getContentPane().add(btnRecensioneSuccessiva);
 	}
 }

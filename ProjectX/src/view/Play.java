@@ -64,7 +64,6 @@ public class Play {
 					
 					user = PlayController.Gioca(user);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

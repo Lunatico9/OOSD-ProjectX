@@ -208,13 +208,14 @@ public class AcceptReview {
 						Commento.setText(rst.getString("text"));
 						String GIOCO="SELECT name FROM game WHERE idGame='"+idgioco+"'";
 						ResultSet gioco2= DatabaseMySQL.SendQuery(GIOCO);
-						gioco2.next();
-						Gioco.setText("Gioco: " + gioco2.getString(1));
+						if(gioco2.next()){
+       					Gioco.setText("Gioco: " + gioco2.getString(1));
 						Voto.setText("Voto:"+ vote);
 						String Nome="SELECT username FROM user WHERE idUser='"+idutente+"'";
 						ResultSet nome= DatabaseMySQL.SendQuery(Nome);
 						nome.next();
 						Utente.setText("Recensione di: " + nome.getString(1));
+						}
 					}
 					else{
 						Commento.setText("Non ci sono recensioni da confermare");
