@@ -82,11 +82,6 @@ public class DatabaseMySQL {
 	public static boolean verify(String username) throws Exception{
 		String sqlQuery = "SELECT username FROM user WHERE username='"+ username + "'";
 		ResultSet rst= DatabaseMySQL.SendQuery(sqlQuery);
-		if(rst.next()){
-			 return true; 
-				}
-		else{
-			return false;
-		}
+		return rst.next();
 	}
 }
