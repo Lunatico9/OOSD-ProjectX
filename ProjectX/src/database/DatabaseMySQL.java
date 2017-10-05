@@ -65,4 +65,15 @@ public class DatabaseMySQL {
 		return rst2;
 	}
 	
+	public static ResultSet Degrade(String username) throws Exception{
+		String query = "UPDATE user SET type = '" + "giocatore" + "' WHERE username = '" + username + "'";
+		ResultSet rst = DatabaseMySQL.SendQuery(query);
+		return rst;
+	}
+	
+	public static ResultSet Upgrade(String username) throws Exception{
+		String query = "UPDATE user SET type = '" + "moderatore" + "' WHERE username = '" + username + "'";
+		ResultSet rst = DatabaseMySQL.SendQuery(query);
+		return rst;
+	}
 }

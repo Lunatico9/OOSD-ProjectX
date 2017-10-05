@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import controller.PromotionDemotionModeratorController;
 import database.DatabaseMySQL;
 import model.Actor;
 
@@ -157,28 +158,22 @@ public class PromotionDemotionModerator {
 		btnUpdate.setFont(new Font("Arial", Font.PLAIN, 18));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-					String query;
-					if (lblNewLabel_1.getText().equals("moderatore")) {
-						 query = "UPDATE user SET type = '" + "giocatore" + "' WHERE username = '" + usernameSelected + "'";
+				if(table.getSelectedRow()!=-1){
+					try {
+						PromotionDemotionModeratorController.Update(lblNewLabel_1.getText(), table.getSelectedRow(), usernameSelected);
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
-					else {
-						 query = "UPDATE user SET type = '" + "moderatore" + "' WHERE username = '" + usernameSelected + "'";
-					}
-			    try {
-			    	String a = lblNewLabel_1.getText();
-			    	int i= table.getSelectedRow();
-			    	if(a.equals("moderatore")) {
-			    	table.getModel().setValueAt("giocatore", i, 1);
-			    	lblNewLabel_1.setText("giocatore");
-			    	}
-			    	else {
-			    	table.getModel().setValueAt("moderatore", i, 1);
-			    	lblNewLabel_1.setText("moderatore");
-			    	}
-					ResultSet rst = DatabaseMySQL.SendQuery(query);
-				} catch (Exception e) {
-					e.printStackTrace();
+					if(lblNewLabel_1.getText().equals("moderatore")) {
+				    	table.getModel().setValueAt("giocatore", table.getSelectedRow(), 1);
+				    	lblNewLabel_1.setText("giocatore");
+				    	}
+				    	else {
+				    	table.getModel().setValueAt("moderatore", table.getSelectedRow(), 1);
+				    	lblNewLabel_1.setText("moderatore");
+				    	}
 				}
+				
 			}
 		});
 		btnUpdate.setBounds(509, 378, 132, 48);
