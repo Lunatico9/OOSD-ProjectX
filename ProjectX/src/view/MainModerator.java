@@ -15,7 +15,6 @@ public class MainModerator {
 
 	private JFrame frame;
 	private Actor user;
-	private String type = "moderatore";
 	/**
 	 * Launch the application.
 	 */

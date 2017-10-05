@@ -209,9 +209,7 @@ public class MainUser {
 				try {
 					while(rstM.next()){
 						Media = Media + rstM.getInt("vote");
-						System.out.println(Media);
 						Count=Count+1;
-						System.out.println(Count);
 					}
 					if(Count != 0){
 						Media /=  Count;
