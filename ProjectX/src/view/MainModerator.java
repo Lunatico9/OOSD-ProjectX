@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import controller.MainModeratorController;
 import model.Actor;
 
 import javax.swing.JButton;
@@ -51,8 +52,8 @@ public class MainModerator {
 		JButton btnNewButton = new JButton("Gestisci utenti");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				MainModeratorController.GestisciUser(user);
 				frame.dispose();
-				PromotionDemotionModerator.main(user);
 			}
 		});
 		btnNewButton.setBounds(41, 27, 198, 36);
@@ -61,8 +62,8 @@ public class MainModerator {
 		JButton btnGestisciNuoveRecensioni = new JButton("Gestisci nuove recensioni");
 		btnGestisciNuoveRecensioni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MainModeratorController.GestisciRec(user);
 				frame.dispose();
-				AcceptReview.main(user);
 			}
 		});
 		btnGestisciNuoveRecensioni.setBounds(41, 74, 198, 36);
@@ -71,8 +72,8 @@ public class MainModerator {
 		JButton btnUtilizzaAccountCome = new JButton("Utilizza account come utente");
 		btnUtilizzaAccountCome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MainModeratorController.Utente(user);
 				frame.dispose();
-				MainUser.main(user);
 			}
 		});
 		btnUtilizzaAccountCome.setBounds(41, 121, 198, 36);
