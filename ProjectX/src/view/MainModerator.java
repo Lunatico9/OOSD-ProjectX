@@ -45,7 +45,7 @@ public class MainModerator {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 385, 272);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -56,7 +56,7 @@ public class MainModerator {
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(41, 27, 198, 36);
+		btnNewButton.setBounds(86, 27, 198, 36);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnGestisciNuoveRecensioni = new JButton("Gestisci nuove recensioni");
@@ -66,7 +66,7 @@ public class MainModerator {
 				frame.dispose();
 			}
 		});
-		btnGestisciNuoveRecensioni.setBounds(41, 74, 198, 36);
+		btnGestisciNuoveRecensioni.setBounds(86, 96, 198, 36);
 		frame.getContentPane().add(btnGestisciNuoveRecensioni);
 		
 		JButton btnUtilizzaAccountCome = new JButton("Utilizza account come utente");
@@ -76,7 +76,7 @@ public class MainModerator {
 				frame.dispose();
 			}
 		});
-		btnUtilizzaAccountCome.setBounds(41, 121, 198, 36);
+		btnUtilizzaAccountCome.setBounds(86, 164, 198, 36);
 		frame.getContentPane().add(btnUtilizzaAccountCome);
 	}
 }
