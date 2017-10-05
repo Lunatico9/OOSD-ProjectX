@@ -24,6 +24,8 @@ import javax.swing.SwingConstants;
 import controller.AcceptReviewController;
 
 import java.awt.Font;
+import javax.swing.JTextArea;
+import javax.swing.UIManager;
 
 public class AcceptReview {
 	
@@ -120,9 +122,11 @@ public class AcceptReview {
 		frame.getContentPane().add(Gioco);
 		
 		//COMMENTO
-		JLabel Commento = new JLabel("");
+		JTextArea Commento = new JTextArea("");
+		Commento.setLineWrap(true);
+		Commento.setWrapStyleWord(true);
+		Commento.setBackground(UIManager.getColor("Button.background"));
 		Commento.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-		Commento.setHorizontalAlignment(SwingConstants.CENTER);
 		String queryTOT= "SELECT * FROM review WHERE approved=0";
 		ResultSet rst= DatabaseMySQL.SendQuery(queryTOT);
 		if(rst.next()){
@@ -142,7 +146,7 @@ public class AcceptReview {
 			Utente.setText("Recensione di: ");
 			Voto.setText("Voto: ");
 		}
-		Commento.setBounds(10, 26, 414, 159);
+		Commento.setBounds(10, 60, 414, 125);
 		frame.getContentPane().add(Commento);
 		
 		//RIFIUTA

@@ -42,7 +42,8 @@ public class MainUser {
 	private JFrame frame;
 	private Actor user;
 	private ResultSet rst0, rstM, rst2 ;
-	private int Media=0, Count=0, num=0;
+	private int Count=0, num=0;
+	private Double Media = 0.0;
 	/**
 	 * Launch the application.
 	 */
@@ -190,7 +191,7 @@ public class MainUser {
 		list.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				num=1;
-				Media=0;
+				Media=0.0;
 				Count=0;
 				for (Game game : gamesObject){
 					String gioco = (String) list.getSelectedValue();
@@ -214,7 +215,7 @@ public class MainUser {
 					}
 					if(Count != 0){
 						Media /=  Count;
-						lblNewLabel_3.setText("Media Voto: "+Media);
+						lblNewLabel_3.setText("Media Voto: "+ String.format("%.1f", Media));
 					}
 				}
 				catch (SQLException e) {
