@@ -30,12 +30,6 @@ public class DatabaseMySQL {
 		return rst;
 	}
 	
-	public static ResultSet verify(String username) throws Exception {
-		String sqlQuery = "SELECT username FROM user WHERE username='"+ username + "'";
-		ResultSet rst= DatabaseMySQL.SendQuery(sqlQuery);
-		return rst;
-	}
-	
 	public static ResultSet maxUser() throws Exception {
 		String query= "SELECT MAX(idUser) FROM user";
 		ResultSet result= DatabaseMySQL.SendQuery(query);
@@ -83,5 +77,16 @@ public class DatabaseMySQL {
 	String query2="Select * From timeline Where User_idUser='"+ user.getId() +"' Order By idTimeline";
 	ResultSet rs= DatabaseMySQL.SendQuery(query2);
 	return rs;
+	}
+	
+	public static boolean verify(String username) throws Exception{
+		String sqlQuery = "SELECT username FROM user WHERE username='"+ username + "'";
+		ResultSet rst= DatabaseMySQL.SendQuery(sqlQuery);
+		if(rst.next()){
+			 return true; 
+				}
+		else{
+			return false;
+		}
 	}
 }

@@ -11,16 +11,6 @@ import model.Actor;
 
 public class RegistrationController {
 	
-	public static boolean verify(String username) throws Exception{
-		String sqlQuery = "SELECT username FROM user WHERE username='"+ username + "'";
-		ResultSet rst= DatabaseMySQL.SendQuery(sqlQuery);
-		if(rst.next()){
-			 return true; 
-				}
-		else{
-			return false;
-		}
-	}
 	
 	public static boolean pass(String pass1, String pass2){
 		if (pass1.equals(pass2)) return true;

@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import controller.RegistrationController;
+import database.DatabaseMySQL;
 
 import java.awt.Font;
 
@@ -121,7 +122,9 @@ public class Registration {
 			public void actionPerformed(ActionEvent arg0) {
 				String username= textField.getText(), name=textField_1.getText(), surname=textField_2.getText(), email=textField_3.getText();
 				boolean presente;
+				@SuppressWarnings("deprecation")
 				String pass1= passwordField.getText();
+				@SuppressWarnings("deprecation")
 				String pass2= passwordField_1.getText();
 				
 				try {
@@ -129,7 +132,7 @@ public class Registration {
 						JOptionPane.showMessageDialog(null, "Errore, inserisci un username");;
 					}
 					else{
-						presente = RegistrationController.verify(username);
+						presente =DatabaseMySQL.verify(username);
 						if(presente) JOptionPane.showMessageDialog(null, "Errore, username non valido");
 						}
 				} catch (Exception e1) {
@@ -143,7 +146,7 @@ public class Registration {
 				    	JOptionPane.showMessageDialog(null, "Errore, uno o più campi non sono compilati correttamente o sono vuoti.");
 				    	}
 				    else{
-				    	presente = RegistrationController.verify(username);
+				    	presente = DatabaseMySQL.verify(username);
 				    if (!presente)
 						if(uguale){
 							try {
