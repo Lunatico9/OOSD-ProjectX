@@ -1,8 +1,5 @@
 package controller;
 
-import java.sql.ResultSet;
-
-import database.DatabaseMySQL;
 import model.Actor;
 import view.MainModerator;
 import view.MainUser;

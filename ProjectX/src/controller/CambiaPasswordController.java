@@ -1,17 +1,12 @@
 package controller;
 
-import java.sql.ResultSet;
-
-import javax.swing.JFrame;
-
-import database.DatabaseMySQL;
 import model.Actor;
+import model.dao.Actor_DAO;
 
 public class CambiaPasswordController {
 	public static String Modify(Actor user, String oldPass, String newPass, String confirm) throws Exception{
 		if(user.getPassword().equals(oldPass) && newPass.equals(confirm)) {
-			String query = "UPDATE user SET password = '" + newPass + "' WHERE username = '" + user.getUsername() + "'";
-			ResultSet rst = DatabaseMySQL.SendQuery(query);
+			Actor_DAO.UpdatePassword(newPass, user.getUsername());
 			return newPass;
 		}
 		else
