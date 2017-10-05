@@ -32,6 +32,10 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.JTextField;
+import javax.swing.JTextArea;
+import java.awt.Color;
+import javax.swing.UIManager;
 
 public class MainUser {
 
@@ -84,8 +88,11 @@ public class MainUser {
 		}
 		
 		//Recensione
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		JTextArea lblNewLabel = new JTextArea("");
+		lblNewLabel.setBackground(UIManager.getColor("Button.background"));
+		lblNewLabel.setEditable(false);
+		lblNewLabel.setWrapStyleWord(true);
+		lblNewLabel.setLineWrap(true);
 		lblNewLabel.setBounds(46, 328, 500, 156);
 		frame.getContentPane().add(lblNewLabel);
 				

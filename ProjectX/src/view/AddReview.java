@@ -24,6 +24,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import java.awt.Dimension;
 
 public class AddReview {
 
@@ -70,9 +72,10 @@ public class AddReview {
 		frmAddReview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmAddReview.getContentPane().setLayout(null);
 		
-		JTextPane textPane = new JTextPane();
+		JTextArea textPane = new JTextArea();
+		textPane.setWrapStyleWord(true);
+		textPane.setLineWrap(true);
 		textPane.setBounds(110, 72, 450, 200);
-		textPane.setContentType("text/html");
 		frmAddReview.getContentPane().add(textPane);
 		
 		JComboBox comboBox = new JComboBox();
