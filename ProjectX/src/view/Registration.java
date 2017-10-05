@@ -22,6 +22,7 @@ import javax.swing.SwingConstants;
 
 import controller.RegistrationController;
 import database.DatabaseMySQL;
+import model.dao.Actor_DAO;
 
 import java.awt.Font;
 
@@ -152,7 +153,7 @@ public class Registration {
 							try {
 								int level = 1, exp = 0;
 								String type = "giocatore";
-								RegistrationController.AddUser(username,pass1,name,surname,email, level, exp, type);
+								Actor_DAO.AddUser(username,pass1,name,surname,email, level, exp, type);
 							} catch (Exception e) {
 								e.printStackTrace();
 							}	
