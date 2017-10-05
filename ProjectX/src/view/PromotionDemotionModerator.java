@@ -29,6 +29,8 @@ import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class PromotionDemotionModerator {
 
@@ -119,6 +121,15 @@ public class PromotionDemotionModerator {
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		table = new JTable() {public boolean isCellEditable(int rowIndex, int mColIndex) {return false; }};
+		table.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent ke) {
+					    if(ke.getKeyCode() == KeyEvent.VK_DOWN || ke.getKeyCode() == KeyEvent.VK_UP)
+					    {
+					      ke.consume();
+					    };
+			}
+		});
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.addMouseListener(new MouseAdapter() {
 			@Override
