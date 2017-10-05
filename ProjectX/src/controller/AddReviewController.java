@@ -16,6 +16,7 @@ public class AddReviewController {
 			 ID=id.getInt(1)+1;
 		}
 		String sqlQuery = "INSERT INTO `review` (`idReview`,`Text`,`Approved` ,`Game_idGame`, `user_iduser`, `vote`) VALUES ('" + ID + "','" + review.getText() + "', '" + review.isApproved() + "', '" + review.getIdGioco() + "', '" + review.getIdUser() + "', '" + review.getVote() + "')";
+	
 		ResultSet rst = DatabaseMySQL.SendQuery(sqlQuery);	
 	}
 	

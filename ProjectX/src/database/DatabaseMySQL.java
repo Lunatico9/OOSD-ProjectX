@@ -2,6 +2,8 @@ package database;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import model.Actor;
 public class DatabaseMySQL {
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost:3306/gaming";
@@ -75,5 +77,11 @@ public class DatabaseMySQL {
 		String query = "UPDATE user SET type = '" + "moderatore" + "' WHERE username = '" + username + "'";
 		ResultSet rst = DatabaseMySQL.SendQuery(query);
 		return rst;
+	}
+	
+	public static ResultSet getTimeline(Actor user) throws Exception{
+	String query2="Select * From timeline Where User_idUser='"+ user.getId() +"' Order By idTimeline";
+	ResultSet rs= DatabaseMySQL.SendQuery(query2);
+	return rs;
 	}
 }

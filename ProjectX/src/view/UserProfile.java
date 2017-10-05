@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 
 import database.DatabaseMySQL;
 import model.Actor;
+import model.dao.Review_DAO;
 
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
@@ -59,21 +60,7 @@ public class UserProfile {
 		initialize();
 	}
 
-	public ArrayList<String[]> AwardsList() throws Exception {
-		ArrayList<String[]> AwardsList = new ArrayList<String[]>();
-		try {
-			String query = "SELECT * FROM timeline WHERE User_idUser = '" + user.getId() + "'";
-			ResultSet rst = DatabaseMySQL.SendQuery(query);
-			while(rst.next()) {
-				String[] premio = {rst.getString(3),rst.getString(2)};
-				AwardsList.add(premio);
-			}
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return AwardsList;
-	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 * @throws Exception 
@@ -183,8 +170,7 @@ public class UserProfile {
 		scrollPane.setBounds(28, 243, 437, 140);
 		frame.getContentPane().add(scrollPane);
 		try {
-			String query2="Select * From timeline Where User_idUser='"+ user.getId() +"' Order By idTimeline";
-			ResultSet rs= DatabaseMySQL.SendQuery(query2);
+			ResultSet rs = DatabaseMySQL.getTimeline(user);
 		table = new JTable(){public boolean isCellEditable(int rowIndex, int mColIndex) {return false; }};
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
@@ -206,7 +192,7 @@ public class UserProfile {
 		));
 		table.setFont(new Font("Arial", Font.PLAIN, 16));
 		while (rs.next()){
-			ArrayList<String[]> list = AwardsList();
+			ArrayList<String[]> list = Review_DAO.AwardsList(user);
 			DefaultTableModel model = (DefaultTableModel) table.getModel();
 			Object[] row = new Object[2];
 			for (int j1 = 0; j1 < list.size(); j1++) {
