@@ -124,6 +124,7 @@ public class AcceptReview {
 		//COMMENTO
 		JTextArea Commento = new JTextArea("");
 		Commento.setLineWrap(true);
+		Commento.setEditable(false);
 		Commento.setWrapStyleWord(true);
 		Commento.setBackground(UIManager.getColor("Button.background"));
 		Commento.setFont(new Font("Times New Roman", Font.PLAIN, 12));
