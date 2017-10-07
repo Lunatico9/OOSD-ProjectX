@@ -87,6 +87,7 @@ public class UserProfile {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				UserProfileController.CambiaPassword(user);
+				frame.dispose();
 			}
 		});
 		btnNewButton.setBounds(109, 111, 142, 23);
