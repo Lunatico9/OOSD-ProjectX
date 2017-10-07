@@ -93,19 +93,22 @@ public class CambiaPassword {
 			public void actionPerformed(ActionEvent e) {
 					try {
 						if(!textField.getText().equals("") && !textField_1.getText().equals("") && !textField_2.getText().equals("")){
-							if(!CambiaPasswordController.Modify(user,textField.getText(),textField_1.getText(),textField_2.getText()).equals(textField.getText())){
-									user.setPassword(CambiaPasswordController.Modify(user,textField.getText(),textField_1.getText(),textField_2.getText()));
-									frame.dispose();
-									JOptionPane.showMessageDialog(null, "Password modificata con successo!");
-									UserProfile.main(user);
+							String P= textField_1.getText();
+								if(P.length()>6 && P.length()<18){
+									if(!CambiaPasswordController.Modify(user,textField.getText(),textField_1.getText(),textField_2.getText()).equals(textField.getText())){
+										user.setPassword(CambiaPasswordController.Modify(user,textField.getText(),textField_1.getText(),textField_2.getText()));
+										JOptionPane.showMessageDialog(null, "Password modificata con successo!");
+										frame.dispose();
+										UserProfile.main(user);
 									
-							}
-							else JOptionPane.showMessageDialog(null, "Digita una password diversa dalla precedente o controlla di aver confermato correttamente la nuova password!");
+									}
+									else JOptionPane.showMessageDialog(null, "Digita una password diversa dalla precedente o controlla di aver confermato correttamente la nuova password!");
+								}
+								else JOptionPane.showMessageDialog(null, "La nuova password deve essere lunga almeno 6 caratteri ma non più di 18 caratteri");
 						}
-						else{
-							JOptionPane.showMessageDialog(null, "Compila correttamente i campi!");
-						}
-					} catch (Exception e1) {
+						else JOptionPane.showMessageDialog(null, "Compila correttamente i campi!");
+					} 
+					catch (Exception e1) {
 						e1.printStackTrace();
 					}
 			}
