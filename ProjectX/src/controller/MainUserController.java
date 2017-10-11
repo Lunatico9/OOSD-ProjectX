@@ -28,4 +28,8 @@ public class MainUserController {
 			}
 			else return false;
 	}
+	
+	public static ResultSet selezionaUsername(int ID) throws Exception{
+		return DatabaseMySQL.selectUsername(ID);	
+	}
 }

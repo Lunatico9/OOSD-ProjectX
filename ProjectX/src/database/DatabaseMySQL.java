@@ -6,6 +6,7 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 import model.Actor;
+import model.Game;
 public class DatabaseMySQL {
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost:3306/gaming";
@@ -49,8 +50,7 @@ public class DatabaseMySQL {
 		String Tipo= "User";
 		int IDuser=1;
 		String sqlQuery = "INSERT INTO `user` (`username`, `password`, `type`,`name`,`surname`,`email`,`idUser`,`exp`,`level` ) VALUES ('" + Username + "', '" + Password + "', '"+ Tipo +"', '"+ Name +"', '"+ Surname +"', '"+ Email +"', '"+ IDuser +"', '"+exp+"','"+level+"')";
-		ResultSet rst = DatabaseMySQL.SendQuery(sqlQuery);
-		return rst;
+		return SendQuery(sqlQuery);
 	}
 	
 	public static ResultSet insertTimeline() throws Exception {
@@ -77,22 +77,28 @@ public class DatabaseMySQL {
 	}
 	
 	public static ResultSet getTimeline(Actor user) throws Exception{
-	String query2="Select * From timeline Where User_idUser='"+ user.getId() +"' Order By idTimeline";
-	ResultSet rs= DatabaseMySQL.SendQuery(query2);
-	return rs;
+		String query2="Select * From timeline Where User_idUser='"+ user.getId() +"' Order By idTimeline";
+		return SendQuery(query2); 
 	}
 	
-	
+	public static ResultSet getGameReviews(Game game) throws Exception{
+		String query12="SELECT * From review Where'"+ game.getId()  + "'=Game_idGame AND Approved=1 ORDER BY idReview";
+		return SendQuery(query12);
+	}
 	
 	public static boolean verify(String username) throws Exception{
 		String sqlQuery = "SELECT username FROM user WHERE username='"+ username + "'";
-		ResultSet rst= DatabaseMySQL.SendQuery(sqlQuery);
+		ResultSet rst= SendQuery(sqlQuery);
 		return rst.next();
 	}
 
 	public static ResultSet select(String username) throws Exception{
 		String query = "SELECT * FROM user";
-		ResultSet rst = DatabaseMySQL.SendQuery(query);
-		return rst;
+		return SendQuery(query);
+	}
+	
+	public static ResultSet selectUsername(int ID) throws Exception{
+		String query = "SELECT username FROM user WHERE idUser='" + ID + "'";
+		return SendQuery(query);
 	}
 }
