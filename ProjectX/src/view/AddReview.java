@@ -78,7 +78,7 @@ public class AddReview {
 		textPane.setBounds(110, 72, 450, 200);
 		frmAddReview.getContentPane().add(textPane);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<Integer> comboBox = new JComboBox<Integer>();
 		comboBox.setBounds(110, 362, 70, 28);
 		comboBox.setBackground(Color.WHITE);
 		comboBox.setFont(new Font("Arial", Font.PLAIN, 20));

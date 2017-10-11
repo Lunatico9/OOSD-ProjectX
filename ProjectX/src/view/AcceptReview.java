@@ -85,8 +85,9 @@ public class AcceptReview {
 		
 		//VOTO
 		JLabel Voto = new JLabel("");
+		Voto.setFont(new Font("Arial", Font.PLAIN, 16));
 		Voto.setHorizontalAlignment(SwingConstants.CENTER);
-		Voto.setBounds(334, 149, 90, 37);
+		Voto.setBounds(408, 75, 180, 40);
 		if(x){
 		Voto.setText("Voto:"+ vote);
 		}
@@ -95,6 +96,7 @@ public class AcceptReview {
 				
 		//UTENTE
 		JLabel Utente = new JLabel("");
+		Utente.setFont(new Font("Arial", Font.PLAIN, 16));
 		Utente.setHorizontalAlignment(SwingConstants.CENTER);
 		if(x){
 			String Nome="SELECT username FROM user WHERE idUser='"+idutente+"'";
@@ -105,11 +107,13 @@ public class AcceptReview {
 			 }
 			}
 		else Utente.setText("Recensione di: ");
-		Utente.setBounds(212, 26, 212, 23);
+		Utente.setBounds(208, 75, 180, 40);
 		frame.getContentPane().add(Utente);
 				
 		//GIOCO
 		JLabel Gioco = new JLabel("");
+		Gioco.setBackground(Color.WHITE);
+		Gioco.setFont(new Font("Arial", Font.PLAIN, 16));
 		Gioco.setHorizontalAlignment(SwingConstants.CENTER);
 		if(x){
 			String GIOCO="SELECT name FROM game WHERE idGame='"+idgioco+"'";
@@ -119,7 +123,7 @@ public class AcceptReview {
 			}
 		}
 		else Gioco.setText("Gioco: ");
-		Gioco.setBounds(10, 26, 174, 28);
+		Gioco.setBounds(10, 92, 180, 40);
 		frame.getContentPane().add(Gioco);
 		
 		//COMMENTO
@@ -148,11 +152,12 @@ public class AcceptReview {
 			Utente.setText("Recensione di: ");
 			Voto.setText("Voto: ");
 		}
-		Commento.setBounds(10, 60, 414, 125);
+		Commento.setBounds(40, 149, 414, 173);
 		frame.getContentPane().add(Commento);
 		
 		//RIFIUTA
 		JButton Rifiuta = new JButton("Rifiuta Review");
+		Rifiuta.setFont(new Font("Arial", Font.PLAIN, 16));
 		Rifiuta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String text=Commento.getText();
@@ -191,11 +196,12 @@ public class AcceptReview {
 				}				
 			}
 		});
-		Rifiuta.setBounds(255, 193, 126, 23);
+		Rifiuta.setBounds(271, 479, 150, 48);
 		frame.getContentPane().add(Rifiuta);
 		
 		//ACCETTA
 		JButton Accetta = new JButton("Accetta Review");
+		Accetta.setFont(new Font("Arial", Font.PLAIN, 16));
 		Accetta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String text=Commento.getText();
@@ -234,10 +240,11 @@ public class AcceptReview {
 				}
 			}
 		});
-		Accetta.setBounds(46, 193, 138, 23);
+		Accetta.setBounds(22, 479, 150, 48);
 		frame.getContentPane().add(Accetta);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Menu");
+		mntmNewMenuItem.setFont(new Font("Arial", Font.PLAIN, 16));
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
@@ -246,17 +253,18 @@ public class AcceptReview {
 					MainModerator.main(user);
 		}
 		});
-		mntmNewMenuItem.setBounds(0, 0, 70, 22);
+		mntmNewMenuItem.setBounds(10, 11, 100, 30);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
+		mntmNewMenuItem_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login.main(null);
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(69, 0, 81, 22);
+		mntmNewMenuItem_1.setBounds(114, 11, 100, 30);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 	}
 }
