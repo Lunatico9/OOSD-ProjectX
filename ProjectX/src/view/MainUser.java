@@ -140,13 +140,11 @@ public class MainUser {
 					else
 						btnNewButton_2.setVisible(true);
 					if (rst0.previous()) {
-						String query2 = "Select username From user WHERE idUser='" + rst0.getString("user_iduser")
-								+ "'";
-						rst2 = DatabaseMySQL.SendQuery(query2);
+						ResultSet rst2=MainUserController.selezionaUsername(rst0.getInt("user_iduser"));
+						rst2.next();
 						lblNewLabel.setText(rst0.getString("text"));
 						lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
-						if (rst2.next())
-							lblNewLabel_1.setText("Recensione di: " + rst2.getString("username"));
+						lblNewLabel_1.setText("Recensione di: " + rst2.getString("username"));
 					}
 
 				} catch (SQLException e) {
@@ -175,8 +173,7 @@ public class MainUser {
 						btnRecensioneSuccessiva.setVisible(false);
 					if (num <= Count) {
 						if (rst0.next()) {
-							String query2 = "Select username From user WHERE idUser='" + rst0.getString("user_iduser") + "'";
-							ResultSet rst2 = DatabaseMySQL.SendQuery(query2);
+							ResultSet rst2=MainUserController.selezionaUsername(rst0.getInt("user_iduser"));
 							rst2.next();
 							lblNewLabel.setText(rst0.getString("text"));
 							lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
