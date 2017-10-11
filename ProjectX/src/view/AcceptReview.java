@@ -67,6 +67,7 @@ public class AcceptReview {
 	 */
 	private void initialize() throws Exception {
 		frame = new JFrame();
+		frame.setTitle("Accept review");
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
