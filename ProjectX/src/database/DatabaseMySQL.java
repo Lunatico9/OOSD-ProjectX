@@ -3,6 +3,8 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import javax.swing.JOptionPane;
+
 import model.Actor;
 public class DatabaseMySQL {
 	private static String driver = "com.mysql.jdbc.Driver";
@@ -15,6 +17,7 @@ public class DatabaseMySQL {
 			Class.forName(driver);
 			con = DriverManager.getConnection (url, user, psw);
 		}catch(SQLException e) {
+			JOptionPane.showMessageDialog(null, "Errore nella connessione con il database");
 			e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
