@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import database.DatabaseMySQL;
 import model.Actor;
 
-public class Review_DAO {
+public class Review_DAO implements Review_DAO_Interface {
 	
 	public static ArrayList<String[]> AwardsList(Actor user) throws Exception {
 		ArrayList<String[]> AwardsList = new ArrayList<String[]>();

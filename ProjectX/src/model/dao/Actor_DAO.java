@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 import database.DatabaseMySQL;
 
-public class Actor_DAO {
+public class Actor_DAO implements Actor_DAO_Interface {
 	
 	public static void UpdatePassword(String newPass, String username) throws Exception{
 		String query = "UPDATE user SET password = '" + newPass + "' WHERE username = '" + username + "'";
