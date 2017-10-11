@@ -68,7 +68,7 @@ public class UserProfile {
 	private void initialize() throws Exception {
 		frame = new JFrame();
 		frame.setTitle("User profile");
-		frame.setBounds(100, 100, 700, 500);
+		frame.setBounds(100, 100, 700, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		

@@ -76,7 +76,7 @@ public class MainUser {
 	private void initialize() throws Exception {
 		frame = new JFrame();
 		frame.setTitle("Main user");
-		frame.setBounds(100, 100, 577, 564);
+		frame.setBounds(100, 100, 700, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		ArrayList<Game> gamesObject = new ArrayList<Game>();

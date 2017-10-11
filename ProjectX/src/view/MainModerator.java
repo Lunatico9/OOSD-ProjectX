@@ -45,7 +45,7 @@ public class MainModerator {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Main moderator");
-		frame.setBounds(100, 100, 385, 272);
+		frame.setBounds(100, 100, 700, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		

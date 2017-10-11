@@ -102,7 +102,7 @@ public class PromotionDemotionModerator {
 	private void initialize(Actor user) throws Exception {
 		frame = new JFrame();
 		frame.setTitle("Promotion or demotion");
-		frame.setBounds(100, 100, 700, 500);
+		frame.setBounds(100, 100, 700, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		

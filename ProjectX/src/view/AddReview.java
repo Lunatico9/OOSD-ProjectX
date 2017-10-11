@@ -68,7 +68,7 @@ public class AddReview {
 		
 		frmAddReview = new JFrame();
 		frmAddReview.setTitle("Add review");
-		frmAddReview.setBounds(100, 100, 700, 500);
+		frmAddReview.setBounds(100, 100, 700, 600);
 		frmAddReview.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmAddReview.getContentPane().setLayout(null);
 		

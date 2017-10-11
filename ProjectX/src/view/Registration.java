@@ -66,7 +66,7 @@ public class Registration {
 		
 		Registration = new JFrame();
 		Registration.setTitle("Registration");
-		Registration.setBounds(100, 100, 450, 425);
+		Registration.setBounds(100, 100, 700, 600);
 		Registration.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Registration.getContentPane().setLayout(new BoxLayout(Registration.getContentPane(), BoxLayout.X_AXIS));
 		
