@@ -4,13 +4,17 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 
 import controller.CambiaPasswordController;
+import javafx.stage.WindowEvent;
 import model.Actor;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
@@ -88,10 +92,23 @@ public class CambiaPassword {
 		btnCambiaPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					try {
-						user.setPassword(CambiaPasswordController.Modify(user,textField.getText(),textField_1.getText(),textField_2.getText()));
-						frame.dispose();
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
+						if(!textField.getText().equals("") && !textField_1.getText().equals("") && !textField_2.getText().equals("")){
+							String P= textField_1.getText();
+								if(P.length()>6 && P.length()<18){
+									if(!CambiaPasswordController.Modify(user,textField.getText(),textField_1.getText(),textField_2.getText()).equals(textField.getText())){
+										user.setPassword(CambiaPasswordController.Modify(user,textField.getText(),textField_1.getText(),textField_2.getText()));
+										JOptionPane.showMessageDialog(null, "Password modificata con successo!");
+										frame.dispose();
+										UserProfile.main(user);
+									
+									}
+									else JOptionPane.showMessageDialog(null, "Digita una password diversa dalla precedente o controlla di aver confermato correttamente la nuova password!");
+								}
+								else JOptionPane.showMessageDialog(null, "La nuova password deve essere lunga almeno 6 caratteri ma non più di 18 caratteri");
+						}
+						else JOptionPane.showMessageDialog(null, "Compila correttamente i campi!");
+					} 
+					catch (Exception e1) {
 						e1.printStackTrace();
 					}
 			}
@@ -103,6 +120,7 @@ public class CambiaPassword {
 		btnAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
+				UserProfile.main(user);
 			}
 		});
 		btnAnnulla.setBounds(25, 213, 117, 23);

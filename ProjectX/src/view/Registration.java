@@ -138,36 +138,36 @@ public class Registration {
 						}
 				} catch (Exception e1) {
 					e1.printStackTrace();
-				}
-				
-				try {
-					
+				}				
+				try {	
 					boolean uguale= RegistrationController.pass(pass1, pass2);
 				    if (pass1.isEmpty() || pass2.isEmpty() || name.isEmpty() || surname.isEmpty() || !email.contains("@") || !email.contains(".")){ 
 				    	JOptionPane.showMessageDialog(null, "Errore, uno o più campi non sono compilati correttamente o sono vuoti.");
 				    	}
 				    else{
 				    	presente = DatabaseMySQL.verify(username);
-				    if (!presente)
-						if(uguale){
-							try {
-								int level = 1, exp = 0;
-								String type = "giocatore";
-								Actor_DAO.AddUser(username,pass1,name,surname,email, level, exp, type);
-							} catch (Exception e) {
-								e.printStackTrace();
-							}	
+				    	if (!presente)
+				    		if(pass1.length()>6 && pass1.length()<18){
+				    			if(uguale){
+				    				try {
+				    					int level = 1, exp = 0;
+				    					String type = "giocatore";
+				    					Actor_DAO.AddUser(username,pass1,name,surname,email, level, exp, type);
+				    				} 
+				    				catch (Exception e) {
+				    					e.printStackTrace();
+				    				}	
+				    			}
+				    			else JOptionPane.showMessageDialog(null, "Errore, le password inserite non corrispondono correggi e riprova");
+				    		}
+				    		else JOptionPane.showMessageDialog(null, "Errore, la password deve essere lunga almeno 6 caratteri e non più di 18");
 						}
-						else{ 
-							JOptionPane.showMessageDialog(null, "Errore, le password inserite non corrispondono correggi e riprova");
-						}
-					}
 				    }
-				 catch (Exception e1) {
-					e1.printStackTrace();
+				 	catch (Exception e1) {
+				 		e1.printStackTrace();
+				 	}
 				}
-			}
-		});
+			});
 		
 		Registra.setBounds(96, 318, 201, 23);
 		panel.add(Registra);

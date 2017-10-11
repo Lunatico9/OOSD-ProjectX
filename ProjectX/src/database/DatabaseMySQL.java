@@ -79,9 +79,17 @@ public class DatabaseMySQL {
 	return rs;
 	}
 	
+	
+	
 	public static boolean verify(String username) throws Exception{
 		String sqlQuery = "SELECT username FROM user WHERE username='"+ username + "'";
 		ResultSet rst= DatabaseMySQL.SendQuery(sqlQuery);
 		return rst.next();
+	}
+
+	public static ResultSet select(String username) throws Exception{
+		String query = "SELECT * FROM user";
+		ResultSet rst = DatabaseMySQL.SendQuery(query);
+		return rst;
 	}
 }
