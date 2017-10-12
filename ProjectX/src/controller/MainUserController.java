@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
 
 import database.DatabaseMySQL;
 import model.Actor;
+import model.dao.Game_DAO;
+import model.dao.Review_DAO;
 import view.UserProfile;
 
 public class MainUserController {
@@ -16,12 +18,10 @@ public class MainUserController {
 
 	public static boolean Recensisci(Actor user, String gioco) throws Exception {
 		int idGame;
-		String query0= "SELECT idGame FROM game WHERE name='"+ gioco + "'";
-		ResultSet rst= DatabaseMySQL.SendQuery(query0);
+			ResultSet rst= Game_DAO.selectIDgame(gioco);
 			rst.next();
 			idGame=rst.getInt(1);
-			String query= "SELECT * FROM review WHERE user_iduser='" + user.getId() + "' AND Game_idGame='"+ idGame +"'";
-			ResultSet rst2= DatabaseMySQL.SendQuery(query);
+			ResultSet rst2= Review_DAO.selezionaReview(user.getId(), idGame);
 			if(rst2.next()){
 				JOptionPane.showMessageDialog(null, "Hai già recensito questo gioco!");
 				return true;

@@ -24,4 +24,9 @@ public class Review_DAO implements Review_DAO_Interface {
 		}
 		return AwardsList;
 	}
+	
+	public static ResultSet selezionaReview(int IDuser, int IDgame) throws Exception{
+		String query= "SELECT * FROM review WHERE user_iduser='" + IDuser + "' AND Game_idGame='"+ IDgame +"'";
+		return DatabaseMySQL.SendQuery(query);
+	}
 }
