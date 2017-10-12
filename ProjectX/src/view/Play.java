@@ -73,12 +73,16 @@ public class Play {
 				}
 			}
 		});
-		btnNewButton.setBounds(152, 226, 350, 80);
+		btnNewButton.setBounds(154, 270, 350, 80);
 		frame.getContentPane().add(btnNewButton);
 		
-		JLabel lblStaiGiocandoA = new JLabel("Stai giocando a " + game.getName());
+		ImageIcon Titolo= new ImageIcon("src/Immagini/"+game.getName()+" logo.png");
+		Image scaledImageT = Titolo.getImage().getScaledInstance(500, 200, Image.SCALE_DEFAULT);
+		Titolo.setImage(scaledImageT);
+		
+		JLabel lblStaiGiocandoA = new JLabel(Titolo);
 		lblStaiGiocandoA.setFont(new Font("Times New Roman", Font.BOLD, 25));
-		lblStaiGiocandoA.setBounds(152, 157, 382, 30);
+		lblStaiGiocandoA.setBounds(79, 15, 500, 200);
 		frame.getContentPane().add(lblStaiGiocandoA);
 		
 		JButton btnEsci = new JButton("Esci");
