@@ -103,6 +103,4 @@ public class Play {
 		lblNewLabel_5.setBounds(0, 0, 684, 561);
 		frame.getContentPane().add(lblNewLabel_5);
 	}
-
-	
 }
