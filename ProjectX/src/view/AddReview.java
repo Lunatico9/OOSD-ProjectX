@@ -75,17 +75,17 @@ public class AddReview {
 		JTextArea textPane = new JTextArea();
 		textPane.setWrapStyleWord(true);
 		textPane.setLineWrap(true);
-		textPane.setBounds(110, 72, 450, 200);
+		textPane.setBounds(75, 85, 525, 255);
 		frmAddReview.getContentPane().add(textPane);
 		
 		JComboBox<Integer> comboBox = new JComboBox<Integer>();
-		comboBox.setBounds(110, 362, 70, 28);
+		comboBox.setBounds(298, 423, 70, 28);
 		comboBox.setBackground(Color.WHITE);
 		comboBox.setFont(new Font("Arial", Font.PLAIN, 20));
 		frmAddReview.getContentPane().add(comboBox);
 		
 		JButton btnNewButton = new JButton("Aggiungi");
-		btnNewButton.setBounds(298, 352, 132, 48);
+		btnNewButton.setBounds(520, 502, 132, 48);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -103,7 +103,7 @@ public class AddReview {
 		frmAddReview.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Annulla");
-		btnNewButton_1.setBounds(470, 352, 132, 48);
+		btnNewButton_1.setBounds(29, 502, 132, 48);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmAddReview.dispose();
@@ -114,13 +114,13 @@ public class AddReview {
 		frmAddReview.getContentPane().add(btnNewButton_1);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(65, 38, 537, 269);
+		panel.setBounds(29, 52, 623, 319);
 		frmAddReview.getContentPane().add(panel);
 		panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "RECENSIONE"));
 		panel.setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(65, 339, 158, 68);
+		panel_1.setBounds(253, 400, 158, 68);
 		frmAddReview.getContentPane().add(panel_1);
 		panel_1.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createEtchedBorder(), "VOTO"));

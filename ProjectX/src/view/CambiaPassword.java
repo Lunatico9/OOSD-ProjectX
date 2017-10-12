@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import java.awt.Font;
 
 public class CambiaPassword {
 
@@ -59,37 +60,44 @@ public class CambiaPassword {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblVecchiaPassword = new JLabel("Vecchia Password");
+		JLabel lblVecchiaPassword = new JLabel("Vecchia password");
+		lblVecchiaPassword.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblVecchiaPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVecchiaPassword.setBounds(54, 26, 289, 20);
+		lblVecchiaPassword.setBounds(181, 111, 289, 20);
 		frame.getContentPane().add(lblVecchiaPassword);
 		
 		textField = new JPasswordField();
-		textField.setBounds(54, 48, 289, 20);
+		textField.setFont(new Font("Arial", Font.PLAIN, 16));
+		textField.setBounds(181, 156, 290, 30);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNuovaPassword = new JLabel("Nuova Password");
+		JLabel lblNuovaPassword = new JLabel("Nuova password");
+		lblNuovaPassword.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblNuovaPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNuovaPassword.setBounds(54, 79, 289, 20);
+		lblNuovaPassword.setBounds(182, 223, 289, 20);
 		frame.getContentPane().add(lblNuovaPassword);
 		
 		textField_1 = new JPasswordField();
+		textField_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		textField_1.setColumns(10);
-		textField_1.setBounds(54, 105, 289, 20);
+		textField_1.setBounds(182, 265, 290, 30);
 		frame.getContentPane().add(textField_1);
 		
-		JLabel lblConfermaPassword = new JLabel("Conferma Password");
+		JLabel lblConfermaPassword = new JLabel("Conferma password");
+		lblConfermaPassword.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblConfermaPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblConfermaPassword.setBounds(54, 136, 289, 20);
+		lblConfermaPassword.setBounds(182, 330, 289, 20);
 		frame.getContentPane().add(lblConfermaPassword);
 		
 		textField_2 = new JPasswordField();
+		textField_2.setFont(new Font("Arial", Font.PLAIN, 16));
 		textField_2.setColumns(10);
-		textField_2.setBounds(54, 156, 289, 20);
+		textField_2.setBounds(181, 371, 290, 30);
 		frame.getContentPane().add(textField_2);
 		
-		JButton btnCambiaPassword = new JButton("Cambia Password");
+		JButton btnCambiaPassword = new JButton("Cambia password");
+		btnCambiaPassword.setFont(new Font("Arial", Font.PLAIN, 16));
 		btnCambiaPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					try {
@@ -114,17 +122,18 @@ public class CambiaPassword {
 					}
 			}
 		});
-		btnCambiaPassword.setBounds(285, 213, 117, 23);
+		btnCambiaPassword.setBounds(466, 480, 170, 40);
 		frame.getContentPane().add(btnCambiaPassword);
 		
 		JButton btnAnnulla = new JButton("Annulla");
+		btnAnnulla.setFont(new Font("Arial", Font.PLAIN, 16));
 		btnAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				UserProfile.main(user);
 			}
 		});
-		btnAnnulla.setBounds(25, 213, 117, 23);
+		btnAnnulla.setBounds(46, 480, 170, 40);
 		frame.getContentPane().add(btnAnnulla);
 	}
 }

@@ -106,23 +106,25 @@ public class MainUser {
 
 		// Recensito da:
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_1.setBounds(32, 328, 185, 33);
 		frame.getContentPane().add(lblNewLabel_1);
 
 		// Voto
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_2.setBounds(416, 328, 237, 33);
 		frame.getContentPane().add(lblNewLabel_2);
 
 		// Media
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setBounds(416, 0, 131, 33);
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNewLabel_3.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNewLabel_3.setBounds(522, 0, 130, 30);
 		frame.getContentPane().add(lblNewLabel_3);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(32, 38, 621, 200);
+		scrollPane.setBounds(32, 54, 621, 200);
 		frame.getContentPane().add(scrollPane);
 
 		JButton btnRecensioneSuccessiva = new JButton("Recensione Successiva");
@@ -193,7 +195,7 @@ public class MainUser {
 				}
 			}
 		});
-		btnRecensioneSuccessiva.setBounds(416, 510, 237, 40);
+		btnRecensioneSuccessiva.setBounds(399, 510, 255, 40);
 		frame.getContentPane().add(btnRecensioneSuccessiva);
 
 		JList list = new JList();
@@ -285,7 +287,7 @@ public class MainUser {
 					JOptionPane.showMessageDialog(null, "Seleziona un gioco dalla lista!");
 			}
 		});
-		btnGioca.setBounds(32, 249, 160, 40);
+		btnGioca.setBounds(32, 277, 160, 40);
 		frame.getContentPane().add(btnGioca);
 
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
@@ -296,7 +298,7 @@ public class MainUser {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(0, 0, 100, 30);
+		mntmNewMenuItem_1.setBounds(31, 0, 100, 30);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 
 		JButton btnNewButton = new JButton("Recensisci");
@@ -323,7 +325,7 @@ public class MainUser {
 				}
 			}
 		});
-		btnNewButton.setBounds(262, 249, 160, 40);
+		btnNewButton.setBounds(263, 277, 160, 40);
 		frame.getContentPane().add(btnNewButton);
 
 		JMenuItem mntmNewMenuItem = new JMenuItem("Funzioni moderatore ");
@@ -337,7 +339,7 @@ public class MainUser {
 				MainModerator.main(user);
 			}
 		});
-		mntmNewMenuItem.setBounds(110, 0, 200, 30);
+		mntmNewMenuItem.setBounds(139, 0, 200, 30);
 		frame.getContentPane().add(mntmNewMenuItem);
 
 		JButton btnNewButton_1 = new JButton("Profilo Personale");
@@ -348,7 +350,7 @@ public class MainUser {
 				frame.setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(494, 249, 160, 40);
+		btnNewButton_1.setBounds(493, 277, 160, 40);
 		frame.getContentPane().add(btnNewButton_1);
 	}
 }

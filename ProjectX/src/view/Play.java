@@ -12,6 +12,7 @@ import model.Game;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
  
 public class Play {
 
@@ -59,6 +60,7 @@ public class Play {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("Gioca");
+		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 30));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -69,21 +71,23 @@ public class Play {
 				}
 			}
 		});
-		btnNewButton.setBounds(117, 92, 203, 66);
+		btnNewButton.setBounds(152, 226, 350, 80);
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblStaiGiocandoA = new JLabel("Stai giocando a " + game.getName());
-		lblStaiGiocandoA.setBounds(59, 39, 343, 23);
+		lblStaiGiocandoA.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblStaiGiocandoA.setBounds(152, 157, 382, 30);
 		frame.getContentPane().add(lblStaiGiocandoA);
 		
 		JButton btnEsci = new JButton("Esci");
+		btnEsci.setFont(new Font("Arial", Font.PLAIN, 16));
 		btnEsci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
 				MainUser.main(user);
 			}
 		});
-		btnEsci.setBounds(0, 238, 89, 23);
+		btnEsci.setBounds(262, 409, 130, 40);
 		frame.getContentPane().add(btnEsci);
 	}
 
