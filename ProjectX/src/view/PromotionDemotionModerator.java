@@ -107,17 +107,17 @@ public class PromotionDemotionModerator {
 		frame.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(323, 98, 300, 224);
+		scrollPane.setBounds(316, 145, 300, 224);
 		frame.getContentPane().add(scrollPane);
 		
 		JLabel lblNewLabel = new JLabel("Clicca una cella della tabella");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel.setBounds(71, 177, 196, 29);
+		lblNewLabel.setBounds(64, 219, 196, 29);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Clicca una cella della tabella");
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(71, 266, 196, 29);
+		lblNewLabel_1.setBounds(64, 308, 196, 29);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		table = new JTable() {public boolean isCellEditable(int rowIndex, int mColIndex) {return false; }};
@@ -187,21 +187,21 @@ public class PromotionDemotionModerator {
 				
 			}
 		});
-		btnUpdate.setBounds(509, 378, 132, 48);
+		btnUpdate.setBounds(508, 487, 132, 48);
 		frame.getContentPane().add(btnUpdate);
 		
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setFont(new Font("Arial", Font.PLAIN, 18));
-		lblUsername.setBounds(71, 137, 100, 29);
+		lblUsername.setBounds(64, 179, 100, 29);
 		frame.getContentPane().add(lblUsername);
 		
 		JLabel lblType = new JLabel("Type");
 		lblType.setFont(new Font("Arial", Font.PLAIN, 18));
-		lblType.setBounds(71, 229, 100, 29);
+		lblType.setBounds(64, 271, 100, 29);
 		frame.getContentPane().add(lblType);
 		
 		panel = new JPanel();
-		panel.setBounds(38, 63, 605, 293);
+		panel.setBounds(36, 75, 605, 379);
 		frame.getContentPane().add(panel);
 		panel.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createEtchedBorder(), "PROMUOVI O DEGRADA"));
@@ -215,7 +215,7 @@ public class PromotionDemotionModerator {
 				MainModerator.main(user);
 		}
 		});
-		mntmNewMenuItem.setBounds(6, 13, 78, 37);
+		mntmNewMenuItem.setBounds(6, 11, 78, 37);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
@@ -226,7 +226,7 @@ public class PromotionDemotionModerator {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(90, 13, 100, 37);
+		mntmNewMenuItem_1.setBounds(93, 11, 100, 37);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 	}
 }

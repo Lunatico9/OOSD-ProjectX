@@ -107,7 +107,7 @@ public class AcceptReview {
 			 }
 			}
 		else Utente.setText("Recensione di: ");
-		Utente.setBounds(227, 96, 180, 40);
+		Utente.setBounds(237, 96, 180, 40);
 		frame.getContentPane().add(Utente);
 				
 		//GIOCO
@@ -131,7 +131,7 @@ public class AcceptReview {
 		Commento.setLineWrap(true);
 		Commento.setEditable(false);
 		Commento.setWrapStyleWord(true);
-		Commento.setBackground(UIManager.getColor("Button.background"));
+		Commento.setBackground(Color.WHITE);
 		Commento.setFont(new Font("Arial", Font.PLAIN, 16));
 		String queryTOT= "SELECT * FROM review WHERE approved=0";
 		ResultSet rst= DatabaseMySQL.SendQuery(queryTOT);
@@ -152,7 +152,7 @@ public class AcceptReview {
 			Utente.setText("Recensione di: ");
 			Voto.setText("Voto: ");
 		}
-		Commento.setBounds(192, 257, 414, 173);
+		Commento.setBounds(77, 203, 529, 227);
 		frame.getContentPane().add(Commento);
 		
 		//RIFIUTA
@@ -196,7 +196,7 @@ public class AcceptReview {
 				}				
 			}
 		});
-		Rifiuta.setBounds(524, 479, 150, 48);
+		Rifiuta.setBounds(456, 479, 150, 48);
 		frame.getContentPane().add(Rifiuta);
 		
 		//ACCETTA
@@ -240,7 +240,7 @@ public class AcceptReview {
 				}
 			}
 		});
-		Accetta.setBounds(10, 479, 150, 48);
+		Accetta.setBounds(77, 479, 150, 48);
 		frame.getContentPane().add(Accetta);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Menu");
