@@ -302,6 +302,7 @@ public class MainUser {
 		frame.getContentPane().add(btnGioca);
 
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
+		mntmNewMenuItem_1.setContentAreaFilled(false);
 		mntmNewMenuItem_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -340,6 +341,7 @@ public class MainUser {
 		frame.getContentPane().add(btnNewButton);
 
 		JMenuItem mntmNewMenuItem = new JMenuItem("Funzioni moderatore ");
+		mntmNewMenuItem.setOpaque(true);
 		mntmNewMenuItem.setFont(new Font("Arial", Font.PLAIN, 16));
 		mntmNewMenuItem.setVisible(false);
 		if (user.getType().equals("moderatore"))
@@ -363,6 +365,13 @@ public class MainUser {
 		});
 		btnNewButton_1.setBounds(493, 277, 160, 40);
 		frame.getContentPane().add(btnNewButton_1);
+		
+		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
+		Image scaledImage = Sfondo.getImage().getScaledInstance(700, 600, Image.SCALE_DEFAULT);
+		Sfondo.setImage(scaledImage);
+		JLabel lblNewLabel_5 = new JLabel(Sfondo);
+		lblNewLabel_5.setBounds(0, 0, 684, 561);
+		frame.getContentPane().add(lblNewLabel_5);
 		
 		
 	}
