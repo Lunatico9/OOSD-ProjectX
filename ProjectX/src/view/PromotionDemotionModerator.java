@@ -69,8 +69,7 @@ public class PromotionDemotionModerator {
 	public ArrayList<Actor> userList() throws Exception {
 		ArrayList<Actor> usersList = new ArrayList<Actor>();
 		try {
-			String query = "SELECT * FROM user";
-			ResultSet rst = DatabaseMySQL.SendQuery(query);
+			ResultSet rst=DatabaseMySQL.selectUsers();
 			Actor user1;
 			while(rst.next()) {
 				user1 = new Actor(rst.getString("username"), rst.getString("type"));

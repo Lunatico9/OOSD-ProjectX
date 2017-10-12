@@ -32,15 +32,12 @@ public class PlayController {
 		String query = "SELECT exp, idUser FROM user  WHERE username = '" + user.getUsername() + "'", qdu, qdu2;
 		user.setExp(user.getExp()+50);
 		ResultSet rst =DatabaseMySQL.SendQuery(query2); 
-		
-		
 			rst = DatabaseMySQL.SendQuery(query);
 			rst.next();
 			int exp=rst.getInt("exp");
 			String id=rst.getString("idUser");
 			int IDtime=0;
-			String controllo="SELECT MAX(idTimeline) FROM timeline";
-			ResultSet result= DatabaseMySQL.SendQuery(controllo);
+			ResultSet result= DatabaseMySQL.maxTimeline();
 			if(result.next()){
 				IDtime=result.getInt(1)+1;
 			}

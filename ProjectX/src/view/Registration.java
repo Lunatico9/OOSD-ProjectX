@@ -5,27 +5,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.BorderLayout;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.JSeparator;
-import javax.swing.JEditorPane;
-import java.awt.CardLayout;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.TextField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
 import controller.RegistrationController;
 import database.DatabaseMySQL;
 import model.dao.Actor_DAO;
-
 import java.awt.Font;
 
 public class Registration {

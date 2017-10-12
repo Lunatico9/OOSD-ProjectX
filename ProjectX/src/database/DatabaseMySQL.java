@@ -92,7 +92,7 @@ public class DatabaseMySQL {
 		return rst.next();
 	}
 
-	public static ResultSet select(String username) throws Exception{
+	public static ResultSet selectUsers() throws Exception{
 		String query = "SELECT * FROM user";
 		return SendQuery(query);
 	}
