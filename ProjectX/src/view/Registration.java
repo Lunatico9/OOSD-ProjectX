@@ -75,149 +75,150 @@ public class Registration {
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		passwordField.setBounds(204, 166, 250, 25);
+		passwordField.setBounds(206, 144, 250, 25);
 		panel.add(passwordField);
 		
 		passwordField_1 = new JPasswordField();
 		passwordField_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		passwordField_1.setBounds(204, 238, 250, 25);
+		passwordField_1.setBounds(206, 216, 250, 25);
 		panel.add(passwordField_1);
 		
 		JLabel lblNewLabel = new JLabel("Inserisci Username");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(204, 58, 250, 25);
+		lblNewLabel.setBounds(206, 36, 250, 25);
 		panel.add(lblNewLabel);
 		
 		JLabel lblInserisciPassword = new JLabel("Inserisci Password");
 		lblInserisciPassword.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInserisciPassword.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		lblInserisciPassword.setBounds(204, 130, 250, 25);
+		lblInserisciPassword.setBounds(206, 108, 250, 25);
 		panel.add(lblInserisciPassword);
 		
 		JLabel lblConfermaPassword = new JLabel("Conferma Password");
 		lblConfermaPassword.setHorizontalAlignment(SwingConstants.CENTER);
 		lblConfermaPassword.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		lblConfermaPassword.setBounds(204, 202, 250, 25);
+		lblConfermaPassword.setBounds(206, 180, 250, 25);
 		panel.add(lblConfermaPassword);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		textField.setBounds(204, 94, 250, 25);
+		textField.setBounds(206, 72, 250, 25);
 		panel.add(textField);
 		textField.setColumns(10);
-
-		JButton Registra = new JButton("Registrati");
-		Registra.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		Registra.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String username= textField.getText(), name=textField_1.getText(), surname=textField_2.getText(), email=textField_3.getText();
-				boolean presente;
-				@SuppressWarnings("deprecation")
-				String pass1= passwordField.getText();
-				@SuppressWarnings("deprecation")
-				String pass2= passwordField_1.getText();
+		
+				JButton Registra = new JButton("Registrati");
+				Registra.setFont(new Font("Times New Roman", Font.BOLD, 18));
+				Registra.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						String username= textField.getText(), name=textField_1.getText(), surname=textField_2.getText(), email=textField_3.getText();
+						boolean presente;
+						@SuppressWarnings("deprecation")
+						String pass1= passwordField.getText();
+						@SuppressWarnings("deprecation")
+						String pass2= passwordField_1.getText();
+						
+						try {
+							if(username.isEmpty()){
+								JOptionPane.showMessageDialog(null, "Errore, inserisci un username");;
+							}
+							else{
+								presente =DatabaseMySQL.verify(username);
+								if(presente) JOptionPane.showMessageDialog(null, "Errore, username non valido");
+								}
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}				
+						try {	
+							boolean uguale= RegistrationController.pass(pass1, pass2);
+						    if (pass1.isEmpty() || pass2.isEmpty() || name.isEmpty() || surname.isEmpty() || !email.contains("@") || !email.contains(".")){ 
+						    	JOptionPane.showMessageDialog(null, "Errore, uno o più campi non sono compilati correttamente o sono vuoti.");
+						    	}
+						    else{
+						    	presente = DatabaseMySQL.verify(username);
+						    	if (!presente)
+						    		if(pass1.length()>6 && pass1.length()<18){
+						    			if(uguale){
+						    				try {
+						    					int level = 1, exp = 0;
+						    					String type = "giocatore";
+						    					Actor_DAO.AddUser(username,pass1,name,surname,email, level, exp, type);
+						    				} 
+						    				catch (Exception e) {
+						    					e.printStackTrace();
+						    				}	
+						    			}
+						    			else JOptionPane.showMessageDialog(null, "Errore, le password inserite non corrispondono correggi e riprova");
+						    		}
+						    		else JOptionPane.showMessageDialog(null, "Errore, la password deve essere lunga almeno 6 caratteri e non più di 18");
+								}
+						    }
+						 	catch (Exception e1) {
+						 		e1.printStackTrace();
+						 	}
+						}
+					});
 				
-				try {
-					if(username.isEmpty()){
-						JOptionPane.showMessageDialog(null, "Errore, inserisci un username");;
+				Registra.setBounds(386, 510, 130, 40);
+				panel.add(Registra);
+				
+				JButton SchermataPrincipale = new JButton("Annulla");
+				SchermataPrincipale.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						Login.main(null);
+						Registration.setVisible(false);
 					}
-					else{
-						presente =DatabaseMySQL.verify(username);
-						if(presente) JOptionPane.showMessageDialog(null, "Errore, username non valido");
-						}
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}				
-				try {	
-					boolean uguale= RegistrationController.pass(pass1, pass2);
-				    if (pass1.isEmpty() || pass2.isEmpty() || name.isEmpty() || surname.isEmpty() || !email.contains("@") || !email.contains(".")){ 
-				    	JOptionPane.showMessageDialog(null, "Errore, uno o più campi non sono compilati correttamente o sono vuoti.");
-				    	}
-				    else{
-				    	presente = DatabaseMySQL.verify(username);
-				    	if (!presente)
-				    		if(pass1.length()>6 && pass1.length()<18){
-				    			if(uguale){
-				    				try {
-				    					int level = 1, exp = 0;
-				    					String type = "giocatore";
-				    					Actor_DAO.AddUser(username,pass1,name,surname,email, level, exp, type);
-				    				} 
-				    				catch (Exception e) {
-				    					e.printStackTrace();
-				    				}	
-				    			}
-				    			else JOptionPane.showMessageDialog(null, "Errore, le password inserite non corrispondono correggi e riprova");
-				    		}
-				    		else JOptionPane.showMessageDialog(null, "Errore, la password deve essere lunga almeno 6 caratteri e non più di 18");
-						}
-				    }
-				 	catch (Exception e1) {
-				 		e1.printStackTrace();
-				 	}
-				}
-			});
-		
-		Registra.setBounds(386, 510, 130, 40);
-		panel.add(Registra);
-		
-		JButton SchermataPrincipale = new JButton("Annulla");
-		SchermataPrincipale.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Login.main(null);
-				Registration.setVisible(false);
-			}
-		});
-		SchermataPrincipale.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		SchermataPrincipale.setBounds(144, 510, 130, 40);
-		panel.add(SchermataPrincipale);
-		
-		JLabel lblInserisciNome = new JLabel("Inserisci Nome");
-		lblInserisciNome.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInserisciNome.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		lblInserisciNome.setBounds(204, 274, 250, 25);
-		panel.add(lblInserisciNome);
-		
-		JLabel lblInserisciCognome = new JLabel("Inserisci Cognome");
-		lblInserisciCognome.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInserisciCognome.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		lblInserisciCognome.setBounds(204, 346, 250, 25);
-		panel.add(lblInserisciCognome);
-		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		textField_1.setColumns(10);
-		textField_1.setBounds(204, 310, 250, 25);
-		panel.add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		textField_2.setColumns(10);
-		textField_2.setBounds(204, 382, 250, 25);
-		panel.add(textField_2);
-		
-		JLabel lblInserisciEmail = new JLabel("Inserisci Email");
-		lblInserisciEmail.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInserisciEmail.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		lblInserisciEmail.setBounds(204, 418, 250, 25);
-		panel.add(lblInserisciEmail);
-		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		textField_3.setColumns(10);
-		textField_3.setBounds(204, 454, 250, 25);
-		panel.add(textField_3);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setOpaque(false);
-		panel_1.setBounds(142, 33, 377, 466);
-		panel.add(panel_1);
-		panel_1.setBorder(BorderFactory.createTitledBorder(
-		BorderFactory.createEtchedBorder(), "REGISTRAZIONE"));
-		JLabel lblNewLabel_5 = new JLabel(Sfondo);
-		panel.add(lblNewLabel_5);
-		lblNewLabel_5.setBounds(0, 0, -1, -1);
+				});
+				SchermataPrincipale.setFont(new Font("Times New Roman", Font.BOLD, 18));
+				SchermataPrincipale.setBounds(144, 510, 130, 40);
+				panel.add(SchermataPrincipale);
+				
+				JLabel lblInserisciNome = new JLabel("Inserisci Nome");
+				lblInserisciNome.setHorizontalAlignment(SwingConstants.CENTER);
+				lblInserisciNome.setFont(new Font("Times New Roman", Font.BOLD, 18));
+				lblInserisciNome.setBounds(206, 252, 250, 25);
+				panel.add(lblInserisciNome);
+				
+				JLabel lblInserisciCognome = new JLabel("Inserisci Cognome");
+				lblInserisciCognome.setHorizontalAlignment(SwingConstants.CENTER);
+				lblInserisciCognome.setFont(new Font("Times New Roman", Font.BOLD, 18));
+				lblInserisciCognome.setBounds(206, 324, 250, 25);
+				panel.add(lblInserisciCognome);
+				
+				textField_1 = new JTextField();
+				textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+				textField_1.setColumns(10);
+				textField_1.setBounds(206, 288, 250, 25);
+				panel.add(textField_1);
+				
+				textField_2 = new JTextField();
+				textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+				textField_2.setColumns(10);
+				textField_2.setBounds(206, 360, 250, 25);
+				panel.add(textField_2);
+				
+				JLabel lblInserisciEmail = new JLabel("Inserisci Email");
+				lblInserisciEmail.setHorizontalAlignment(SwingConstants.CENTER);
+				lblInserisciEmail.setFont(new Font("Times New Roman", Font.BOLD, 18));
+				lblInserisciEmail.setBounds(206, 396, 250, 25);
+				panel.add(lblInserisciEmail);
+				
+				textField_3 = new JTextField();
+				textField_3.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+				textField_3.setColumns(10);
+				textField_3.setBounds(206, 432, 250, 25);
+				panel.add(textField_3);
+				
+				JPanel panel_1 = new JPanel();
+				panel_1.setOpaque(false);
+				panel_1.setBounds(144, 11, 377, 466);
+				panel.add(panel_1);
+				panel_1.setBorder(BorderFactory.createTitledBorder(
+				BorderFactory.createEtchedBorder(), "REGISTRAZIONE"));
+				
+				JLabel lblNewLabel_5 = new JLabel(Sfondo);
+				lblNewLabel_5.setBounds(0, 0, 684, 561);
+				panel.add(lblNewLabel_5);
 	
 	}
 }
