@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Ott 11, 2017 alle 16:04
+-- Creato il: Ott 12, 2017 alle 23:18
 -- Versione del server: 10.1.25-MariaDB
 -- Versione PHP: 7.1.7
 
@@ -30,26 +30,25 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `game` (
   `idGame` int(4) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `points` int(3) NOT NULL DEFAULT '10'
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dump dei dati per la tabella `game`
 --
 
-INSERT INTO `game` (`idGame`, `name`, `points`) VALUES
-(1, 'Civilization VI', 10),
-(2, 'Crash Bandicoot: N. Sane Trilogy', 10),
-(3, 'For Honor', 10),
-(4, 'The Legend of Zelda: Breath of the Wild', 10),
-(5, 'Destiny 2', 10),
-(6, 'Fifa 17', 10),
-(7, 'Resident Evil 7: Biohazard', 10),
-(8, 'Mass Effect: Andromeda', 10),
-(9, 'Dark Souls III', 10),
-(10, 'Watch Dogs', 10),
-(11, 'Fallout 3', 10);
+INSERT INTO `game` (`idGame`, `name`) VALUES
+(1, 'Civilization VI'),
+(2, 'Crash Bandicoot N. Sane Trilogy'),
+(3, 'For Honor'),
+(4, 'The Legend of Zelda Breath of the Wild'),
+(5, 'Destiny 2'),
+(6, 'Fifa 17'),
+(7, 'Resident Evil 7 Biohazard'),
+(8, 'Mass Effect Andromeda'),
+(9, 'Dark Souls III'),
+(10, 'Watch Dogs'),
+(11, 'Fallout 3');
 
 -- --------------------------------------------------------
 
@@ -139,7 +138,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`idUser`, `name`, `surname`, `email`, `username`, `password`, `type`, `exp`, `level`) VALUES
-(1, 'Lorenzo', 'Collevecchio', 'lorenzocollevecchio@outlook.com', 'Coll', '1234', 'moderatore', 300, 3),
+(1, 'Lorenzo', 'Collevecchio', 'lorenzocollevecchio@outlook.com', 'Coll', '1234', 'moderatore', 350, 3),
 (2, 'Francesco', 'Giostra', 'francescogiostra@outlook.com', 'Gios', 'Francesco01', 'moderatore', 0, 1),
 (3, 'Matteo', 'Ficorilli', 'matteoficorilli@outlook.com', 'Fico', '1234', 'moderatore', 0, 1),
 (4, 'Lorenzo', 'Luna', 'lorenzoluna@outlook.com', 'Luna', '1234', 'moderatore', 0, 1),
@@ -192,7 +191,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT per la tabella `review`
 --
 ALTER TABLE `review`
-  MODIFY `idReview` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idReview` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT per la tabella `timeline`
 --
