@@ -76,6 +76,7 @@ public class AddReview {
 		frmAddReview.getContentPane().setLayout(null);
 		
 		JTextArea textPane = new JTextArea();
+		textPane.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		textPane.setWrapStyleWord(true);
 		textPane.setLineWrap(true);
 		textPane.setBounds(75, 85, 525, 255);
@@ -84,7 +85,7 @@ public class AddReview {
 		JComboBox<Integer> comboBox = new JComboBox<Integer>();
 		comboBox.setBounds(298, 423, 70, 28);
 		comboBox.setBackground(Color.WHITE);
-		comboBox.setFont(new Font("Arial", Font.PLAIN, 20));
+		comboBox.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		frmAddReview.getContentPane().add(comboBox);
 		
 		JButton btnNewButton = new JButton("Aggiungi");
@@ -102,7 +103,7 @@ public class AddReview {
 				}
 			}
 		});
-		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 20));
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		frmAddReview.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Annulla");
@@ -113,16 +114,18 @@ public class AddReview {
 				AddReviewController.Annulla(user);
 			}
 		});
-		btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 20));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		frmAddReview.getContentPane().add(btnNewButton_1);
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		panel.setBounds(29, 52, 623, 319);
 		frmAddReview.getContentPane().add(panel);
 		panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "RECENSIONE"));
 		panel.setLayout(null);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		panel_1.setBounds(253, 400, 158, 68);
 		frmAddReview.getContentPane().add(panel_1);
 		panel_1.setBorder(BorderFactory.createTitledBorder(

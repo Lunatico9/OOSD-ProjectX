@@ -63,43 +63,43 @@ public class CambiaPassword {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblVecchiaPassword = new JLabel("Vecchia password");
-		lblVecchiaPassword.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblVecchiaPassword.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblVecchiaPassword.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVecchiaPassword.setBounds(181, 111, 289, 20);
 		frame.getContentPane().add(lblVecchiaPassword);
 		
 		textField = new JPasswordField();
-		textField.setFont(new Font("Arial", Font.PLAIN, 16));
+		textField.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		textField.setBounds(181, 156, 290, 30);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNuovaPassword = new JLabel("Nuova password");
-		lblNuovaPassword.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNuovaPassword.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblNuovaPassword.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNuovaPassword.setBounds(182, 223, 289, 20);
 		frame.getContentPane().add(lblNuovaPassword);
 		
 		textField_1 = new JPasswordField();
-		textField_1.setFont(new Font("Arial", Font.PLAIN, 16));
+		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		textField_1.setColumns(10);
 		textField_1.setBounds(182, 265, 290, 30);
 		frame.getContentPane().add(textField_1);
 		
 		JLabel lblConfermaPassword = new JLabel("Conferma password");
-		lblConfermaPassword.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblConfermaPassword.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblConfermaPassword.setHorizontalAlignment(SwingConstants.CENTER);
 		lblConfermaPassword.setBounds(182, 330, 289, 20);
 		frame.getContentPane().add(lblConfermaPassword);
 		
 		textField_2 = new JPasswordField();
-		textField_2.setFont(new Font("Arial", Font.PLAIN, 16));
+		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		textField_2.setColumns(10);
 		textField_2.setBounds(181, 371, 290, 30);
 		frame.getContentPane().add(textField_2);
 		
 		JButton btnCambiaPassword = new JButton("Cambia password");
-		btnCambiaPassword.setFont(new Font("Arial", Font.PLAIN, 16));
+		btnCambiaPassword.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		btnCambiaPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					try {
@@ -128,7 +128,7 @@ public class CambiaPassword {
 		frame.getContentPane().add(btnCambiaPassword);
 		
 		JButton btnAnnulla = new JButton("Annulla");
-		btnAnnulla.setFont(new Font("Arial", Font.PLAIN, 16));
+		btnAnnulla.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		btnAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();

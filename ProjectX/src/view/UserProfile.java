@@ -88,51 +88,51 @@ public class UserProfile {
 		panel.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Modifica Password");
-		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 16));
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				UserProfileController.CambiaPassword(user);
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(129, 115, 180, 30);
+		btnNewButton.setBounds(129, 115, 212, 30);
 		panel.add(btnNewButton);
 		
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setBounds(10, 79, 75, 30);
 		panel.add(lblEmail);
-		lblEmail.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblEmail.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		
 		JLabel label_1 = new JLabel("Email");
-		label_1.setBounds(84, 79, 275, 30);
+		label_1.setBounds(95, 79, 264, 30);
 		panel.add(label_1);
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setFont(new Font("Arial", Font.PLAIN, 16));
+		label_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		label_1.setText(user.getEmail());
 		
 		JLabel lblCognome = new JLabel("Cognome");
 		lblCognome.setBounds(10, 50, 75, 30);
 		panel.add(lblCognome);
-		lblCognome.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblCognome.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		
 		JLabel label = new JLabel("Cognome");
-		label.setBounds(84, 50, 275, 30);
+		label.setBounds(95, 50, 264, 30);
 		panel.add(label);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Arial", Font.PLAIN, 16));
+		label.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		label.setText(user.getCognome());
 		
 		
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setBounds(10, 22, 75, 30);
 		panel.add(lblNome);
-		lblNome.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNome.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		
 		JLabel lblNewLabel = new JLabel("Nome");
-		lblNewLabel.setBounds(84, 22, 275, 30);
+		lblNewLabel.setBounds(95, 22, 264, 30);
 		panel.add(lblNewLabel);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		lblNewLabel.setText(user.getName());
 		
 		JPanel panel_1 = new JPanel();
@@ -146,30 +146,30 @@ public class UserProfile {
 		JLabel lblPuntiEsperienza = new JLabel("Punti esperienza");
 		lblPuntiEsperienza.setBounds(70, 87, 116, 29);
 		panel_1.add(lblPuntiEsperienza);
-		lblPuntiEsperienza.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblPuntiEsperienza.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		
 		JLabel label_4 = new JLabel("");
 		label_4.setBounds(73, 116, 110, 29);
 		panel_1.add(label_4);
 		label_4.setHorizontalAlignment(SwingConstants.CENTER);
-		label_4.setFont(new Font("Arial", Font.PLAIN, 16));
+		label_4.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		label_4.setText(user.getExp() + "/" + x[j]);
 		
 		JLabel label_3 = new JLabel("Livello");
 		label_3.setBounds(70, 52, 110, 29);
 		panel_1.add(label_3);
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
-		label_3.setFont(new Font("Arial", Font.PLAIN, 16));
+		label_3.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		label_3.setText("" + user.getLevel());
 		
 		JLabel lblLivello = new JLabel("Livello");
 		lblLivello.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLivello.setBounds(76, 23, 100, 29);
 		panel_1.add(lblLivello);
-		lblLivello.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblLivello.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		
 		JLabel lblTimeline = new JLabel("Timeline");
-		lblTimeline.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblTimeline.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblTimeline.setBounds(22, 207, 100, 30);
 		frame.getContentPane().add(lblTimeline);
 		
@@ -201,7 +201,7 @@ public class UserProfile {
 				"Date", "Award"
 			}
 		));
-		table.setFont(new Font("Arial", Font.PLAIN, 16));
+		table.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		while (rs.next()){
 			ArrayList<String[]> list = Review_DAO.AwardsList(user);
 			DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -218,27 +218,27 @@ public class UserProfile {
 			e.printStackTrace();
 		}
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Menu");
+		JButton mntmNewMenuItem = new JButton("Menu");
 		mntmNewMenuItem.setHorizontalAlignment(SwingConstants.LEFT);
-		mntmNewMenuItem.setFont(new Font("Arial", Font.PLAIN, 16));
+		mntmNewMenuItem.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				MainUser.main(user);
 		}
 		});
-		mntmNewMenuItem.setBounds(22, 0, 75, 30);
+		mntmNewMenuItem.setBounds(21, 6, 87, 30);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
-		mntmNewMenuItem_1.setFont(new Font("Arial", Font.PLAIN, 16));
+		JButton mntmNewMenuItem_1 = new JButton("Logout");
+		mntmNewMenuItem_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login.main(null);
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(106, 0, 84, 30);
+		mntmNewMenuItem_1.setBounds(118, 6, 110, 30);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");

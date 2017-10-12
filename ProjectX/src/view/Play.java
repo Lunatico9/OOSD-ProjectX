@@ -62,7 +62,7 @@ public class Play {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("Gioca");
-		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 30));
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -77,12 +77,12 @@ public class Play {
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblStaiGiocandoA = new JLabel("Stai giocando a " + game.getName());
-		lblStaiGiocandoA.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblStaiGiocandoA.setFont(new Font("Times New Roman", Font.BOLD, 25));
 		lblStaiGiocandoA.setBounds(152, 157, 382, 30);
 		frame.getContentPane().add(lblStaiGiocandoA);
 		
 		JButton btnEsci = new JButton("Esci");
-		btnEsci.setFont(new Font("Arial", Font.PLAIN, 16));
+		btnEsci.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		btnEsci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();

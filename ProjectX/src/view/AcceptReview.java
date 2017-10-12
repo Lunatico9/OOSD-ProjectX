@@ -88,7 +88,7 @@ public class AcceptReview {
 		
 		//VOTO
 		JLabel Voto = new JLabel("");
-		Voto.setFont(new Font("Arial", Font.PLAIN, 16));
+		Voto.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Voto.setHorizontalAlignment(SwingConstants.RIGHT);
 		Voto.setBounds(452, 96, 180, 40);
 		if(x){
@@ -99,7 +99,7 @@ public class AcceptReview {
 				
 		//UTENTE
 		JLabel Utente = new JLabel("");
-		Utente.setFont(new Font("Arial", Font.PLAIN, 16));
+		Utente.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Utente.setHorizontalAlignment(SwingConstants.CENTER);
 		if(x){
 			String Nome="SELECT username FROM user WHERE idUser='"+idutente+"'";
@@ -116,7 +116,7 @@ public class AcceptReview {
 		//GIOCO
 		JLabel Gioco = new JLabel("");
 		Gioco.setBackground(Color.WHITE);
-		Gioco.setFont(new Font("Arial", Font.PLAIN, 16));
+		Gioco.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Gioco.setHorizontalAlignment(SwingConstants.LEFT);
 		if(x){
 			String GIOCO="SELECT name FROM game WHERE idGame='"+idgioco+"'";
@@ -135,7 +135,7 @@ public class AcceptReview {
 		Commento.setEditable(false);
 		Commento.setWrapStyleWord(true);
 		Commento.setBackground(Color.WHITE);
-		Commento.setFont(new Font("Arial", Font.PLAIN, 16));
+		Commento.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		String queryTOT= "SELECT * FROM review WHERE approved=0";
 		ResultSet rst= DatabaseMySQL.SendQuery(queryTOT);
 		if(rst.next()){
@@ -160,7 +160,7 @@ public class AcceptReview {
 		
 		//RIFIUTA
 		JButton Rifiuta = new JButton("Rifiuta Review");
-		Rifiuta.setFont(new Font("Arial", Font.PLAIN, 16));
+		Rifiuta.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Rifiuta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String text=Commento.getText();
@@ -204,7 +204,7 @@ public class AcceptReview {
 		
 		//ACCETTA
 		JButton Accetta = new JButton("Accetta Review");
-		Accetta.setFont(new Font("Arial", Font.PLAIN, 16));
+		Accetta.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Accetta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String text=Commento.getText();
@@ -246,8 +246,8 @@ public class AcceptReview {
 		Accetta.setBounds(77, 479, 150, 48);
 		frame.getContentPane().add(Accetta);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Menu");
-		mntmNewMenuItem.setFont(new Font("Arial", Font.PLAIN, 16));
+		JButton mntmNewMenuItem = new JButton("Menu");
+		mntmNewMenuItem.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
@@ -259,8 +259,8 @@ public class AcceptReview {
 		mntmNewMenuItem.setBounds(10, 11, 100, 30);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
-		mntmNewMenuItem_1.setFont(new Font("Arial", Font.PLAIN, 16));
+		JButton mntmNewMenuItem_1 = new JButton("Logout");
+		mntmNewMenuItem_1.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login.main(null);

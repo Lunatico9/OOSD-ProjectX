@@ -108,17 +108,18 @@ public class PromotionDemotionModerator {
 		frame.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
 		scrollPane.setBounds(316, 145, 300, 224);
 		frame.getContentPane().add(scrollPane);
 		
 		JLabel lblNewLabel = new JLabel("Clicca una cella della tabella");
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel.setBounds(64, 219, 196, 29);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblNewLabel.setBounds(64, 219, 204, 29);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Clicca una cella della tabella");
-		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(64, 308, 196, 29);
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+		lblNewLabel_1.setBounds(64, 308, 204, 29);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		table = new JTable() {public boolean isCellEditable(int rowIndex, int mColIndex) {return false; }};
@@ -164,10 +165,10 @@ public class PromotionDemotionModerator {
 				"Username", "Type"
 			}
 		));
-		table.setFont(new Font("Arial", Font.PLAIN, 16));
+		table.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		
 		btnUpdate = new JButton("Update");
-		btnUpdate.setFont(new Font("Arial", Font.PLAIN, 18));
+		btnUpdate.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(table.getSelectedRow()!=-1){
@@ -192,12 +193,12 @@ public class PromotionDemotionModerator {
 		frame.getContentPane().add(btnUpdate);
 		
 		JLabel lblUsername = new JLabel("Username");
-		lblUsername.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblUsername.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblUsername.setBounds(64, 179, 100, 29);
 		frame.getContentPane().add(lblUsername);
 		
 		JLabel lblType = new JLabel("Type");
-		lblType.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblType.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblType.setBounds(64, 271, 100, 29);
 		frame.getContentPane().add(lblType);
 		
@@ -209,26 +210,26 @@ public class PromotionDemotionModerator {
 		BorderFactory.createEtchedBorder(), "PROMUOVI O DEGRADA"));
 		show_user();
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Menu");
-		mntmNewMenuItem.setFont(new Font("Arial", Font.PLAIN, 18));
+		JButton mntmNewMenuItem = new JButton("Menu");
+		mntmNewMenuItem.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
 				MainModerator.main(user);
 		}
 		});
-		mntmNewMenuItem.setBounds(6, 11, 78, 37);
+		mntmNewMenuItem.setBounds(6, 11, 100, 37);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
-		mntmNewMenuItem_1.setFont(new Font("Arial", Font.PLAIN, 18));
+		JButton mntmNewMenuItem_1 = new JButton("Logout");
+		mntmNewMenuItem_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login.main(null);
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(93, 11, 100, 37);
+		mntmNewMenuItem_1.setBounds(116, 11, 100, 37);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");

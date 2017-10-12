@@ -65,22 +65,24 @@ public class Login {
 		
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setForeground(Color.BLACK);
-		lblUsername.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblUsername.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblUsername.setBounds(89, 192, 100, 29);
 		frmLogin.getContentPane().add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setForeground(Color.BLACK);
-		lblPassword.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblPassword.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblPassword.setBounds(89, 262, 100, 29);
 		frmLogin.getContentPane().add(lblPassword);
 		
 		textField = new JTextField();
+		textField.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		textField.setBounds(220, 192, 322, 27);
 		frmLogin.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		passwordField = new JPasswordField();
+		passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		passwordField.setBounds(220, 262, 322, 27);
 		frmLogin.getContentPane().add(passwordField);
 		
@@ -111,7 +113,7 @@ public class Login {
 				}
 			    }
 		}});
-		btnAccedi.setFont(new Font("Arial", Font.PLAIN, 20));
+		btnAccedi.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		btnAccedi.setBounds(220, 332, 132, 48);
 		frmLogin.getContentPane().add(btnAccedi);
 		
@@ -122,7 +124,7 @@ public class Login {
 				frmLogin.setVisible(false);
 			}
 		});
-		btnRegistrati.setFont(new Font("Arial", Font.PLAIN, 20));
+		btnRegistrati.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		btnRegistrati.setBounds(410, 332, 132, 48);
 		frmLogin.getContentPane().add(btnRegistrati);
 		

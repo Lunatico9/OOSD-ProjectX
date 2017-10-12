@@ -103,7 +103,7 @@ public class MainUser {
 
 		// Recensione
 		JTextArea lblNewLabel = new JTextArea("");
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setEditable(false);
 		lblNewLabel.setWrapStyleWord(true);
@@ -113,12 +113,14 @@ public class MainUser {
 
 		// Recensito da:
 		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_1.setBounds(32, 328, 185, 33);
 		frame.getContentPane().add(lblNewLabel_1);
 
 		// Voto
 		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_2.setBounds(416, 328, 237, 33);
 		frame.getContentPane().add(lblNewLabel_2);
@@ -126,8 +128,8 @@ public class MainUser {
 		// Media
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_3.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel_3.setBounds(522, 0, 130, 30);
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		lblNewLabel_3.setBounds(523, 13, 130, 30);
 		frame.getContentPane().add(lblNewLabel_3);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -135,10 +137,10 @@ public class MainUser {
 		frame.getContentPane().add(scrollPane);
 
 		JButton btnRecensioneSuccessiva = new JButton("Recensione Successiva");
-		btnRecensioneSuccessiva.setFont(new Font("Arial", Font.PLAIN, 16));
+		btnRecensioneSuccessiva.setFont(new Font("Times New Roman", Font.BOLD, 18));
 
 		JButton btnNewButton_2 = new JButton("Recensione Precedente");
-		btnNewButton_2.setFont(new Font("Arial", Font.PLAIN, 16));
+		btnNewButton_2.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		if (num == 0)
 			btnNewButton_2.setVisible(false);
 		else
@@ -206,7 +208,7 @@ public class MainUser {
 		frame.getContentPane().add(btnRecensioneSuccessiva);
 
 		JList list = new JList();
-		list.setFont(new Font("Arial", Font.PLAIN, 16));
+		list.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		list.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				num = 1;
@@ -283,7 +285,7 @@ public class MainUser {
 		});
 
 		JButton btnGioca = new JButton("Gioca");
-		btnGioca.setFont(new Font("Arial", Font.PLAIN, 16));
+		btnGioca.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		btnGioca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!list.isSelectionEmpty()) {
@@ -301,20 +303,19 @@ public class MainUser {
 		btnGioca.setBounds(32, 277, 160, 40);
 		frame.getContentPane().add(btnGioca);
 
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Logout");
-		mntmNewMenuItem_1.setContentAreaFilled(false);
-		mntmNewMenuItem_1.setFont(new Font("Arial", Font.PLAIN, 16));
+		JButton mntmNewMenuItem_1 = new JButton("Logout");
+		mntmNewMenuItem_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login.main(null);
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(31, 0, 100, 30);
+		mntmNewMenuItem_1.setBounds(32, 13, 100, 30);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 
 		JButton btnNewButton = new JButton("Recensisci");
-		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 16));
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (list.isSelectionEmpty()) {
@@ -340,9 +341,9 @@ public class MainUser {
 		btnNewButton.setBounds(263, 277, 160, 40);
 		frame.getContentPane().add(btnNewButton);
 
-		JMenuItem mntmNewMenuItem = new JMenuItem("Funzioni moderatore ");
+		JButton mntmNewMenuItem = new JButton("Funzioni moderatore ");
 		mntmNewMenuItem.setOpaque(true);
-		mntmNewMenuItem.setFont(new Font("Arial", Font.PLAIN, 16));
+		mntmNewMenuItem.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		mntmNewMenuItem.setVisible(false);
 		if (user.getType().equals("moderatore"))
 			mntmNewMenuItem.setVisible(true);
@@ -352,18 +353,18 @@ public class MainUser {
 				MainModerator.main(user);
 			}
 		});
-		mntmNewMenuItem.setBounds(139, 0, 200, 30);
+		mntmNewMenuItem.setBounds(140, 13, 222, 30);
 		frame.getContentPane().add(mntmNewMenuItem);
 
 		JButton btnNewButton_1 = new JButton("Profilo Personale");
-		btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 16));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainUserController.Profilo(user);
 				frame.setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(493, 277, 160, 40);
+		btnNewButton_1.setBounds(453, 277, 200, 40);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");

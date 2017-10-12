@@ -54,7 +54,7 @@ public class MainModerator {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("Gestisci utenti");
-		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 20));
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				MainModeratorController.GestisciUser(user);
@@ -65,7 +65,7 @@ public class MainModerator {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnGestisciNuoveRecensioni = new JButton("Gestisci nuove recensioni");
-		btnGestisciNuoveRecensioni.setFont(new Font("Arial", Font.PLAIN, 20));
+		btnGestisciNuoveRecensioni.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		btnGestisciNuoveRecensioni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainModeratorController.GestisciRec(user);
@@ -76,7 +76,7 @@ public class MainModerator {
 		frame.getContentPane().add(btnGestisciNuoveRecensioni);
 		
 		JButton btnUtilizzaAccountCome = new JButton("Utilizza account come utente");
-		btnUtilizzaAccountCome.setFont(new Font("Arial", Font.PLAIN, 20));
+		btnUtilizzaAccountCome.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		btnUtilizzaAccountCome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainModeratorController.Utente(user);
