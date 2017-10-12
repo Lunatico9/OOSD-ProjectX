@@ -208,9 +208,6 @@ public class UserProfile {
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
-	
-		
-		
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Menu");
 		mntmNewMenuItem.setHorizontalAlignment(SwingConstants.LEFT);
