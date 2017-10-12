@@ -127,6 +127,7 @@ public class Login {
 		frmLogin.getContentPane().add(btnRegistrati);
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		panel.setBounds(65, 112, 550, 310);
 		frmLogin.getContentPane().add(panel);
 		panel.setBorder(BorderFactory.createTitledBorder(

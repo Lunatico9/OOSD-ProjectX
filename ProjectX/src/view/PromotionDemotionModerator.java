@@ -202,6 +202,7 @@ public class PromotionDemotionModerator {
 		frame.getContentPane().add(lblType);
 		
 		panel = new JPanel();
+		panel.setOpaque(false);
 		panel.setBounds(36, 75, 605, 379);
 		frame.getContentPane().add(panel);
 		panel.setBorder(BorderFactory.createTitledBorder(
