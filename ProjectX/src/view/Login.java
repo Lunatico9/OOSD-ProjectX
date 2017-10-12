@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTextField;
 
 import controller.LoginController;
@@ -15,6 +17,7 @@ import javax.swing.JPasswordField;
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
@@ -128,5 +131,12 @@ public class Login {
 		frmLogin.getContentPane().add(panel);
 		panel.setBorder(BorderFactory.createTitledBorder(
         BorderFactory.createEtchedBorder(), "ACCEDI O REGISTRATI"));
+		
+		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
+		Image scaledImage = Sfondo.getImage().getScaledInstance(700, 600, Image.SCALE_DEFAULT);
+		Sfondo.setImage(scaledImage);
+		JLabel lblNewLabel_5 = new JLabel(Sfondo);
+		lblNewLabel_5.setBounds(0, 0, 684, 561);
+		frmLogin.getContentPane().add(lblNewLabel_5);
 	}
 }

@@ -11,6 +11,7 @@ import database.DatabaseMySQL;
 import model.Actor;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -227,5 +229,12 @@ public class PromotionDemotionModerator {
 		});
 		mntmNewMenuItem_1.setBounds(93, 11, 100, 37);
 		frame.getContentPane().add(mntmNewMenuItem_1);
+		
+		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
+		Image scaledImage = Sfondo.getImage().getScaledInstance(700, 600, Image.SCALE_DEFAULT);
+		Sfondo.setImage(scaledImage);
+		JLabel lblNewLabel_5 = new JLabel(Sfondo);
+		lblNewLabel_5.setBounds(0, 0, 684, 561);
+		frame.getContentPane().add(lblNewLabel_5);
 	}
 }

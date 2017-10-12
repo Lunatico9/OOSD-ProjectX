@@ -3,6 +3,7 @@ package view;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -24,6 +25,8 @@ import javax.swing.SwingConstants;
 import controller.AcceptReviewController;
 
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 
@@ -266,5 +269,12 @@ public class AcceptReview {
 		});
 		mntmNewMenuItem_1.setBounds(114, 11, 100, 30);
 		frame.getContentPane().add(mntmNewMenuItem_1);
+		
+		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
+		Image scaledImage = Sfondo.getImage().getScaledInstance(700, 600, Image.SCALE_DEFAULT);
+		Sfondo.setImage(scaledImage);
+		JLabel lblNewLabel_5 = new JLabel(Sfondo);
+		lblNewLabel_5.setBounds(0, 0, 684, 561);
+		frame.getContentPane().add(lblNewLabel_5);
 	}
 }

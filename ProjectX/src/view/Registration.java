@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
@@ -18,6 +19,7 @@ import controller.RegistrationController;
 import database.DatabaseMySQL;
 import model.dao.Actor_DAO;
 import java.awt.Font;
+import java.awt.Image;
 
 public class Registration {
 	
@@ -62,6 +64,13 @@ public class Registration {
 		Registration.setBounds(100, 100, 700, 600);
 		Registration.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Registration.getContentPane().setLayout(new BoxLayout(Registration.getContentPane(), BoxLayout.X_AXIS));
+		
+		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
+		Image scaledImage = Sfondo.getImage().getScaledInstance(700, 600, Image.SCALE_DEFAULT);
+		Sfondo.setImage(scaledImage);
+		JLabel lblNewLabel_5 = new JLabel(Sfondo);
+		lblNewLabel_5.setBounds(0, 0, 684, 561);
+		Registration.getContentPane().add(lblNewLabel_5);
 		
 		JPanel panel = new JPanel();
 		Registration.getContentPane().add(panel);
@@ -208,5 +217,6 @@ public class Registration {
 		panel.add(panel_1);
 		panel_1.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createEtchedBorder(), "REGISTRAZIONE"));
+	
 	}
 }

@@ -12,8 +12,11 @@ import model.Game;
 import model.Review;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -124,6 +127,13 @@ public class AddReview {
 		frmAddReview.getContentPane().add(panel_1);
 		panel_1.setBorder(BorderFactory.createTitledBorder(
 		BorderFactory.createEtchedBorder(), "VOTO"));
+		
+		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
+		Image scaledImage = Sfondo.getImage().getScaledInstance(700, 600, Image.SCALE_DEFAULT);
+		Sfondo.setImage(scaledImage);
+		JLabel lblNewLabel_5 = new JLabel(Sfondo);
+		lblNewLabel_5.setBounds(0, 0, 684, 561);
+		frmAddReview.getContentPane().add(lblNewLabel_5);
 		
 		for(int i = 1; i < 11 ; i++)
 		comboBox.addItem(i);

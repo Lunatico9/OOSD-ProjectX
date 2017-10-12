@@ -3,11 +3,13 @@ package view;
 import java.awt.EventQueue;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -29,6 +31,7 @@ import controller.UserProfileController;
 import javax.swing.JTable;
 import javax.swing.JList;
 import javax.swing.JButton;
+import java.awt.Color;
 
 public class UserProfile {
 
@@ -77,6 +80,7 @@ public class UserProfile {
 			int j = user.getLevel() - 1;
 		
 		JPanel panel = new JPanel();
+		panel.setOpaque(false);
 		panel.setBounds(21, 47, 372, 156);
 		frame.getContentPane().add(panel);
 		panel.setBorder(BorderFactory.createTitledBorder(
@@ -132,6 +136,7 @@ public class UserProfile {
 		lblNewLabel.setText(user.getName());
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setOpaque(false);
 		panel_1.setBounds(405, 47, 255, 156);
 		frame.getContentPane().add(panel_1);
 		panel_1.setBorder(BorderFactory.createTitledBorder(
@@ -169,11 +174,15 @@ public class UserProfile {
 		frame.getContentPane().add(lblTimeline);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBackground(new Color(255, 255, 255));
+		scrollPane.setOpaque(false);
+
 		scrollPane.setBounds(21, 243, 639, 268);
 		frame.getContentPane().add(scrollPane);
 		try {
 			ResultSet rs = DatabaseMySQL.getTimeline(user);
 		table = new JTable(){public boolean isCellEditable(int rowIndex, int mColIndex) {return false; }};
+		table.setOpaque(false);
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -231,6 +240,13 @@ public class UserProfile {
 		});
 		mntmNewMenuItem_1.setBounds(106, 0, 84, 30);
 		frame.getContentPane().add(mntmNewMenuItem_1);
+		
+		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
+		Image scaledImage = Sfondo.getImage().getScaledInstance(700, 600, Image.SCALE_DEFAULT);
+		Sfondo.setImage(scaledImage);
+		JLabel lblNewLabel_5 = new JLabel(Sfondo);
+		lblNewLabel_5.setBounds(0, 0, 684, 561);
+		frame.getContentPane().add(lblNewLabel_5);
 		
 	}
 	}
