@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 
 import controller.MainUserController;
@@ -38,6 +39,7 @@ import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.UIManager;
 import java.awt.Font;
+import java.awt.Image;
 
 public class MainUser {
 
@@ -46,7 +48,7 @@ public class MainUser {
 	private ResultSet rst0, rst2;
 	private int Count = 0, num = 0;
 	private Double Media = 0.0;
-
+	private JLabel lblNewLabel_4;
 	/**
 	 * Launch the application.
 	 */
@@ -79,6 +81,7 @@ public class MainUser {
 	 * @throws Exception
 	 */
 	private void initialize() throws Exception {
+		
 		frame = new JFrame();
 		frame.setTitle("Main user");
 		frame.setBounds(100, 100, 700, 600);
@@ -93,6 +96,10 @@ public class MainUser {
 			gamesObject.add(a);
 			games.add(rst.getString("name"));
 		}
+		
+		lblNewLabel_4=new JLabel();
+		lblNewLabel_4.setBounds(453, 54, 200, 200);
+		frame.getContentPane().add(lblNewLabel_4);
 
 		// Recensione
 		JTextArea lblNewLabel = new JTextArea("");
@@ -124,7 +131,7 @@ public class MainUser {
 		frame.getContentPane().add(lblNewLabel_3);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(32, 54, 621, 200);
+		scrollPane.setBounds(32, 54, 391, 200);
 		frame.getContentPane().add(scrollPane);
 
 		JButton btnRecensioneSuccessiva = new JButton("Recensione Successiva");
@@ -210,6 +217,10 @@ public class MainUser {
 					if (game.getName().equals(gioco)) {
 						try {
 							rst0 = DatabaseMySQL.getGameReviews(game);
+							ImageIcon Icona=new ImageIcon("src/Immagini/"+ game.getName() +".jpg");
+							Image scaledImage = Icona.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
+							Icona.setImage(scaledImage);
+							lblNewLabel_4.setIcon(Icona);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -352,5 +363,7 @@ public class MainUser {
 		});
 		btnNewButton_1.setBounds(493, 277, 160, 40);
 		frame.getContentPane().add(btnNewButton_1);
+		
+		
 	}
 }
