@@ -231,7 +231,7 @@ public class MainUser {
 						rst2.next();
 						lblNewLabel.setText(rst0.getString("text"));
 						lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
-						lblNewLabel_1.setText("Recensione di:" + rst2.getString("username"));
+						lblNewLabel_1.setText("Recensione di: " + rst2.getString("username"));
 					} else {
 						lblNewLabel.setText("Questo gioco non è ancora stato recensito!");
 						lblNewLabel_2.setText("");
