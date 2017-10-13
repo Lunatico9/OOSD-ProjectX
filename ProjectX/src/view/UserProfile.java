@@ -32,6 +32,7 @@ import javax.swing.JTable;
 import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.Color;
+import javax.swing.JProgressBar;
 
 public class UserProfile {
 
@@ -144,7 +145,8 @@ public class UserProfile {
 		panel_1.setLayout(null);
 		
 		JLabel lblPuntiEsperienza = new JLabel("Punti esperienza");
-		lblPuntiEsperienza.setBounds(70, 87, 116, 29);
+		lblPuntiEsperienza.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPuntiEsperienza.setBounds(55, 89, 146, 29);
 		panel_1.add(lblPuntiEsperienza);
 		lblPuntiEsperienza.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		
@@ -168,6 +170,12 @@ public class UserProfile {
 		panel_1.add(lblLivello);
 		lblLivello.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		
+		JProgressBar progressBar = new JProgressBar(x[j-1],x[j]);
+		progressBar.setValue(user.getExp());
+		progressBar.setForeground(new Color(50, 205, 50));
+		progressBar.setBounds(55, 116, 146, 29);
+		panel_1.add(progressBar);
+		
 		JLabel lblTimeline = new JLabel("Timeline");
 		lblTimeline.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblTimeline.setBounds(22, 207, 100, 30);
@@ -177,7 +185,7 @@ public class UserProfile {
 		scrollPane.setBackground(new Color(255, 255, 255));
 		scrollPane.setOpaque(false);
 
-		scrollPane.setBounds(21, 243, 639, 268);
+		scrollPane.setBounds(21, 243, 639, 137);
 		frame.getContentPane().add(scrollPane);
 		try {
 			ResultSet rs = DatabaseMySQL.getTimeline(user);
