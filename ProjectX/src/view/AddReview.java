@@ -76,6 +76,7 @@ public class AddReview {
 		frmAddReview.getContentPane().setLayout(null);
 		
 		JTextArea textPane = new JTextArea();
+		textPane.setBorder(BorderFactory.createLineBorder(Color.black));
 		textPane.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		textPane.setWrapStyleWord(true);
 		textPane.setLineWrap(true);

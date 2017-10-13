@@ -3,6 +3,7 @@ package view;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -131,6 +132,7 @@ public class AcceptReview {
 		
 		//COMMENTO
 		JTextArea Commento = new JTextArea("");
+		Commento.setBorder(BorderFactory.createLineBorder(Color.black));
 		Commento.setLineWrap(true);
 		Commento.setEditable(false);
 		Commento.setWrapStyleWord(true);

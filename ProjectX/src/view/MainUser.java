@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractListModel;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 
@@ -103,6 +104,7 @@ public class MainUser {
 
 		// Recensione
 		JTextArea lblNewLabel = new JTextArea("");
+		lblNewLabel.setBorder(BorderFactory.createLineBorder(Color.black));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setEditable(false);
@@ -222,6 +224,7 @@ public class MainUser {
 							ImageIcon Icona=new ImageIcon("src/Immagini/"+ game.getName() +".jpg");
 							Image scaledImage = Icona.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
 							Icona.setImage(scaledImage);
+							lblNewLabel_4.setBorder(BorderFactory.createLineBorder(Color.black));
 							lblNewLabel_4.setIcon(Icona);
 						} catch (Exception e) {
 							e.printStackTrace();
