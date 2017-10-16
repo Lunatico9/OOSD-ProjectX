@@ -67,7 +67,6 @@ public class AddReview {
 	 * @throws Exception 
 	 */
 	private void initialize() throws Exception {
-		String querygame ="SELECT idGame FROM game WHERE name = name";
 		
 		frmAddReview = new JFrame();
 		frmAddReview.setTitle("Add review");
@@ -129,8 +128,7 @@ public class AddReview {
 		panel_1.setOpaque(false);
 		panel_1.setBounds(253, 400, 158, 68);
 		frmAddReview.getContentPane().add(panel_1);
-		panel_1.setBorder(BorderFactory.createTitledBorder(
-		BorderFactory.createEtchedBorder(), "VOTO"));
+		panel_1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "VOTO"));
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
 		Image scaledImage = Sfondo.getImage().getScaledInstance(700, 600, Image.SCALE_DEFAULT);
