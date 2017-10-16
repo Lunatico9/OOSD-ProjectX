@@ -88,7 +88,14 @@ public class UserProfile {
 		BorderFactory.createEtchedBorder(), "ANAGRAFICA"));
 		panel.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Modifica Password");
+		ImageIcon Pass= new ImageIcon("src/Immagini/Password.png");
+		Image scaledPass = Pass.getImage().getScaledInstance(150, 45, Image.SCALE_DEFAULT);
+		Pass.setImage(scaledPass);
+		
+		JButton btnNewButton = new JButton(Pass);
+		btnNewButton.setBorderPainted(false);
+		btnNewButton.setContentAreaFilled(false);
+		btnNewButton.setOpaque(false);
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -96,28 +103,28 @@ public class UserProfile {
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(129, 115, 212, 30);
+		btnNewButton.setBounds(153, 100, 150, 45);
 		panel.add(btnNewButton);
 		
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(10, 79, 75, 30);
+		lblEmail.setBounds(10, 68, 75, 30);
 		panel.add(lblEmail);
 		lblEmail.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		
 		JLabel label_1 = new JLabel("Email");
-		label_1.setBounds(95, 79, 264, 30);
+		label_1.setBounds(95, 68, 264, 30);
 		panel.add(label_1);
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		label_1.setText(user.getEmail());
 		
 		JLabel lblCognome = new JLabel("Cognome");
-		lblCognome.setBounds(10, 50, 75, 30);
+		lblCognome.setBounds(10, 39, 75, 30);
 		panel.add(lblCognome);
 		lblCognome.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		
 		JLabel label = new JLabel("Cognome");
-		label.setBounds(95, 50, 264, 30);
+		label.setBounds(95, 39, 264, 30);
 		panel.add(label);
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Times New Roman", Font.PLAIN, 16));
@@ -125,12 +132,12 @@ public class UserProfile {
 		
 		
 		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(10, 22, 75, 30);
+		lblNome.setBounds(10, 11, 75, 30);
 		panel.add(lblNome);
 		lblNome.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		
 		JLabel lblNewLabel = new JLabel("Nome");
-		lblNewLabel.setBounds(95, 22, 264, 30);
+		lblNewLabel.setBounds(95, 11, 264, 30);
 		panel.add(lblNewLabel);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 16));
@@ -226,8 +233,14 @@ public class UserProfile {
 			e.printStackTrace();
 		}
 		
-		JButton mntmNewMenuItem = new JButton("Menu");
-		mntmNewMenuItem.setHorizontalAlignment(SwingConstants.LEFT);
+		ImageIcon Menu= new ImageIcon("src/Immagini/menu.png");
+		Image scaledMenu = Menu.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
+		Menu.setImage(scaledMenu);
+		
+		JButton mntmNewMenuItem = new JButton(Menu);
+		mntmNewMenuItem.setOpaque(false);
+		mntmNewMenuItem.setBorderPainted(false);
+		mntmNewMenuItem.setContentAreaFilled(false);
 		mntmNewMenuItem.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -235,10 +248,17 @@ public class UserProfile {
 				MainUser.main(user);
 		}
 		});
-		mntmNewMenuItem.setBounds(21, 6, 87, 30);
+		mntmNewMenuItem.setBounds(27, 6, 122, 40);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
-		JButton mntmNewMenuItem_1 = new JButton("Logout");
+		ImageIcon Logout= new ImageIcon("src/Immagini/logout.png");
+		Image scaledLogout = Logout.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
+		Logout.setImage(scaledLogout);
+		
+		JButton mntmNewMenuItem_1 = new JButton(Logout);
+		mntmNewMenuItem_1.setContentAreaFilled(false);
+		mntmNewMenuItem_1.setBorderPainted(false);
+		mntmNewMenuItem_1.setOpaque(false);
 		mntmNewMenuItem_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -246,7 +266,7 @@ public class UserProfile {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(118, 6, 110, 30);
+		mntmNewMenuItem_1.setBounds(169, 6, 122, 40);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");

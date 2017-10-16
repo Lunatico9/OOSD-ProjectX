@@ -399,12 +399,12 @@ public class MainUser {
 				MainModerator.main(user);
 			}
 		});
-		mntmNewMenuItem.setBounds(201, 11, 122, 40);
+		mntmNewMenuItem.setBounds(142, 11, 122, 40);
 		frame.getContentPane().add(mntmNewMenuItem);
 
 		
 		ImageIcon Profile= new ImageIcon("src/Immagini/Profilo.png");
-		Image scaledProfile = Profile.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+		Image scaledProfile = Profile.getImage().getScaledInstance(142, 50, Image.SCALE_DEFAULT);
 		Profile.setImage(scaledProfile);
 		
 		JButton btnNewButton_1 = new JButton(Profile);
@@ -417,7 +417,7 @@ public class MainUser {
 				frame.setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(152, 11, 40, 40);
+		btnNewButton_1.setBounds(418, 277, 142, 50);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
