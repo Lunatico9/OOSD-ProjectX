@@ -248,7 +248,14 @@ public class AcceptReview {
 		Accetta.setBounds(77, 479, 150, 48);
 		frame.getContentPane().add(Accetta);
 		
-		JButton mntmNewMenuItem = new JButton("Menu");
+		ImageIcon Menu= new ImageIcon("src/Immagini/menu.png");
+		Image scaledMenu = Menu.getImage().getScaledInstance(100, 30, Image.SCALE_DEFAULT);
+		Menu.setImage(scaledMenu);
+		
+		JButton mntmNewMenuItem = new JButton(Menu);
+		mntmNewMenuItem.setOpaque(false);
+		mntmNewMenuItem.setContentAreaFilled(false);
+		mntmNewMenuItem.setBorderPainted(false);
 		mntmNewMenuItem.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -261,7 +268,15 @@ public class AcceptReview {
 		mntmNewMenuItem.setBounds(10, 11, 100, 30);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
-		JButton mntmNewMenuItem_1 = new JButton("Logout");
+		
+		ImageIcon Logout= new ImageIcon("src/Immagini/logout.png");
+		Image scaledLogout = Logout.getImage().getScaledInstance(100, 30, Image.SCALE_DEFAULT);
+		Logout.setImage(scaledLogout);
+		
+		JButton mntmNewMenuItem_1 = new JButton(Logout);
+		mntmNewMenuItem_1.setBorderPainted(false);
+		mntmNewMenuItem_1.setContentAreaFilled(false);
+		mntmNewMenuItem_1.setOpaque(false);
 		mntmNewMenuItem_1.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
