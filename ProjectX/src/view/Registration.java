@@ -69,6 +69,10 @@ public class Registration {
 		Image scaledImage = Sfondo.getImage().getScaledInstance(700, 600, Image.SCALE_DEFAULT);
 		Sfondo.setImage(scaledImage);
 		
+		ImageIcon Register= new ImageIcon("src/Immagini/register.png");
+		Image scaledReg = Register.getImage().getScaledInstance(130, 40, Image.SCALE_DEFAULT);
+		Register.setImage(scaledReg);
+		
 		JPanel panel = new JPanel();
 		Registration.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -107,7 +111,9 @@ public class Registration {
 		panel.add(textField);
 		textField.setColumns(10);
 		
-				JButton Registra = new JButton("Registrati");
+				JButton Registra = new JButton(Register);
+				Registra.setOpaque(false);
+				Registra.setContentAreaFilled(false);
 				Registra.setFont(new Font("Times New Roman", Font.BOLD, 18));
 				Registra.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
