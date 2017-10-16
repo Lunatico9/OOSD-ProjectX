@@ -3,7 +3,7 @@ package model.dao;
 import java.sql.ResultSet;
 
 import database.DatabaseMySQL;
-//123
+
 public class Game_DAO {
 	public static ResultSet selectIDgame(String name) throws Exception{
 		String query0= "SELECT idGame FROM game WHERE name='"+ name + "'";
