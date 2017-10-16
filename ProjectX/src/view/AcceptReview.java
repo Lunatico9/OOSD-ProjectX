@@ -36,13 +36,13 @@ import javax.swing.JProgressBar;
 
 public class AcceptReview {
 	
-	private boolean x=false;
+	private boolean x=false, y=false;
 	private String review, nomegioco, nomeutente;
 	private int vote,id,idgioco,idutente;
 	private JFrame frame;
 	private Actor user;
 	
-	 //123
+	
 	/**
 	 * Launch the application.
 	 */
@@ -147,6 +147,7 @@ public class AcceptReview {
 			ResultSet gioco= Game_DAO.selectGame(idgioco);
 			if(gioco.next()){
 			nomegioco= gioco.getString(1);
+			Gioco.setText("Gioco: "+nomegioco);
 			}
 		}
 		else Gioco.setText("Gioco: ");
@@ -173,15 +174,18 @@ public class AcceptReview {
 		//RIFIUTA
 		JButton Rifiuta = new JButton("Rifiuta Review");
 		Rifiuta.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		if(!x){
+			Rifiuta.setVisible(false);
+		}
 		Rifiuta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String text=Commento.getText();
 				int ID=id;
 				int voto=vote;
 				int gioco=idgioco;
-				int user=idutente;
+				int users=idutente;
 				try {
-					AcceptReviewController.Rifiuta(ID, text, gioco, user, voto);
+					AcceptReviewController.Rifiuta(ID, text, gioco, users, voto);
 					if(result.next()){
 						review= result.getString("text");
 						id=result.getInt("idReview");
@@ -214,6 +218,9 @@ public class AcceptReview {
 						Voto.setText("Voto");
 						lblNewLabel.setText("0/10");
 						progressBar.setValue(0);
+						JOptionPane.showMessageDialog(null, "Non ci sono altre recensioni da confermare");
+						MainModerator.main(user);
+						frame.dispose();
 					}
 				}
 				catch (Exception e) {
@@ -227,15 +234,18 @@ public class AcceptReview {
 		//ACCETTA
 		JButton Accetta = new JButton("Accetta Review");
 		Accetta.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		if(!x){
+			Accetta.setVisible(false);
+		}
 		Accetta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String text=Commento.getText();
 				int ID=id;
 				int voto=vote;
 				int gioco=idgioco;
-				int user=idutente;
+				int users=idutente;
 				try {
-					AcceptReviewController.Accetta(ID, text, gioco, user, voto);
+					AcceptReviewController.Accetta(ID, text, gioco, users, voto);
 					if(result.next()){
 						review= result.getString("text");
 						id=result.getInt("idReview");
@@ -268,12 +278,16 @@ public class AcceptReview {
 						Voto.setText("Voto");
 						lblNewLabel.setText("0/10");
 						progressBar.setValue(0);
+						JOptionPane.showMessageDialog(null, "Non ci sono altre recensioni da confermare");
+						MainModerator.main(user);
+						frame.dispose();
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+		
 		Accetta.setBounds(77, 479, 150, 48);
 		frame.getContentPane().add(Accetta);
 		
