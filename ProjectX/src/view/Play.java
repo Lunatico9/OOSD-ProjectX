@@ -61,7 +61,14 @@ public class Play {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Gioca");
+		ImageIcon Start= new ImageIcon("src/Immagini/Start.png");
+		Image scaledStart = Start.getImage().getScaledInstance(350, 80, Image.SCALE_DEFAULT);
+		Start.setImage(scaledStart);
+		
+		JButton btnNewButton = new JButton(Start);
+		btnNewButton.setOpaque(false);
+		btnNewButton.setBorderPainted(false);
+		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -85,7 +92,14 @@ public class Play {
 		lblStaiGiocandoA.setBounds(79, 15, 500, 200);
 		frame.getContentPane().add(lblStaiGiocandoA);
 		
-		JButton btnEsci = new JButton("Esci");
+		ImageIcon Exit= new ImageIcon("src/Immagini/Exit.png");
+		Image scaledExit = Exit.getImage().getScaledInstance(200, 40, Image.SCALE_DEFAULT);
+		Exit.setImage(scaledExit);
+		
+		JButton btnEsci = new JButton(Exit);
+		btnEsci.setBorderPainted(false);
+		btnEsci.setContentAreaFilled(false);
+		btnEsci.setOpaque(false);
 		btnEsci.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		btnEsci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -93,7 +107,7 @@ public class Play {
 				MainUser.main(user);
 			}
 		});
-		btnEsci.setBounds(262, 409, 130, 40);
+		btnEsci.setBounds(225, 409, 200, 40);
 		frame.getContentPane().add(btnEsci);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");

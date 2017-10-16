@@ -175,7 +175,7 @@ public class MainUser {
 						ResultSet rst2=MainUserController.selezionaUsername(rst0.getInt("user_iduser"));
 						rst2.next();
 						lblNewLabel.setText(rst0.getString("text"));
-						lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
+						lblNewLabel_2.setText("Voto: " + rst0.getString("vote")+"/10");
 						lblNewLabel_1.setText("Recensione di: " + rst2.getString("username"));
 					}
 
@@ -302,7 +302,14 @@ public class MainUser {
 			}
 		});
 
-		JButton btnGioca = new JButton("Gioca");
+		ImageIcon Gioca= new ImageIcon("src/Immagini/PlayNow.png");
+		Image scaledPlay = Gioca.getImage().getScaledInstance(160, 40, Image.SCALE_DEFAULT);
+		Gioca.setImage(scaledPlay);
+		
+		JButton btnGioca = new JButton(Gioca);
+		btnGioca.setContentAreaFilled(false);
+		btnGioca.setBorderPainted(false);
+		btnGioca.setOpaque(false);
 		btnGioca.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		btnGioca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -339,7 +346,15 @@ public class MainUser {
 		mntmNewMenuItem_1.setBounds(10, 11, 122, 40);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 
-		JButton btnNewButton = new JButton("Recensisci");
+		
+		ImageIcon Com= new ImageIcon("src/Immagini/Commento.png");
+		Image scaledCom = Com.getImage().getScaledInstance(100, 40, Image.SCALE_DEFAULT);
+		Com.setImage(scaledCom);
+		
+		JButton btnNewButton = new JButton(Com);
+		btnNewButton.setBorderPainted(false);
+		btnNewButton.setContentAreaFilled(false);
+		btnNewButton.setOpaque(false);
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -363,7 +378,7 @@ public class MainUser {
 				}
 			}
 		});
-		btnNewButton.setBounds(263, 277, 160, 40);
+		btnNewButton.setBounds(223, 277, 100, 40);
 		frame.getContentPane().add(btnNewButton);
 		
 		ImageIcon Menu= new ImageIcon("src/Immagini/menu.png");
@@ -384,10 +399,17 @@ public class MainUser {
 				MainModerator.main(user);
 			}
 		});
-		mntmNewMenuItem.setBounds(140, 13, 122, 40);
+		mntmNewMenuItem.setBounds(201, 11, 122, 40);
 		frame.getContentPane().add(mntmNewMenuItem);
 
-		JButton btnNewButton_1 = new JButton("Profilo Personale");
+		
+		ImageIcon Profile= new ImageIcon("src/Immagini/Profilo.png");
+		Image scaledProfile = Profile.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+		Profile.setImage(scaledProfile);
+		
+		JButton btnNewButton_1 = new JButton(Profile);
+		btnNewButton_1.setBorderPainted(false);
+		btnNewButton_1.setContentAreaFilled(false);
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -395,7 +417,7 @@ public class MainUser {
 				frame.setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(453, 277, 200, 40);
+		btnNewButton_1.setBounds(152, 11, 40, 40);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");

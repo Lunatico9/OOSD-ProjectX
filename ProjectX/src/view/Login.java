@@ -124,7 +124,7 @@ public class Login {
 		btnAccedi.setBounds(220, 332, 132, 48);
 		frmLogin.getContentPane().add(btnAccedi);
 		
-		ImageIcon Register= new ImageIcon("src/Immagini/register.png");
+		ImageIcon Register= new ImageIcon("src/Immagini/RegisterNow.png");
 		Image scaledReg = Register.getImage().getScaledInstance(132, 30, Image.SCALE_DEFAULT);
 		Register.setImage(scaledReg);
 		
