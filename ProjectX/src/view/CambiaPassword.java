@@ -65,40 +65,48 @@ public class CambiaPassword {
 		JLabel lblVecchiaPassword = new JLabel("Vecchia password");
 		lblVecchiaPassword.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblVecchiaPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVecchiaPassword.setBounds(181, 111, 289, 20);
+		lblVecchiaPassword.setBounds(181, 78, 289, 20);
 		frame.getContentPane().add(lblVecchiaPassword);
 		
 		textField = new JPasswordField();
 		textField.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		textField.setBounds(181, 156, 290, 30);
+		textField.setBounds(181, 123, 290, 30);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNuovaPassword = new JLabel("Nuova password");
 		lblNuovaPassword.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblNuovaPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNuovaPassword.setBounds(182, 223, 289, 20);
+		lblNuovaPassword.setBounds(182, 190, 289, 20);
 		frame.getContentPane().add(lblNuovaPassword);
 		
 		textField_1 = new JPasswordField();
 		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		textField_1.setColumns(10);
-		textField_1.setBounds(182, 265, 290, 30);
+		textField_1.setBounds(182, 232, 290, 30);
 		frame.getContentPane().add(textField_1);
 		
 		JLabel lblConfermaPassword = new JLabel("Conferma password");
 		lblConfermaPassword.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		lblConfermaPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblConfermaPassword.setBounds(182, 330, 289, 20);
+		lblConfermaPassword.setBounds(182, 297, 289, 20);
 		frame.getContentPane().add(lblConfermaPassword);
 		
 		textField_2 = new JPasswordField();
 		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		textField_2.setColumns(10);
-		textField_2.setBounds(181, 371, 290, 30);
+		textField_2.setBounds(181, 338, 290, 30);
 		frame.getContentPane().add(textField_2);
 		
-		JButton btnCambiaPassword = new JButton("Cambia password");
+		
+		ImageIcon Conf= new ImageIcon("src/Immagini/Conferma.png");
+		Image scaledConf = Conf.getImage().getScaledInstance(170, 40, Image.SCALE_DEFAULT);
+		Conf.setImage(scaledConf);
+		
+		JButton btnCambiaPassword = new JButton(Conf);
+		btnCambiaPassword.setBorderPainted(false);
+		btnCambiaPassword.setContentAreaFilled(false);
+		btnCambiaPassword.setOpaque(false);
 		btnCambiaPassword.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		btnCambiaPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -124,10 +132,17 @@ public class CambiaPassword {
 					}
 			}
 		});
-		btnCambiaPassword.setBounds(466, 480, 170, 40);
+		btnCambiaPassword.setBounds(465, 430, 170, 40);
 		frame.getContentPane().add(btnCambiaPassword);
 		
-		JButton btnAnnulla = new JButton("Annulla");
+		ImageIcon Canc= new ImageIcon("src/Immagini/Annulla.png");
+		Image scaledCanc = Canc.getImage().getScaledInstance(170, 40, Image.SCALE_DEFAULT);
+		Canc.setImage(scaledCanc);
+		
+		JButton btnAnnulla = new JButton(Canc);
+		btnAnnulla.setOpaque(false);
+		btnAnnulla.setContentAreaFilled(false);
+		btnAnnulla.setBorderPainted(false);
 		btnAnnulla.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		btnAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -135,7 +150,7 @@ public class CambiaPassword {
 				UserProfile.main(user);
 			}
 		});
-		btnAnnulla.setBounds(46, 480, 170, 40);
+		btnAnnulla.setBounds(47, 430, 170, 40);
 		frame.getContentPane().add(btnAnnulla);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
