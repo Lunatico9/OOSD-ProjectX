@@ -131,17 +131,32 @@ public class MainUser {
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		lblNewLabel_3.setBounds(523, 13, 130, 30);
+		lblNewLabel_3.setBounds(486, 13, 167, 30);
 		frame.getContentPane().add(lblNewLabel_3);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(32, 54, 391, 200);
 		frame.getContentPane().add(scrollPane);
 
-		JButton btnRecensioneSuccessiva = new JButton("Recensione Successiva");
+		ImageIcon Next= new ImageIcon("src/Immagini/Successivo.png");
+		Image scaledNext = Next.getImage().getScaledInstance(200, 40, Image.SCALE_DEFAULT);
+		Next.setImage(scaledNext);
+		
+		JButton btnRecensioneSuccessiva = new JButton(Next);
+		btnRecensioneSuccessiva.setBorderPainted(false);
+		btnRecensioneSuccessiva.setContentAreaFilled(false);
+		btnRecensioneSuccessiva.setOpaque(false);
 		btnRecensioneSuccessiva.setFont(new Font("Times New Roman", Font.BOLD, 18));
 
-		JButton btnNewButton_2 = new JButton("Recensione Precedente");
+		
+		ImageIcon Previous= new ImageIcon("src/Immagini/Precedente.png");
+		Image scaledPrevious = Previous.getImage().getScaledInstance(200, 40, Image.SCALE_DEFAULT);
+		Previous.setImage(scaledPrevious);
+		
+		JButton btnNewButton_2 = new JButton(Previous);
+		btnNewButton_2.setOpaque(false);
+		btnNewButton_2.setContentAreaFilled(false);
+		btnNewButton_2.setBorderPainted(false);
 		btnNewButton_2.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		if (num == 0)
 			btnNewButton_2.setVisible(false);
@@ -171,9 +186,9 @@ public class MainUser {
 				}
 			}
 		});
-		btnNewButton_2.setBounds(32, 510, 255, 40);
+		btnNewButton_2.setBounds(32, 510, 200, 40);
 		frame.getContentPane().add(btnNewButton_2);
-
+		
 		// Recensione Successiva
 		if (Count <= num) {
 			btnRecensioneSuccessiva.setVisible(false);
@@ -193,7 +208,7 @@ public class MainUser {
 							ResultSet rst2=MainUserController.selezionaUsername(rst0.getInt("user_iduser"));
 							rst2.next();
 							lblNewLabel.setText(rst0.getString("text"));
-							lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
+							lblNewLabel_2.setText("Voto: " + rst0.getString("vote")+"/10");
 							lblNewLabel_1.setText("Recensione di: " + rst2.getString("username"));
 						}
 					}
@@ -206,7 +221,7 @@ public class MainUser {
 				}
 			}
 		});
-		btnRecensioneSuccessiva.setBounds(399, 510, 255, 40);
+		btnRecensioneSuccessiva.setBounds(453, 510, 200, 40);
 		frame.getContentPane().add(btnRecensioneSuccessiva);
 
 		JList list = new JList();
@@ -248,7 +263,7 @@ public class MainUser {
 						ResultSet rst2=MainUserController.selezionaUsername(rst0.getInt("user_iduser"));
 						rst2.next();
 						lblNewLabel.setText(rst0.getString("text"));
-						lblNewLabel_2.setText("Voto: " + rst0.getString("vote"));
+						lblNewLabel_2.setText("Voto: " + rst0.getString("vote")+"/10");
 						lblNewLabel_1.setText("Recensione di: " + rst2.getString("username"));
 					} else {
 						lblNewLabel.setText("Questo gioco non è ancora stato recensito!");
@@ -350,9 +365,15 @@ public class MainUser {
 		});
 		btnNewButton.setBounds(263, 277, 160, 40);
 		frame.getContentPane().add(btnNewButton);
+		
+		ImageIcon Menu= new ImageIcon("src/Immagini/menu.png");
+		Image scaledMenu = Menu.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
+		Menu.setImage(scaledMenu);
 
-		JButton mntmNewMenuItem = new JButton("Funzioni moderatore ");
-		mntmNewMenuItem.setOpaque(true);
+		JButton mntmNewMenuItem = new JButton(Menu);
+		mntmNewMenuItem.setBorderPainted(false);
+		mntmNewMenuItem.setContentAreaFilled(false);
+		mntmNewMenuItem.setOpaque(false);
 		mntmNewMenuItem.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		mntmNewMenuItem.setVisible(false);
 		if (user.getType().equals("moderatore"))
@@ -363,7 +384,7 @@ public class MainUser {
 				MainModerator.main(user);
 			}
 		});
-		mntmNewMenuItem.setBounds(140, 13, 222, 30);
+		mntmNewMenuItem.setBounds(140, 13, 122, 40);
 		frame.getContentPane().add(mntmNewMenuItem);
 
 		JButton btnNewButton_1 = new JButton("Profilo Personale");

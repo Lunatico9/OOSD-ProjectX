@@ -210,7 +210,14 @@ public class PromotionDemotionModerator {
 		BorderFactory.createEtchedBorder(), "PROMUOVI O DEGRADA"));
 		show_user();
 		
-		JButton mntmNewMenuItem = new JButton("Menu");
+		ImageIcon Menu= new ImageIcon("src/Immagini/menu.png");
+		Image scaledMenu = Menu.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
+		Menu.setImage(scaledMenu);
+		
+		JButton mntmNewMenuItem = new JButton(Menu);
+		mntmNewMenuItem.setOpaque(false);
+		mntmNewMenuItem.setContentAreaFilled(false);
+		mntmNewMenuItem.setBorderPainted(false);
 		mntmNewMenuItem.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -218,10 +225,17 @@ public class PromotionDemotionModerator {
 				MainModerator.main(user);
 		}
 		});
-		mntmNewMenuItem.setBounds(6, 11, 100, 37);
+		mntmNewMenuItem.setBounds(6, 11, 122, 40);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
-		JButton mntmNewMenuItem_1 = new JButton("Logout");
+		ImageIcon Logout= new ImageIcon("src/Immagini/logout.png");
+		Image scaledLogout = Logout.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
+		Logout.setImage(scaledLogout);
+		
+		JButton mntmNewMenuItem_1 = new JButton(Logout);
+		mntmNewMenuItem_1.setBorderPainted(false);
+		mntmNewMenuItem_1.setOpaque(false);
+		mntmNewMenuItem_1.setContentAreaFilled(false);
 		mntmNewMenuItem_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -229,7 +243,7 @@ public class PromotionDemotionModerator {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(116, 11, 100, 37);
+		mntmNewMenuItem_1.setBounds(137, 11, 122, 40);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
