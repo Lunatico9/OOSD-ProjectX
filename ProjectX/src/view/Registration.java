@@ -73,6 +73,10 @@ public class Registration {
 		Image scaledReg = Register.getImage().getScaledInstance(130, 40, Image.SCALE_DEFAULT);
 		Register.setImage(scaledReg);
 		
+		ImageIcon login= new ImageIcon("src/Immagini/login.png");
+		Image scaledLogin = login.getImage().getScaledInstance(130, 40, Image.SCALE_DEFAULT);
+		login.setImage(scaledLogin);
+		
 		JPanel panel = new JPanel();
 		Registration.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -168,7 +172,10 @@ public class Registration {
 				Registra.setBounds(386, 510, 130, 40);
 				panel.add(Registra);
 				
-				JButton SchermataPrincipale = new JButton("Annulla");
+				JButton SchermataPrincipale = new JButton(login);
+				SchermataPrincipale.setBorderPainted(false);
+				SchermataPrincipale.setContentAreaFilled(false);
+				SchermataPrincipale.setOpaque(false);
 				SchermataPrincipale.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						Login.main(null);

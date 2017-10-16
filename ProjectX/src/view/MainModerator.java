@@ -57,7 +57,11 @@ public class MainModerator {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Gestisci utenti");
+		ImageIcon ManU= new ImageIcon("src/Immagini/Successivo.png");
+		Image scaledMan = ManU.getImage().getScaledInstance(200, 40, Image.SCALE_DEFAULT);
+		ManU.setImage(scaledMan);
+		
+		JButton btnNewButton = new JButton(ManU);
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -65,10 +69,17 @@ public class MainModerator {
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(193, 136, 300, 50);
+		btnNewButton.setBounds(193, 102, 300, 50);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnGestisciNuoveRecensioni = new JButton("Gestisci nuove recensioni");
+		ImageIcon Rev= new ImageIcon("src/Immagini/Review.png");
+		Image scaledRev = Rev.getImage().getScaledInstance(300, 70, Image.SCALE_DEFAULT);
+		Rev.setImage(scaledRev);
+		
+		JButton btnGestisciNuoveRecensioni = new JButton(Rev);
+		btnGestisciNuoveRecensioni.setOpaque(false);
+		btnGestisciNuoveRecensioni.setContentAreaFilled(false);
+		btnGestisciNuoveRecensioni.setBorderPainted(false);
 		btnGestisciNuoveRecensioni.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		ResultSet rst=Review_DAO.ReviewDaValutare();
 		if(rst.next()){
@@ -81,8 +92,12 @@ public class MainModerator {
 				frame.dispose();
 			}
 		});
-		btnGestisciNuoveRecensioni.setBounds(193, 268, 300, 50);
+		btnGestisciNuoveRecensioni.setBounds(193, 223, 300, 70);
 		frame.getContentPane().add(btnGestisciNuoveRecensioni);
+		
+		ImageIcon U= new ImageIcon("src/Immagini/Successivo.png");
+		Image scaledU = U.getImage().getScaledInstance(200, 40, Image.SCALE_DEFAULT);
+		U.setImage(scaledU);
 		
 		JButton btnUtilizzaAccountCome = new JButton("Utilizza account come utente");
 		btnUtilizzaAccountCome.setFont(new Font("Times New Roman", Font.BOLD, 20));
@@ -92,7 +107,7 @@ public class MainModerator {
 				frame.dispose();
 			}
 		});
-		btnUtilizzaAccountCome.setBounds(193, 402, 300, 50);
+		btnUtilizzaAccountCome.setBounds(193, 384, 300, 50);
 		frame.getContentPane().add(btnUtilizzaAccountCome);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
