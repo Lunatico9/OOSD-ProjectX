@@ -9,4 +9,9 @@ public class Game_DAO {
 		String query0= "SELECT idGame FROM game WHERE name='"+ name + "'";
 		return DatabaseMySQL.SendQuery(query0);
 	}
+	
+	public static ResultSet selectGame(int ID) throws Exception{
+		String GIOCO="SELECT name FROM game WHERE idGame='"+ID+"'";
+		return DatabaseMySQL.SendQuery(GIOCO);
+	}
 }

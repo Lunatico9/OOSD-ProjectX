@@ -29,4 +29,9 @@ public class Review_DAO implements Review_DAO_Interface {
 		String query= "SELECT * FROM review WHERE user_iduser='" + IDuser + "' AND Game_idGame='"+ IDgame +"'";
 		return DatabaseMySQL.SendQuery(query);
 	}
+	
+	public static ResultSet ReviewDaValutare() throws Exception{
+		String queryTOTALE= "Select text, idReview, Game_idGame, user_iduser, vote From review WHERE approved=0";
+		return DatabaseMySQL.SendQuery(queryTOTALE);
+	}
 }

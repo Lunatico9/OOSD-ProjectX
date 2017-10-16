@@ -17,6 +17,8 @@ import javax.swing.JTextPane;
 
 import database.DatabaseMySQL;
 import model.Actor;
+import model.dao.Game_DAO;
+import model.dao.Review_DAO;
 
 import javax.swing.JTable;
 import javax.swing.JLabel;
@@ -30,6 +32,7 @@ import java.awt.Image;
 
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
+import javax.swing.JProgressBar;
 
 public class AcceptReview {
 	
@@ -76,8 +79,7 @@ public class AcceptReview {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		String queryTOTALE= "Select text, idReview, Game_idGame, user_iduser, vote From review WHERE approved=0";
-		ResultSet result= DatabaseMySQL.SendQuery(queryTOTALE);
+		ResultSet result= Review_DAO.ReviewDaValutare();
 		if(result.next()){
 			x=true;
 			review=result.getString("text");
@@ -87,24 +89,46 @@ public class AcceptReview {
 			idutente=result.getInt("user_iduser");
 		}
 		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		if(x){
+			lblNewLabel.setText(vote+"/10");
+		}
+		else lblNewLabel.setText("0/10");
+		lblNewLabel.setBounds(452, 106, 180, 30);
+		frame.getContentPane().add(lblNewLabel);
+		
 		//VOTO
 		JLabel Voto = new JLabel("");
 		Voto.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		Voto.setHorizontalAlignment(SwingConstants.RIGHT);
-		Voto.setBounds(452, 96, 180, 40);
-		if(x){
-		Voto.setText("Voto:"+ vote);
-		}
-		else Voto.setText("Voto: ");
+		Voto.setHorizontalAlignment(SwingConstants.CENTER);
+		Voto.setBounds(452, 68, 180, 40);
+		Voto.setText("Voto");
 		frame.getContentPane().add(Voto);
+		
+        //Barra Voto
+		JProgressBar progressBar = new JProgressBar(0,10);
+		if(x){
+			progressBar.setValue(vote);
+			}
+		else progressBar.setValue(0);
+		if(vote <= 3){
+			progressBar.setForeground(Color.RED);
+		}
+		else if(vote>3 && vote<=6){
+			progressBar.setForeground(Color.YELLOW);
+		}
+		else progressBar.setForeground(Color.GREEN);
+		progressBar.setBounds(452, 106, 180, 30);
+		frame.getContentPane().add(progressBar);
 				
 		//UTENTE
 		JLabel Utente = new JLabel("");
 		Utente.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Utente.setHorizontalAlignment(SwingConstants.CENTER);
 		if(x){
-			String Nome="SELECT username FROM user WHERE idUser='"+idutente+"'";
-			ResultSet nome= DatabaseMySQL.SendQuery(Nome);
+			ResultSet nome= DatabaseMySQL.selectUsername(idutente);
 			if(nome.next()){
 				nomeutente=nome.getString(1);
 				Utente.setText("Recensione di: " + nome.getString(1) );
@@ -120,8 +144,7 @@ public class AcceptReview {
 		Gioco.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Gioco.setHorizontalAlignment(SwingConstants.LEFT);
 		if(x){
-			String GIOCO="SELECT name FROM game WHERE idGame='"+idgioco+"'";
-			ResultSet gioco= DatabaseMySQL.SendQuery(GIOCO);
+			ResultSet gioco= Game_DAO.selectGame(idgioco);
 			if(gioco.next()){
 			nomegioco= gioco.getString(1);
 			}
@@ -138,24 +161,11 @@ public class AcceptReview {
 		Commento.setWrapStyleWord(true);
 		Commento.setBackground(Color.WHITE);
 		Commento.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		String queryTOT= "SELECT * FROM review WHERE approved=0";
-		ResultSet rst= DatabaseMySQL.SendQuery(queryTOT);
-		if(rst.next()){
-		review= rst.getString("text");
-		id=rst.getInt("idReview");
-		vote=rst.getInt("vote");
-		idgioco=rst.getInt("Game_idGame");
-		idutente=rst.getInt("user_iduser");
+		if(x){
 		Commento.setText(review);
-		Gioco.setText("Gioco: " + nomegioco);
-		Utente.setText("Recensione di: " + nomeutente);
-		Voto.setText("Voto: " + vote);
 		}
 		else{ 
 			Commento.setText("Non ci sono recensioni da confermare");
-			Gioco.setText("Gioco: ");
-			Utente.setText("Recensione di: ");
-			Voto.setText("Voto: ");
 		}
 		Commento.setBounds(77, 203, 529, 227);
 		frame.getContentPane().add(Commento);
@@ -172,28 +182,38 @@ public class AcceptReview {
 				int user=idutente;
 				try {
 					AcceptReviewController.Rifiuta(ID, text, gioco, user, voto);
-					if(rst.next()){
-						review= rst.getString("text");
-						id=rst.getInt("idReview");
-						vote=rst.getInt("vote");
-						idgioco=rst.getInt("Game_idGame");
-						idutente=rst.getInt("user_iduser");
-						Commento.setText(rst.getString("text"));
-						String GIOCO="SELECT name FROM game WHERE idGame='"+idgioco+"'";
-						ResultSet gioco2= DatabaseMySQL.SendQuery(GIOCO);
-						gioco2.next();
-						Gioco.setText("Gioco: " + gioco2.getString(1));
-						Voto.setText("Voto: " + vote);
-						String Nome="SELECT username FROM user WHERE idUser='"+idutente+"'";
-						ResultSet nome= DatabaseMySQL.SendQuery(Nome);
-						nome.next();
-						Utente.setText("Recensione di: " + nome.getString(1));
+					if(result.next()){
+						review= result.getString("text");
+						id=result.getInt("idReview");
+						vote=result.getInt("vote");
+						idgioco=result.getInt("Game_idGame");
+						idutente=result.getInt("user_iduser");
+						Commento.setText(result.getString("text"));
+						ResultSet gioco2= Game_DAO.selectGame(idgioco);
+						if(gioco2.next()){
+							lblNewLabel.setText(vote+"/10");
+							progressBar.setValue(vote);
+							if(vote <= 3){
+								progressBar.setForeground(Color.RED);
+							}
+							else if(vote>3 && vote<=6){
+								progressBar.setForeground(Color.YELLOW);
+							}
+							else progressBar.setForeground(Color.GREEN);
+							Gioco.setText("Gioco: " + gioco2.getString(1));
+							Voto.setText("Voto");
+							ResultSet nome= DatabaseMySQL.selectUsername(idutente);
+							nome.next();
+							Utente.setText("Recensione di: " + nome.getString(1));
+						}
 					}
 					else{
 						Commento.setText("Non ci sono recensioni da confermare");
 						Gioco.setText("Gioco: ");
 						Utente.setText("Recensione di: ");
-						Voto.setText("Voto: ");
+						Voto.setText("Voto");
+						lblNewLabel.setText("0/10");
+						progressBar.setValue(0);
 					}
 				}
 				catch (Exception e) {
@@ -216,29 +236,38 @@ public class AcceptReview {
 				int user=idutente;
 				try {
 					AcceptReviewController.Accetta(ID, text, gioco, user, voto);
-					if(rst.next()){
-						review= rst.getString("text");
-						id=rst.getInt("idReview");
-						vote=rst.getInt("vote");
-						idgioco=rst.getInt("Game_idGame");
-						idutente=rst.getInt("user_iduser");
-						Commento.setText(rst.getString("text"));
-						String GIOCO="SELECT name FROM game WHERE idGame='"+idgioco+"'";
-						ResultSet gioco2= DatabaseMySQL.SendQuery(GIOCO);
+					if(result.next()){
+						review= result.getString("text");
+						id=result.getInt("idReview");
+						vote=result.getInt("vote");
+						idgioco=result.getInt("Game_idGame");
+						idutente=result.getInt("user_iduser");
+						Commento.setText(result.getString("text"));
+						ResultSet gioco2= Game_DAO.selectGame(idgioco);
 						if(gioco2.next()){
-       					Gioco.setText("Gioco: " + gioco2.getString(1));
-						Voto.setText("Voto:"+ vote);
-						String Nome="SELECT username FROM user WHERE idUser='"+idutente+"'";
-						ResultSet nome= DatabaseMySQL.SendQuery(Nome);
-						nome.next();
-						Utente.setText("Recensione di: " + nome.getString(1));
+							lblNewLabel.setText(vote+"/10");
+							progressBar.setValue(vote);
+							if(vote <= 3){
+								progressBar.setForeground(Color.RED);
+							}
+							else if(vote>3 && vote<=6){
+								progressBar.setForeground(Color.YELLOW);
+							}
+							else progressBar.setForeground(Color.GREEN);
+							Gioco.setText("Gioco: " + gioco2.getString(1));
+							Voto.setText("Voto");
+							ResultSet nome= DatabaseMySQL.selectUsername(idutente);
+							nome.next();
+							Utente.setText("Recensione di: " + nome.getString(1));
 						}
 					}
 					else{
 						Commento.setText("Non ci sono recensioni da confermare");
 						Gioco.setText("Gioco: ");
 						Utente.setText("Recensione di: ");
-						Voto.setText("Voto: ");
+						Voto.setText("Voto");
+						lblNewLabel.setText("0/10");
+						progressBar.setValue(0);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -293,5 +322,6 @@ public class AcceptReview {
 		JLabel lblNewLabel_5 = new JLabel(Sfondo);
 		lblNewLabel_5.setBounds(0, 0, 684, 561);
 		frame.getContentPane().add(lblNewLabel_5);
+		
 	}
 }
