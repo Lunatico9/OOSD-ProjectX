@@ -306,7 +306,14 @@ public class MainUser {
 		btnGioca.setBounds(32, 277, 160, 40);
 		frame.getContentPane().add(btnGioca);
 
-		JButton mntmNewMenuItem_1 = new JButton("Logout");
+		ImageIcon Logout= new ImageIcon("src/Immagini/logout.png");
+		Image scaledLogout = Logout.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
+		Logout.setImage(scaledLogout);
+		
+		JButton mntmNewMenuItem_1 = new JButton(Logout);
+		mntmNewMenuItem_1.setBorderPainted(false);
+		mntmNewMenuItem_1.setContentAreaFilled(false);
+		mntmNewMenuItem_1.setOpaque(false);
 		mntmNewMenuItem_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -314,7 +321,7 @@ public class MainUser {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(32, 13, 100, 30);
+		mntmNewMenuItem_1.setBounds(10, 11, 122, 40);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 
 		JButton btnNewButton = new JButton("Recensisci");

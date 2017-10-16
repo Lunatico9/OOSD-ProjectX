@@ -287,7 +287,7 @@ public class AcceptReview {
 		frame.getContentPane().add(Accetta);
 		
 		ImageIcon Menu= new ImageIcon("src/Immagini/menu.png");
-		Image scaledMenu = Menu.getImage().getScaledInstance(100, 30, Image.SCALE_DEFAULT);
+		Image scaledMenu = Menu.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
 		Menu.setImage(scaledMenu);
 		
 		JButton mntmNewMenuItem = new JButton(Menu);
@@ -303,12 +303,12 @@ public class AcceptReview {
 					MainModerator.main(user);
 		}
 		});
-		mntmNewMenuItem.setBounds(10, 11, 100, 30);
+		mntmNewMenuItem.setBounds(10, 11, 122, 40);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
 		
 		ImageIcon Logout= new ImageIcon("src/Immagini/logout.png");
-		Image scaledLogout = Logout.getImage().getScaledInstance(100, 30, Image.SCALE_DEFAULT);
+		Image scaledLogout = Logout.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
 		Logout.setImage(scaledLogout);
 		
 		JButton mntmNewMenuItem_1 = new JButton(Logout);
@@ -322,7 +322,7 @@ public class AcceptReview {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(114, 11, 100, 30);
+		mntmNewMenuItem_1.setBounds(155, 11, 122, 40);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
