@@ -7,10 +7,12 @@ import javax.swing.JLabel;
 
 import controller.MainModeratorController;
 import model.Actor;
+import model.dao.Review_DAO;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Image;
@@ -37,16 +39,18 @@ public class MainModerator {
 
 	/**
 	 * Create the application.
+	 * @throws Exception 
 	 */
-	public MainModerator(Actor user) {
+	public MainModerator(Actor user) throws Exception {
 		this.user = user;
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws Exception 
 	 */
-	private void initialize() {
+	private void initialize() throws Exception {
 		frame = new JFrame();
 		frame.setTitle("Main moderator");
 		frame.setBounds(100, 100, 700, 600);
@@ -66,6 +70,11 @@ public class MainModerator {
 		
 		JButton btnGestisciNuoveRecensioni = new JButton("Gestisci nuove recensioni");
 		btnGestisciNuoveRecensioni.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		ResultSet rst=Review_DAO.ReviewDaValutare();
+		if(rst.next()){
+			btnGestisciNuoveRecensioni.setEnabled(true);
+		}
+		else btnGestisciNuoveRecensioni.setEnabled(false);
 		btnGestisciNuoveRecensioni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainModeratorController.GestisciRec(user);

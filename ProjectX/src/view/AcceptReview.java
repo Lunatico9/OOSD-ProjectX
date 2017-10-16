@@ -36,7 +36,7 @@ import javax.swing.JProgressBar;
 
 public class AcceptReview {
 	
-	private boolean x=false, y=false;
+	private boolean x=false;
 	private String review, nomegioco, nomeutente;
 	private int vote,id,idgioco,idutente;
 	private JFrame frame;
@@ -162,12 +162,7 @@ public class AcceptReview {
 		Commento.setWrapStyleWord(true);
 		Commento.setBackground(Color.WHITE);
 		Commento.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		if(x){
 		Commento.setText(review);
-		}
-		else{ 
-			Commento.setText("Non ci sono recensioni da confermare");
-		}
 		Commento.setBounds(77, 203, 529, 227);
 		frame.getContentPane().add(Commento);
 		
@@ -212,7 +207,7 @@ public class AcceptReview {
 						}
 					}
 					else{
-						Commento.setText("Non ci sono recensioni da confermare");
+						Commento.setText("");
 						Gioco.setText("Gioco: ");
 						Utente.setText("Recensione di: ");
 						Voto.setText("Voto");
@@ -272,7 +267,7 @@ public class AcceptReview {
 						}
 					}
 					else{
-						Commento.setText("Non ci sono recensioni da confermare");
+						Commento.setText("");
 						Gioco.setText("Gioco: ");
 						Utente.setText("Recensione di: ");
 						Voto.setText("Voto");
