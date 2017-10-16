@@ -57,7 +57,7 @@ public class MainModerator {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		ImageIcon ManU= new ImageIcon("src/Immagini/Successivo.png");
+		ImageIcon ManU= new ImageIcon("src/Immagini/.png");
 		Image scaledMan = ManU.getImage().getScaledInstance(200, 40, Image.SCALE_DEFAULT);
 		ManU.setImage(scaledMan);
 		
@@ -95,7 +95,7 @@ public class MainModerator {
 		btnGestisciNuoveRecensioni.setBounds(193, 223, 300, 70);
 		frame.getContentPane().add(btnGestisciNuoveRecensioni);
 		
-		ImageIcon U= new ImageIcon("src/Immagini/Successivo.png");
+		ImageIcon U= new ImageIcon("src/Immagini/.png");
 		Image scaledU = U.getImage().getScaledInstance(200, 40, Image.SCALE_DEFAULT);
 		U.setImage(scaledU);
 		
