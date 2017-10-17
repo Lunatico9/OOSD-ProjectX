@@ -101,11 +101,9 @@ public class Login {
 			    }
 			    else {
 			    	try {
-			    		String queryuser= "Select * From user WHERE username='"+username+"' AND password='"+password+"'";
-			    		ResultSet User = DatabaseMySQL.SendQuery(queryuser);
+			    		ResultSet User = DatabaseMySQL.selectUsers(username, password); 
 			    		if(User.next()){
 			    			Actor user = new Actor(User.getInt("idUser"),User.getString("username"),User.getString("password"), User.getString("name"),User.getString("surname"), User.getString("email"), User.getInt("level"), User.getInt("exp"), User.getString("type"));
-			    			
 			    		LoginController.Accedi(user);
 			    		frmLogin.setVisible(false);
 			    		}
@@ -113,7 +111,6 @@ public class Login {
 			    			JOptionPane.showMessageDialog(null, "Errore, username o password errati.");
 			    		}
 			    	} catch (Exception e2) {
-					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
 			    }

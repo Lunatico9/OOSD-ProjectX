@@ -69,7 +69,12 @@ public class DatabaseMySQL {
 	}
 
 	public static ResultSet selectUsers() throws Exception{
-		String query = "SELECT * FROM user";
+		String query="SELECT * FROM user";
+		return SendQuery(query);
+	}
+	
+	public static ResultSet selectUsers(String username, String password) throws Exception{
+		String query = "SELECT * FROM user WHERE username='"+username+"' AND password='"+password+"";
 		return SendQuery(query);
 	}
 	
