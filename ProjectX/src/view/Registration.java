@@ -147,6 +147,7 @@ public class Registration {
 						    else{
 						    	presente = DatabaseMySQL.verify(username);
 						    	if (!presente)
+						    		if(username.length()>4 && username.length()<30){
 						    		if(pass1.length()>6 && pass1.length()<18){
 						    			if(uguale){
 						    				try {
@@ -161,7 +162,9 @@ public class Registration {
 						    			else JOptionPane.showMessageDialog(null, "Errore, le password inserite non corrispondono correggi e riprova");
 						    		}
 						    		else JOptionPane.showMessageDialog(null, "Errore, la password deve essere lunga almeno 6 caratteri e non più di 18");
-								}
+						    		}
+						    		else JOptionPane.showMessageDialog(null, "Errore, l'username deve essere lungo almeno 4 caratteri e non più di 30");
+						    	}
 						    }
 						 	catch (Exception e1) {
 						 		e1.printStackTrace();
