@@ -16,7 +16,7 @@ public class Actor_DAO implements Actor_DAO_Interface {
 	}
 	
 	public static void AddUser(String username, String pass1, String name, String surname, String email, int level, int exp, String type) throws Exception{
-		String Tipo= "User";
+		String Tipo= "giocatore";
 		int IDuser=1, IDtime=1;
 		Calendar today=Calendar.getInstance();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy-hh:mm:ss");

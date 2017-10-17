@@ -33,6 +33,10 @@ public class DatabaseMySQL {
 		return rst;
 	}
 	
+	public static ResultSet maxReview() throws Exception{
+		String QueryID = "SELECT MAX(idReview) FROM review";
+		return SendQuery(QueryID);
+	}
 	public static ResultSet maxUser() throws Exception {
 		String query= "SELECT MAX(idUser) FROM user";
 		return SendQuery(query);

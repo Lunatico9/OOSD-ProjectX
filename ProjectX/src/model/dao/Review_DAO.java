@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import database.DatabaseMySQL;
 import model.Actor;
 import model.Game;
+import model.Review;
 
 public class Review_DAO implements Review_DAO_Interface {
 	
@@ -24,6 +25,11 @@ public class Review_DAO implements Review_DAO_Interface {
 			e.printStackTrace();
 		}
 		return AwardsList;
+	}
+	
+	public static ResultSet inserisciReview(int ID, Review review) throws Exception{
+		String sqlQuery = "INSERT INTO `review` (`idReview`,`Text`,`Approved` ,`Game_idGame`, `user_iduser`, `vote`) VALUES ('" + ID + "','" + review.getText() + "', '" + review.isApproved() + "', '" + review.getIdGioco() + "', '" + review.getIdUser() + "', '" + review.getVote() + "')";
+		return DatabaseMySQL.SendQuery(sqlQuery);
 	}
 	
 	public static ResultSet selezionaReview(int IDuser, int IDgame) throws Exception{
