@@ -40,4 +40,14 @@ public class Review_DAO implements Review_DAO_Interface {
 		String query12="SELECT * From review Where'"+ game.getId()  + "'=Game_idGame AND Approved=1 ORDER BY idReview";
 		return DatabaseMySQL.SendQuery(query12);
 	}
+	
+	public static ResultSet AccettaReview(int idReview) throws Exception{
+		String aggiungi= "UPDATE `review` SET `Approved` = '1' WHERE idReview = '"+idReview+"'";
+		return DatabaseMySQL.SendQuery(aggiungi);
+	}
+	
+	public static ResultSet RifiutaReview(int idReview) throws Exception{
+		String aggiungi= "UPDATE `review` SET `Approved` = '2' WHERE idReview = '"+idReview+"'";
+		return DatabaseMySQL.SendQuery(aggiungi);
+	}
 }

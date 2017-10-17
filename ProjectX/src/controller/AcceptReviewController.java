@@ -3,16 +3,15 @@
 import java.sql.ResultSet;
 
 import database.DatabaseMySQL;
+import model.dao.Review_DAO;
 
 public class AcceptReviewController {
 	
 	public static void Accetta(int idReview, String text, int game, int user, int vote) throws Exception{
-		String aggiungi= "UPDATE `review` SET `Approved` = '1' WHERE idReview = '"+idReview+"'";
-		ResultSet add=DatabaseMySQL.SendQuery(aggiungi);
+		ResultSet add=Review_DAO.AccettaReview(idReview);
 	}
 	
 	public static void Rifiuta(int idReview, String text, int game, int user, int vote) throws Exception{
-		String nega= "UPDATE `review` SET `Approved` = '2' WHERE idReview = '"+idReview+"'";
-		ResultSet add=DatabaseMySQL.SendQuery(nega);
+		ResultSet add=Review_DAO.RifiutaReview(idReview);
 	}
 }
