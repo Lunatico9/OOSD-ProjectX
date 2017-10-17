@@ -28,11 +28,10 @@ public class PlayController {
 		Calendar today= Calendar.getInstance();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy-hh:mm:ss");
 		String data= formatter.format(today.getTime());
-		String query2 = "UPDATE user SET exp = exp + 50 WHERE username = '" + user.getUsername() + "'";
+		DatabaseMySQL.AggiungiExp(user);
 		String qdu, qdu2;
-		user.setExp(user.getExp()+50);
-		ResultSet rst =DatabaseMySQL.SendQuery(query2); 
-			rst = DatabaseMySQL.selectExp(user);
+		user.setExp(user.getExp()+50); 
+			ResultSet rst = DatabaseMySQL.selectExp(user);
 			rst.next();
 			int exp=rst.getInt("exp");
 			String id=rst.getString("idUser");
@@ -45,12 +44,10 @@ public class PlayController {
 			if(soglie.contains(exp)) {
 				int i = soglie.indexOf(exp);
 				String Premio = "Premio lv." + (i + 2);
-					qdu="UPDATE user SET level=" + (i + 2) + " WHERE username = '" + user.getUsername() + "'";
-					DatabaseMySQL.SendQuery(qdu);
-					qdu2="INSERT INTO timeline (idTimeline, Premio, data, User_idUser) VALUES ('"+IDtime+"','"+Premio+"','"+data+"','"+id+"')";
-					DatabaseMySQL.SendQuery(qdu2);
-					JOptionPane.showMessageDialog(null, "Congratulazioni sei salito al Livello " + (i + 2) + "!");
-					user.setLevel(user.getLevel()+1);		
+				DatabaseMySQL.AggiornaLivello(i,user);
+				DatabaseMySQL.AggiungiTimeline(IDtime,Premio,data,id);
+				JOptionPane.showMessageDialog(null, "Congratulazioni sei salito al Livello " + (i + 2) + "!");
+				user.setLevel(user.getLevel()+1);		
 			}
 		else { 
 			JOptionPane.showMessageDialog(null, "Hai giocato per un ora e ti sono stati aggiunti 50 punti exp!");		

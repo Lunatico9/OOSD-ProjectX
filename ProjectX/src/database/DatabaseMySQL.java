@@ -35,37 +35,22 @@ public class DatabaseMySQL {
 	
 	public static ResultSet maxUser() throws Exception {
 		String query= "SELECT MAX(idUser) FROM user";
-		ResultSet result= DatabaseMySQL.SendQuery(query);
-		return result;
+		return SendQuery(query);
 	}
 	
 	public static ResultSet maxTimeline() throws Exception {
 		String timeline= "SELECT MAX(idTimeline) FROM timeline";
-		ResultSet pr= DatabaseMySQL.SendQuery(timeline);
-		return pr;
+		return SendQuery(timeline);
 	}
-	
-	public static ResultSet insertTimeline() throws Exception {
-		int IDuser=1, IDtime=1;
-		Calendar today=Calendar.getInstance();
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy-hh:mm:ss");
-		String data= formatter.format(today.getTime());
-		String Premio1="Premio di Benvenuto Lvl.1";
-		String time= "INSERT INTO timeline (idTimeline, Premio, data, User_idUser) VALUES ('"+IDtime+"','"+Premio1+"','"+data+"','"+IDuser+"')";
-		ResultSet rst2=DatabaseMySQL.SendQuery(time);
-		return rst2;
-	}
-	
+
 	public static ResultSet Degrade(String username) throws Exception{
 		String query = "UPDATE user SET type = '" + "giocatore" + "' WHERE username = '" + username + "'";
-		ResultSet rst = DatabaseMySQL.SendQuery(query);
-		return rst;
+		return SendQuery(query);
 	}
 	
 	public static ResultSet Upgrade(String username) throws Exception{
 		String query = "UPDATE user SET type = '" + "moderatore" + "' WHERE username = '" + username + "'";
-		ResultSet rst = DatabaseMySQL.SendQuery(query);
-		return rst;
+		return SendQuery(query);
 	}
 	
 	public static ResultSet getTimeline(Actor user) throws Exception{
@@ -91,6 +76,21 @@ public class DatabaseMySQL {
 	
 	public static ResultSet selectExp(Actor user) throws Exception{
 		String query = "SELECT exp, idUser FROM user  WHERE username = '" + user.getUsername() + "'";
-		return DatabaseMySQL.SendQuery(query);
+		return SendQuery(query);
+	}
+	
+	public static ResultSet AggiungiExp(Actor user) throws Exception{
+		String query2 = "UPDATE user SET exp = exp + 50 WHERE username = '" + user.getUsername() + "'";
+		return SendQuery(query2);
+	}
+	
+	public static ResultSet AggiornaLivello(int i, Actor user) throws Exception{
+		String qdu="UPDATE user SET level=" + (i + 2) + " WHERE username = '" + user.getUsername() + "'";
+		return SendQuery(qdu);
+	}
+	
+	public static ResultSet AggiungiTimeline(int IDtime, String Premio, String data, String id) throws Exception{
+		String qdu2="INSERT INTO timeline (idTimeline, Premio, data, User_idUser) VALUES ('"+IDtime+"','"+Premio+"','"+data+"','"+id+"')";
+		return SendQuery(qdu2);
 	}
 }

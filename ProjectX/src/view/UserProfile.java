@@ -174,12 +174,20 @@ public class UserProfile {
 		lblLivello.setBounds(76, 23, 100, 29);
 		panel_1.add(lblLivello);
 		lblLivello.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		
-		JProgressBar progressBar = new JProgressBar(x[j-1],x[j]);
-		progressBar.setValue(user.getExp());
-		progressBar.setForeground(new Color(50, 205, 50));
-		progressBar.setBounds(55, 116, 146, 29);
-		panel_1.add(progressBar);
+		if(j==0){
+			JProgressBar progressBar = new JProgressBar(0,x[j]);
+			progressBar.setValue(user.getExp());
+			progressBar.setForeground(new Color(50, 205, 50));
+			progressBar.setBounds(55, 116, 146, 29);
+			panel_1.add(progressBar);
+		}
+		else{
+			JProgressBar progressBar = new JProgressBar(x[j-1],x[j]);
+			progressBar.setValue(user.getExp());
+			progressBar.setForeground(new Color(50, 205, 50));
+			progressBar.setBounds(55, 116, 146, 29);
+			panel_1.add(progressBar);
+		}
 		
 		JLabel lblTimeline = new JLabel("Timeline");
 		lblTimeline.setFont(new Font("Times New Roman", Font.BOLD, 18));
