@@ -8,12 +8,22 @@ import database.DatabaseMySQL;
 import model.Actor;
 import model.dao.Game_DAO;
 import model.dao.Review_DAO;
+import view.AcceptReview;
+import view.PromotionDemotionModerator;
 import view.UserProfile;
 
 public class MainUserController {
 	
 	public static void Profilo(Actor user){
 		UserProfile.main(user);
+	}
+	
+	public static void GestisciRec(Actor user){
+		AcceptReview.main(user);
+	}
+	
+	public static void GestisciUser(Actor user){
+		PromotionDemotionModerator.main(user);
 	}
 
 	public static boolean Recensisci(Actor user, String gioco) throws Exception {

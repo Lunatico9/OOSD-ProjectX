@@ -167,7 +167,12 @@ public class PromotionDemotionModerator {
 		));
 		table.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		
-		btnUpdate = new JButton("Update");
+		ImageIcon UP= new ImageIcon("src/Immagini/Update.png");
+		
+		btnUpdate = new JButton(UP);
+		btnUpdate.setOpaque(false);
+		btnUpdate.setContentAreaFilled(false);
+		btnUpdate.setBorderPainted(false);
 		btnUpdate.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -189,7 +194,7 @@ public class PromotionDemotionModerator {
 				
 			}
 		});
-		btnUpdate.setBounds(508, 487, 132, 48);
+		btnUpdate.setBounds(508, 487, 160, 40);
 		frame.getContentPane().add(btnUpdate);
 		
 		JLabel lblUsername = new JLabel("Username");
@@ -220,7 +225,7 @@ public class PromotionDemotionModerator {
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.dispose();
-				MainModerator.main(user);
+				MainUser.main(user);
 		}
 		});
 		mntmNewMenuItem.setBounds(6, 11, 150, 40);

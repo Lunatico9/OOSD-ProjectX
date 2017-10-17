@@ -151,7 +151,7 @@ public class AcceptReview {
 			}
 		}
 		else Gioco.setText("Gioco: ");
-		Gioco.setBounds(10, 96, 180, 40);
+		Gioco.setBounds(10, 96, 225, 40);
 		frame.getContentPane().add(Gioco);
 		
 		//COMMENTO
@@ -219,7 +219,7 @@ public class AcceptReview {
 						lblNewLabel.setText("0/10");
 						progressBar.setValue(0);
 						JOptionPane.showMessageDialog(null, "Non ci sono altre recensioni da confermare");
-						MainModerator.main(user);
+						MainUser.main(user);
 						frame.dispose();
 					}
 				}
@@ -284,7 +284,7 @@ public class AcceptReview {
 						lblNewLabel.setText("0/10");
 						progressBar.setValue(0);
 						JOptionPane.showMessageDialog(null, "Non ci sono altre recensioni da confermare");
-						MainModerator.main(user);
+						MainUser.main(user);
 						frame.dispose();
 					}
 				} catch (Exception e) {
@@ -307,7 +307,7 @@ public class AcceptReview {
 				frame.dispose();
 				String type = "user";
 				if(type.equals("user"))
-					MainModerator.main(user);
+					MainUser.main(user);
 		}
 		});
 		mntmNewMenuItem.setBounds(10, 11, 150, 40);

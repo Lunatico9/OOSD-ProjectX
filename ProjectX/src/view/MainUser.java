@@ -16,13 +16,11 @@ import javax.swing.AbstractListModel;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
-
 import controller.MainUserController;
 import database.DatabaseMySQL;
 import model.Actor;
 import model.Game;
 import model.dao.Review_DAO;
-
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
@@ -47,10 +45,11 @@ public class MainUser {
 
 	private JFrame frame;
 	private Actor user;
-	private ResultSet rst0, rst2;
+	private ResultSet rst0;
 	private int Count = 0, num = 0;
 	private Double Media = 0.0;
 	private JLabel lblNewLabel_4;
+	private boolean x=true;
 	/**
 	 * Launch the application.
 	 */
@@ -132,7 +131,7 @@ public class MainUser {
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		lblNewLabel_3.setBounds(486, 13, 167, 30);
+		lblNewLabel_3.setBounds(507, 13, 167, 30);
 		frame.getContentPane().add(lblNewLabel_3);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -150,9 +149,9 @@ public class MainUser {
 		ImageIcon Previous= new ImageIcon("src/Immagini/Precedente.png");
 		
 		JButton btnNewButton_2 = new JButton(Previous);
-		btnNewButton_2.setOpaque(false);
 		btnNewButton_2.setContentAreaFilled(false);
 		btnNewButton_2.setBorderPainted(false);
+		btnNewButton_2.setOpaque(false);
 		btnNewButton_2.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		if (num == 0)
 			btnNewButton_2.setVisible(false);
@@ -182,7 +181,7 @@ public class MainUser {
 				}
 			}
 		});
-		btnNewButton_2.setBounds(32, 510, 150, 40);
+		btnNewButton_2.setBounds(89, 510, 150, 40);
 		frame.getContentPane().add(btnNewButton_2);
 		
 		// Recensione Successiva
@@ -219,7 +218,10 @@ public class MainUser {
 		});
 		btnRecensioneSuccessiva.setBounds(453, 510, 150, 40);
 		frame.getContentPane().add(btnRecensioneSuccessiva);
-
+		
+		ImageIcon Com= new ImageIcon("src/Immagini/Commento.png");
+		JButton btnNewButton = new JButton(Com);
+		
 		JList list = new JList();
 		list.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		list.addMouseListener(new MouseAdapter() {
@@ -231,6 +233,11 @@ public class MainUser {
 					String gioco = (String) list.getSelectedValue();
 					if (game.getName().equals(gioco)) {
 						try {
+							ResultSet rst1=Review_DAO.selezionaReview(user.getId(),game.getId());
+							if(rst1.next()){
+								btnNewButton.setEnabled(false);
+							}
+							else btnNewButton.setEnabled(true);
 							rst0 = Review_DAO.getGameReviews(game);
 							ImageIcon Icona=new ImageIcon("src/Immagini/"+ game.getName() +".jpg");
 							Image scaledImage = Icona.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
@@ -257,6 +264,7 @@ public class MainUser {
 				try {
 					if (rst0.first()) {
 						ResultSet rst2=MainUserController.selezionaUsername(rst0.getInt("user_iduser"));
+						
 						rst2.next();
 						lblNewLabel.setText(rst0.getString("text"));
 						lblNewLabel_2.setText("Voto: " + rst0.getString("vote")+"/10");
@@ -298,51 +306,7 @@ public class MainUser {
 				}
 			}
 		});
-
-		ImageIcon Gioca= new ImageIcon("src/Immagini/PlayNow.png");
 		
-		JButton btnGioca = new JButton(Gioca);
-		btnGioca.setContentAreaFilled(false);
-		btnGioca.setBorderPainted(false);
-		btnGioca.setOpaque(false);
-		btnGioca.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		btnGioca.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (!list.isSelectionEmpty()) {
-					String gioco = (String) list.getSelectedValue();
-					for (Game game : gamesObject) {
-						if (game.getName().equals(gioco)) {
-							Play.main(user, game);
-							frame.dispose();
-						}
-					}
-				} else
-					JOptionPane.showMessageDialog(null, "Seleziona un gioco dalla lista!");
-			}
-		});
-		btnGioca.setBounds(32, 277, 150, 40);
-		frame.getContentPane().add(btnGioca);
-
-		ImageIcon Logout= new ImageIcon("src/Immagini/logout.png");
-		
-		JButton mntmNewMenuItem_1 = new JButton(Logout);
-		mntmNewMenuItem_1.setBorderPainted(false);
-		mntmNewMenuItem_1.setContentAreaFilled(false);
-		mntmNewMenuItem_1.setOpaque(false);
-		mntmNewMenuItem_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		mntmNewMenuItem_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Login.main(null);
-				frame.dispose();
-			}
-		});
-		mntmNewMenuItem_1.setBounds(10, 11, 150, 40);
-		frame.getContentPane().add(mntmNewMenuItem_1);
-
-		
-		ImageIcon Com= new ImageIcon("src/Immagini/Commento.png");
-		
-		JButton btnNewButton = new JButton(Com);
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setOpaque(false);
@@ -372,28 +336,48 @@ public class MainUser {
 		btnNewButton.setBounds(223, 277, 150, 40);
 		frame.getContentPane().add(btnNewButton);
 		
-		ImageIcon Menu= new ImageIcon("src/Immagini/menu.png");
-
-		JButton mntmNewMenuItem = new JButton(Menu);
-		mntmNewMenuItem.setBorderPainted(false);
-		mntmNewMenuItem.setContentAreaFilled(false);
-		mntmNewMenuItem.setOpaque(false);
-		mntmNewMenuItem.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		mntmNewMenuItem.setVisible(false);
-		if (user.getType().equals("moderatore"))
-			mntmNewMenuItem.setVisible(true);
-		mntmNewMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				frame.dispose();
-				MainModerator.main(user);
+		ImageIcon Gioca= new ImageIcon("src/Immagini/PlayNow.png");
+		
+		JButton btnGioca = new JButton(Gioca);
+		btnGioca.setContentAreaFilled(false);
+		btnGioca.setBorderPainted(false);
+		btnGioca.setOpaque(false);
+		btnGioca.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		btnGioca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!list.isSelectionEmpty()) {
+					String gioco = (String) list.getSelectedValue();
+					for (Game game : gamesObject) {
+						if (game.getName().equals(gioco)) {
+							Play.main(user, game);
+							frame.dispose();
+						}
+					}
+				} else
+					JOptionPane.showMessageDialog(null, "Seleziona un gioco dalla lista!");
 			}
 		});
-		mntmNewMenuItem.setBounds(150, 11, 150, 40);
-		frame.getContentPane().add(mntmNewMenuItem);
+		btnGioca.setBounds(32, 277, 150, 40);
+		frame.getContentPane().add(btnGioca);
 
+		ImageIcon Logout= new ImageIcon("src/Immagini/logout.png");
+		
+		JButton mntmNewMenuItem_1 = new JButton(Logout);
+		mntmNewMenuItem_1.setFocusable(false);
+		mntmNewMenuItem_1.setBorderPainted(false);
+		mntmNewMenuItem_1.setContentAreaFilled(false);
+		mntmNewMenuItem_1.setOpaque(false);
+		mntmNewMenuItem_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Login.main(null);
+				frame.dispose();
+			}
+		});
+		mntmNewMenuItem_1.setBounds(32, 11, 150, 40);
+		frame.getContentPane().add(mntmNewMenuItem_1);
 		
 		ImageIcon Profile= new ImageIcon("src/Immagini/Profilo.png");
-		
 		JButton btnNewButton_1 = new JButton(Profile);
 		btnNewButton_1.setBorderPainted(false);
 		btnNewButton_1.setContentAreaFilled(false);
@@ -410,10 +394,49 @@ public class MainUser {
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
 		Image scaledImage = Sfondo.getImage().getScaledInstance(700, 600, Image.SCALE_DEFAULT);
 		Sfondo.setImage(scaledImage);
+		
+		ImageIcon U= new ImageIcon("src/Immagini/Utenti.png");
+		JButton btnNewButton1 = new JButton(U);
+		btnNewButton1.setFocusable(false);
+		btnNewButton1.setOpaque(false);
+		btnNewButton1.setContentAreaFilled(false);
+		btnNewButton1.setBorderPainted(false);
+		btnNewButton1.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		btnNewButton1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MainUserController.GestisciUser(user);
+				frame.dispose();
+			}
+		});
+		btnNewButton1.setBounds(192, 11, 150, 40);
+		frame.getContentPane().add(btnNewButton1);
+		
+		ImageIcon Rev= new ImageIcon("src/Immagini/Review.png");
+		JButton btnGestisciNuoveRecensioni = new JButton(Rev);
+		btnGestisciNuoveRecensioni.setOpaque(false);
+		btnGestisciNuoveRecensioni.setContentAreaFilled(false);
+		btnGestisciNuoveRecensioni.setBorderPainted(false);
+		btnGestisciNuoveRecensioni.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		btnGestisciNuoveRecensioni.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainUserController.GestisciRec(user);
+				frame.dispose();
+			}
+		});
+		btnGestisciNuoveRecensioni.setBounds(352, 11, 150, 40);
+		frame.getContentPane().add(btnGestisciNuoveRecensioni);
 		JLabel lblNewLabel_5 = new JLabel(Sfondo);
 		lblNewLabel_5.setBounds(0, 0, 684, 561);
 		frame.getContentPane().add(lblNewLabel_5);
+		ResultSet rst11=Review_DAO.ReviewDaValutare();
+		if(rst11.next()){
+			btnGestisciNuoveRecensioni.setEnabled(true);
+		}
+		else btnGestisciNuoveRecensioni.setEnabled(false);
 		
-		
+		if(!user.getType().equals("moderatore")){
+			btnGestisciNuoveRecensioni.setVisible(false);
+			btnNewButton1.setVisible(false);
+		}	
 	}
 }
