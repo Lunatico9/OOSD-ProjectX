@@ -89,9 +89,7 @@ public class UserProfile {
 		panel.setLayout(null);
 		
 		ImageIcon Pass= new ImageIcon("src/Immagini/Password.png");
-		Image scaledPass = Pass.getImage().getScaledInstance(150, 45, Image.SCALE_DEFAULT);
-		Pass.setImage(scaledPass);
-		
+
 		JButton btnNewButton = new JButton(Pass);
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setContentAreaFilled(false);
@@ -103,7 +101,7 @@ public class UserProfile {
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(153, 100, 150, 45);
+		btnNewButton.setBounds(162, 105, 150, 40);
 		panel.add(btnNewButton);
 		
 		JLabel lblEmail = new JLabel("Email");
@@ -234,9 +232,7 @@ public class UserProfile {
 		}
 		
 		ImageIcon Menu= new ImageIcon("src/Immagini/menu.png");
-		Image scaledMenu = Menu.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
-		Menu.setImage(scaledMenu);
-		
+				
 		JButton mntmNewMenuItem = new JButton(Menu);
 		mntmNewMenuItem.setOpaque(false);
 		mntmNewMenuItem.setBorderPainted(false);
@@ -248,12 +244,10 @@ public class UserProfile {
 				MainUser.main(user);
 		}
 		});
-		mntmNewMenuItem.setBounds(27, 6, 122, 40);
+		mntmNewMenuItem.setBounds(27, 6, 150, 40);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
 		ImageIcon Logout= new ImageIcon("src/Immagini/logout.png");
-		Image scaledLogout = Logout.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
-		Logout.setImage(scaledLogout);
 		
 		JButton mntmNewMenuItem_1 = new JButton(Logout);
 		mntmNewMenuItem_1.setContentAreaFilled(false);
@@ -266,8 +260,9 @@ public class UserProfile {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(169, 6, 122, 40);
+		mntmNewMenuItem_1.setBounds(190, 6, 150, 40);
 		frame.getContentPane().add(mntmNewMenuItem_1);
+		
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
 		Image scaledImage = Sfondo.getImage().getScaledInstance(700, 600, Image.SCALE_DEFAULT);
@@ -277,4 +272,4 @@ public class UserProfile {
 		frame.getContentPane().add(lblNewLabel_5);
 		
 	}
-	}
+}

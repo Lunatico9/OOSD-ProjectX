@@ -167,7 +167,9 @@ public class AcceptReview {
 		frame.getContentPane().add(Commento);
 		
 		//RIFIUTA
-		JButton Rifiuta = new JButton("Rifiuta Review");
+		ImageIcon RifiutaB= new ImageIcon("src/Immagini/Rifiuta.png");
+		
+		JButton Rifiuta = new JButton(RifiutaB);
 		Rifiuta.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		if(!x){
 			Rifiuta.setVisible(false);
@@ -227,7 +229,9 @@ public class AcceptReview {
 		frame.getContentPane().add(Rifiuta);
 		
 		//ACCETTA
-		JButton Accetta = new JButton("Accetta Review");
+		ImageIcon AccettaB= new ImageIcon("src/Immagini/Accetta.png");
+		
+		JButton Accetta = new JButton(AccettaB);
 		Accetta.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		if(!x){
 			Accetta.setVisible(false);
@@ -282,13 +286,10 @@ public class AcceptReview {
 				}
 			}
 		});
-		
-		Accetta.setBounds(77, 479, 150, 48);
+		Accetta.setBounds(77, 479, 150, 40);
 		frame.getContentPane().add(Accetta);
 		
 		ImageIcon Menu= new ImageIcon("src/Immagini/menu.png");
-		Image scaledMenu = Menu.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
-		Menu.setImage(scaledMenu);
 		
 		JButton mntmNewMenuItem = new JButton(Menu);
 		mntmNewMenuItem.setOpaque(false);
@@ -303,13 +304,11 @@ public class AcceptReview {
 					MainModerator.main(user);
 		}
 		});
-		mntmNewMenuItem.setBounds(10, 11, 122, 40);
+		mntmNewMenuItem.setBounds(10, 11, 150, 40);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
 		
 		ImageIcon Logout= new ImageIcon("src/Immagini/logout.png");
-		Image scaledLogout = Logout.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
-		Logout.setImage(scaledLogout);
 		
 		JButton mntmNewMenuItem_1 = new JButton(Logout);
 		mntmNewMenuItem_1.setBorderPainted(false);
@@ -322,7 +321,7 @@ public class AcceptReview {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(155, 11, 122, 40);
+		mntmNewMenuItem_1.setBounds(155, 11, 150, 40);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");

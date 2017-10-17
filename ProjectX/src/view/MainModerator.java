@@ -58,8 +58,6 @@ public class MainModerator {
 		frame.getContentPane().setLayout(null);
 		
 		ImageIcon ManU= new ImageIcon("src/Immagini/.png");
-		Image scaledMan = ManU.getImage().getScaledInstance(200, 40, Image.SCALE_DEFAULT);
-		ManU.setImage(scaledMan);
 		
 		JButton btnNewButton = new JButton(ManU);
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
@@ -69,12 +67,10 @@ public class MainModerator {
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(193, 102, 300, 50);
+		btnNewButton.setBounds(193, 102, 150, 40);
 		frame.getContentPane().add(btnNewButton);
 		
 		ImageIcon Rev= new ImageIcon("src/Immagini/Review.png");
-		Image scaledRev = Rev.getImage().getScaledInstance(300, 70, Image.SCALE_DEFAULT);
-		Rev.setImage(scaledRev);
 		
 		JButton btnGestisciNuoveRecensioni = new JButton(Rev);
 		btnGestisciNuoveRecensioni.setOpaque(false);
@@ -92,12 +88,10 @@ public class MainModerator {
 				frame.dispose();
 			}
 		});
-		btnGestisciNuoveRecensioni.setBounds(193, 223, 300, 70);
+		btnGestisciNuoveRecensioni.setBounds(193, 223, 150, 40);
 		frame.getContentPane().add(btnGestisciNuoveRecensioni);
 		
-		ImageIcon U= new ImageIcon("src/Immagini/.png");
-		Image scaledU = U.getImage().getScaledInstance(200, 40, Image.SCALE_DEFAULT);
-		U.setImage(scaledU);
+		ImageIcon U= new ImageIcon("src/Immagini/Utenti.png");
 		
 		JButton btnUtilizzaAccountCome = new JButton("Utilizza account come utente");
 		btnUtilizzaAccountCome.setFont(new Font("Times New Roman", Font.BOLD, 20));
@@ -107,7 +101,7 @@ public class MainModerator {
 				frame.dispose();
 			}
 		});
-		btnUtilizzaAccountCome.setBounds(193, 384, 300, 50);
+		btnUtilizzaAccountCome.setBounds(193, 384, 150, 50);
 		frame.getContentPane().add(btnUtilizzaAccountCome);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");

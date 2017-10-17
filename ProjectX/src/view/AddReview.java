@@ -89,13 +89,12 @@ public class AddReview {
 		frmAddReview.getContentPane().add(comboBox);
 		
 		ImageIcon Conf= new ImageIcon("src/Immagini/Conferma.png");
-		Image scaledConf = Conf.getImage().getScaledInstance(132, 48, Image.SCALE_DEFAULT);
-		Conf.setImage(scaledConf);
+
 		JButton btnNewButton = new JButton(Conf);
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setOpaque(false);
-		btnNewButton.setBounds(520, 502, 132, 48);
+		btnNewButton.setBounds(520, 502, 150, 40);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -112,14 +111,13 @@ public class AddReview {
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		frmAddReview.getContentPane().add(btnNewButton);
 		
-		ImageIcon Menu= new ImageIcon("src/Immagini/menu.png");
-		Image scaledMenu = Menu.getImage().getScaledInstance(132, 48, Image.SCALE_DEFAULT);
-		Menu.setImage(scaledMenu);
+		ImageIcon Menu= new ImageIcon("src/Immagini/Annulla.png");
+
 		JButton btnNewButton_1 = new JButton(Menu);
 		btnNewButton_1.setOpaque(false);
 		btnNewButton_1.setContentAreaFilled(false);
 		btnNewButton_1.setBorderPainted(false);
-		btnNewButton_1.setBounds(29, 502, 132, 48);
+		btnNewButton_1.setBounds(29, 502, 150, 40);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmAddReview.dispose();

@@ -62,8 +62,6 @@ public class Play {
 		frame.getContentPane().setLayout(null);
 		
 		ImageIcon Start= new ImageIcon("src/Immagini/Start.png");
-		Image scaledStart = Start.getImage().getScaledInstance(350, 80, Image.SCALE_DEFAULT);
-		Start.setImage(scaledStart);
 		
 		JButton btnNewButton = new JButton(Start);
 		btnNewButton.setOpaque(false);
@@ -80,7 +78,7 @@ public class Play {
 				}
 			}
 		});
-		btnNewButton.setBounds(154, 270, 350, 80);
+		btnNewButton.setBounds(154, 270, 150, 40);
 		frame.getContentPane().add(btnNewButton);
 		
 		ImageIcon Titolo= new ImageIcon("src/Immagini/"+game.getName()+" logo.png");
@@ -93,8 +91,6 @@ public class Play {
 		frame.getContentPane().add(lblStaiGiocandoA);
 		
 		ImageIcon Exit= new ImageIcon("src/Immagini/Exit.png");
-		Image scaledExit = Exit.getImage().getScaledInstance(200, 40, Image.SCALE_DEFAULT);
-		Exit.setImage(scaledExit);
 		
 		JButton btnEsci = new JButton(Exit);
 		btnEsci.setBorderPainted(false);
@@ -107,7 +103,7 @@ public class Play {
 				MainUser.main(user);
 			}
 		});
-		btnEsci.setBounds(225, 409, 200, 40);
+		btnEsci.setBounds(225, 409, 150, 40);
 		frame.getContentPane().add(btnEsci);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");

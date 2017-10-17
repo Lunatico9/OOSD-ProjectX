@@ -70,12 +70,8 @@ public class Registration {
 		Sfondo.setImage(scaledImage);
 		
 		ImageIcon Register= new ImageIcon("src/Immagini/register.png");
-		Image scaledReg = Register.getImage().getScaledInstance(130, 40, Image.SCALE_DEFAULT);
-		Register.setImage(scaledReg);
 		
 		ImageIcon login= new ImageIcon("src/Immagini/login.png");
-		Image scaledLogin = login.getImage().getScaledInstance(130, 40, Image.SCALE_DEFAULT);
-		login.setImage(scaledLogin);
 		
 		JPanel panel = new JPanel();
 		Registration.getContentPane().add(panel);
@@ -171,8 +167,7 @@ public class Registration {
 						 	}
 						}
 					});
-				
-				Registra.setBounds(386, 510, 130, 40);
+				Registra.setBounds(386, 510, 150, 40);
 				panel.add(Registra);
 				
 				JButton SchermataPrincipale = new JButton(login);
@@ -186,7 +181,7 @@ public class Registration {
 					}
 				});
 				SchermataPrincipale.setFont(new Font("Times New Roman", Font.BOLD, 18));
-				SchermataPrincipale.setBounds(144, 510, 130, 40);
+				SchermataPrincipale.setBounds(144, 510, 150, 40);
 				panel.add(SchermataPrincipale);
 				
 				JLabel lblInserisciNome = new JLabel("Inserisci Nome");

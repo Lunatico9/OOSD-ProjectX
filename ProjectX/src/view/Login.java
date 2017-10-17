@@ -121,12 +121,10 @@ public class Login {
 			    }
 		}});
 		btnAccedi.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		btnAccedi.setBounds(220, 332, 132, 48);
+		btnAccedi.setBounds(220, 332, 150, 40);
 		frmLogin.getContentPane().add(btnAccedi);
 		
-		ImageIcon Register= new ImageIcon("src/Immagini/RegisterNow.png");
-		Image scaledReg = Register.getImage().getScaledInstance(132, 30, Image.SCALE_DEFAULT);
-		Register.setImage(scaledReg);
+		ImageIcon Register= new ImageIcon("src/Immagini/register.png");
 		
 		JPanel panel = new JPanel();
 		panel.setOpaque(false);
@@ -137,7 +135,7 @@ public class Login {
 		panel.setLayout(null);
 		
 		JButton btnRegistrati = new JButton(Register);
-		btnRegistrati.setBounds(338, 228, 132, 30);
+		btnRegistrati.setBounds(338, 228, 150, 40);
 		panel.add(btnRegistrati);
 		btnRegistrati.setOpaque(false);
 		btnRegistrati.setContentAreaFilled(false);

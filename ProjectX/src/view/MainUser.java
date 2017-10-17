@@ -140,8 +140,6 @@ public class MainUser {
 		frame.getContentPane().add(scrollPane);
 
 		ImageIcon Next= new ImageIcon("src/Immagini/Successivo.png");
-		Image scaledNext = Next.getImage().getScaledInstance(200, 40, Image.SCALE_DEFAULT);
-		Next.setImage(scaledNext);
 		
 		JButton btnRecensioneSuccessiva = new JButton(Next);
 		btnRecensioneSuccessiva.setBorderPainted(false);
@@ -149,10 +147,7 @@ public class MainUser {
 		btnRecensioneSuccessiva.setOpaque(false);
 		btnRecensioneSuccessiva.setFont(new Font("Times New Roman", Font.BOLD, 18));
 
-		
 		ImageIcon Previous= new ImageIcon("src/Immagini/Precedente.png");
-		Image scaledPrevious = Previous.getImage().getScaledInstance(200, 40, Image.SCALE_DEFAULT);
-		Previous.setImage(scaledPrevious);
 		
 		JButton btnNewButton_2 = new JButton(Previous);
 		btnNewButton_2.setOpaque(false);
@@ -187,7 +182,7 @@ public class MainUser {
 				}
 			}
 		});
-		btnNewButton_2.setBounds(32, 510, 200, 40);
+		btnNewButton_2.setBounds(32, 510, 150, 40);
 		frame.getContentPane().add(btnNewButton_2);
 		
 		// Recensione Successiva
@@ -222,7 +217,7 @@ public class MainUser {
 				}
 			}
 		});
-		btnRecensioneSuccessiva.setBounds(453, 510, 200, 40);
+		btnRecensioneSuccessiva.setBounds(453, 510, 150, 40);
 		frame.getContentPane().add(btnRecensioneSuccessiva);
 
 		JList list = new JList();
@@ -305,8 +300,6 @@ public class MainUser {
 		});
 
 		ImageIcon Gioca= new ImageIcon("src/Immagini/PlayNow.png");
-		Image scaledPlay = Gioca.getImage().getScaledInstance(160, 40, Image.SCALE_DEFAULT);
-		Gioca.setImage(scaledPlay);
 		
 		JButton btnGioca = new JButton(Gioca);
 		btnGioca.setContentAreaFilled(false);
@@ -327,12 +320,10 @@ public class MainUser {
 					JOptionPane.showMessageDialog(null, "Seleziona un gioco dalla lista!");
 			}
 		});
-		btnGioca.setBounds(32, 277, 160, 40);
+		btnGioca.setBounds(32, 277, 150, 40);
 		frame.getContentPane().add(btnGioca);
 
 		ImageIcon Logout= new ImageIcon("src/Immagini/logout.png");
-		Image scaledLogout = Logout.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
-		Logout.setImage(scaledLogout);
 		
 		JButton mntmNewMenuItem_1 = new JButton(Logout);
 		mntmNewMenuItem_1.setBorderPainted(false);
@@ -345,13 +336,11 @@ public class MainUser {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(10, 11, 130, 40);
+		mntmNewMenuItem_1.setBounds(10, 11, 150, 40);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 
 		
 		ImageIcon Com= new ImageIcon("src/Immagini/Commento.png");
-		Image scaledCom = Com.getImage().getScaledInstance(100, 40, Image.SCALE_DEFAULT);
-		Com.setImage(scaledCom);
 		
 		JButton btnNewButton = new JButton(Com);
 		btnNewButton.setBorderPainted(false);
@@ -380,12 +369,10 @@ public class MainUser {
 				}
 			}
 		});
-		btnNewButton.setBounds(223, 277, 100, 40);
+		btnNewButton.setBounds(223, 277, 150, 40);
 		frame.getContentPane().add(btnNewButton);
 		
 		ImageIcon Menu= new ImageIcon("src/Immagini/menu.png");
-		Image scaledMenu = Menu.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
-		Menu.setImage(scaledMenu);
 
 		JButton mntmNewMenuItem = new JButton(Menu);
 		mntmNewMenuItem.setBorderPainted(false);
@@ -401,13 +388,11 @@ public class MainUser {
 				MainModerator.main(user);
 			}
 		});
-		mntmNewMenuItem.setBounds(150, 11, 130, 40);
+		mntmNewMenuItem.setBounds(150, 11, 150, 40);
 		frame.getContentPane().add(mntmNewMenuItem);
 
 		
 		ImageIcon Profile= new ImageIcon("src/Immagini/Profilo.png");
-		Image scaledProfile = Profile.getImage().getScaledInstance(142, 50, Image.SCALE_DEFAULT);
-		Profile.setImage(scaledProfile);
 		
 		JButton btnNewButton_1 = new JButton(Profile);
 		btnNewButton_1.setBorderPainted(false);
@@ -419,7 +404,7 @@ public class MainUser {
 				frame.setVisible(false);
 			}
 		});
-		btnNewButton_1.setBounds(418, 277, 142, 50);
+		btnNewButton_1.setBounds(418, 277, 150, 40);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");

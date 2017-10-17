@@ -100,8 +100,6 @@ public class CambiaPassword {
 		
 		
 		ImageIcon Conf= new ImageIcon("src/Immagini/Conferma.png");
-		Image scaledConf = Conf.getImage().getScaledInstance(170, 40, Image.SCALE_DEFAULT);
-		Conf.setImage(scaledConf);
 		
 		JButton btnCambiaPassword = new JButton(Conf);
 		btnCambiaPassword.setBorderPainted(false);
@@ -132,12 +130,10 @@ public class CambiaPassword {
 					}
 			}
 		});
-		btnCambiaPassword.setBounds(465, 430, 170, 40);
+		btnCambiaPassword.setBounds(465, 430, 150, 40);
 		frame.getContentPane().add(btnCambiaPassword);
 		
 		ImageIcon Canc= new ImageIcon("src/Immagini/Annulla.png");
-		Image scaledCanc = Canc.getImage().getScaledInstance(170, 40, Image.SCALE_DEFAULT);
-		Canc.setImage(scaledCanc);
 		
 		JButton btnAnnulla = new JButton(Canc);
 		btnAnnulla.setOpaque(false);
@@ -150,7 +146,7 @@ public class CambiaPassword {
 				UserProfile.main(user);
 			}
 		});
-		btnAnnulla.setBounds(47, 430, 170, 40);
+		btnAnnulla.setBounds(47, 430, 150, 40);
 		frame.getContentPane().add(btnAnnulla);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");

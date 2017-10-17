@@ -211,8 +211,6 @@ public class PromotionDemotionModerator {
 		show_user();
 		
 		ImageIcon Menu= new ImageIcon("src/Immagini/menu.png");
-		Image scaledMenu = Menu.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
-		Menu.setImage(scaledMenu);
 		
 		JButton mntmNewMenuItem = new JButton(Menu);
 		mntmNewMenuItem.setOpaque(false);
@@ -225,12 +223,10 @@ public class PromotionDemotionModerator {
 				MainModerator.main(user);
 		}
 		});
-		mntmNewMenuItem.setBounds(6, 11, 122, 40);
+		mntmNewMenuItem.setBounds(6, 11, 150, 40);
 		frame.getContentPane().add(mntmNewMenuItem);
 		
 		ImageIcon Logout= new ImageIcon("src/Immagini/logout.png");
-		Image scaledLogout = Logout.getImage().getScaledInstance(122, 40, Image.SCALE_DEFAULT);
-		Logout.setImage(scaledLogout);
 		
 		JButton mntmNewMenuItem_1 = new JButton(Logout);
 		mntmNewMenuItem_1.setBorderPainted(false);
@@ -243,7 +239,7 @@ public class PromotionDemotionModerator {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(137, 11, 122, 40);
+		mntmNewMenuItem_1.setBounds(137, 11, 150, 40);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
