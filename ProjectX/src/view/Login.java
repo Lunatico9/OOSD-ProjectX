@@ -88,7 +88,35 @@ public class Login {
 		
 		ImageIcon Login= new ImageIcon("src/Immagini/login.png");
 		
+		ImageIcon Register= new ImageIcon("src/Immagini/register.png");
+		
+		JPanel panel = new JPanel();
+		panel.setOpaque(false);
+		panel.setBounds(65, 112, 550, 310);
+		frmLogin.getContentPane().add(panel);
+		panel.setBorder(BorderFactory.createTitledBorder(
+        BorderFactory.createEtchedBorder(), "ACCEDI O REGISTRATI"));
+		panel.setLayout(null);
+		
+		JButton btnRegistrati = new JButton(Register);
+		btnRegistrati.setFocusable(false);
+		btnRegistrati.setBounds(325, 223, 150, 40);
+		panel.add(btnRegistrati);
+		btnRegistrati.setOpaque(false);
+		btnRegistrati.setContentAreaFilled(false);
+		btnRegistrati.setBorderPainted(false);
+		btnRegistrati.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Registration.main(null);
+				frmLogin.setVisible(false);
+			}
+		});
+		btnRegistrati.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		
 		JButton btnAccedi = new JButton(Login);
+		btnAccedi.setFocusable(false);
+		btnAccedi.setBounds(151, 223, 150, 40);
+		panel.add(btnAccedi);
 		btnAccedi.setBorderPainted(false);
 		btnAccedi.setContentAreaFilled(false);
 		btnAccedi.setOpaque(false);
@@ -116,32 +144,6 @@ public class Login {
 			    }
 		}});
 		btnAccedi.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		btnAccedi.setBounds(220, 332, 150, 40);
-		frmLogin.getContentPane().add(btnAccedi);
-		
-		ImageIcon Register= new ImageIcon("src/Immagini/register.png");
-		
-		JPanel panel = new JPanel();
-		panel.setOpaque(false);
-		panel.setBounds(65, 112, 550, 310);
-		frmLogin.getContentPane().add(panel);
-		panel.setBorder(BorderFactory.createTitledBorder(
-        BorderFactory.createEtchedBorder(), "ACCEDI O REGISTRATI"));
-		panel.setLayout(null);
-		
-		JButton btnRegistrati = new JButton(Register);
-		btnRegistrati.setBounds(338, 218, 150, 40);
-		panel.add(btnRegistrati);
-		btnRegistrati.setOpaque(false);
-		btnRegistrati.setContentAreaFilled(false);
-		btnRegistrati.setBorderPainted(false);
-		btnRegistrati.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Registration.main(null);
-				frmLogin.setVisible(false);
-			}
-		});
-		btnRegistrati.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
 		Image scaledImage = Sfondo.getImage().getScaledInstance(700, 600, Image.SCALE_DEFAULT);

@@ -112,6 +112,7 @@ public class Registration {
 		textField.setColumns(10);
 		
 				JButton Registra = new JButton(Register);
+				Registra.setBorderPainted(false);
 				Registra.setOpaque(false);
 				Registra.setContentAreaFilled(false);
 				Registra.setFont(new Font("Times New Roman", Font.BOLD, 18));

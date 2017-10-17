@@ -78,7 +78,7 @@ public class Play {
 				}
 			}
 		});
-		btnNewButton.setBounds(154, 270, 150, 40);
+		btnNewButton.setBounds(251, 267, 150, 40);
 		frame.getContentPane().add(btnNewButton);
 		
 		ImageIcon Titolo= new ImageIcon("src/Immagini/"+game.getName()+" logo.png");
@@ -103,7 +103,7 @@ public class Play {
 				MainUser.main(user);
 			}
 		});
-		btnEsci.setBounds(225, 409, 150, 40);
+		btnEsci.setBounds(251, 346, 150, 40);
 		frame.getContentPane().add(btnEsci);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");

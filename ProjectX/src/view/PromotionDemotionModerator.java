@@ -239,7 +239,7 @@ public class PromotionDemotionModerator {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(137, 11, 150, 40);
+		mntmNewMenuItem_1.setBounds(184, 11, 150, 40);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");

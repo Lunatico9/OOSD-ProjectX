@@ -170,6 +170,9 @@ public class AcceptReview {
 		ImageIcon RifiutaB= new ImageIcon("src/Immagini/Rifiuta.png");
 		
 		JButton Rifiuta = new JButton(RifiutaB);
+		Rifiuta.setContentAreaFilled(false);
+		Rifiuta.setBorderPainted(false);
+		Rifiuta.setOpaque(false);
 		Rifiuta.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		if(!x){
 			Rifiuta.setVisible(false);
@@ -232,6 +235,9 @@ public class AcceptReview {
 		ImageIcon AccettaB= new ImageIcon("src/Immagini/Accetta.png");
 		
 		JButton Accetta = new JButton(AccettaB);
+		Accetta.setOpaque(false);
+		Accetta.setContentAreaFilled(false);
+		Accetta.setBorderPainted(false);
 		Accetta.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		if(!x){
 			Accetta.setVisible(false);
@@ -321,7 +327,7 @@ public class AcceptReview {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(155, 11, 150, 40);
+		mntmNewMenuItem_1.setBounds(175, 11, 150, 40);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 		
 		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
