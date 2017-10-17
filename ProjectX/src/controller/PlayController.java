@@ -29,10 +29,10 @@ public class PlayController {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy-hh:mm:ss");
 		String data= formatter.format(today.getTime());
 		String query2 = "UPDATE user SET exp = exp + 50 WHERE username = '" + user.getUsername() + "'";
-		String query = "SELECT exp, idUser FROM user  WHERE username = '" + user.getUsername() + "'", qdu, qdu2;
+		String qdu, qdu2;
 		user.setExp(user.getExp()+50);
 		ResultSet rst =DatabaseMySQL.SendQuery(query2); 
-			rst = DatabaseMySQL.SendQuery(query);
+			rst = DatabaseMySQL.selectExp(user);
 			rst.next();
 			int exp=rst.getInt("exp");
 			String id=rst.getString("idUser");

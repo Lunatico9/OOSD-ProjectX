@@ -88,4 +88,9 @@ public class DatabaseMySQL {
 		String query = "SELECT username FROM user WHERE idUser='" + ID + "'";
 		return SendQuery(query);
 	}
+	
+	public static ResultSet selectExp(Actor user) throws Exception{
+		String query = "SELECT exp, idUser FROM user  WHERE username = '" + user.getUsername() + "'";
+		return DatabaseMySQL.SendQuery(query);
+	}
 }
