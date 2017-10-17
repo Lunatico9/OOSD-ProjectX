@@ -21,6 +21,7 @@ import controller.MainUserController;
 import database.DatabaseMySQL;
 import model.Actor;
 import model.Game;
+import model.dao.Review_DAO;
 
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -235,7 +236,7 @@ public class MainUser {
 					String gioco = (String) list.getSelectedValue();
 					if (game.getName().equals(gioco)) {
 						try {
-							rst0 = DatabaseMySQL.getGameReviews(game);
+							rst0 = Review_DAO.getGameReviews(game);
 							ImageIcon Icona=new ImageIcon("src/Immagini/"+ game.getName() +".jpg");
 							Image scaledImage = Icona.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
 							Icona.setImage(scaledImage);
@@ -279,6 +280,7 @@ public class MainUser {
 					btnRecensioneSuccessiva.setVisible(true);
 				} else
 					btnRecensioneSuccessiva.setVisible(false);
+					btnNewButton_2.setVisible(false);
 			}
 		});
 
@@ -343,7 +345,7 @@ public class MainUser {
 				frame.dispose();
 			}
 		});
-		mntmNewMenuItem_1.setBounds(10, 11, 122, 40);
+		mntmNewMenuItem_1.setBounds(10, 11, 130, 40);
 		frame.getContentPane().add(mntmNewMenuItem_1);
 
 		
@@ -399,7 +401,7 @@ public class MainUser {
 				MainModerator.main(user);
 			}
 		});
-		mntmNewMenuItem.setBounds(142, 11, 122, 40);
+		mntmNewMenuItem.setBounds(150, 11, 130, 40);
 		frame.getContentPane().add(mntmNewMenuItem);
 
 		

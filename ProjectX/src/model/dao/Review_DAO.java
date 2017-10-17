@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import database.DatabaseMySQL;
 import model.Actor;
+import model.Game;
 
 public class Review_DAO implements Review_DAO_Interface {
 	
@@ -33,5 +34,10 @@ public class Review_DAO implements Review_DAO_Interface {
 	public static ResultSet ReviewDaValutare() throws Exception{
 		String queryTOTALE= "Select text, idReview, Game_idGame, user_iduser, vote From review WHERE approved=0";
 		return DatabaseMySQL.SendQuery(queryTOTALE);
+	}
+	
+	public static ResultSet getGameReviews(Game game) throws Exception{
+		String query12="SELECT * From review Where'"+ game.getId()  + "'=Game_idGame AND Approved=1 ORDER BY idReview";
+		return DatabaseMySQL.SendQuery(query12);
 	}
 }

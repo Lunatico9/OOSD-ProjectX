@@ -2,11 +2,10 @@ package database;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
 import javax.swing.JOptionPane;
-
 import model.Actor;
 import model.Game;
+
 public class DatabaseMySQL {
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String url = "jdbc:mysql://localhost:3306/gaming";
@@ -46,13 +45,6 @@ public class DatabaseMySQL {
 		return pr;
 	}
 	
-	public static ResultSet AddUser(String Username, String Password, String Name, String Surname, String Email, int level, int exp, String tipo) throws Exception {
-		String Tipo= "User";
-		int IDuser=1;
-		String sqlQuery = "INSERT INTO `user` (`username`, `password`, `type`,`name`,`surname`,`email`,`idUser`,`exp`,`level` ) VALUES ('" + Username + "', '" + Password + "', '"+ Tipo +"', '"+ Name +"', '"+ Surname +"', '"+ Email +"', '"+ IDuser +"', '"+exp+"','"+level+"')";
-		return SendQuery(sqlQuery);
-	}
-	
 	public static ResultSet insertTimeline() throws Exception {
 		int IDuser=1, IDtime=1;
 		Calendar today=Calendar.getInstance();
@@ -79,11 +71,6 @@ public class DatabaseMySQL {
 	public static ResultSet getTimeline(Actor user) throws Exception{
 		String query2="Select * From timeline Where User_idUser='"+ user.getId() +"' Order By idTimeline";
 		return SendQuery(query2); 
-	}
-	
-	public static ResultSet getGameReviews(Game game) throws Exception{
-		String query12="SELECT * From review Where'"+ game.getId()  + "'=Game_idGame AND Approved=1 ORDER BY idReview";
-		return SendQuery(query12);
 	}
 	
 	public static boolean verify(String username) throws Exception{
