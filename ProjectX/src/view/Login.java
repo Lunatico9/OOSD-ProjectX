@@ -87,8 +87,6 @@ public class Login {
 		frmLogin.getContentPane().add(passwordField);
 		
 		ImageIcon Login= new ImageIcon("src/Immagini/login.png");
-		Image scaledLogin = Login.getImage().getScaledInstance(132, 48, Image.SCALE_DEFAULT);
-		Login.setImage(scaledLogin);
 		
 		JButton btnAccedi = new JButton(Login);
 		btnAccedi.setBorderPainted(false);
@@ -135,7 +133,7 @@ public class Login {
 		panel.setLayout(null);
 		
 		JButton btnRegistrati = new JButton(Register);
-		btnRegistrati.setBounds(338, 228, 150, 40);
+		btnRegistrati.setBounds(338, 218, 150, 40);
 		panel.add(btnRegistrati);
 		btnRegistrati.setOpaque(false);
 		btnRegistrati.setContentAreaFilled(false);
