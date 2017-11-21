@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import controller.LoginController;
 import database.DatabaseMySQL;
 import model.Actor;
+import model.dao.Actor_DAO;
 
 import javax.swing.JPasswordField;
 import java.awt.Color;
@@ -129,7 +130,7 @@ public class Login {
 			    }
 			    else {
 			    	try {
-			    		ResultSet User = DatabaseMySQL.selectUsers(username, password); 
+			    		ResultSet User = Actor_DAO.selectUsers(username, password); 
 			    		if(User.next()){
 			    			Actor user = new Actor(User.getInt("idUser"),User.getString("username"),User.getString("password"), User.getString("name"),User.getString("surname"), User.getString("email"), User.getInt("level"), User.getInt("exp"), User.getString("type"));
 			    			LoginController.Accedi(user);

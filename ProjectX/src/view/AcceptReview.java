@@ -17,6 +17,7 @@ import javax.swing.JTextPane;
 
 import database.DatabaseMySQL;
 import model.Actor;
+import model.dao.Actor_DAO;
 import model.dao.Game_DAO;
 import model.dao.Review_DAO;
 
@@ -128,7 +129,7 @@ public class AcceptReview {
 		Utente.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		Utente.setHorizontalAlignment(SwingConstants.CENTER);
 		if(x){
-			ResultSet nome= DatabaseMySQL.selectUsername(idutente);
+			ResultSet nome= Actor_DAO.selectUsername(idutente);
 			if(nome.next()){
 				nomeutente=nome.getString(1);
 				Utente.setText("Recensione di: " + nome.getString(1) );
@@ -206,7 +207,7 @@ public class AcceptReview {
 							else progressBar.setForeground(Color.GREEN);
 							Gioco.setText("Gioco: " + gioco2.getString(1));
 							Voto.setText("Voto");
-							ResultSet nome= DatabaseMySQL.selectUsername(idutente);
+							ResultSet nome= Actor_DAO.selectUsername(idutente);
 							nome.next();
 							Utente.setText("Recensione di: " + nome.getString(1));
 						}
@@ -271,7 +272,7 @@ public class AcceptReview {
 							else progressBar.setForeground(Color.GREEN);
 							Gioco.setText("Gioco: " + gioco2.getString(1));
 							Voto.setText("Voto");
-							ResultSet nome= DatabaseMySQL.selectUsername(idutente);
+							ResultSet nome= Actor_DAO.selectUsername(idutente);
 							nome.next();
 							Utente.setText("Recensione di: " + nome.getString(1));
 						}

@@ -4,8 +4,8 @@ import java.sql.ResultSet;
 
 import javax.swing.JOptionPane;
 
-import database.DatabaseMySQL;
 import model.Actor;
+import model.dao.Actor_DAO;
 import model.dao.Game_DAO;
 import model.dao.Review_DAO;
 import view.AcceptReview;
@@ -40,6 +40,6 @@ public class MainUserController {
 	}
 	
 	public static ResultSet selezionaUsername(int ID) throws Exception{
-		return DatabaseMySQL.selectUsername(ID);	
+		return Actor_DAO.selectUsername(ID);	
 	}
 }

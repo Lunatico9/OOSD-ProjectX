@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 import controller.PromotionDemotionModeratorController;
 import database.DatabaseMySQL;
 import model.Actor;
+import model.dao.Actor_DAO;
 
 import java.awt.Font;
 import java.awt.Image;
@@ -71,7 +72,7 @@ public class PromotionDemotionModerator {
 	public ArrayList<Actor> userList() throws Exception {
 		ArrayList<Actor> usersList = new ArrayList<Actor>();
 		try {
-			ResultSet rst=DatabaseMySQL.selectUsers();
+			ResultSet rst=Actor_DAO.selectUsers();
 			Actor user1;
 			while(rst.next()) {
 				user1 = new Actor(rst.getString("username"), rst.getString("type"));

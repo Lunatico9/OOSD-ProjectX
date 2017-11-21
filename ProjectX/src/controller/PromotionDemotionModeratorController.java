@@ -1,14 +1,14 @@
 package controller;
 
-import database.DatabaseMySQL;
+import model.dao.Actor_DAO;
 
 public class PromotionDemotionModeratorController {
 	public static void Update(String Type, int i, String username) throws Exception{
 		if (Type.equals("moderatore")) {
-			 DatabaseMySQL.Degrade(username);
+			Actor_DAO.Degrade(username);
 		}
 		else {
-			DatabaseMySQL.Upgrade(username);
+			Actor_DAO.Upgrade(username);
 		}
 	}
 }

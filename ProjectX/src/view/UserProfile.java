@@ -6,8 +6,6 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -15,21 +13,15 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
-import database.DatabaseMySQL;
 import model.Actor;
+import model.dao.Actor_DAO;
 import model.dao.Review_DAO;
-
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
-
 import controller.UserProfileController;
-
 import javax.swing.JTable;
-import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JProgressBar;
@@ -201,7 +193,7 @@ public class UserProfile {
 		scrollPane.setBounds(21, 243, 639, 137);
 		frame.getContentPane().add(scrollPane);
 		try {
-			ResultSet rs = DatabaseMySQL.getTimeline(user);
+			ResultSet rs = Actor_DAO.getTimeline(user);
 		table = new JTable(){public boolean isCellEditable(int rowIndex, int mColIndex) {return false; }};
 		table.setOpaque(false);
 		scrollPane.setViewportView(table);

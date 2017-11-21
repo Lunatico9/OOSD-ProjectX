@@ -130,7 +130,7 @@ public class Registration {
 								JOptionPane.showMessageDialog(null, "Errore, inserisci un username");;
 							}
 							else{
-								presente =DatabaseMySQL.verify(username);
+								presente =Actor_DAO.verify(username);
 								if(presente) JOptionPane.showMessageDialog(null, "Errore, username non valido");
 								}
 						} catch (Exception e1) {
@@ -142,10 +142,10 @@ public class Registration {
 						    	JOptionPane.showMessageDialog(null, "Errore, uno o più campi non sono compilati correttamente o sono vuoti.");
 						    	}
 						    else{
-						    	presente = DatabaseMySQL.verify(username);
+						    	presente = Actor_DAO.verify(username);
 						    	if (!presente)
-						    		if(username.length()>4 && username.length()<30){
-						    		if(pass1.length()>6 && pass1.length()<18){
+						    		if(username.length()>=4 && username.length()<=30){
+						    		if(pass1.length()>=6 && pass1.length()<=18){
 						    			if(uguale){
 						    				try {
 						    					int level = 1, exp = 0;

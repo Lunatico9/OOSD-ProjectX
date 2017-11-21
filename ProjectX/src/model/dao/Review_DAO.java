@@ -11,6 +11,12 @@ import model.Review;
 
 public class Review_DAO implements Review_DAO_Interface {
 	
+	public static ResultSet maxReview() throws Exception{
+		String QueryID = "SELECT MAX(idReview) FROM review";
+		return DatabaseMySQL.SendQuery(QueryID);
+	}
+	
+	
 	public static ArrayList<String[]> AwardsList(Actor user) throws Exception {
 		ArrayList<String[]> AwardsList = new ArrayList<String[]>();
 		try {

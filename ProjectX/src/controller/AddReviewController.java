@@ -1,8 +1,6 @@
 package controller;
 
 import java.sql.ResultSet;
-
-import database.DatabaseMySQL;
 import model.Review;
 import model.dao.Review_DAO;
 import model.Actor;
@@ -10,7 +8,7 @@ import view.MainUser;
 
 public class AddReviewController {
 	public static void AddReview(Review review) throws Exception {
-		ResultSet id= DatabaseMySQL.maxReview();
+		ResultSet id= Review_DAO.maxReview();
 		int ID=0;
 		if(id.next()){
 			 ID=id.getInt(1)+1;
