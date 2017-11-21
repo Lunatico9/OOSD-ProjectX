@@ -32,7 +32,7 @@ public class Actor_DAO implements Actor_DAO_Interface {
 		return DatabaseMySQL.SendQuery(query);
 	}
 	
-	public static ResultSet selectUsers(String username, String password) throws Exception{
+	public static ResultSet selectUser(String username, String password) throws Exception{
 		String query = "SELECT * FROM user WHERE username='"+username+"' AND password='"+password+"'";
 		return DatabaseMySQL.SendQuery(query);
 	}

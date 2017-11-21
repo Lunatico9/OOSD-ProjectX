@@ -12,7 +12,7 @@ public interface Actor_DAO_Interface {
 
 	public static void selectUsers()throws Exception{};
 	
-	public static void selectUsers(String username, String password)throws Exception{};
+	public static void selectUser(String username, String password)throws Exception{};
 	
 	public static void selectUsername(int ID)throws Exception{};
 	

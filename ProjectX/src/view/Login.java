@@ -130,7 +130,7 @@ public class Login {
 			    }
 			    else {
 			    	try {
-			    		ResultSet User = Actor_DAO.selectUsers(username, password); 
+			    		ResultSet User = Actor_DAO.selectUser(username, password); 
 			    		if(User.next()){
 			    			Actor user = new Actor(User.getInt("idUser"),User.getString("username"),User.getString("password"), User.getString("name"),User.getString("surname"), User.getString("email"), User.getInt("level"), User.getInt("exp"), User.getString("type"));
 			    			LoginController.Accedi(user);
