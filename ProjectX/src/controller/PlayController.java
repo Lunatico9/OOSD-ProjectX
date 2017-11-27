@@ -12,6 +12,10 @@ import model.dao.Actor_DAO;
 public class PlayController {
 	static List<Integer> soglie = soglie();
 		
+	/**
+	 * Stabilisce le soglie di exp per passare di livello
+	 * @return a List of integer
+	 */
 	public static List<Integer> soglie(){
 		soglie = new ArrayList<Integer>(100);
 		soglie.add(0,100);
@@ -21,7 +25,12 @@ public class PlayController {
 		return soglie;
 	}
 	
-	
+	/**
+	 * Esegue le varie operazioni relative all'esperienza dell'utente che ha appena giocato
+	 * @param user username
+	 * @return an Actor
+	 * @throws Exception
+	 */
 	public static Actor Gioca(Actor user) throws Exception {
 		
 		Calendar today= Calendar.getInstance();
