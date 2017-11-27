@@ -8,7 +8,11 @@ public class DatabaseMySQL {
 	private static String url = "jdbc:mysql://localhost:3306/gaming";
 	private static String user = "root";
 	private static String psw = "";
-	
+	/**
+	 * Stabilisce una connessione con il database
+	 * @return a database Connection
+	 * @throws Exception
+	 */
 	public static Connection Connection() throws Exception {
 		Connection con  = null;
 		try {
@@ -22,7 +26,12 @@ public class DatabaseMySQL {
 				}
 		return con;
 	}
-	
+	/**
+	 * Manda una query al database e ritorna un ResultSet
+	 * @param query La query da eseguire sul database
+	 * @return a ResultSet
+	 * @throws Exception
+	 */
 	public static ResultSet SendQuery(String query) throws Exception {
 		Connection con = Connection();
 		Statement stt = con.createStatement();
