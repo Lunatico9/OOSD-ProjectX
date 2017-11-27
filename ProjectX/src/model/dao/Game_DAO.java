@@ -15,7 +15,12 @@ public class Game_DAO {
 		String query0= "SELECT idGame FROM game WHERE name='"+ name + "'";
 		return DatabaseMySQL.SendQuery(query0);
 	}
-	
+	/**
+	 * Trova il gioco a partire dall'ID
+	 * @param ID id del gioco
+	 * @return a Result Set
+	 * @throws Exception
+	 */
 	public static ResultSet selectGame(int ID) throws Exception{
 		String GIOCO="SELECT name FROM game WHERE idGame='"+ID+"'";
 		return DatabaseMySQL.SendQuery(GIOCO);
