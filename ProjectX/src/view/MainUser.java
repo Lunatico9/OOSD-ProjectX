@@ -106,7 +106,7 @@ public class MainUser {
 					result.add(file.getName());
 				}
 			}
-		System.out.println(result);
+
 		lblNewLabel_4=new JLabel();
 		lblNewLabel_4.setBounds(453, 54, 200, 200);
 		frame.getContentPane().add(lblNewLabel_4);
@@ -246,7 +246,7 @@ public class MainUser {
 					
 					String gioco = (String) list.getSelectedValue();
 					
-					if(result.contains(gioco+".txt")){
+					if(result.contains(gioco+".jar")){
 						btnGioca.setIcon(Gioca);
 					}
 					else btnGioca.setIcon(Scarica);
