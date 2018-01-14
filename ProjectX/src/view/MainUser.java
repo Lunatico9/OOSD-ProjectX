@@ -31,6 +31,7 @@ import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
+import java.io.File;
 import java.beans.PropertyChangeEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
@@ -49,7 +50,8 @@ public class MainUser {
 	private int Count = 0, num = 0;
 	private Double Media = 0.0;
 	private JLabel lblNewLabel_4;
-	private boolean x=true;
+	private List<String> result = new ArrayList<String>();
+	private File[] files = new File("C:/Users/Win10/git/OOSD-ProjectX/ProjectX/Giochi").listFiles();
 	/**
 	 * Launch the application.
 	 */
@@ -98,6 +100,13 @@ public class MainUser {
 			games.add(rst.getString("name"));
 		}
 		
+		
+			for(File file: files){
+				if(file.isFile()){
+					result.add(file.getName());
+				}
+			}
+		System.out.println(result);
 		lblNewLabel_4=new JLabel();
 		lblNewLabel_4.setBounds(453, 54, 200, 200);
 		frame.getContentPane().add(lblNewLabel_4);
@@ -222,6 +231,10 @@ public class MainUser {
 		ImageIcon Com= new ImageIcon("src/Immagini/Commento.png");
 		JButton btnNewButton = new JButton(Com);
 		
+		ImageIcon Gioca= new ImageIcon("src/Immagini/PlayNow.png");
+		ImageIcon Scarica= new ImageIcon("src/Immagini/Scarica.png");
+		JButton btnGioca = new JButton();
+		
 		JList list = new JList();
 		list.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		list.addMouseListener(new MouseAdapter() {
@@ -230,7 +243,14 @@ public class MainUser {
 				Media = 0.0;
 				Count = 0;
 				for (Game game : gamesObject) {
+					
 					String gioco = (String) list.getSelectedValue();
+					
+					if(result.contains(gioco+".txt")){
+						btnGioca.setIcon(Gioca);
+					}
+					else btnGioca.setIcon(Scarica);
+					
 					if (game.getName().equals(gioco)) {
 						try {
 							ResultSet rst1=Review_DAO.selezionaReview(user.getId(),game.getId());
@@ -264,7 +284,6 @@ public class MainUser {
 				try {
 					if (rst0.first()) {
 						ResultSet rst2=MainUserController.selezionaUsername(rst0.getInt("user_iduser"));
-						
 						rst2.next();
 						lblNewLabel.setText(rst0.getString("text"));
 						lblNewLabel_2.setText("Voto: " + rst0.getString("vote")+"/10");
@@ -286,7 +305,7 @@ public class MainUser {
 					btnNewButton_2.setVisible(false);
 			}
 		});
-
+		
 		scrollPane.setViewportView(list);
 		list.setModel(new AbstractListModel() {
 			ArrayList<String> values = games;
@@ -336,9 +355,7 @@ public class MainUser {
 		btnNewButton.setBounds(223, 277, 150, 40);
 		frame.getContentPane().add(btnNewButton);
 		
-		ImageIcon Gioca= new ImageIcon("src/Immagini/PlayNow.png");
 		
-		JButton btnGioca = new JButton(Gioca);
 		btnGioca.setContentAreaFilled(false);
 		btnGioca.setBorderPainted(false);
 		btnGioca.setOpaque(false);
