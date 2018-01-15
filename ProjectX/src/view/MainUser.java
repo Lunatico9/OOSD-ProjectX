@@ -14,6 +14,7 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractListModel;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 import controller.MainUserController;
@@ -36,8 +37,11 @@ import java.beans.PropertyChangeEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.JTextField;
+import javax.swing.ListCellRenderer;
 import javax.swing.JTextArea;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.UIManager;
 import java.awt.Font;
 import java.awt.Image;
@@ -305,7 +309,7 @@ public class MainUser {
 					btnNewButton_2.setVisible(false);
 			}
 		});
-		
+
 		scrollPane.setViewportView(list);
 		list.setModel(new AbstractListModel() {
 			ArrayList<String> values = games;
