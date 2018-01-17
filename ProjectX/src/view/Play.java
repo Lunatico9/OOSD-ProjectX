@@ -31,11 +31,11 @@ public class Play {
 	 * 
 	 */
 	
-	public static void main(Actor user, Game game) {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Play window = new Play(user, game);
+					Play window = new Play();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,9 +44,7 @@ public class Play {
 		});
 		
 	}
-	public Play(Actor user, Game game) {
-		this.user = user;
-		this.game = game;
+	public Play() {
 		initialize();
 	}
 
