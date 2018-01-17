@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import controller.PlayController;
+import gaming_Platform_API.Gaming_Platform_API;
 import model.Actor;
 import model.Game;
 
