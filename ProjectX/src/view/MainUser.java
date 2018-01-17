@@ -57,7 +57,7 @@ public class MainUser {
 	private Double Media = 0.0;
 	private JLabel lblNewLabel_4;
 	private List<String> result = new ArrayList<String>();
-	private File[] files = new File("C:/Users/Win10/git/OOSD-ProjectX/ProjectX/Giochi").listFiles();
+	private File[] files = new File("C:/Users/Win10/git/OOSD-ProjectX/ProjectX").listFiles();
 
 	/**
 	 * Launch the application.
@@ -251,16 +251,17 @@ public class MainUser {
 				Count = 0;
 				for (Game game : gamesObject) {
 
-					String gioco = (String) list.getSelectedValue();
-
+					String gioco2 = (String) list.getSelectedValue();
+					String gioco=gioco2.replaceAll(" {1,}", "");
+					System.out.println(gioco);
 					if (result.contains(gioco + ".jar")) {
 						btnGioca.setIcon(Gioca);
 						btnGioca.setEnabled(true);
-					} else
+					} else {
 						btnGioca.setIcon(Scarica);
 						btnGioca.setEnabled(false);
-
-					if (game.getName().equals(gioco)) {
+					}
+					if (game.getName().equals(gioco2)) {
 						try {
 							ResultSet rst1 = Review_DAO.selezionaReview(user.getId(), game.getId());
 							if (rst1.next()) {
@@ -382,8 +383,8 @@ public class MainUser {
 								}
 							}
 						}
-					}
-					else JOptionPane.showMessageDialog(null, "Devi prima scaricare il gioco");
+					} else
+						JOptionPane.showMessageDialog(null, "Devi prima scaricare il gioco");
 				}
 			}
 		});

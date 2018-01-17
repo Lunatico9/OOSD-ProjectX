@@ -79,7 +79,7 @@ public class Play {
 		btnNewButton.setBounds(251, 267, 150, 40);
 		frame.getContentPane().add(btnNewButton);
 		
-		ImageIcon Titolo= new ImageIcon("src/Immagini/"+game.getName()+" logo.png");
+		ImageIcon Titolo= new ImageIcon("src/Immagini/Fifa 17 logo.png");
 		Image scaledImageT = Titolo.getImage().getScaledInstance(500, 200, Image.SCALE_DEFAULT);
 		Titolo.setImage(scaledImageT);
 		

@@ -64,22 +64,33 @@ public class PlayController {
 			JOptionPane.showMessageDialog(null, "Congratulazioni sei salito al Livello " + (i + 2) + "!");
 			user.setLevel(user.getLevel() + 1);
 		} else {
-			JOptionPane.showMessageDialog(null, "Hai giocato per un ora e ti sono stati aggiunti "+ experience +" punti exp!");
-		}
+			int ore= experience/50;
+			if(ore==1){
+				JOptionPane.showMessageDialog(null,
+						"Hai giocato per un ora e ti sono stati aggiunti " + experience + " punti exp!");
+			
+			}
+			else{
+				JOptionPane.showMessageDialog(null,
+						"Hai giocato per "+ore+" ore e ti sono stati aggiunti " + experience + " punti exp!");
+			}
+			}
 		return user;
 	}
 
 	public static void lanciaGioco(Game game, Actor user) throws Exception {
-		String name = game.getName();
+		String name2 = game.getName();
+		String name = name2.replaceAll(" {1,}", "");
 		BufferedReader b;
 		Process proc = Runtime.getRuntime().exec("java -jar " + name + ".jar");
 		b = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 		proc.waitFor();
 		String line = b.readLine();
+		int exp = 0;
 		while (line != null) {
-			if(line.substring(0, 4).equals("exp:")){
-				int exp= Integer.parseInt(line.substring(4));
-					Gioca(user, exp);
+			if (line.substring(0, 4).equals("exp:")) {
+				exp = Integer.parseInt(line.substring(4));
+				Gioca(user, exp);
 			}
 			line = b.readLine();
 		}
