@@ -18,6 +18,7 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 import controller.MainUserController;
+import controller.PlayController;
 import database.DatabaseMySQL;
 import model.Actor;
 import model.Game;
@@ -33,6 +34,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.io.IOException;
 import java.beans.PropertyChangeEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
@@ -56,6 +58,7 @@ public class MainUser {
 	private JLabel lblNewLabel_4;
 	private List<String> result = new ArrayList<String>();
 	private File[] files = new File("C:/Users/Win10/git/OOSD-ProjectX/ProjectX/Giochi").listFiles();
+
 	/**
 	 * Launch the application.
 	 */
@@ -88,7 +91,7 @@ public class MainUser {
 	 * @throws Exception
 	 */
 	private void initialize() throws Exception {
-		
+
 		frame = new JFrame();
 		frame.setTitle("Main user");
 		frame.setBounds(100, 100, 700, 600);
@@ -103,15 +106,14 @@ public class MainUser {
 			gamesObject.add(a);
 			games.add(rst.getString("name"));
 		}
-		
-		
-			for(File file: files){
-				if(file.isFile()){
-					result.add(file.getName());
-				}
-			}
 
-		lblNewLabel_4=new JLabel();
+		for (File file : files) {
+			if (file.isFile()) {
+				result.add(file.getName());
+			}
+		}
+
+		lblNewLabel_4 = new JLabel();
 		lblNewLabel_4.setBounds(453, 54, 200, 200);
 		frame.getContentPane().add(lblNewLabel_4);
 
@@ -151,16 +153,16 @@ public class MainUser {
 		scrollPane.setBounds(32, 54, 391, 200);
 		frame.getContentPane().add(scrollPane);
 
-		ImageIcon Next= new ImageIcon("src/Immagini/Successivo.png");
-		
+		ImageIcon Next = new ImageIcon("src/Immagini/Successivo.png");
+
 		JButton btnRecensioneSuccessiva = new JButton(Next);
 		btnRecensioneSuccessiva.setBorderPainted(false);
 		btnRecensioneSuccessiva.setContentAreaFilled(false);
 		btnRecensioneSuccessiva.setOpaque(false);
 		btnRecensioneSuccessiva.setFont(new Font("Times New Roman", Font.BOLD, 18));
 
-		ImageIcon Previous= new ImageIcon("src/Immagini/Precedente.png");
-		
+		ImageIcon Previous = new ImageIcon("src/Immagini/Precedente.png");
+
 		JButton btnNewButton_2 = new JButton(Previous);
 		btnNewButton_2.setContentAreaFilled(false);
 		btnNewButton_2.setBorderPainted(false);
@@ -180,10 +182,10 @@ public class MainUser {
 					else
 						btnNewButton_2.setVisible(true);
 					if (rst0.previous()) {
-						ResultSet rst2=MainUserController.selezionaUsername(rst0.getInt("user_iduser"));
+						ResultSet rst2 = MainUserController.selezionaUsername(rst0.getInt("user_iduser"));
 						rst2.next();
 						lblNewLabel.setText(rst0.getString("text"));
-						lblNewLabel_2.setText("Voto: " + rst0.getString("vote")+"/10");
+						lblNewLabel_2.setText("Voto: " + rst0.getString("vote") + "/10");
 						lblNewLabel_1.setText("Recensione di: " + rst2.getString("username"));
 					}
 
@@ -196,7 +198,7 @@ public class MainUser {
 		});
 		btnNewButton_2.setBounds(89, 510, 150, 40);
 		frame.getContentPane().add(btnNewButton_2);
-		
+
 		// Recensione Successiva
 		if (Count <= num) {
 			btnRecensioneSuccessiva.setVisible(false);
@@ -213,10 +215,10 @@ public class MainUser {
 						btnRecensioneSuccessiva.setVisible(false);
 					if (num <= Count) {
 						if (rst0.next()) {
-							ResultSet rst2=MainUserController.selezionaUsername(rst0.getInt("user_iduser"));
+							ResultSet rst2 = MainUserController.selezionaUsername(rst0.getInt("user_iduser"));
 							rst2.next();
 							lblNewLabel.setText(rst0.getString("text"));
-							lblNewLabel_2.setText("Voto: " + rst0.getString("vote")+"/10");
+							lblNewLabel_2.setText("Voto: " + rst0.getString("vote") + "/10");
 							lblNewLabel_1.setText("Recensione di: " + rst2.getString("username"));
 						}
 					}
@@ -231,14 +233,15 @@ public class MainUser {
 		});
 		btnRecensioneSuccessiva.setBounds(453, 510, 150, 40);
 		frame.getContentPane().add(btnRecensioneSuccessiva);
-		
-		ImageIcon Com= new ImageIcon("src/Immagini/Commento.png");
+
+		ImageIcon Com = new ImageIcon("src/Immagini/Commento.png");
 		JButton btnNewButton = new JButton(Com);
-		
-		ImageIcon Gioca= new ImageIcon("src/Immagini/PlayNow.png");
-		ImageIcon Scarica= new ImageIcon("src/Immagini/Scarica.png");
+
+		ImageIcon Gioca = new ImageIcon("src/Immagini/PlayNow.png");
+		ImageIcon Scarica = new ImageIcon("src/Immagini/Scarica.png");
 		JButton btnGioca = new JButton();
-		
+		btnGioca.setEnabled(false);
+
 		JList list = new JList();
 		list.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 		list.addMouseListener(new MouseAdapter() {
@@ -247,23 +250,25 @@ public class MainUser {
 				Media = 0.0;
 				Count = 0;
 				for (Game game : gamesObject) {
-					
+
 					String gioco = (String) list.getSelectedValue();
-					
-					if(result.contains(gioco+".jar")){
+
+					if (result.contains(gioco + ".jar")) {
 						btnGioca.setIcon(Gioca);
-					}
-					else btnGioca.setIcon(Scarica);
-					
+						btnGioca.setEnabled(true);
+					} else
+						btnGioca.setIcon(Scarica);
+						btnGioca.setEnabled(false);
+
 					if (game.getName().equals(gioco)) {
 						try {
-							ResultSet rst1=Review_DAO.selezionaReview(user.getId(),game.getId());
-							if(rst1.next()){
+							ResultSet rst1 = Review_DAO.selezionaReview(user.getId(), game.getId());
+							if (rst1.next()) {
 								btnNewButton.setEnabled(false);
-							}
-							else btnNewButton.setEnabled(true);
+							} else
+								btnNewButton.setEnabled(true);
 							rst0 = Review_DAO.getGameReviews(game);
-							ImageIcon Icona=new ImageIcon("src/Immagini/"+ game.getName() +".jpg");
+							ImageIcon Icona = new ImageIcon("src/Immagini/" + game.getName() + ".jpg");
 							Image scaledImage = Icona.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
 							Icona.setImage(scaledImage);
 							lblNewLabel_4.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -287,10 +292,10 @@ public class MainUser {
 				}
 				try {
 					if (rst0.first()) {
-						ResultSet rst2=MainUserController.selezionaUsername(rst0.getInt("user_iduser"));
+						ResultSet rst2 = MainUserController.selezionaUsername(rst0.getInt("user_iduser"));
 						rst2.next();
 						lblNewLabel.setText(rst0.getString("text"));
-						lblNewLabel_2.setText("Voto: " + rst0.getString("vote")+"/10");
+						lblNewLabel_2.setText("Voto: " + rst0.getString("vote") + "/10");
 						lblNewLabel_1.setText("Recensione di: " + rst2.getString("username"));
 					} else {
 						lblNewLabel.setText("Questo gioco non è ancora stato recensito!");
@@ -306,7 +311,7 @@ public class MainUser {
 					btnRecensioneSuccessiva.setVisible(true);
 				} else
 					btnRecensioneSuccessiva.setVisible(false);
-					btnNewButton_2.setVisible(false);
+				btnNewButton_2.setVisible(false);
 			}
 		});
 
@@ -329,7 +334,7 @@ public class MainUser {
 				}
 			}
 		});
-		
+
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setOpaque(false);
@@ -358,8 +363,7 @@ public class MainUser {
 		});
 		btnNewButton.setBounds(223, 277, 150, 40);
 		frame.getContentPane().add(btnNewButton);
-		
-		
+
 		btnGioca.setContentAreaFilled(false);
 		btnGioca.setBorderPainted(false);
 		btnGioca.setOpaque(false);
@@ -367,22 +371,27 @@ public class MainUser {
 		btnGioca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!list.isSelectionEmpty()) {
-					String gioco = (String) list.getSelectedValue();
-					for (Game game : gamesObject) {
-						if (game.getName().equals(gioco)) {
-							Play.main(user, game);
-							frame.dispose();
+					if (btnGioca.getIcon().equals(Gioca)) {
+						String gioco = (String) list.getSelectedValue();
+						for (Game game : gamesObject) {
+							if (game.getName().equals(gioco)) {
+								try {
+									PlayController.lanciaGioco(game, user);
+								} catch (Exception e1) {
+									e1.printStackTrace();
+								}
+							}
 						}
 					}
-				} else
-					JOptionPane.showMessageDialog(null, "Seleziona un gioco dalla lista!");
+					else JOptionPane.showMessageDialog(null, "Devi prima scaricare il gioco");
+				}
 			}
 		});
 		btnGioca.setBounds(32, 277, 150, 40);
 		frame.getContentPane().add(btnGioca);
 
-		ImageIcon Logout= new ImageIcon("src/Immagini/logout.png");
-		
+		ImageIcon Logout = new ImageIcon("src/Immagini/logout.png");
+
 		JButton mntmNewMenuItem_1 = new JButton(Logout);
 		mntmNewMenuItem_1.setFocusable(false);
 		mntmNewMenuItem_1.setBorderPainted(false);
@@ -397,8 +406,8 @@ public class MainUser {
 		});
 		mntmNewMenuItem_1.setBounds(32, 11, 150, 40);
 		frame.getContentPane().add(mntmNewMenuItem_1);
-		
-		ImageIcon Profile= new ImageIcon("src/Immagini/Profilo.png");
+
+		ImageIcon Profile = new ImageIcon("src/Immagini/Profilo.png");
 		JButton btnNewButton_1 = new JButton(Profile);
 		btnNewButton_1.setBorderPainted(false);
 		btnNewButton_1.setContentAreaFilled(false);
@@ -411,12 +420,12 @@ public class MainUser {
 		});
 		btnNewButton_1.setBounds(418, 277, 150, 40);
 		frame.getContentPane().add(btnNewButton_1);
-		
-		ImageIcon Sfondo= new ImageIcon("src/Immagini/Sfondo.jpg");
+
+		ImageIcon Sfondo = new ImageIcon("src/Immagini/Sfondo.jpg");
 		Image scaledImage = Sfondo.getImage().getScaledInstance(700, 600, Image.SCALE_DEFAULT);
 		Sfondo.setImage(scaledImage);
-		
-		ImageIcon U= new ImageIcon("src/Immagini/Utenti.png");
+
+		ImageIcon U = new ImageIcon("src/Immagini/Utenti.png");
 		JButton btnNewButton1 = new JButton(U);
 		btnNewButton1.setFocusable(false);
 		btnNewButton1.setOpaque(false);
@@ -431,8 +440,8 @@ public class MainUser {
 		});
 		btnNewButton1.setBounds(192, 11, 150, 40);
 		frame.getContentPane().add(btnNewButton1);
-		
-		ImageIcon Rev= new ImageIcon("src/Immagini/Review.png");
+
+		ImageIcon Rev = new ImageIcon("src/Immagini/Review.png");
 		JButton btnGestisciNuoveRecensioni = new JButton(Rev);
 		btnGestisciNuoveRecensioni.setOpaque(false);
 		btnGestisciNuoveRecensioni.setContentAreaFilled(false);
@@ -449,15 +458,15 @@ public class MainUser {
 		JLabel lblNewLabel_5 = new JLabel(Sfondo);
 		lblNewLabel_5.setBounds(0, 0, 684, 561);
 		frame.getContentPane().add(lblNewLabel_5);
-		ResultSet rst11=Review_DAO.ReviewDaValutare();
-		if(rst11.next()){
+		ResultSet rst11 = Review_DAO.ReviewDaValutare();
+		if (rst11.next()) {
 			btnGestisciNuoveRecensioni.setEnabled(true);
-		}
-		else btnGestisciNuoveRecensioni.setEnabled(false);
-		
-		if(!user.getType().equals("moderatore")){
+		} else
+			btnGestisciNuoveRecensioni.setEnabled(false);
+
+		if (!user.getType().equals("moderatore")) {
 			btnGestisciNuoveRecensioni.setVisible(false);
 			btnNewButton1.setVisible(false);
-		}	
+		}
 	}
 }

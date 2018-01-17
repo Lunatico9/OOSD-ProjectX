@@ -71,8 +71,7 @@ public class Play {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					
-					user = PlayController.Gioca(user);
+					Gaming_Platform_API.addExperience(50);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
