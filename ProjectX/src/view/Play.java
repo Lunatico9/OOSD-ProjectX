@@ -99,8 +99,7 @@ public class Play {
 		btnEsci.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		btnEsci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-				MainUser.main(user);
+				System.exit(1);
 			}
 		});
 		btnEsci.setBounds(251, 346, 150, 40);
