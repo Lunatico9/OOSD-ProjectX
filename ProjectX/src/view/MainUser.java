@@ -258,7 +258,7 @@ public class MainUser {
 						btnGioca.setEnabled(true);
 					} else {
 						btnGioca.setIcon(Scarica);
-						btnGioca.setEnabled(false);
+						btnGioca.setEnabled(true);
 					}
 					if (game.getName().equals(gioco2)) {
 						try {
