@@ -57,7 +57,7 @@ public class MainUser {
 	private Double Media = 0.0;
 	private JLabel lblNewLabel_4;
 	private List<String> result = new ArrayList<String>();
-	private File[] files = new File("C:/Users/Win10/git/OOSD-ProjectX/ProjectX").listFiles();
+	private File[] files = new File(".").listFiles();
 
 	/**
 	 * Launch the application.
@@ -253,7 +253,6 @@ public class MainUser {
 
 					String gioco2 = (String) list.getSelectedValue();
 					String gioco=gioco2.replaceAll(" {1,}", "");
-					System.out.println(gioco);
 					if (result.contains(gioco + ".jar")) {
 						btnGioca.setIcon(Gioca);
 						btnGioca.setEnabled(true);
